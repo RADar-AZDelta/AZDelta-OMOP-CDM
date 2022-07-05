@@ -1,0 +1,148 @@
+sourceCode,sourceName,sourceFrequency
+AGL,Allergologie,1
+ALL,Allergologie,1
+ANE,Anesthesiologie,1
+APO,Apotheker,1
+AUD,Audiologie,1
+AVG,Arts voor verstandelijk gehandicapten,1
+BAR,Bariatrische chirurgie,1
+BASI,Arts-assistent/basisarts,1
+BWC,Brandwonden,1
+CAR,Cardiologie,1
+CHI,Chirurgie,1
+CTC,Cardiothoracale Chirurgie,1
+DBS,Diabetologie,1
+DER,Dermatologie,1
+DIA,Diabetologie,1
+DIE,Di‰tetiek,1
+EEA,Erfelijke en aangeboren aandoeningen,1
+END,Endocrinologie,1
+ERG,Ergotherapie,1
+FER,Fertiliteit,1
+FYS,Fysiotherapie,1
+GER,Geriatrie,1
+GEV,Geestelijke verzorging,1
+GGD,GGD artsen,1
+GGZ,Geestelijke gezondheidszorg,1
+GHZ,WLZ: Gehandicaptenzorg,1
+GOC,Chirurgie Gastro-Enterologie / Oncologie,1
+GON,Gynaecologische Oncologie,1
+GRG,Geriatrische revalidatiegeneeskunde,1
+GYN,Gynaecologie,1
+HEM,Hematologie,1
+HHH,Huishoudelijke hulp,1
+HIP,Infectiepreventie,1
+HRV,Hartrevalidatie,1
+HUI,Huisartsgeneeskunde,1
+HYP,Hyperbare geneeskunde,1
+ICA,Intensive Care,1
+ICK,Intensive Care Kinderen,1
+IMM,Immunologie,1
+INF,Infectieziekten,1
+INT,Interne Geneeskunde,1
+JGD,Jeugdarts,1
+KAA,"Mondziekten, Kaak- en Aangezichtschirurgie",1
+KAL,Kinderallergologie,1
+KAP,Kinder algemene pediatrie,1
+KCA,Kindercardiologie,1
+KCC,Kindercardiothoracale chirurgie,1
+KCH,Klinische Chemie,1
+KEN,Kinderendocrinologie,1
+KFA,Klinisch fysicus audioloog,1
+KGA,Kindermaag-darm-leverziekten,1
+KHA,Kinderhematologie,1
+KIC,Kinderchirurgie,1
+KIM,Kinderimmunologie en -infectieziekten,1
+KIN,Kindergeneeskunde,1
+KIR,Kinderimmunologie en -reumatologie,1
+KJP,Kinder- en Jeugdpsychiatrie,1
+KLG,Klinische Genetica,1
+KLZ,Kinderlongziekten,1
+KNE,Kindernefrologie,1
+KNO,Keel-Neus-Oor Heelkunde,1
+KON,Kinderoncologie,1
+KRZ,Kraamzorg,1
+KTL,Klinisch technoloog,1
+LCH,Longchirurgie,1
+LOG,Logopedie,1
+LON,Longgeneeskunde,1
+MDL,"Maag-, Darm- en Leverziekten",1
+MET,Kindermetabole ziekten,1
+MMB,Medische Microbiologie,1
+MST,Medisch specialistische verpleging in de thuissit.,1
+MSW,Maatschappelijk werk,1
+NCH,Neurochirurgie,1
+NEF,Nefrologie,1
+NEO,Neonatologie,1
+NEU,Neurologie,1
+NUC,Nucleaire Geneeskunde,1
+OCH,Chirurgische oncologie,1
+ODO,Orthodontie,1
+OEF,Oefentherapie,1
+OGK,Ouderengeneeskunde,1
+ONC,Oncologie,1
+OOG,Oogheelkunde,1
+OPT,Optometrist,1
+ORT,Orthopedie,1
+ORTH,Orthoptie,1
+PAL,Palliatieve zorg,1
+PAN,Pathologische Anatomie,1
+PHA,Physician assistant,1
+PLA,Plastische chirurgie,1
+POD,Podotherapie,1
+PSO,Psychologie,1
+PSY,Psychiatrie,1
+PSZ,Psychosociale zorg,1
+PYN,Pijngeneeskunde,1
+RAD,Radiologie,1
+REU,Reumatologie,1
+REV,Revalidatie,1
+RTH,Radiotherapie,1
+SEH,Spoedeisende Hulp,1
+SOG,Internist Ouderengeneeskunde,1
+SPK,Sociale Pediatrie,1
+SPO,Sportgeneeskunde,1
+TAN,Bijzondere tandheelkunde,1
+THU,Thuisbeademing,1
+THZ,Thuiszorg,1
+TPH,Tandprothetici,1
+TRAU,Traumachirurgie,1
+TXC,Transplantatiechirurgie,1
+URO,Urologie,1
+VAS,Vasculaire geneeskunde,1
+VAT,Vaatchirurgie,1
+VDD,Veneral diseases,1
+VER,Verloskunde,1
+VMS,Veiligheidsmanagementsysteem,1
+VPL,"Verpleegkundigen, niet nader gespecificeerd",1
+VPLAC,"Vervallen 2021 - Vpl spc, acute zorg bij somatisch",1
+VPLAG,"RIBIZ Vpl specialist, algemene Gezondheidszorg",1
+VPLAZ,"Vervallen 2021- Vpl spc, acute zorg 9100+9131",1
+VPLCS,"Verpleegkundig specialist,chronisch zorg 9100+9133",1
+VPLCZ,"Verpleegkundig specialist, chronische zorg bij som",1
+VPLDB,"Gespecialiseerd verpleegkundige, diabetes",1
+VPLDI,"Gespecialiseerd verpleegkundige,diabetes 9100+9101",1
+VPLGG,"Verpleegkundig specialist, ggz 9100+9134",1
+VPLGZ,"Verpleegkundig specialist, geestelijke gezondheids",1
+VPLIC,"Gespecialiseerd verpleegkundige, incon. 9100+9102",1
+VPLIN,"Gespecialiseerd verpleegkundige, incontinentie",1
+VPLIS,"Vervallen 2021 - Vpl spc, intensiev zorg 9100+9132",1
+VPLIZ,"Vervallen 2021 - Vpl spc, intensieve zorg bij sa",1
+VPLLN,"Gespecialiseerd verpleegkundige, long 9100+9106",1
+VPLLO,"Gespecialiseerd verpleegkundige, long",1
+VPLOC,"Gespecialiseerd verpleegkundige, onco 9100+9107)",1
+VPLON,"Gespecialiseerd verpleegkundige, oncologie",1
+VPLPR,"Verpleegkundig specialist, preventieve zorg bij sa",1
+VPLPZ,"Verpleegkundig specialist, prev. zorg 9100+9130",1
+VPLSM,"Gespecialiseerd verpleegkundige, stoma 9100+9105",1
+VPLST,"Gespecialiseerd verpleegkundige, stoma",1
+VPLTF,"Gespecialiseerd verpleegkundige,transfer 9100+9108",1
+VPLTR,"Gespecialiseerd verpleegkundige, transfer",1
+VPLWD,"Gespecialiseerd verpleegkundige, wond 9100+9104",1
+VPLWI,"Gespecialiseerd verpleegkundige, wijk",1
+VPLWK,"Gespecialiseerd verpleegkundige, wijk 9100+9103",1
+VPLWO,"Gespecialiseerd verpleegkundige, wond",1
+VPP,VASPP Vasculaire preventie programma,1
+VSP,"Vervallen 2021 - Vpl spc, somatische aandoeningen",1
+ZA,Ziekenhuisarts,1
+ZSG,Zorgcentrum Seksueel Geweld,1

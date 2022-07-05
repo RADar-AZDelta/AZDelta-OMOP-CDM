@@ -1,0 +1,24 @@
+select * except(row_num)
+from (
+    SELECT
+        a.ARTSCODE as provider_id
+        ,ROW_NUMBER() OVER(PARTITION BY a.ARTSCODE ORDER BY r.RIZIVNUMBER) as row_num
+        ,IF(a.PONSNAAM is null or a.PONSNAAM = '', concat(IF(a.ACHTERNAAM is null or a.ACHTERNAAM = '', a.MEISJESNAA, a.ACHTERNAAM), ' ', a.ROEPNAAM), a.PONSNAAM) as provider_name
+        ,r.RIZIVNUMBER AS npi
+        ,CAST(NULL AS STRING) AS dea
+        ,a.SPECIALISM as specialty_concept_id
+        ,IF(a.ARTSTYPE = 'I', 'AZDELTA', null) as care_site_id --interne artsen --> care site AZ Delta
+        ,EXTRACT(YEAR from a.GEBDAT) as year_of_birth
+        ,a.GESLACHT as gender_concept_id
+        ,a.ARTSCODE as provider_source_value
+        ,a.SPECIALISM as specialty_source_value
+        ,0 as specialty_source_concept_id
+        ,a.GESLACHT as gender_source_value
+        ,0 as gender_source_concept_id
+    FROM {{project_id}}.{{dataset_id_raw}}.CSZISLIB_ARTS a
+    INNER JOIN {{project_id}}.{{dataset_id_raw}}.CSZISLIB_ARTSRIZIVNR r on r.ARTSCODE = a.ARTSCODE
+    WHERE REGEXP_CONTAINS(a.ARTSCODE, r'^([0-9]{6})([A-Z]{3})?$')
+        --and VERVALLEN = false
+) t
+where t.row_num = 1
+order by 1
