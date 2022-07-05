@@ -1,0 +1,23 @@
+SELECT distinct
+    p.PATIENTNR as person_id
+    ,p.GESLACHT gender_concept_id
+    ,IFNULL(p.GEBDAT,0) as year_of_birth
+    ,cast(null as integer) as month_of_birth
+    ,cast(null as integer) as day_of_birth
+    ,DATE(p.GEBDAT, 1, 1) as birth_datetime
+    ,p.OVERLDAT as death_datetime
+    ,cast(null as string) as race_concept_id
+    ,cast(null as string) as ethnicity_concept_id
+    ,concat('GEMEENTE_', pc.CODEBEGIN, '_', pc.WOONPLAATS) as location_id
+    ,p.HUISARTS as provider_id
+    ,cast(null as string) as care_site_id
+    ,p.PATIENTNR as person_source_value
+    ,p.GESLACHT as gender_source_value
+    ,0 as gender_source_concept_id
+    ,cast(null as string) as race_source_value
+    ,0 as race_source_concept_id
+    ,cast(null as string) as ethnicity_source_value
+    ,0 as ethnicity_source_concept_id
+FROM {{project_id}}.{{dataset_id_raw}}.PATIENT_PATIENT p
+LEFT join {{project_id}}.{{dataset_id_raw}}.CSZISLIB_POSTCODE pc on pc.CODEBEGIN = p.POSTCODE and pc.LANDCODE = p.LAND
+--order by 1
