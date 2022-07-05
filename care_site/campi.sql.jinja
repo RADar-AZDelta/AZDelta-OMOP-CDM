@@ -1,0 +1,8 @@
+SELECT 
+    concat(c.code) as care_site_id
+    ,IFNULL(IF(c.TEXTREGEL2 = '', null, c.TEXTREGEL2), c.LOCOMSCH) as care_site_name
+    ,IF(IF(c.TEXTREGEL2 = '', null, c.TEXTREGEL2) is not null, 'campus', NULL) as place_of_service_concept_id
+    ,concat('CAMPUS_', c.code) as location_id	
+    ,c.LOCATIONID as care_site_source_value
+    ,IF(IF(c.TEXTREGEL2 = '', null, c.TEXTREGEL2) is not null, 'campus', NULL) as place_of_service_source_value
+FROM {{project_id}}.{{dataset_id_raw}}.CSZISLIB_LOCCODE c

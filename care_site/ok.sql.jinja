@@ -1,0 +1,11 @@
+SELECT 
+    concat(p.REFID, '_', c.SHORTDESCR) as care_site_id
+    ,c.DESCRIPTION as care_site_name
+    ,c.REFCLASSID as place_of_service_concept_id
+    ,concat('CAMPUS_', p.REFID) as location_id	
+    ,c.LOCATIONID as care_site_source_value
+    ,c.REFCLASSID as place_of_service_source_value
+FROM {{project_id}}.{{dataset_id_raw}}.CSZISLIB_LOCATION c
+inner join {{project_id}}.{{dataset_id_raw}}.CSZISLIB_LOCATION p on p.LOCATIONID = c.PARENTID
+	and p.SOURCELOCCODE = 'HOSPITAL'
+where c.REFCLASSID = 'OK_AFDELING'

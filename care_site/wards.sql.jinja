@@ -1,0 +1,12 @@
+SELECT 
+    concat(p.REFID, '_', c.SHORTDESCR) as care_site_id
+    ,c.DESCRIPTION as care_site_name
+    ,c.SOURCELOCCODE as place_of_service_concept_id
+    ,concat('CAMPUS_', p.REFID) as location_id	
+    ,c.LOCATIONID as care_site_source_value
+    ,c.SOURCELOCCODE as place_of_service_source_value
+FROM {{project_id}}.{{dataset_id_raw}}.CSZISLIB_LOCATION c
+inner join {{project_id}}.{{dataset_id_raw}}.CSZISLIB_LOCATION p on p.LOCATIONID = c.PARENTID
+	and p.SOURCELOCCODE = 'HOSPITAL'
+where c.SOURCELOCCODE = 'ADMWARD'
+    and c.SHORTDESCR not in ('2176', '4970', '4971', '523A', '523B', '533A', '533B', '4940', '4950') --IZ

@@ -1,0 +1,7 @@
+SELECT 
+    PLACE_OF_SERVICE_CONCEPT_ID as sourceCode
+    ,PLACE_OF_SERVICE_CONCEPT_ID as sourceName
+    ,count(*) as sourceFrequency
+FROM {{project_id}}.{{dataset_id_work}}.CARE_SITE_*
+where PLACE_OF_SERVICE_CONCEPT_ID is not null
+group by PLACE_OF_SERVICE_CONCEPT_ID

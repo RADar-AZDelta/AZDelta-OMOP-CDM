@@ -1,0 +1,7 @@
+sourceCode,sourceName,sourceFrequency,sourceAutoAssignedConceptIds,matchScore,mappingStatus,equivalence,statusSetBy,statusSetOn,conceptId,conceptName,domainId,mappingType,comment,createdBy,createdOn,assignedReviewer
+ADMWARD,ADMWARD,181,,0.57,APPROVED,EQUAL,pjlammertyn,1636986925429,8676,Nursing Facility,Visit,MAPS_TO,,pjlammertyn,1636069386379,
+OK_AFDELING,OK_AFDELING,8,,0.31,FLAGGED,UNREVIEWED,pjlammertyn,1636733075712,4021813,Operating room,Observation,MAPS_TO,,pjlammertyn,1636732144266,
+Hospital,Hospital,1,,1.00,APPROVED,EQUAL,pjlammertyn,1636986929531,38004515,Hospital,Visit,MAPS_TO,,pjlammertyn,1636069589418,
+SEH_LOCATIE,SEH_LOCATIE,4,,0.25,APPROVED,EQUAL,pjlammertyn,1636986931457,9203,Emergency Room Visit,Visit,MAPS_TO,,pjlammertyn,1636069155306,
+campus,campus,9,,1.00,FLAGGED,UNREVIEWED,pjlammertyn,1636733067340,4111199,Hospital environment,Observation,MAPS_TO,,pjlammertyn,1636733059326,
+IZ,IZ,9,,0.47,APPROVED,EQUAL,pjlammertyn,1636986925429,32037,Intensive Care,Visit,MAPS_TO,,pjlammertyn,1636069386379,
