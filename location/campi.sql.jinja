@@ -1,0 +1,15 @@
+SELECT 
+    concat('CAMPUS_', c.code) AS location_id
+    ,concat(c.ADRES, ' ', c.HUISNR) AS address_1
+    ,CAST(NULL AS STRING) AS address_2
+    ,c.WOONPLAATS AS city
+    ,CAST(NULL AS STRING) AS state
+    ,c.POSTCODE AS zip
+    ,CAST(NULL AS STRING) AS county
+    ,c.LOCOMSCH AS location_source_value
+    ,l.CODE as country_concept_id
+    ,l.CODE as country_source_value    
+    ,CAST(NULL AS FLOAT64) AS latitude
+    ,CAST(NULL AS FLOAT64) AS longitude
+FROM {{project_id}}.{{dataset_id_raw}}.CSZISLIB_LOCCODE c
+LEFT JOIN {{project_id}}.{{dataset_id_raw}}.CSZISLIB_LAND l on l.CODE = c.LAND

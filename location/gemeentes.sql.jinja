@@ -1,0 +1,17 @@
+SELECT 
+    concat('GEMEENTE_', pc.CODEBEGIN, '_', pc.WOONPLAATS) AS location_id
+    ,CAST(NULL AS STRING) AS address_1
+    ,CAST(NULL AS STRING) AS address_2
+    ,pc.WOONPLAATS AS city
+    ,p.Provincie AS state
+    ,pc.CODEBEGIN AS zip
+    ,CAST(NULL AS STRING) AS county
+    ,pc.WOONPLAATS AS location_source_value
+    ,l.CODE as country_concept_id
+    ,l.CODE as country_source_value
+    ,pc.LATITUDE AS latitude
+    ,pc.LONGITUDE AS longitude
+from {{project_id}}.{{dataset_id_raw}}.CSZISLIB_POSTCODE pc 
+inner join {{project_id}}.{{dataset_id_raw}}.CSZISLIB_GEMEENTE g on g.CODE = pc.GEMCODE
+inner join {{project_id}}.{{dataset_id_raw}}.CSZISLIB_PROV p on p.CODE = pc.PROVCODE
+inner join {{project_id}}.{{dataset_id_raw}}.CSZISLIB_LAND l on l.CODE = pc.LANDCODE
