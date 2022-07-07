@@ -1,0 +1,10 @@
+sourceCode,sourceName,sourceFrequency,sourceAutoAssignedConceptIds,matchScore,mappingStatus,equivalence,statusSetBy,statusSetOn,conceptId,conceptName,domainId,mappingType,comment,createdBy,createdOn,assignedReviewer
+Ouder,Ouder,1,,0.83,APPROVED,EQUAL,pjlammertyn,1657134754091,4019838,Elderly parents,Relationship,MAPS_TO,,pjlammertyn,1657134720882,
+Broer,Broer,2,,0.68,APPROVED,EQUAL,pjlammertyn,1657134759499,4322005,Brother,Relationship,MAPS_TO,,pjlammertyn,1657134742547,
+Man,Man,2,,1.00,APPROVED,EQUAL,pjlammertyn,1657135016362,4133846,Husband,Relationship,MAPS_TO,,pjlammertyn,1657135015298,
+Zoon,Zoon,9984,,0.82,APPROVED,EQUAL,pjlammertyn,1657134897514,4279757,Son,Relationship,MAPS_TO,,pjlammertyn,1657134896890,
+Dochter,Dochter,9233,,0.86,APPROVED,EQUAL,pjlammertyn,1657134932619,4278823,Daughter,Relationship,MAPS_TO,,pjlammertyn,1657134931787,
+Moeder,Moeder,19080,,0.84,APPROVED,EQUAL,pjlammertyn,1657134954363,4248584,Mother,Relationship,MAPS_TO,,pjlammertyn,1657134953546,
+Kind,Kind,1,,0.87,APPROVED,EQUAL,pjlammertyn,1657135040099,4285883,Child,Relationship,MAPS_TO,,pjlammertyn,1657135039258,
+Partner,Partner,2654,,1.00,APPROVED,EQUAL,pjlammertyn,1657135082347,4132413,Spouse,Relationship,MAPS_TO,,pjlammertyn,1657135081380,
+Vrouw,Vrouw,2,,0.69,APPROVED,EQUAL,pjlammertyn,1657135069363,4133847,Wife,Relationship,MAPS_TO,,pjlammertyn,1657135068481,

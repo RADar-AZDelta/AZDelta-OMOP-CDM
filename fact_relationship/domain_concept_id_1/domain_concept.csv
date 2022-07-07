@@ -1,0 +1,65 @@
+sourceCode,sourceName,sourceFrequency
+Domain,Domain (1),0
+Gender,Gender (2),0
+Race,Race (3),0
+Ethnicity,Ethnicity (4),0
+Observation period type,Observation period type (5),0
+Death type,Death type (6),0
+Metadata,Metadata (7),0
+Visit,Visit (8),0
+Visit type,Visit type (9),0
+Procedure,Procedure (10),0
+Procedure type,Procedure type (11),0
+Modifier,Modifier (12),0
+Drug,Drug (13),0
+Drug type,Drug type (14),0
+Route,Route (15),0
+Unit,Unit (16),0
+Device,Device (17),0
+Device type,Device type (18),0
+Condition,Condition (19),0
+Condition type,Condition type (20),0
+Measurement,Measurement (21),0
+Measurement type,Measurement type (22),0
+Measurement value operator,Measurement value operator (23),0
+Measurement value,Measurement value (24),0
+Note Type,Note Type (26),0
+Observation,Observation (27),0
+Observation type,Observation type (28),0
+Relationship,Relationship (31),0
+Place of Service,Place of Service (32),0
+Provider,Provider (33),0
+Currency,Currency (34),0
+Revenue code,Revenue code (35),0
+Specimen,Specimen (36),0
+Specimen type,Specimen type (37),0
+Specimen anatomic site,Specimen anatomic site (38),0
+Specimen disease status,Specimen disease status (39),0
+Device/Procedure,Device/Procedure (41),0
+Observation/Procedure,Observation/Procedure (42),0
+Measurement/Procedure,Measurement/Procedure (43),0
+Measurement/Observation,Measurement/Observation (44),0
+Device/Observation,Device/Observation (45),0
+Condition/Measurement,Condition/Measurement (47),0
+Condition/Observation,Condition/Observation (48),0
+Condition/Procedure,Condition/Procedure (49),0
+Device/Drug,Device/Drug (50),0
+Drug/Measurement,Drug/Measurement (51),0
+Drug/Observation,Drug/Observation (52),0
+Condition/Drug,Condition/Drug (53),0
+Drug/Procedure,Drug/Procedure (54),0
+Provider,Provider (55),0
+Person,Person (56),0
+Care site,Care site (57),0
+Type Concept,Type Concept (58),0
+Condition/Device,Condition/Device (235),0
+Note,Note (5085),0
+"Health Plan - contract to administer healthcare transactions by the payer, facilitated by the sponsor","Health Plan - contract to administer healthcare transactions by the payer, facilitated by the sponsor (32475)",0
+Sponsor - institution or individual financing healthcare transactions,Sponsor - institution or individual financing healthcare transactions (32476),0
+Payer - institution administering healthcare transactions,Payer - institution administering healthcare transactions (32477),0
+Plan Stop Reason - Reason for termination of the Health Plan,Plan Stop Reason - Reason for termination of the Health Plan (32478),0
+Episode,Episode (32527),0
+Geographical object,Geographical object (32558),0
+Treatment Regimen,Treatment Regimen (32687),0
+OMOP Condition Status,OMOP Condition Status (32889),0
+Cost,Cost (581456),0

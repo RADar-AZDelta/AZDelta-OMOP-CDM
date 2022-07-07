@@ -1,0 +1,12 @@
+select
+  c.concept_name as sourceCode
+  ,concat(c.concept_name, ' (', c.concept_id, ')') as sourceName
+  ,0 as sourceFrequency
+from {{project_id}}.{{dataset_id_omop}}.concept c
+inner join {{project_id}}.{{dataset_id_omop}}.domain d on d.domain_id = c.domain_id
+inner join {{project_id}}.{{dataset_id_omop}}.vocabulary v on v.vocabulary_id = c.vocabulary_id
+inner join {{project_id}}.{{dataset_id_omop}}.concept_class cc on cc.concept_class_id = c.concept_class_id
+where d.domain_name = 'Metadata'
+  and v.vocabulary_name = 'OMOP Domain'
+  and cc.concept_class_name = 'Domain'
+order by c.concept_id 
