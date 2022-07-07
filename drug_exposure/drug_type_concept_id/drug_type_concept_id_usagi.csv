@@ -1,0 +1,2 @@
+sourceCode,sourceName,sourceFrequency,sourceAutoAssignedConceptIds,matchScore,mappingStatus,equivalence,statusSetBy,statusSetOn,conceptId,conceptName,domainId,mappingType,comment,createdBy,createdOn,assignedReviewer
+MEDICATIE_TYPE,MEDICATIE_TYPE,0,,0.40,APPROVED,EQUAL,Louise,1639046836173,32817,EHR,Type Concept,MAPS_TO,,Louise,1639046834454,

@@ -1,0 +1,6 @@
+﻿concept_id,concept_name,domain_id,vocabulary_id,concept_class_id,standard_concept,concept_code,valid_start_date,valid_end_date,invalid_reason
+0,Intravenous / Subcutaneous route,Route,AZDELTA,Qualifier Value,S,MEDICATIE_000030,2021-11-29,2099-12-31,
+0,Subcutaneous / Intradermal route,Route,AZDELTA,Qualifier Value,S,MEDICATIE_000142,2021-11-29,2099-12-31,
+0,Intramuscular / Subcutaneous route,Route,AZDELTA,Qualifier Value,S,MEDICATIE_000043,2021-11-29,2099-12-31,
+0,Intra-articular / Intramuscular route,Route,AZDELTA,Qualifier Value,S,MEDICATIE_000064,2021-11-29,2099-12-31,
+0,Inhalation / Oral route,Route,AZDELTA,Qualifier Value,S,MEDICATIE_000112,2021-11-29,2099-12-31,
