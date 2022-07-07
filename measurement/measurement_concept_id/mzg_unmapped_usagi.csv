@@ -1,0 +1,4 @@
+sourceCode,sourceName,sourceFrequency,sourceAutoAssignedConceptIds,matchScore,mappingStatus,equivalence,statusSetBy,statusSetOn,conceptId,conceptName,domainId,mappingType,comment,createdBy,createdOn,assignedReviewer
+MZG_9_D_M80126,"GROOTCELLIG CARCINOOM, METASTASE",-1,,0.36,APPROVED,EQUAL,Dupulthys Stijn,1639672807742,764449,Metastatic undifferentiated large cell carcinoma,Observation,MAPS_TO,,Dupulthys Stijn,1639672805577,
+MZG_9_D_M85006,"INFILTREREND DUCTUS CARCINOOM, METASTASE",-1,,0.51,APPROVED,EQUAL,Dupulthys Stijn,1639672439075,4221403,Infiltrating duct carcinoma,Observation,MAPS_TO,,Dupulthys Stijn,1639672437391,
+MZG_9_D_M81446,"ADENOCARCINOMA, INTESTINAAL TYPE, METASTASE",-1,,0.77,APPROVED,EQUAL,Dupulthys Stijn,1639673038093,4097305,"Adenocarcinoma, intestinal type",Observation,MAPS_TO,,Dupulthys Stijn,1639673027402,

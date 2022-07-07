@@ -1,0 +1,2 @@
+sourceCode,sourceName,sourceFrequency,sourceAutoAssignedConceptIds,matchScore,mappingStatus,equivalence,statusSetBy,statusSetOn,conceptId,conceptName,domainId,mappingType,comment,createdBy,createdOn,assignedReviewer
+ADMINISTRATION_RECORD,ADMINISTRATION_RECORD,0,,,APPROVED,EQUAL,pjlammertyn,1634807098503,32818,EHR administration record,Type Concept,MAPS_TO,,pjlammertyn,1634807089839,
