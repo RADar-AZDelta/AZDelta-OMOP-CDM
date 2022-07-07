@@ -1,0 +1,2 @@
+sourceCode,sourceName,sourceFrequency,sourceAutoAssignedConceptIds,matchScore,mappingStatus,equivalence,statusSetBy,statusSetOn,conceptId,conceptName,domainId,mappingType,comment,createdBy,createdOn,assignedReviewer
+EPISODE_RECORD,EPISODE_RECORD,0,,,APPROVED,EQUAL,pjlammertyn,1634807098503,32827,EHR encounter record,Type Concept,MAPS_TO,,pjlammertyn,1634807089839,

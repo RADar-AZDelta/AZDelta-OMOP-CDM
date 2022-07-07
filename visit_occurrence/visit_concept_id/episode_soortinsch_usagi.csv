@@ -1,0 +1,8 @@
+sourceCode,sourceName,sourceFrequency,sourceAutoAssignedConceptIds,matchScore,mappingStatus,equivalence,statusSetBy,statusSetOn,conceptId,conceptName,domainId,mappingType,comment,createdBy,createdOn,assignedReviewer
+N,?,387,,0.00,UNCHECKED,UNREVIEWED,,0,0,Unmapped,,MAPS_TO,,,0,
+,NULL,102,,1.00,UNCHECKED,UNREVIEWED,,0,0,Unmapped,,MAPS_TO,,,0,
+S,Spoed,214963,,0.62,APPROVED,EQUAL,pjlammertyn,1637757526625,9203,Emergency Room Visit,Visit,MAPS_TO,,pjlammertyn,1637757525547,
+D,Daghospitaal,370858,,0.57,UNCHECKED,UNREVIEWED,,0,9201,Inpatient Visit,Visit,MAPS_TO,,pjlammertyn,1637757892429,
+K,Opname,126340,,0.69,APPROVED,EQUAL,pjlammertyn,1637757756871,9201,Inpatient Visit,Visit,MAPS_TO,,pjlammertyn,1637757755827,
+L,Langdurig Ambulant,6621,,0.61,UNCHECKED,UNREVIEWED,,0,9202,Outpatient Visit,Visit,MAPS_TO,,pjlammertyn,1637757904628,
+P,Consultatie,8774282,,0.90,APPROVED,EQUAL,pjlammertyn,1637757773992,9202,Outpatient Visit,Visit,MAPS_TO,,pjlammertyn,1637757771394,
