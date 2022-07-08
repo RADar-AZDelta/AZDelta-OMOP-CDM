@@ -1,0 +1,87 @@
+with cte_mzg as (
+	select CONCAT(TRIM(m.formnr), '_', TRIM(m.pat_std)) as id
+		,TRIM(v.PATIENTNR) as pat_id
+		,TRIM(v.INSCHRNR) as visit_id
+		,CAST(m.vandat as DATE) as start_date
+		,CAST(m.vanuur as TIME) as start_time
+		,CAST(m.totdat as DATE) as end_date
+		,CAST(m.totuur as TIME) as end_time
+		,TRIM(m.opndok) as dok_id 
+		,TRIM(m.hoofddiagnose) as icd_code
+		,'H' as type
+		,m.mzg_encod as icd_version
+	from {{project_id}}.oazis.MKG m
+	inner join {{project_id}}.{{dataset_id_raw}}.OPNAME_OPNAME v on v.INSCHRNR = TRIM(m.opnr)	
+	where m.mzg_status >= '66'
+		and m.hoofddiagnose not in ('MMMMMM', 'UUUUUU', 'ZZZZZZ')
+
+	union all
+
+	select CONCAT(trim(n.formnr), '_', TRIM(n.pat_std), '_', TRIM(n.nevendiagnose)) as id 
+		,TRIM(v.PATIENTNR) as pat_id
+		,TRIM(v.INSCHRNR) as visit_id
+		,CAST(m.vandat as DATE) as start_date
+		,CAST(m.vanuur as TIME) as start_time
+		,CAST(m.totdat as DATE) as end_date
+		,CAST(m.totuur as TIME) as end_time
+		,null as dok_id 
+		,TRIM(n.nevendiagnose) as icd_code
+		,'N' as type
+		,m.mzg_encod as icd_version
+	from {{project_id}}.oazis.MKG m
+	inner join {{project_id}}.{{dataset_id_raw}}.OPNAME_OPNAME v on v.INSCHRNR = TRIM(m.opnr)	
+	inner join {{project_id}}.oazis.NEVEN n on m.formnr = n.formnr
+	where m.mzg_status >= '66'
+
+	union all
+
+	select CONCAT(TRIM(i.formnr), '_', TRIM(i.pat_std), '_', i.vlgnr) as id 
+		,TRIM(v.PATIENTNR) as pat_id
+		,TRIM(v.INSCHRNR) as visit_id
+		,CAST(m.vandat as DATE) as start_date
+		,CAST(m.vanuur as TIME) as start_time
+		,CAST(m.totdat as DATE) as end_date
+		,CAST(m.totuur as TIME) as end_time
+		,TRIM(i.uitvoerder) as dok_id 
+		,TRIM(i.ingreep) as icd_code
+		,'I' as type
+		,m.mzg_encod as icd_version
+	from {{project_id}}.oazis.MKG m
+	inner join {{project_id}}.{{dataset_id_raw}}.OPNAME_OPNAME v on v.INSCHRNR = TRIM(m.opnr)	
+	inner join {{project_id}}.oazis.INGREEP i on m.formnr = i.formnr
+	where m.mzg_status >= '66'
+
+	order by pat_id, visit_id, icd_code
+) 
+select 
+    concat('MZG_', m.id) as observation_id	
+    ,m.pat_id as person_id
+    ,trim(i.sourceCode) as observation_concept_id
+    ,m.start_date as observation_date
+    ,DATETIME(
+       m.start_date, 
+       m.start_time
+    ) as observation_datetime
+    ,'ADMINISTRATION_RECORD' as observation_type_concept_id
+    ,cast(null as float64) as value_as_number
+    ,cast(null as string) as value_as_string
+    ,trim(i.sourceCode) as value_as_concept_id -- MAPS TO VALUE
+    ,cast(null as string) as qualifier_concept_id
+    ,cast(null as string) as unit_concept_id
+    ,m.dok_id as provider_id
+    ,m.visit_id as visit_occurrence_id
+    ,cast(null as string) as visit_detail_id
+    ,trim(i.sourceCode) as observation_source_value
+    ,0 as observation_source_concept_id
+    ,cast(null as string) as unit_source_value
+    ,cast(null as string) as qualifier_source_value
+    ,cast(null as string) as value_source_value
+    ,cast(null as int) as observation_event_id
+    ,cast(null as string) as obs_event_field_concept_id
+from cte_mzg m
+inner join {{project_id}}.{{dataset_id_work}}.observation__observation_concept_id_usagi i on concat('MZG_', m.icd_version, '_', (
+    case
+        when m.type in ('H', 'N') then 'D' --hoofd en neven diagnose --> diagnose
+        when m.type = 'I' then 'P' -- ingreep --> procedure
+    end), '_', trim(m.icd_code)) = trim(i.sourceCode)
+where i.domainId = 'Observation'
