@@ -1,0 +1,10 @@
+SELECT
+    0 AS metadata_id,
+    "OMOPCDM5.4" AS metadata_concept_id,
+    "ADMINISTRATION_RECORD" AS metadata_type_concept_id,
+    "ADT: Oazis" AS name, 
+    "Many tables contain data from our ADT system, Hix. Of note: all Conditions with ICD source coding come from our ADT." AS value_as_string,
+    CAST(NULL AS INT64) AS value_as_concept_id,
+    CAST(NULL AS FLOAT64) AS value_as_number,
+    DATE(2022, 07, 22) AS metadata_date,
+    DATETIME(2022, 07, 22, 15, 52, 30) AS metadata_datetime

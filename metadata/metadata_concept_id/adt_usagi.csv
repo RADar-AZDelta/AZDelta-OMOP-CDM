@@ -1,0 +1,2 @@
+sourceCode,sourceName,sourceFrequency,sourceAutoAssignedConceptIds,matchScore,mappingStatus,equivalence,statusSetBy,statusSetOn,conceptId,conceptName,domainId,mappingType,comment,createdBy,createdOn,assignedReviewer
+OMOPCDM5.4,OMOPCDM5.4,0,,,APPROVED,EQUAL,Dupulthys Stijn,1634807098503,756265,OMOP CDM Version 5.4.0,Metadata,MAPS_TO,,Dupulthys Stijn,1634807089839,
