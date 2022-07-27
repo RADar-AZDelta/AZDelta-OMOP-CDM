@@ -1,4 +1,4 @@
-# project_id : bq_project_with_datasets,
-# dataset_id_raw : source_dataset,
-# dataset_id_work : work_dataset,
+# project_id : bq_project_with_datasets
+# dataset_id_raw : source_dataset
+# dataset_id_work : work_dataset
 # dataset_id_omop : omop_dataset
