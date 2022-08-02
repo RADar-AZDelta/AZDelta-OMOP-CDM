@@ -45,7 +45,7 @@ with cte_visit_detail as (
         ,od.PERFORMING_DOCTOR as provider_id
         ,concat(od.CAMPUS, '_', od.WARD) as care_site_id
         ,e.SOORTINSCH as visit_detail_source_value
-        ,0 as visit_detail_source_concept_id
+        ,cast(null as string) as visit_detail_source_concept_id
         ,o.HERKOMST as admitted_from_concept_id
         ,o.HERKOMST as admitted_from_source_value
         ,o.BESTEMMING as discharged_to_concept_id

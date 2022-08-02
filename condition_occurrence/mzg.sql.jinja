@@ -74,7 +74,7 @@ select
     ,m.visit_id as visit_occurrence_id
     ,cast(null as string) as visit_detail_id
     ,trim(i.sourceCode) as condition_source_value
-    ,0 as condition_source_concept_id
+    ,trim(i.sourceCode) as condition_source_concept_id
     ,concat('MZG_TYPE_', m.type) as condition_status_source_value
 from cte_mzg m
 inner join {{project_id}}.{{dataset_id_work}}.condition_occurrence__condition_concept_id_usagi i on concat('MZG_', m.icd_version, '_', (

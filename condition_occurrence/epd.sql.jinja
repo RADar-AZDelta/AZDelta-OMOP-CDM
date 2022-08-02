@@ -1,0 +1,42 @@
+SELECT
+    CONCAT('EPD_', e.DIAG_ID) AS condition_occurrence_id
+    ,e.PATIENTNR AS person_id
+    ,i.sourceCode AS condition_concept_id
+    ,DATE(COALESCE(e.DATUM, e.REGISTRATIONDATE)) AS condition_start_date
+    ,DATETIME(
+        DATE(COALESCE(e.DATUM, e.REGISTRATIONDATE)), 
+        PARSE_TIME('%H:%M', IF(e.STARTTIJD IS NOT NULL AND TRIM(e.STARTTIJD) <> '', TRIM(e.STARTTIJD), "00:00"))
+    ) AS condition_start_datetime
+    ,DATE(COALESCE(e.EINDDATUM, e.DATUM, e.REGISTRATIONDATE)) AS condition_end_date
+    ,DATETIME(
+        DATE(COALESCE(e.EINDDATUM, e.DATUM, e.REGISTRATIONDATE)), 
+        PARSE_TIME('%H:%M', IF(e.EINDTIJD IS NOT NULL AND TRIM(e.EINDTIJD) <> '', TRIM(e.EINDTIJD), "00:00"))
+    ) AS condition_end_datetime
+    ,'ADMINISTRATION_RECORD' AS condition_type_concept_id
+    ,'EPD_TYPE' AS condition_status_concept_id
+    ,CAST(NULL AS STRING) AS stop_reason
+    ,e.ARTSCODE AS provider_id
+    ,ARRAY_AGG(vs.x IGNORE NULLS ORDER BY vs.x ASC)[SAFE_OFFSET(0)] visit_occurrence_id
+    ,CAST(NULL AS STRING) AS visit_detail_id
+    ,i.sourceCode AS condition_source_value
+    ,i.sourceCode AS condition_source_concept_id
+    ,CAST(NULL AS STRING) AS condition_status_source_value
+FROM `{{project_id}}.{{dataset_id_raw}}.DOSSIER_EPDDIAG` e
+LEFT JOIN `{{project_id}}.{{dataset_id_raw}}.CODELYST_CODEOMS` cc 
+ON e.CODE = cc.CODE
+INNER JOIN `{{project_id}}.{{dataset_id_work}}.condition_occurrence__condition_concept_id_usagi` i 
+ON concat('EPD_', e.CODE) = i.sourceCode
+LEFT JOIN `{{project_id}}.{{dataset_id_work}}.person_id_swap` p
+ON e.PATIENTNR = p.x
+LEFT JOIN `{{project_id}}.{{dataset_id_omop}}.visit_occurrence` v
+ON DATE(e.DATUM) >= v.visit_start_date 
+    AND DATE(e.DATUM) <= v.visit_end_date
+    AND p.y = v.person_id
+LEFT JOIN `{{project_id}}.{{dataset_id_work}}.visit_occurrence_id_swap` vs
+ON v.visit_occurrence_ID = vs.y
+WHERE e.CODE IS NOT NULL AND TRIM(e.CODE) <> '' 
+    AND cc.Omschrijving IS NOT NULL AND TRIM(cc.Omschrijving) <> ''
+    AND e.DIAG_ID IS NOT NULL AND TRIM(e.DIAG_ID) <> ''
+    AND e.PATIENTNR IS NOT NULL AND TRIM(e.PATIENTNR) <> ''
+    AND i.domainId = 'Condition'
+GROUP BY e.DIAG_ID, e.PATIENTNR, i.sourceCode, e.DATUM, e.REGISTRATIONDATE, e.STARTTIJD, e.EINDDATUM, e.EINDTIJD, e.ARTSCODE

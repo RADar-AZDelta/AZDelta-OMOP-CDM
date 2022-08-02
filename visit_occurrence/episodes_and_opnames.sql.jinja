@@ -14,7 +14,7 @@ with cte_visit as (
         ,coalesce(ei.UITVOERDER, ei.UITVOERDER2, ei.UITVOERDER3) as provider_id
         ,ei.locatie as care_site_id
         ,ei.SOORTINSCH as visit_source_value
-        ,0 as visit_source_concept_id
+        ,cast(null as string) as visit_source_concept_id
         ,cast(null as string) as admitted_from_concept_id
         ,cast(null as string) as admitted_from_source_value
         ,cast(null as string) as discharged_to_concept_id
@@ -46,7 +46,7 @@ with cte_visit as (
         ,coalesce(oo.VERWIJZER) as provider_id
         ,oo.locatie as care_site_id
         ,ei.SOORTINSCH as visit_source_value
-        ,0 as visit_source_concept_id
+        ,cast(null as string) as visit_source_concept_id
         ,oo.HERKOMST as admitted_from_concept_id
         ,oo.HERKOMST as admitted_from_source_value
         ,oo.BESTEMMING as discharged_to_concept_id

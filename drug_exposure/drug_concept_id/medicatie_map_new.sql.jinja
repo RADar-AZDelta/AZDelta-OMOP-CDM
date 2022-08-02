@@ -1,0 +1,149 @@
+with medicatie as (
+    select riz.RIZIVCODE, med.PRTYPECO, riz.VERVALLEN, riz.ISCNK, ATCCODE, med.omschr, rec.medicoms, med.code med_code, deel.code deel_code, rec.identif
+    from iconic-guard-317109.{{dataset_id_raw}}.MEDICAT_RECDEEL rec
+    left join iconic-guard-317109.{{dataset_id_raw}}.MEDICAT_DEELLST deel on rec.identif = deel.mocode
+    left join iconic-guard-317109.{{dataset_id_raw}}.MEDICAT_MEDICIJN med on med.code = rec.medcd
+    left join iconic-guard-317109.{{dataset_id_raw}}.ZINDEX_004RIZIV riz on med.IMPCD = riz.ATKODE and riz.ISCNK and  not riz.VERVALLEN and med.PRTYPECO = 'A'
+    where rec.geaccordee and ((rec.vrschrtyp in ('K') and deel.toegediend) --ziekenhuis en toegediend
+    or rec.vrschrtyp in ('R', 'P', 'V')) --rusthuis/thuis/vaccin
+), cnk as (
+    SELECT DISTINCT
+        m.cnk_code cnk
+        , c_s.concept_id
+        , c_s.concept_name
+        , c_s.domain_id
+    FROM (
+        SELECT DISTINCT RIZIVCODE cnk_code
+        FROM medicatie
+        WHERE PRTYPECO = 'A' AND NOT VERVALLEN AND ISCNK
+    ) m
+    LEFT JOIN `iconic-guard-317109.{{dataset_id_omop}}.concept` c_cnk 
+    ON c_cnk.standard_concept <> 'S'
+        AND c_cnk.vocabulary_id = "GGR"
+        AND c_cnk.domain_id = "Drug"
+        AND m.cnk_code = c_cnk.concept_code
+    LEFT JOIN `iconic-guard-317109.{{dataset_id_omop}}.concept_relationship` r 
+    ON r.relationship_id = "Maps to"
+        AND c_cnk.concept_id = r.concept_id_1
+    LEFT JOIN `iconic-guard-317109.{{dataset_id_omop}}.concept` c_s 
+    ON c_s.standard_concept = 'S'
+        AND c_s.domain_id = "Drug"
+        AND r.concept_id_2 = c_s.concept_id
+), atc_map as (
+    SELECT
+        r.relationship_id
+        , c_s.vocabulary_id
+        , c_atc.concept_code atc
+        , ARRAY_AGG(DISTINCT c_s.concept_id IGNORE NULLS) concept_ids
+    FROM (
+        SELECT DISTINCT ATCCODE atc_code
+        FROM medicatie
+     ) m
+    LEFT JOIN `iconic-guard-317109.{{dataset_id_omop}}.concept` c_atc 
+    ON c_atc.standard_concept <> 'S'
+        AND c_atc.vocabulary_id = "ATC"
+        AND c_atc.domain_id = "Drug"
+        AND m.atc_code = c_atc.concept_code
+    LEFT JOIN `iconic-guard-317109.{{dataset_id_omop}}.concept_relationship` r 
+    ON r.relationship_id IN ("ATC - RxNorm", "Maps to")
+        AND c_atc.concept_id = r.concept_id_1
+    LEFT JOIN `iconic-guard-317109.{{dataset_id_omop}}.concept` c_s 
+    ON c_s.standard_concept = 'S'
+        AND c_s.domain_id = "Drug"
+        AND r.concept_id_2 = c_s.concept_id
+    WHERE r.relationship_id IS NOT NULL
+    GROUP BY r.relationship_id, c_s.vocabulary_id, c_atc.concept_code
+    HAVING IF(relationship_id = "ATC - RxNorm", COUNT(DISTINCT c_s.concept_id) = 1, TRUE)
+), atc_rxn AS (
+    SELECT DISTINCT
+        atc
+        , concept_ids[SAFE_OFFSET(0)] concept_id
+    FROM atc_map
+    WHERE relationship_id = "ATC - RxNorm"
+), atc_ingr AS (
+    SELECT DISTINCT
+        atc
+        , concept_id
+    FROM atc_map
+    CROSS JOIN UNNEST(concept_ids) AS concept_id
+    WHERE relationship_id = "Maps to"
+    AND atc NOT IN (SELECT atc FROM atc_rxn)
+), atc AS (
+	SELECT DISTINCT atc, concept_id 
+	FROM atc_rxn
+	UNION DISTINCT 
+	SELECT DISTINCT atc, concept_id 
+	FROM atc_ingr
+), med_usagi AS (
+    SELECT DISTINCT CONCAT("MEDICATIE_", med_code) AS sourceCode
+        , REGEXP_REPLACE(REGEXP_REPLACE(omschr,r',',r'.'),r'\s',r' ') AS sourceName
+        , CAST(NULL AS STRING) AS additionalInfo
+        , CAST(NULL AS STRING) AS prescriptionID
+        , atccode atc
+        , RIZIVCODE cnk
+        , PRTYPECO
+        , VERVALLEN
+        , ISCNK
+        , COUNT(*) AS sourceFrequency
+    FROM medicatie
+    WHERE LENGTH(atccode) = 7
+    OR (TRIM(omschr) = TRIM(medicoms) OR TRIM(medicoms) = '')
+    GROUP BY sourceCode, sourceName, atc, cnk, PRTYPECO, VERVALLEN, ISCNK
+
+    UNION DISTINCT 
+
+    SELECT DISTINCT CONCAT("MEDICATIE_", med_code) AS sourceCode
+        , REGEXP_REPLACE(REGEXP_REPLACE(omschr,r',',r'.'),r'\s',r' ') AS sourceName
+        , REGEXP_REPLACE(REGEXP_REPLACE(medicoms,r',',r'.'),r'\s',r' ') AS additionalInfo
+        , STRING_AGG(IF(deel_CODE IS NULL,identif,CONCAT(identif,'_',deel_CODE)),'-') AS prescriptionID
+        , atccode atc
+        , RIZIVCODE cnk
+        , PRTYPECO
+        , VERVALLEN
+        , ISCNK
+        , COUNT(*) AS sourceFrequency
+    FROM medicatie
+    WHERE LENGTH(atccode) <> 7
+    AND (TRIM(omschr) <> TRIM(medicoms) AND TRIM(medicoms) <> '')
+    GROUP BY sourceCode, sourceName, additionalInfo, atc, cnk, PRTYPECO, VERVALLEN, ISCNK
+)
+SELECT DISTINCT
+    m.sourceCode
+    ,m.sourceName
+    ,m.sourceFrequency
+    ,CAST(NULL AS STRING) AS sourceAutoAssignedConceptIds
+    ,m.additionalInfo AS ADD_INFO_additionalInfo
+    ,m.prescriptionID AS ADD_INFO_prescriptionID
+    ,c_atc.concept_id AS ADD_INFO_ATC
+    ,1 AS matchScore
+    ,IF(cnk.concept_id IS NOT NULL, 'APPROVED', 'UNCHECKED') AS mappingStatus
+    ,IF(cnk.concept_id IS NOT NULL, 'EQUAL', 'UNREVIEWED') AS equivalence
+    ,IF(cnk.concept_id IS NOT NULL, 'CNK', IF(atc.concept_id IS NOT NULL, 'ATC', 'etl')) AS statusSetBy
+    ,UNIX_MILLIS(CURRENT_TIMESTAMP()) AS statusSetOn
+    ,COALESCE(cnk.concept_id, atc.concept_id, 0) AS conceptId
+    ,COALESCE(cnk.concept_name, c.concept_name,"Unmapped") AS conceptName
+    ,COALESCE(cnk.domain_id, c.domain_id, NULL) AS domainId
+    ,'MAPS_TO' AS mappingType
+    ,'AUTO MAPPED' AS comment
+    ,'etl' AS createdBy
+    ,UNIX_MILLIS(CURRENT_TIMESTAMP()) AS createdOn
+    ,cast(null AS string) AS assignedReviewer
+FROM med_usagi m
+LEFT JOIN cnk
+ON m.cnk = cnk.cnk
+    AND m.PRTYPECO = 'A' 
+    AND not m.VERVALLEN
+    AND m.ISCNK
+LEFT JOIN atc ON m.atc = atc.atc
+LEFT JOIN `iconic-guard-317109.{{dataset_id_omop}}.concept` c 
+ON atc.concept_id = c.concept_id
+    AND c.standard_concept = 'S'
+    AND c.domain_id = "Drug"
+LEFT JOIN `{{project_id}}.{{dataset_id_omop}}.concept` c_atc
+ON c_atc.standard_concept <> 'S'
+    AND c_atc.vocabulary_id = "ATC"
+    AND c_atc.domain_id = "Drug"
+    AND m.atc = c_atc.concept_code
+ORDER BY sourceFrequency DESC
+
+

@@ -13,11 +13,11 @@ SELECT distinct
     ,cast(null as string) as care_site_id
     ,p.PATIENTNR as person_source_value
     ,p.GESLACHT as gender_source_value
-    ,0 as gender_source_concept_id
+    ,cast(null as string) as gender_source_concept_id
     ,cast(null as string) as race_source_value
-    ,0 as race_source_concept_id
+    ,cast(null as string) as race_source_concept_id
     ,cast(null as string) as ethnicity_source_value
-    ,0 as ethnicity_source_concept_id
+    ,cast(null as string) as ethnicity_source_concept_id
 FROM {{project_id}}.{{dataset_id_raw}}.PATIENT_PATIENT p
 LEFT join {{project_id}}.{{dataset_id_raw}}.CSZISLIB_POSTCODE pc on pc.CODEBEGIN = p.POSTCODE and pc.LANDCODE = p.LAND
 --order by 1

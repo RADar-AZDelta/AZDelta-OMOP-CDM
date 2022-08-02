@@ -1,0 +1,19 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            // "args": ["./condition_occurrence/condition_concept_id/mzg_usagi.csv"]
+            // "args": ["./drug_exposure/drug_concept_id/medicatie_usagi_pre.csv"]
+            "args": ["./drug_exposure/drug_concept_id/medicatie_usagi.csv"]
+        }
+    ]
+}

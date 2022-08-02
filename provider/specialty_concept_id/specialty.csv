@@ -14,7 +14,7 @@ CTC,Cardiothoracale Chirurgie,1
 DBS,Diabetologie,1
 DER,Dermatologie,1
 DIA,Diabetologie,1
-DIE,Di‰tetiek,1
+DIE,Diëtetiek,1
 EEA,Erfelijke en aangeboren aandoeningen,1
 END,Endocrinologie,1
 ERG,Ergotherapie,1
@@ -37,6 +37,7 @@ HUI,Huisartsgeneeskunde,1
 HYP,Hyperbare geneeskunde,1
 ICA,Intensive Care,1
 ICK,Intensive Care Kinderen,1
+ICN,Intensive Care Neonatologie,1
 IMM,Immunologie,1
 INF,Infectieziekten,1
 INT,Interne Geneeskunde,1
@@ -68,6 +69,7 @@ LOG,Logopedie,1
 LON,Longgeneeskunde,1
 MDL,"Maag-, Darm- en Leverziekten",1
 MET,Kindermetabole ziekten,1
+META,Metabole ziekten,1
 MMB,Medische Microbiologie,1
 MST,Medisch specialistische verpleging in de thuissit.,1
 MSW,Maatschappelijk werk,1
@@ -144,5 +146,6 @@ VPLWK,"Gespecialiseerd verpleegkundige, wijk 9100+9103",1
 VPLWO,"Gespecialiseerd verpleegkundige, wond",1
 VPP,VASPP Vasculaire preventie programma,1
 VSP,"Vervallen 2021 - Vpl spc, somatische aandoeningen",1
+VTH,Vaktherapie,1
 ZA,Ziekenhuisarts,1
 ZSG,Zorgcentrum Seksueel Geweld,1

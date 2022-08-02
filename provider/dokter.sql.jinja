@@ -12,9 +12,9 @@ from (
         ,a.GESLACHT as gender_concept_id
         ,a.ARTSCODE as provider_source_value
         ,a.SPECIALISM as specialty_source_value
-        ,0 as specialty_source_concept_id
+        ,CAST(NULL AS STRING) as specialty_source_concept_id
         ,a.GESLACHT as gender_source_value
-        ,0 as gender_source_concept_id
+        ,CAST(NULL AS STRING) as gender_source_concept_id
     FROM {{project_id}}.{{dataset_id_raw}}.CSZISLIB_ARTS a
     INNER JOIN {{project_id}}.{{dataset_id_raw}}.CSZISLIB_ARTSRIZIVNR r on r.ARTSCODE = a.ARTSCODE
     WHERE REGEXP_CONTAINS(a.ARTSCODE, r'^([0-9]{6})([A-Z]{3})?$')

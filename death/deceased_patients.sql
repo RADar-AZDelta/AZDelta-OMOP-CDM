@@ -13,5 +13,5 @@ select
   ,cast(null as string) as cause_concept_id
   ,cast(null as string) as cause_source_value
   ,cast(null as int) as cause_source_concept_id
-from iconic-guard-317109.hix.PATIENT_PATIENT pp
+from {{project_id}}.{{dataset_id_raw}}.PATIENT_PATIENT pp
 where pp.OVERLEDEN = true
