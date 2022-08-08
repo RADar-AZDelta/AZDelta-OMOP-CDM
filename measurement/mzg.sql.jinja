@@ -54,19 +54,19 @@ with cte_mzg as (
 	order by pat_id, visit_id, icd_code
 ) 
 select 
-    concat('MZG_', m.id) as measurement_id	
+	concat('MZG_', m.id) as measurement_id	
     ,m.pat_id as person_id
     ,trim(i.sourceCode) as measurement_concept_id
     ,m.start_date as measurement_date
     ,DATETIME(
        m.start_date, 
        m.start_time
-    ) as measurement_datetime    
-    ,FORMAT_TIME("%T", m.start_time) as measurement_time
+    ) as measurement_datetime 
+	,FORMAT_TIME('%T', m.start_time) as measurement_time
     ,'ADMINISTRATION_RECORD' as measurement_type_concept_id
     ,cast(null as string) as operator_concept_id
     ,cast(null as float64) as value_as_number
-    ,'MZG_YES' as value_as_concept_id
+    ,trim(i.sourceCode) as value_as_concept_id
     ,cast(null as string) as unit_concept_id
     ,cast(null as float64) as range_low
     ,cast(null as float64) as range_high
@@ -74,14 +74,14 @@ select
     ,m.visit_id as visit_occurrence_id
     ,cast(null as string) as visit_detail_id
     ,trim(i.sourceCode) as measurement_source_value
-    ,0 as measurement_source_concept_id
+    ,trim(i.sourceCode) as measurement_source_concept_id
     ,cast(null as string) as unit_source_value
-    ,0 as unit_source_concept_id
+    ,cast(null as string) as unit_source_concept_id
     ,cast(null as string) as value_source_value 
     ,cast(null as int) as measurement_event_id
     ,cast(null as string) as meas_event_field_concept_id
 from cte_mzg m
-inner join {{project_id}}.{{dataset_id_work}}.measurement__measurement_concept_id_usagi i on concat('MZG_', m.icd_version, '_', (
+inner join {{project_id}}.{{dataset_id_work}}.condition_occurrence__condition_concept_id_usagi i on concat('MZG_', m.icd_version, '_', (
     case
         when m.type in ('H', 'N') then 'D' --hoofd en neven diagnose --> diagnose
         when m.type = 'I' then 'P' -- ingreep --> procedure

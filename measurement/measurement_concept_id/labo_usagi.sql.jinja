@@ -1,0 +1,43 @@
+WITH cte_loinc AS (
+  SELECT DISTINCT lo.BEP
+        ,ARRAY_AGG(le.EXTERNALCODE IGNORE NULLS ORDER BY ml.LOINC___NUMBER DESC)[SAFE_OFFSET(0)] EXTERNALCODE
+        ,ARRAY_AGG(lo.DESC IGNORE NULLS ORDER BY ml.LOINC___NUMBER DESC)[SAFE_OFFSET(0)] DESC_
+        ,ARRAY_AGG(cm.code_Value IGNORE NULLS ORDER BY ml.LOINC___NUMBER DESC)[SAFE_OFFSET(0)] code_Value
+        ,ARRAY_AGG(ml.LOINC___Number IGNORE NULLS ORDER BY ml.LOINC___NUMBER DESC)[SAFE_OFFSET(0)] LOINC___Number
+        ,ARRAY_AGG(ml.LOINC___Component IGNORE NULLS ORDER BY ml.LOINC___NUMBER DESC)[SAFE_OFFSET(0)] LOINC___Component
+        ,ARRAY_AGG(ml.Label_NL IGNORE NULLS ORDER BY ml.LOINC___NUMBER DESC)[SAFE_OFFSET(0)] Label_NL
+  FROM `iconic-guard-317109.glims.LAB_EXTLABTST` le
+  left join `iconic-guard-317109.hix.LAB_L_B_OMS` lo on lo.BEP = le.LABTESTCODE
+  left join `iconic-guard-317109.hix.LAB_BRON` lb on lb.BRONCODE = le.SOURCECODE and lb.ACTIEF
+  left join `iconic-guard-317109.glims.code_to_medidoc` cm  on le.EXTERNALCODE = cm.prop_Mnemonic
+  left join `iconic-guard-317109.glims.medidoc_to_loinc` ml on TRIM(cm.code_Value) = TRIM(ml.Medidoc)
+  group by lo.BEP
+)
+SELECT l.BEP sourceCode
+  ,CONCAT(l.LOINC___Component,' - ',l.Label_NL,' - ',l.DESC_) sourceName
+  ,COUNT(*) sourceFrequency
+  ,CAST(NULL AS STRING) AS sourceAutoAssignedConceptIds
+  ,COALESCE(l.LOINC___Number, CONCAT(l.code_Value,',', l.EXTERNALCODE)) ADD_INFO_extra_codes
+  ,IF(c2.concept_id IS not NULL, 1, 0) AS matchScore
+  ,IF(c2.concept_id is not NULL,'APPROVED', 'UNCHECKED') AS mappingStatus
+  ,IF(c2.concept_id is not NULL,'EQUAL','UNREVIEWED') AS equivalence
+  ,'etl' AS statusSetBy
+  ,UNIX_MILLIS(CURRENT_TIMESTAMP()) as statusSetOn
+  ,COALESCE(c2.concept_id,0) conceptId
+  ,coalesce(c2.concept_name,"Unmapped") conceptName
+  ,coalesce(c2.domain_id,NULL) domainId
+  ,'MAPS_TO' AS mappingType
+  ,'AUTO MAPPED' AS comment
+  ,'etl' AS createdBy
+  ,UNIX_MILLIS(CURRENT_TIMESTAMP()) as createdOn
+  ,cast(null AS string) AS assignedReviewer
+FROM cte_loinc l
+left join `iconic-guard-317109.hix.LAB_HUIDIGE_UITSLAG` lhu on l.BEP = lhu.BEPCODE
+left join `iconic-guard-317109.omop.concept` c on l.LOINC___Number = c.concept_code
+      AND c.vocabulary_id = 'LOINC'
+left join `iconic-guard-317109.omop.concept_relationship` cr on c.concept_id = cr.concept_id_1
+      AND cr.relationship_id = "Maps to"
+left join `iconic-guard-317109.omop.concept` c2 on cr.concept_id_2 = c2.concept_id
+      AND c.standard_concept = 'S'
+GROUP BY sourceCode, sourceName, ADD_INFO_extra_codes, conceptId, conceptName, domainId, c2.concept_id
+ORDER BY sourceFrequency DESC

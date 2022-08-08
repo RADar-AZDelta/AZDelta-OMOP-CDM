@@ -5,7 +5,6 @@ SELECT distinct
     ,cast(null as integer) as month_of_birth
     ,cast(null as integer) as day_of_birth
     ,DATE(p.GEBDAT, 1, 1) as birth_datetime
-    ,p.OVERLDAT as death_datetime
     ,cast(null as string) as race_concept_id
     ,cast(null as string) as ethnicity_concept_id
     ,concat('GEMEENTE_', pc.CODEBEGIN, '_', pc.WOONPLAATS) as location_id

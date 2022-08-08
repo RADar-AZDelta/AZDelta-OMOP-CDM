@@ -55,7 +55,7 @@ with cte_mzg as (
 ) 
 select 
     concat('MZG_', m.id) as procedure_occurrence_id
-    ,m.pat_id as person_id
+	,m.pat_id as person_id
     ,trim(i.sourceCode) as procedure_concept_id
     ,m.start_date as procedure_date
     ,DATETIME(
@@ -74,10 +74,10 @@ select
     ,m.visit_id as visit_occurrence_id
     ,cast(null as string) as visit_detail_id
     ,trim(i.sourceCode) as procedure_source_value
-    ,0 as procedure_source_concept_id
+    ,trim(i.sourceCode) as procedure_source_concept_id
     ,cast(null as string) as modifier_source_value
 from cte_mzg m
-inner join {{project_id}}.{{dataset_id_work}}.condition_occurrence__condition_concept_id_usagi i on concat('MZG_', m.icd_version, '_', (
+inner join {{project_id}}.{{dataset_id_work}}.procedure_occurrence__procedure_concept_id_usagi i on concat('MZG_', m.icd_version, '_', (
     case
         when m.type in ('H', 'N') then 'D' --hoofd en neven diagnose --> diagnose
         when m.type = 'I' then 'P' -- ingreep --> procedure

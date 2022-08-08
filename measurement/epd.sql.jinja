@@ -1,0 +1,46 @@
+SELECT
+    CONCAT('EPD_', e.DIAG_ID) as measurement_id	
+    ,e.PATIENTNR as person_id
+    ,i.sourceCode as measurement_concept_id
+    ,DATE(COALESCE(e.DATUM, e.REGISTRATIONDATE)) as measurement_date
+    ,DATETIME(
+        DATE(COALESCE(e.DATUM, e.REGISTRATIONDATE)), 
+        PARSE_TIME('%H:%M', IF(e.STARTTIJD IS NOT NULL AND TRIM(e.STARTTIJD) <> '', TRIM(e.STARTTIJD), "00:00"))
+    ) as measurement_datetime    
+    ,IF(e.STARTTIJD IS NOT NULL AND TRIM(e.STARTTIJD) <> '', TRIM(e.STARTTIJD), "00:00") as measurement_time
+    ,'ADMINISTRATION_RECORD' as measurement_type_concept_id
+    ,cast(null as string) as operator_concept_id
+    ,cast(null as float64) as value_as_number
+    ,cast(null as string) as value_as_concept_id
+    ,cast(null as string) as unit_concept_id
+    ,cast(null as float64) as range_low
+    ,cast(null as float64) as range_high
+    ,e.ARTSCODE as provider_id
+    ,ARRAY_AGG(vs.x IGNORE NULLS ORDER BY vs.x ASC)[SAFE_OFFSET(0)] as visit_occurrence_id
+    ,cast(null as string) as visit_detail_id
+    ,i.sourceCode as measurement_source_value
+    ,i.sourceCode as measurement_source_concept_id
+    ,cast(null as string) as unit_source_value
+    ,cast(null as string) as unit_source_concept_id
+    ,cast(null as string) as value_source_value 
+    ,cast(null as int) as measurement_event_id
+    ,cast(null as string) as meas_event_field_concept_id
+FROM `{{project_id}}.{{dataset_id_raw}}.DOSSIER_EPDDIAG` e
+LEFT JOIN `{{project_id}}.{{dataset_id_raw}}.CODELYST_CODEOMS` cc 
+ON e.CODE = cc.CODE
+INNER JOIN `{{project_id}}.{{dataset_id_work}}.condition_occurrence__condition_concept_id_usagi` i 
+ON concat('EPD_', e.CODE) = i.sourceCode
+LEFT JOIN `{{project_id}}.{{dataset_id_work}}.person_id_swap` p
+ON e.PATIENTNR = p.x
+LEFT JOIN `{{project_id}}.{{dataset_id_omop}}.visit_occurrence` v
+ON DATE(e.DATUM) >= v.visit_start_date 
+    AND DATE(e.DATUM) <= v.visit_end_date
+    AND p.y = v.person_id
+LEFT JOIN `{{project_id}}.{{dataset_id_work}}.visit_occurrence_id_swap` vs
+ON v.visit_occurrence_ID = vs.y
+WHERE e.CODE IS NOT NULL AND TRIM(e.CODE) <> '' 
+    AND cc.Omschrijving IS NOT NULL AND TRIM(cc.Omschrijving) <> ''
+    AND e.DIAG_ID IS NOT NULL AND TRIM(e.DIAG_ID) <> ''
+    AND e.PATIENTNR IS NOT NULL AND TRIM(e.PATIENTNR) <> ''
+    AND i.domainId = 'Measurement'
+GROUP BY e.DIAG_ID, e.PATIENTNR, i.sourceCode, e.DATUM, e.REGISTRATIONDATE, e.STARTTIJD, e.EINDDATUM, e.EINDTIJD, e.ARTSCODE

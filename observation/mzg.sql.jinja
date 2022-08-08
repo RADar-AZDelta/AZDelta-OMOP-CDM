@@ -54,9 +54,9 @@ with cte_mzg as (
 	order by pat_id, visit_id, icd_code
 ) 
 select 
-    concat('MZG_', m.id) as observation_id	
+    concat('MZG_', m.id) as observation_id
     ,m.pat_id as person_id
-    ,trim(i.sourceCode) as observation_concept_id
+	,trim(i.sourceCode) as observation_concept_id
     ,m.start_date as observation_date
     ,DATETIME(
        m.start_date, 
@@ -72,16 +72,16 @@ select
     ,m.visit_id as visit_occurrence_id
     ,cast(null as string) as visit_detail_id
     ,trim(i.sourceCode) as observation_source_value
-    ,0 as observation_source_concept_id
+    ,trim(i.sourceCode) as observation_source_concept_id
     ,cast(null as string) as unit_source_value
     ,cast(null as string) as qualifier_source_value
     ,cast(null as string) as value_source_value
     ,cast(null as int) as observation_event_id
     ,cast(null as string) as obs_event_field_concept_id
 from cte_mzg m
-inner join {{project_id}}.{{dataset_id_work}}.observation__observation_concept_id_usagi i on concat('MZG_', m.icd_version, '_', (
+inner join {{project_id}}.{{dataset_id_work}}.condition_occurrence__condition_concept_id_usagi i on concat('MZG_', m.icd_version, '_', (
     case
         when m.type in ('H', 'N') then 'D' --hoofd en neven diagnose --> diagnose
         when m.type = 'I' then 'P' -- ingreep --> procedure
     end), '_', trim(m.icd_code)) = trim(i.sourceCode)
-where i.domainId = 'Observation'
+where i.domainId not in ("Condition","Procedure","Drug","Measurement","Device")
