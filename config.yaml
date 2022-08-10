@@ -1,6 +1,7 @@
 # project_id : bq_project_with_datasets
 # dataset_id_raw : source_dataset
 # dataset_id_raw_2 : source_dataset_2
+# dataset_id_raw_3 : source_dataset_3
 # dataset_id_work : work_dataset
 # dataset_id_usagi : master_usagi_dataset
 # dataset_id_omop : omop_dataset

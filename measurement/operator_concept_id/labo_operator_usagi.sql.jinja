@@ -1,0 +1,23 @@
+SELECT 
+  CONCAT('LABO_',concept_name) sourceCode
+  ,concept_name sourceName
+  ,0 sourceFrequency
+  ,CAST(NULL AS STRING) sourceAutoAssignedConceptIds
+  ,1 matchScore
+  ,'APPROVED' mappingStatus
+  ,'EQUAL' equivalence
+  ,'etl' statusSetBy
+  ,UNIX_MILLIS(CURRENT_TIMESTAMP()) statusSetOn
+  ,concept_id conceptId
+  ,concept_name conceptName
+  ,domain_id domainId
+  ,'MAPS_TO' mappingType
+  ,'AUTO MAPPED' comment
+  ,'etl' AS createdBy
+  ,UNIX_MILLIS(CURRENT_TIMESTAMP()) as createdOn
+  ,cast(null AS string) AS assignedReviewer
+FROM {{project_id}}.{{dataset_id_omop}}.concept
+WHERE standard_concept = 'S'
+  AND vocabulary_id = 'SNOMED'
+  AND domain_id = 'Meas Value Operator'
+  AND concept_class_id = 'Qualifier Value'

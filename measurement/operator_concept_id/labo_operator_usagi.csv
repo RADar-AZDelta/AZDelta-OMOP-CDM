@@ -1,0 +1,6 @@
+sourceCode,sourceName,sourceFrequency,sourceAutoAssignedConceptIds,matchScore,mappingStatus,equivalence,statusSetBy,statusSetOn,conceptId,conceptName,domainId,mappingType,comment,createdBy,createdOn,assignedReviewer
+LABO_<=,<=,0,,1,APPROVED,EQUAL,etl,1660056835962,4171754,<=,Meas Value Operator,MAPS_TO,AUTO MAPPED,etl,1660056835962,
+LABO_>,>,0,,1,APPROVED,EQUAL,etl,1660056835962,4172704,>,Meas Value Operator,MAPS_TO,AUTO MAPPED,etl,1660056835962,
+LABO_<,<,0,,1,APPROVED,EQUAL,etl,1660056835962,4171756,<,Meas Value Operator,MAPS_TO,AUTO MAPPED,etl,1660056835962,
+LABO_=,=,0,,1,APPROVED,EQUAL,etl,1660056835962,4172703,'=,Meas Value Operator,MAPS_TO,AUTO MAPPED,etl,1660056835962,
+LABO_>=,>=,0,,1,APPROVED,EQUAL,etl,1660056835962,4171755,>=,Meas Value Operator,MAPS_TO,AUTO MAPPED,etl,1660056835962,

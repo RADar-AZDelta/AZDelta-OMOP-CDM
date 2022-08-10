@@ -1,0 +1,8 @@
+select distinct 
+  concat('LABO_',omschrijving.EENHEID) as sourceCode
+  , omschrijving.eenheid as sourceName
+  , count(*) as sourceFrequency
+from {{project_id}}.{{dataset_id_raw}}.LAB_HUIDIGE_UITSLAG uitslag
+inner join {{project_id}}.{{dataset_id_raw}}.LAB_L_B_OMS omschrijving on omschrijving.BEP = BEPCODE
+group by sourceCode, sourceName
+order by sourceFrequency DESC

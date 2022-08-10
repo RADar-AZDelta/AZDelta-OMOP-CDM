@@ -6,18 +6,19 @@ WITH cte_loinc AS (
         ,ARRAY_AGG(ml.LOINC___Number IGNORE NULLS ORDER BY ml.LOINC___NUMBER DESC)[SAFE_OFFSET(0)] LOINC___Number
         ,ARRAY_AGG(ml.LOINC___Component IGNORE NULLS ORDER BY ml.LOINC___NUMBER DESC)[SAFE_OFFSET(0)] LOINC___Component
         ,ARRAY_AGG(ml.Label_NL IGNORE NULLS ORDER BY ml.LOINC___NUMBER DESC)[SAFE_OFFSET(0)] Label_NL
-  FROM `iconic-guard-317109.glims.LAB_EXTLABTST` le
-  left join `iconic-guard-317109.hix.LAB_L_B_OMS` lo on lo.BEP = le.LABTESTCODE
-  left join `iconic-guard-317109.hix.LAB_BRON` lb on lb.BRONCODE = le.SOURCECODE and lb.ACTIEF
-  left join `iconic-guard-317109.glims.code_to_medidoc` cm  on le.EXTERNALCODE = cm.prop_Mnemonic
-  left join `iconic-guard-317109.glims.medidoc_to_loinc` ml on TRIM(cm.code_Value) = TRIM(ml.Medidoc)
+  FROM {{project_id}}.{{dataset_id_raw_3}}.LAB_EXTLABTST le
+  left join {{project_id}}.{{dataset_id_raw}}.LAB_L_B_OMS lo on lo.BEP = le.LABTESTCODE
+  left join {{project_id}}.{{dataset_id_raw}}.LAB_BRON lb on lb.BRONCODE = le.SOURCECODE and lb.ACTIEF
+  left join {{project_id}}.{{dataset_id_raw_3}}.code_to_medidoc cm  on le.EXTERNALCODE = cm.prop_Mnemonic
+  left join {{project_id}}.{{dataset_id_raw_3}}.medidoc_to_loinc ml on TRIM(cm.code_Value) = TRIM(ml.Medidoc)
   group by lo.BEP
 )
-SELECT l.BEP sourceCode
-  ,CONCAT(l.LOINC___Component,' - ',l.Label_NL,' - ',l.DESC_) sourceName
+SELECT 
+  concat('LABO_',l.BEP) sourceCode
+  ,regexp_replace(replace(array_to_string([l.LOINC___Component, l.Label_NL, l.DESC_, l.BEP], ' - '),',',';'),'\n|\r|\t',' ') sourceName
   ,COUNT(*) sourceFrequency
   ,CAST(NULL AS STRING) AS sourceAutoAssignedConceptIds
-  ,COALESCE(l.LOINC___Number, CONCAT(l.code_Value,',', l.EXTERNALCODE)) ADD_INFO_extra_codes
+  ,replace(replace(COALESCE(l.LOINC___Number, array_to_string([l.code_Value, REGEXP_REPLACE(l.EXTERNALCODE,'"|[|]','')], ' - ')),',',';'),'\n|\r|\t',' ') ADD_INFO_extra_codes
   ,IF(c2.concept_id IS not NULL, 1, 0) AS matchScore
   ,IF(c2.concept_id is not NULL,'APPROVED', 'UNCHECKED') AS mappingStatus
   ,IF(c2.concept_id is not NULL,'EQUAL','UNREVIEWED') AS equivalence
@@ -27,17 +28,17 @@ SELECT l.BEP sourceCode
   ,coalesce(c2.concept_name,"Unmapped") conceptName
   ,coalesce(c2.domain_id,NULL) domainId
   ,'MAPS_TO' AS mappingType
-  ,'AUTO MAPPED' AS comment
+  ,IF(c2.concept_id is not NULL,'AUTO MAPPED','NOT AUTO MAPPED') AS comment
   ,'etl' AS createdBy
   ,UNIX_MILLIS(CURRENT_TIMESTAMP()) as createdOn
   ,cast(null AS string) AS assignedReviewer
 FROM cte_loinc l
-left join `iconic-guard-317109.hix.LAB_HUIDIGE_UITSLAG` lhu on l.BEP = lhu.BEPCODE
-left join `iconic-guard-317109.omop.concept` c on l.LOINC___Number = c.concept_code
+left join {{project_id}}.{{dataset_id_raw}}.LAB_HUIDIGE_UITSLAG lhu on l.BEP = lhu.BEPCODE
+left join {{project_id}}.{{dataset_id_omop}}.concept c on l.LOINC___Number = c.concept_code
       AND c.vocabulary_id = 'LOINC'
-left join `iconic-guard-317109.omop.concept_relationship` cr on c.concept_id = cr.concept_id_1
+left join {{project_id}}.{{dataset_id_omop}}.concept_relationship cr on c.concept_id = cr.concept_id_1
       AND cr.relationship_id = "Maps to"
-left join `iconic-guard-317109.omop.concept` c2 on cr.concept_id_2 = c2.concept_id
+left join {{project_id}}.{{dataset_id_omop}}.concept c2 on cr.concept_id_2 = c2.concept_id
       AND c.standard_concept = 'S'
 GROUP BY sourceCode, sourceName, ADD_INFO_extra_codes, conceptId, conceptName, domainId, c2.concept_id
 ORDER BY sourceFrequency DESC

@@ -1,0 +1,18 @@
+SELECT lu.sourceCode
+  ,lu.sourceName
+  ,lu.sourceFrequency 
+  ,lu.ADD_INFO_extra_codes
+  ,ARRAY_AGG(DISTINCT lhu.UITSLAG IGNORE NULLS LIMIT 5) result
+  ,ARRAY_AGG(DISTINCT oms.EENHEID IGNORE NULLS LIMIT 5) unit
+  ,ARRAY_AGG(DISTINCT oms.MATAARD IGNORE NULLS LIMIT 5) material
+  ,ARRAY_AGG(DISTINCT grp.KOPTEKST IGNORE NULLS LIMIT 5) title
+FROM {{project_id}}.master_usagi.labo_usagi lu
+LEFT JOIN {{project_id}}.{{dataset_id_raw}}.LAB_HUIDIGE_UITSLAG lhu
+ON lu.sourceCode = lhu.BEPCODE
+LEFT JOIN {{project_id}}.{{dataset_id_raw}}.LAB_L_B_OMS oms
+ON lu.sourceCode = oms.BEP
+LEFT JOIN {{project_id}}.{{dataset_id_raw}}.LAB_LABGROEP grp
+ON oms.GROEP = grp.GROEP
+WHERE lu.conceptId = 0
+GROUP BY lu.sourceCode, lu.sourceName, lu.sourceFrequency, lu.ADD_INFO_extra_codes
+ORDER BY lu.sourceFrequency DESC

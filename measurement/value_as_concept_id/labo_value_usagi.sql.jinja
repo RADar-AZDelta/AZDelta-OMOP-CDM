@@ -1,0 +1,23 @@
+select concat('LABO_',uitslag.BEPCODE,'_',regexp_replace(replace(replace(uitslag.UITSLAG,',',';'),'\\','/'),'(\n|\r|\t)+','_')) as sourceCode
+  ,regexp_replace(replace(replace(uitslag.UITSLAG,',',';'),'\\','/'),'(\n|\r|\t)+','_') as sourceName
+  ,count(*) as sourceFrequency
+  ,CAST(NULL AS STRING) AS sourceAutoAssignedConceptIds
+  ,ARRAY_AGG(DISTINCT omschrijving.desc IGNORE NULLS LIMIT 5) as additionalInfo  -- help
+  ,0 as matchScore
+  ,"UNCHECKED" as mappingStatus
+  ,"UNREVIEWED" as equivalence
+  ,'etl' AS statusSetBy
+  ,UNIX_MILLIS(CURRENT_TIMESTAMP()) as statusSetOn
+  ,0 as conceptId
+  ,"Unmapped" conceptName
+  ,CAST(NULL AS STRING) domainId
+  ,'MAPS_TO' AS mappingType
+  ,'' AS comment
+  ,'etl' AS createdBy
+  ,UNIX_MILLIS(CURRENT_TIMESTAMP()) as createdOn
+  ,cast(null AS string) AS assignedReviewer
+from {{project_id}}.{{dataset_id_raw}}.LAB_HUIDIGE_UITSLAG uitslag
+inner join {{project_id}}.{{dataset_id_raw}}.LAB_L_B_OMS omschrijving on omschrijving.BEP = BEPCODE
+where not REGEXP_CONTAINS(uitslag.uitslag, r'^[+-><]?[=]?([0-9]+(\.|\,|\:|/|\\)?[0-9]*)$')
+group by sourceCode, sourceName
+order by sourceFrequency DESC
