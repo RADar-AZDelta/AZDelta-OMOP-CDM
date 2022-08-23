@@ -1,0 +1,22 @@
+select distinct 
+concat('KUUR_', kuurcd) as episode_id
+,cast(deel.patnum as string) as person_id 
+,'KUUR_DRUG' as episode_concept_id
+,min(startdt) as episode_start_date
+,cast(concat(cast(min(startdt) as date), ' 00:00:00') as datetime) as episode_start_datetime
+,cast(max(startdt) as date) as episode_end_date
+,cast(concat(cast(max(startdt) as date), ' 00:00:00') as datetime) as episode_end_datetime
+,0 as episode_parent_id
+,0 as episode_number
+,concat('KUUR_', vcmocd) as episode_object_concept_id 
+,'ADMINISTRATION_RECORD' as episode_type_concept_id
+,'KUUR_DRUG' as episode_source_value
+,cast(null as string) as episode_source_concept_id
+
+from `hix.MEDICAT_KUUR` kuur
+inner join `hix.MEDICAT_KUURDEEL` deel
+on kuur.code = deel.kuurcd
+
+where ANNULEER = false and ONDRVB = false and not (startdt is null or accdat is null) 
+group by vcmocd, deel.patnum , kuurcd
+order by deel.patnum

@@ -1,0 +1,15 @@
+with vragenlijsten_hix as (select vragenlijst.opslagid, lijstnaam.lijstnaam, vragen.stelling, keuzelijst.omschr, vragen.vraagid, antwoorden.patientnr, antwoorden.opslagid as antwoord_opslagid
+, antwoorden.antwoord, keuzelijst.code,vragenlijst.datum, vragenlijst.tijd, vragen.korteoms
+from {{project_id}}.hix.VRLIJST_VROPSLG antwoorden
+    join {{project_id}}.hix.VRLIJST_LSTOPSLG  as vragenlijst on vragenlijst.OPSLAGID = antwoorden.BEANTWID
+  join {{project_id}}.hix.VRLIJST_LIJSTDEF  as lijstnaam on lijstnaam.LIJSTID = vragenlijst.LIJSTID
+  join  {{project_id}}.hix.VRLIJST_VRAGEN as vragen on vragen.VRAAGID = REALVRID
+    left outer join   {{project_id}}.hix.VRLIJST_KEUZELST as keuzelijst on  keuzelijst.CODE = antwoorden.Antwoord
+    where lijstnaam.lijstnaam = 'Registratieformulier MOC')
+
+
+select  concat('HIXVRAGENLIJSTEN_' ,code, '_',vraagid) as sourceCode, omschr as sourceName, count(*) as sourceFrequency, korteoms as AdditionalInformation
+from vragenlijsten_hix 
+where not korteoms in ('Aanvrager MOC', 'Coordinator MOC', 'Extra-muros deelnemer MOC'
+, 'Opmerking deelnemers MOC', 'Deelnemers MOC', 'Type MOC', 'Incidentiedatum', 'Commentaarveld', 'Status', 'Datum eerste behandeling', 'Datum MOC', 'Datum eerste recidief') --
+group by sourceCode, sourceName, AdditionalInformation
