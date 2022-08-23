@@ -1,5 +1,0 @@
-sourceCode,sourceName,sourceFrequency,sourceAutoAssignedConceptIds,matchScore,mappingStatus,equivalence,statusSetBy,statusSetOn,conceptId,conceptName,domainId,mappingType,comment,createdBy,createdOn,assignedReviewer
-AWELL_TXSTARTDATE,Datum start behandeling,377,,0.40,APPROVED,EQUAL,Louise,0,4215565,Cancer treatment started,Observation,MAPS_TO,,Louise,1637240933962,
-AWELL_TX,Kies behandeling,375,,0.40,UNREVIEWED,UNCHECKED,,0,,,Observation,MAPS_TO,,,1637240933962,
-AWELL_TREATINT,Doel van behandeling,377,,0.40,APPROVED,EQUAL,Louise,0,4194400,Treatment intent,Observation,MAPS_TO,,Louise,1637240933962,
-AWELL_choose_treatment,Choose treatment,2,,0.40,UNREVIEWED,UNCHECKED,,0,,,Observation,MAPS_TO,,,1637240933962,
