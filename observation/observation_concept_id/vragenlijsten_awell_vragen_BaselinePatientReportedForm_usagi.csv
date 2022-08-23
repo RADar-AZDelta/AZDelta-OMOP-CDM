@@ -1,0 +1,12 @@
+sourceCode,sourceName,sourceFrequency,sourceAutoAssignedConceptIds,matchScore,mappingStatus,equivalence,statusSetBy,statusSetOn,conceptId,conceptName,domainId,mappingType,comment,createdBy,createdOn,assignedReviewer
+AWELL_AZDELTA_SMOKING_ADDITIONAL_CURRENT_SMOKER_PERIOD,Hoeveel jaar rookt u al? (vul enkel een cijfer in),89,,0.24,UNCHECKED,UNREVIEWED,,0,42069418,JAARS,Geography,MAPS_TO,,<auto>,1637850430496,
+AWELL_AZDELTA_WEIGHTL_ADDITIONAL_KG,Hoeveel kg bent u ongeveer verloren? (vul enkel een cijfer in),68,,0.23,UNCHECKED,UNREVIEWED,,0,42033496,Langeveen,Geography,MAPS_TO,,<auto>,1637850431542,
+AWELL_AZDELTA_WEIGHTL_ADDITIONAL_PERIOD,In welke periode heeft dit gewichtsverlies plaatsgehad?,68,,0.26,UNCHECKED,UNREVIEWED,,0,41990606,Gerichtsviertel,Geography,MAPS_TO,,<auto>,1637850432763,
+AWELL_ICHOM_EDUCATION,Wat is het hoogste onderwijsniveau dat u met succes heeft afgerond?,284,,0.32,UNCHECKED,UNREVIEWED,,0,41976744,Hoogstede,Geography,MAPS_TO,,<auto>,1637850435212,
+AWELL_AZDELTA_SMOKING_ADDITIONAL_CURRENT_SMOKER_COUNT,Hoeveel sigaretten rookte u gemiddeld per dag over deze periode? (vul enkel een cijfer in),94,,0.21,UNCHECKED,UNREVIEWED,,0,45876408,1 cigarette per day,Meas Value,MAPS_TO,,<auto>,1637850435226,
+AWELL_AZDELTA_SMOKING_ADDITIONAL_EX_SMOKER_COUNT,Hoeveel sigaretten rookte u gemiddeld per dag over deze periode? (vul enkel een cijfer in),115,,0.21,UNCHECKED,UNREVIEWED,,0,45876408,1 cigarette per day,Meas Value,MAPS_TO,,<auto>,1637850435226,
+AWELL_ICHOM_SMOKING,Wat was uw rookgedrag op het moment van uw longkanker diagnose?,285,,0.16,UNCHECKED,UNREVIEWED,,0,40198732,No information about whether a diagnostic or staging procedure was performed.,Meas Value,MAPS_TO,,<auto>,1637850435235,
+AWELL_ICHOM_COMORB,Heeft een dokter u ooit gemeld dat u lijdt aan één van onderstaande aandoeningen?,352,,0.18,UNCHECKED,UNREVIEWED,,0,4158750,Schnijders Ooman test for deaf children,Measurement,MAPS_TO,,<auto>,1637850435235,
+AWELL_AZDELTA_START_WEIGHT,Wat is uw huidige gewicht in kg? (vul enkel een cijfer in),293,,0.23,UNCHECKED,UNREVIEWED,,0,42052506,Tingewick,Geography,MAPS_TO,,<auto>,1637850435750,
+AWELL_AZDELTA_SMOKING_ADDITIONAL_EX_SMOKER_PERIOD,Hoeveel jaar hebt u gerookt? (vul enkel een cijfer in),113,,0.20,UNCHECKED,UNREVIEWED,,0,41892106,Linkeroever,Geography,MAPS_TO,,<auto>,1637850435947,
+AWELL_ICHOM_WEIGHTL,Hebt u de laatste tijd ongewenst gewicht verloren?,290,,0.29,UNCHECKED,UNREVIEWED,,0,42052506,Tingewick,Geography,MAPS_TO,,<auto>,1637850436727,

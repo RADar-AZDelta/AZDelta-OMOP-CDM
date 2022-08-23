@@ -1,0 +1,58 @@
+with awell_vragenlijsten as (select distinct 
+	fq.form_id
+	,fq.question_id
+	,fq.label
+	,fq.label_en
+	,fq.sub_question_id
+	,fq.sub_label
+	,fq.sub_label_en
+	,fr.response_label_en as structured_answer_en
+	,fr.response_label_nl as structured_answer_nl
+	,IF(fr.response_label_nl is not null, r.response_value, null) as structured_answer_code
+	,IF(fr.response_label_nl is null, r.response_value, null) as free_answer
+	,u.patient_code
+	,u.doctor_id
+	,r.submission_date
+	,r.step_id
+	,r.episode_name
+	
+from {{project_id}}.awell.form_questions fq
+inner join {{project_id}}.awell.responses r on fq.form_id = r.form_id 
+	and fq.question_id = r.question_id 
+	and ((fq.sub_question_id is null and r.sub_question_id is null) or (fq.sub_question_id = r.sub_question_id))
+left outer join {{project_id}}.awell.form_responses fr on fr.form_id = fq.form_id 
+	and fr.question_id = fq.question_id
+	and fr.response_value = r.response_value
+inner join {{project_id}}.awell.users u on u.user_id = r.user_id
+where fq.form_id in ('azdelta_lung_cancer_weekly_questionnaire_with_protcae_question_ids', 'd58e379c-66a9-4918-84d1-d91803248156'
+, '3343a581-bcce-4394-bb3e-bffbf47e39bc')
+order by fq.form_id, fq.question_id, fq.sub_question_id, structured_answer_nl, free_answer)
+
+
+select distinct concat('AWELL_', form_id, '_', coalesce(sub_question_id, question_id), cast(submission_date as date), '_', patient_code) as observation_id
+,cast(patient_code as string) as person_id
+,cast(concat('AWELL_PR_', question_id) as string) as observation_concept_id
+,cast(submission_date as date) as observation_date
+,cast(substring(cast(submission_date as string), 1,19) as datetime)  as observation_datetime
+,'AWELL_OBSERVATION_TYPE' as observation_type_concept_id -- 'Patient filled survey - 32862'
+,case when question_id = 'weight' and REGEXP_CONTAINS(free_answer, '[0-9]') is false then null
+when question_id = 'weight' then cast(substring(replace(regexp_replace(trim(free_answer, ','), r'[^0-9,\.]', ''), ',', '.'), 1,5) as float64) 
+else cast(0 as float64) end as value_as_number
+,cast(null as string) as value_as_string
+,cast(case when not question_id = 'weight' then concat('AWELL_PR_', question_id, '_', coalesce(replace(structured_answer_nl, ' ', '_'), free_answer)) end as string) as value_as_concept_id
+,cast(null as string) as qualifier_concept_id
+,cast(null as string) as unit_concept_id
+,cast(null as string) as provider_id
+,cast(null as string) as visit_occurrence_id
+,cast(null as string) as visit_detail_id
+,cast(concat('AWELL_PROCTCAE_', question_id) as string) as observation_source_value
+,cast(null as string) as observation_source_concept_id
+,cast(null as string) as unit_source_value
+,cast(null as string) as qualifier_source_value
+,cast(null as string) as observation_event_id
+,cast(null as string) as obs_event_field_concept_id
+
+
+
+from awell_vragenlijsten
+where question_id not in ('if_checked_care_team_is_not_allowed_to_contact_me', 'QUESTIONS_REMARKS_BOOL')

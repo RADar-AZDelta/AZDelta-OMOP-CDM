@@ -1,0 +1,4 @@
+sourceCode,sourceName,sourceFrequency,sourceAutoAssignedConceptIds,matchScore,mappingStatus,equivalence,statusSetBy,statusSetOn,conceptId,conceptName,domainId,mappingType,comment,createdBy,createdOn,assignedReviewer
+EQUAL,EQUAL,0,,1,APPROVED,EQUAL,Louise,1639130872302,4172703,=,Meas Value Operator,MAPS_TO,,Louise,1639130872302,
+LESS,LESS,0,,1,APPROVED,EQUAL,Louise,1639130872302,4171756,<,Meas Value Operator,MAPS_TO,,Louise,1639130872302,
+MORE,MORE,0,,1,APPROVED,EQUAL,Louise,1639130872302,4172704,>,Meas Value Operator,MAPS_TO,,Louise,1639130872302,
