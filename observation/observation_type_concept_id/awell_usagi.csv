@@ -1,0 +1,2 @@
+sourceCode,sourceName,sourceFrequency,sourceAutoAssignedConceptIds,matchScore,mappingStatus,equivalence,statusSetBy,statusSetOn,conceptId,conceptName,domainId,mappingType,comment,createdBy,createdOn,assignedReviewer
+AWELL_OBSERVATION_TYPE,AWELL_OBSERVATION_TYPE,0,,0.42,APPROVED,EQUAL,Louise,1639047104637,32862,Patient filled survey,Type Concept,MAPS_TO,,Louise,1639047098877,
