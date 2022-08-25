@@ -1,0 +1,23 @@
+select concat('OK_', oi.operatienr) as procedure_occurrence_id
+	,patientnr as person_id
+    ,concat("OK_", VER_CODE) as procedure_concept_id
+    ,cast(operatie_d as date) as procedure_date
+    ,cast(operatie_d as datetime) as procedure_datetime
+    ,cast(operatie_d as date) as procedure_end_date
+    ,cast(operatie_d as datetime) as procedure_end_datetime
+    ,'ADMINISTRATION_RECORD' as procedure_type_concept_id
+    ,cast(null as string) as modifier_concept_id
+    ,1 as quantity
+    ,specialist as provider_id
+    ,o.inschrnr as visit_occurrence_id
+    ,cast(null as string) as visit_detail_id
+    ,concat("OK_", VER_CODE) as procedure_source_value
+    ,cast(null as string) as procedure_source_concept_id
+    ,cast(null as string) as modifier_source_value
+
+
+from hix.OK_OKINFO oi
+inner join hix.OPNAME_OPNAME o on o.PLANNR = oi.OPNAMENR
+inner join hix.OK_OKVER ver on ver.OPERATIENR = oi.OPERATIENR
+inner join hix.OK_VERCODES codes on codes.code = ver.ver_code
+where ver_code in ("0100000265", "0100000255", "0100000257", "0100000258", "0100000259", "30125", "1700000216", "1700000215") and not operatie_d is null

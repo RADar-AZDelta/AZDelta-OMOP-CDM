@@ -1,0 +1,10 @@
+select distinct concat("OK_", VER_CODE) as source_code 
+,OMSCHR as source_term
+,count(VER_CODE) as source_frequency
+
+from {{project_id}}.hix.OK_OKINFO oi
+inner join {{project_id}}.hix.OPNAME_OPNAME o on o.PLANNR = oi.OPNAMENR
+inner join {{project_id}}.hix.OK_OKVER ver on ver.OPERATIENR = oi.OPERATIENR
+inner join {{project_id}}.hix.OK_VERCODES codes on codes.code = ver.ver_code
+where ver_code in ("0100000265", "0100000255", "0100000257", "0100000258", "0100000259", "30125", "1700000216", "1700000215")
+group by VER_CODE, omschr
