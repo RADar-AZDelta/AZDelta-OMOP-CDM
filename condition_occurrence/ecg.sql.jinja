@@ -1,0 +1,27 @@
+SELECT
+    CONCAT('ECG_', ecg.hl7_file) AS condition_occurrence_id
+    ,ecg.patient_id AS person_id
+    ,CONCAT("HASH_",FARM_FINGERPRINT(ecg.diagnosis)) as condition_concept_id
+    ,date(ecg.observation_datetime) as condition_start_date
+    ,ecg.observation_datetime as condition_start_datetime
+    ,date(ecg.observation_datetime) as condition_end_date
+    ,ecg.observation_datetime as condition_end_datetime
+    ,'ECG_PROTOCOL' as condition_type_concept_id
+    ,'ECG_PROTOCOL_DIAGNOSIS' as condition_status_concept_id
+    ,cast(null as string) as stop_reason
+    ,cast(null as string) as provider_id
+    ,array_agg(vs.x ignore nulls order by vs.x asc)[safe_offset(0)] as visit_occurrence_id
+    ,cast(null as string) as visit_detail_id
+    ,ecg.diagnosis as condition_source_value
+    ,cast(null as string) as condition_source_concept_id
+    ,cast(null as string) as condition_status_source_value
+from `{{project_id}}.ecg.ecg_diagnosis` ecg
+left join `{{project_id}}.{{dataset_id_work}}.person_id_swap` p
+on ecg.patient_id = p.x
+left join `{{project_id}}.{{dataset_id_omop}}.visit_occurrence` v
+on date(ecg.observation_datetime) >= v.visit_start_date 
+    and date(ecg.observation_datetime) <= v.visit_end_date
+    and p.y = v.person_id
+left join `{{project_id}}.{{dataset_id_work}}.visit_occurrence_id_swap` vs
+on v.visit_occurrence_ID = vs.y
+group by ecg.hl7_file, ecg.patient_id, ecg.diagnosis, ecg.observation_datetime

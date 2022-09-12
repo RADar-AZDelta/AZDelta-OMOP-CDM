@@ -1,0 +1,73 @@
+WITH
+  cte AS (
+  SELECT
+    DISTINCT CONCAT("HASH_",FARM_FINGERPRINT(ecg.diagnosis)) AS sourceCode,
+    REGEXP_REPLACE(ecg.diagnosis,'(\n|\r|\t)+','_') AS sourceName,
+    COUNT(*) AS sourceFrequency,
+    COALESCE(muse.conceptId,0) AS conceptId,
+    COALESCE(muse.conceptName, 'Unmapped') AS conceptName,
+  FROM
+    `{{project_id}}.ecg.ecg_diagnosis` ecg
+  CROSS JOIN
+    UNNEST(ecg.codes.list) c
+  LEFT JOIN
+    `{{project_id}}.ecg.muse_codes_usagi` muse
+  ON
+    c.item = muse.sourceCode
+  GROUP BY
+    sourceCode,
+    sourceName,
+    conceptId,
+    conceptName),
+  cte_mapped AS (
+  SELECT
+    *
+  FROM
+    cte
+  WHERE
+    conceptId <> 0 ),
+  cte_unmapped AS (
+  SELECT
+    *
+  FROM
+    cte
+  WHERE
+    conceptId = 0
+    AND sourceCode NOT IN (
+    SELECT
+      sourceCode
+    FROM
+      cte_mapped) ),
+  cte_all AS (
+  SELECT
+    *
+  FROM
+    cte_mapped
+  UNION DISTINCT
+  SELECT
+    *
+  FROM
+    cte_unmapped )
+SELECT
+  DISTINCT sourceCode,
+  sourceName,
+  sourceFrequency,
+  CAST(NULL AS string) AS sourceAutoAssignedConceptIds,
+  1 AS matchScore,
+  "UNCHECKED" AS mappingStatus,
+  "UNREVIEWED" AS equivalence,
+  'etl' AS statusSetBy,
+  UNIX_MILLIS(CURRENT_TIMESTAMP()) AS statusSetOn,
+  COALESCE(conceptId,0) AS conceptId,
+  COALESCE(conceptName, 'Unmapped') AS conceptName,
+  CAST(NULL AS string) domainId,
+  'MAPS_TO' AS mappingType,
+  '' AS comment,
+  'etl' AS createdBy,
+  UNIX_MILLIS(CURRENT_TIMESTAMP()) AS createdOn,
+  CAST(NULL AS string) AS assignedReviewer
+FROM
+  cte_all
+ORDER BY
+  sourceFrequency DESC,
+  sourceCode ASC
