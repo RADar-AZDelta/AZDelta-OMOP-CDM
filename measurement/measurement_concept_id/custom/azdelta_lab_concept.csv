@@ -2,7 +2,6 @@ concept_id,concept_name,domain_id,vocabulary_id,concept_class_id,standard_concep
 LABO_CS002255,Irregular antibodies [Presence] on Red Blood Cells,Measurement,AZDELTA,Lab Test,S,CS002255,2022-07-28,2099-12-31,
 LABO_BE002865,Measurement of glucose at start of glucose challenge for glucose tolerance test,Measurement,AZDELTA,Lab Test,S,BE002865,2022-07-28,2099-12-31,
 LABO_GD06,Measurement of glucose 6 hours after glucose challenge for glucose tolerance test,Measurement,AZDELTA,Lab Test,S,GD06,2022-07-28,2099-12-31,
-LABO_GD06,Measurement of glucose 6 hours after glucose challenge for glucose tolerance test,Measurement,AZDELTA,Lab Test,S,GD06,2022-07-28,2099-12-31,
 LABO_GD07,Measurement of glucose 7 hours after glucose challenge for glucose tolerance test,Measurement,AZDELTA,Lab Test,S,GD07,2022-07-28,2099-12-31,
 LABO_GD08,Measurement of glucose 8 hours after glucose challenge for glucose tolerance test,Measurement,AZDELTA,Lab Test,S,GD08,2022-07-28,2099-12-31,
 LABO_GD09,Measurement of glucose 9 hours after glucose challenge for glucose tolerance test,Measurement,AZDELTA,Lab Test,S,GD09,2022-07-28,2099-12-31,
