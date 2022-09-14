@@ -1,0 +1,43 @@
+with vragenlijsten_hix as (select vragenlijst.opslagid, lijstnaam.lijstnaam, vragen.stelling, keuzelijst.omschr, vragen.vraagid, antwoorden.patientnr, antwoorden.opslagid as antwoord_opslagid, antwoorden.antwoord
+from {{project_id}}.hix.VRLIJST_VROPSLG antwoorden
+    join {{project_id}}.hix.VRLIJST_LSTOPSLG  as vragenlijst on vragenlijst.OPSLAGID = antwoorden.BEANTWID
+  join {{project_id}}.hix.VRLIJST_LIJSTDEF  as lijstnaam on lijstnaam.LIJSTID = vragenlijst.LIJSTID
+  join  {{project_id}}.hix.VRLIJST_VRAGEN as vragen on vragen.VRAAGID = REALVRID
+    left outer join {{project_id}}.hix.VRLIJST_KEUZELST as keuzelijst on  keuzelijst.CODE = antwoorden.Antwoord
+    where lijstnaam.lijstnaam = 'Bestraling specifiek')
+
+,start as (select distinct patientnr, opslagid, case when stelling = 'Start datum 1ste fractie' then cast(format_date('%Y-%m-%d', parse_date('%d-%m-%Y',antwoord)) as date) 
+end as episode_start_date,
+case when stelling = 'Start datum 1ste fractie' then cast(concat(format_date('%Y-%m-%d', parse_date('%d-%m-%Y',antwoord)), ' 00:00:00') as datetime) 
+end as episode_start_datetime from vragenlijsten_hix
+where stelling = 'Start datum 1ste fractie' and not antwoord = '')
+,einde as (select distinct h.patientnr
+case when stelling = 'Datum' then cast(format_date('%Y-%m-%d', parse_date('%d-%m-%Y',antwoord)) as date) end as episode_date
+,case when stelling = 'Datum' then cast(concat(format_date('%Y-%m-%d', parse_date('%d-%m-%Y',antwoord)), ' 00:00:00') as datetime) end as episode_datetime,
+row_number() over (partition by h.patientnr order by cast(format_date('%Y-%m-%d', parse_date('%d-%m-%Y',antwoord)) as date) desc) as row_num
+from vragenlijsten_hix h inner join start s on s.patientnr = h.patientnr
+where stelling = 'Datum' and not antwoord = ''
+group by patientnr, stelling, opslagid, antwoord)
+
+
+
+select distinct 
+concat('BESTRALING_', s.patientnr, '_', s.episode_start_date) as episode_id
+,cast(s.patientnr as string) as person_id 
+,'RADIOTHERAPY' as episode_concept_id
+,s.episode_start_date as episode_start_date
+,s.episode_start_datetime as episode_start_datetime
+,max(e.episode_date) as episode_end_date
+,max(e.episode_datetime) as episode_end_datetime
+,0 as episode_parent_id
+,0 as episode_number
+,cast(null as string) as episode_object_concept_id 
+,'ADMINISTRATION_RECORD' as episode_type_concept_id
+,'RADIOTHERAPY' as episode_source_value
+,cast(null as string) as episode_source_concept_id
+
+from start s inner join (select * from einde where row_num = 1) e 
+on e.patientnr = s.patientnr and e.opslagid = s.opslagid
+group by s.patientnr, s.episode_start_date, s.episode_start_datetime, e.episode_date, e.episode_datetime
+
+order by s.patientnr

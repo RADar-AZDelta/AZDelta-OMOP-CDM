@@ -1,0 +1,9 @@
+sourceCode,sourceName,sourceFrequency,sourceAutoAssignedConceptIds,matchScore,mappingStatus,equivalence,statusSetBy,statusSetOn,conceptId,conceptName,domainId,mappingType,comment,createdBy,createdOn,assignedReviewer
+OK_0100000255,VATS lobectomie,142,,0.62,APPROVED,EQUAL,Louise,1661432817939,764458,Thoracoscopic surgical lobectomy using video-assisted guidance,Procedure,MAPS_TO,,Louise,1661432811866,
+OK_1700000216,VATS lobectomie,4,,0.62,APPROVED,EQUAL,Louise,1661432817939,764458,Thoracoscopic surgical lobectomy using video-assisted guidance,Procedure,MAPS_TO,,Louise,1661432811866,
+OK_0100000257,Thoracotomie voor lobectomie,12,,0.43,APPROVED,EQUAL,Louise,1661433425675,4070879,Lobectomy of lung,Procedure,MAPS_TO,,Louise,1661433422747,
+OK_30125,VATS - LOBECTOMIE MET KLIEREN,15,,0.42,FLAGGED,EQUAL,Louise,1661433735079,764458,Thoracoscopic surgical lobectomy using video-assisted guidance,Procedure,MAPS_TO,"met klieren, custom concept?",Louise,1661433732855,
+OK_0100000259,Thoracotomie voor pneumectomie,2,,0.45,APPROVED,EQUAL,Louise,1661433711270,4172438,Total pneumonectomy,Procedure,MAPS_TO,,Louise,1661433558358,
+OK_0100000258,Thoracotomie voor sleeve lobectomie,3,,0.40,FLAGGED,EQUAL,Louise,1661433177232,4115402,Difficulty sleeping,Condition,MAPS_TO,Custom concept?,<auto>,1661432506238,
+OK_1700000215,VATS lobectomie met klierevidement,24,,0.42,FLAGGED,EQUAL,Louise,1661433401886,764458,Thoracoscopic surgical lobectomy using video-assisted guidance,Procedure,MAPS_TO,twee aparte concepten OF custom concept,Louise,1661433374517,
+OK_1700000215,VATS lobectomie met klierevidement,24,,0.42,FLAGGED,EQUAL,Louise,1661433401886,4185709,Excision of bronchial lymph nodes,Procedure,MAPS_TO,twee aparte concepten OF custom concept,Louise,1661433399256,

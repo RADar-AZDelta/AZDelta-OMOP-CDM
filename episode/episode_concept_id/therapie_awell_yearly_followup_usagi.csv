@@ -1,0 +1,5 @@
+sourceCode,sourceName,sourceFrequency,sourceAutoAssignedConceptIds,matchScore,mappingStatus,equivalence,statusSetBy,statusSetOn,conceptId,conceptName,domainId,mappingType,comment,createdBy,createdOn,assignedReviewer
+TARGETED,TARGETED,0,,,UNCHECKED,UNREVIEWED,Louise,1634807098503,0,Unmatched,Regimen,MAPS_TO,,Louise,1634807089839,
+CHEMO,CHEMO,0,,,UNCHECKED,UNREVIEWED,Louise,1634807098503,0,Unmatched,Regimen,MAPS_TO,,Louise,1634807089839,
+IMMUNO,IMMUNO,0,,,UNCHECKED,UNREVIEWED,Louise,1634807098503,0,Unmatched,Regimen,MAPS_TO,,Louise,1634807089839,
+

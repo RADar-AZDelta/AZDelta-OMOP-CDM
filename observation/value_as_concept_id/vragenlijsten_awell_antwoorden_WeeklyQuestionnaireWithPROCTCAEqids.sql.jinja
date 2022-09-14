@@ -1,0 +1,34 @@
+with awell_vragenlijsten as (select distinct 
+	fq.form_id
+	,fq.question_id
+	,fq.label
+	,fq.label_en
+	,fq.sub_question_id
+	,fq.sub_label
+	,fq.sub_label_en
+	,fr.response_label_en as structured_answer_en
+	,fr.response_label_nl as structured_answer_nl
+	,IF(fr.response_label_nl is not null, r.response_value, null) as structured_answer_code
+	,IF(fr.response_label_nl is null, r.response_value, null) as free_answer
+	,u.patient_code
+	,u.doctor_id
+	,r.submission_date
+	,r.step_id
+	,r.episode_name
+	
+from {{project_id}}.awell.form_questions fq
+inner join {{project_id}}.awell.responses r on fq.form_id = r.form_id 
+	and fq.question_id = r.question_id 
+	and ((fq.sub_question_id is null and r.sub_question_id is null) or (fq.sub_question_id = r.sub_question_id))
+left outer join {{project_id}}.awell.form_responses fr on fr.form_id = fq.form_id 
+	and fr.question_id = fq.question_id
+	and fr.response_value = r.response_value
+inner join {{project_id}}.awell.users u on u.user_id = r.user_id
+where fq.form_id = 'azdelta_lung_cancer_weekly_questionnaire_with_protcae_question_ids'
+order by fq.form_id, fq.question_id, fq.sub_question_id, structured_answer_nl, free_answer)
+
+SELECT distinct concat('AWELL_PR_', question_id, '_', coalesce(replace(structured_answer_nl, ' ', '_'), free_answer)) as sourceCode, coalesce(structured_answer_nl, free_answer) as sourceName, count(*) as sourceFrequency, label as AdditionalInformation
+FROM awell_vragenlijsten
+where  label not in ('Lijst hieronder uw vragen of opmerkingen op.', 'Wat is uw huidig gewicht in kg?', 'Bij eventuele klachten zal het zorgteam u contacteren. Indien u dit <u>niet wenst</u>, gelieve dit aan te geven') 
+group by sourceCode, sourceName, AdditionalInformation
+order by sourceCode

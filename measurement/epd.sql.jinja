@@ -23,7 +23,7 @@ SELECT
     ,cast(null as string) as unit_source_value
     ,cast(null as string) as unit_source_concept_id
     ,cast(null as string) as value_source_value 
-    ,cast(null as int) as measurement_event_id
+    ,cast(null as string) as measurement_event_id
     ,cast(null as string) as meas_event_field_concept_id
 FROM `{{project_id}}.{{dataset_id_raw}}.DOSSIER_EPDDIAG` e
 LEFT JOIN `{{project_id}}.{{dataset_id_raw}}.CODELYST_CODEOMS` cc 

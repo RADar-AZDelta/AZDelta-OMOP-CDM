@@ -1,0 +1,42 @@
+with vragenlijsten_hix as (select vragenlijst.opslagid, lijstnaam.lijstnaam, vragen.stelling, keuzelijst.omschr, vragen.vraagid, antwoorden.patientnr, antwoorden.opslagid as antwoord_opslagid
+, antwoorden.antwoord, keuzelijst.code,vragenlijst.datum, vragenlijst.tijd, vragen.korteoms
+from {{project_id}}.hix.VRLIJST_VROPSLG antwoorden
+    join {{project_id}}.hix.VRLIJST_LSTOPSLG  as vragenlijst on vragenlijst.OPSLAGID = antwoorden.BEANTWID
+  join {{project_id}}.hix.VRLIJST_LIJSTDEF  as lijstnaam on lijstnaam.LIJSTID = vragenlijst.LIJSTID
+  join  {{project_id}}.hix.VRLIJST_VRAGEN as vragen on vragen.VRAAGID = REALVRID
+    left outer join   {{project_id}}.hix.VRLIJST_KEUZELST as keuzelijst on  keuzelijst.CODE = antwoorden.Antwoord
+    where lijstnaam.lijstnaam = 'Registratieformulier MOC') 
+,cte as (select distinct antwoord_opslagid, patientnr, stelling, antwoord, code, omschr, vraagid, datum, tijd, opslagid,  
+from vragenlijsten_hix where opslagid in (select opslagid from vragenlijsten_hix where
+lijstnaam = 'Registratieformulier MOC' and stelling = 'Nieuw/follow-up registratieformulier' and omschr = 'nieuw'))
+,cte2 as (select distinct patientnr, opslagid, antwoord, safe_cast(format_date('%Y-%m-%d', parse_date('%d-%m-%Y',antwoord)) as date) as observation_date
+    ,safe_cast(concat(format_date('%Y-%m-%d', parse_date('%d-%m-%Y', antwoord)), ' 00:00:00') as datetime) as observation_datetime
+from  vragenlijsten_hix where lijstnaam = 'Registratieformulier MOC' and stelling = 'Incidentiedatum' and not antwoord = '')
+
+select 
+concat('MOC_', antwoord_opslagid, '_', cte.patientnr) as observation_id
+,cte.patientnr as person_id
+,concat('HIXVRAGENLIJSTEN_', code, '_', vraagid) as observation_concept_id
+,observation_date
+,observation_datetime
+,'ADMINISTRATION_RECORD' as observation_type_concept_id 
+,cast(null as float64) as value_as_number
+,cast(null as string) as value_as_string
+,cast(null as string) as value_as_concept_id
+,cast(null as string) as qualifier_concept_id
+,cast(null as string) as unit_concept_id
+,cast(null as string) as provider_id
+,cast(null as string) as visit_occurrence_id
+,cast(null as string) as visit_detail_id
+,concat('HIXVRAGENLIJSTEN_', code, '_', vraagid) as observation_source_value
+,cast(null as string) as observation_source_concept_id
+,cast(null as string) as unit_source_value
+,cast(null as string) as qualifier_source_value
+,concat('MOC_', cte.opslagid, '_', cte.patientnr) as observation_event_id
+,'OBSERVATION_CONCEPT_ID' as obs_event_field_concept_id
+
+
+from cte
+left join cte2 on cte2.opslagid = cte.opslagid
+
+where vraagid in ('0000010445', 'ZH00001638') and not cte.antwoord = ''
