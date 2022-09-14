@@ -1,4 +1,4 @@
-select concat('OK_', oi.operatienr) as procedure_occurrence_id
+select distinct concat('OK_', oi.operatienr) as procedure_occurrence_id
 	,patientnr as person_id
     ,concat("OK_", VER_CODE) as procedure_concept_id
     ,cast(operatie_d as date) as procedure_date
@@ -14,10 +14,8 @@ select concat('OK_', oi.operatienr) as procedure_occurrence_id
     ,concat("OK_", VER_CODE) as procedure_source_value
     ,cast(null as string) as procedure_source_concept_id
     ,cast(null as string) as modifier_source_value
-
-
-from hix.OK_OKINFO oi
-inner join hix.OPNAME_OPNAME o on o.PLANNR = oi.OPNAMENR
-inner join hix.OK_OKVER ver on ver.OPERATIENR = oi.OPERATIENR
-inner join hix.OK_VERCODES codes on codes.code = ver.ver_code
+from {{project_id}}.hix.OK_OKINFO oi
+inner join {{project_id}}.hix.OPNAME_OPNAME o on o.PLANNR = oi.OPNAMENR
+inner join {{project_id}}.hix.OK_OKVER ver on ver.OPERATIENR = oi.OPERATIENR
+inner join {{project_id}}.hix.OK_VERCODES codes on codes.code = ver.ver_code
 where ver_code in ("0100000265", "0100000255", "0100000257", "0100000258", "0100000259", "30125", "1700000216", "1700000215") and not operatie_d is null
