@@ -35,15 +35,15 @@ select distinct
     ,cast(null as string) as visit_occurrence_id
     ,cast(null as string) as visit_detail_id
     ,concat('LABO_',uitslag.BEPCODE) as measurement_source_value
-    ,0 as measurement_source_concept_id
-    ,cast(omschrijving.eenheid as s-tring) as unit_source_value
-    ,0 as unit_source_concept_id
+    ,cast(null as string) as measurement_source_concept_id
+    ,cast(omschrijving.eenheid as string) as unit_source_value
+    ,cast(null as string) as unit_source_concept_id
     ,cast(uitslag.uitslag as string) as value_source_value 
-    ,cast(null as int) as measurement_event_id
+    ,cast(null as string) as measurement_event_id
     ,cast(null as string) as meas_event_field_concept_id   
 from {{project_id}}.{{dataset_id_raw}}.LAB_L_AANVRG aanvraag
 inner join {{project_id}}.{{dataset_id_raw}}.LAB_HUIDIGE_UITSLAG uitslag on uitslag.BRONCODE = aanvraag.BRONCODE and uitslag.AANVRAAGNR = aanvraag.AANVRAAGNR
-inner join {{project_id}}.{{dataset_id_raw}}.LAB_L_B_OMS omschrijving on omschrijving.BEP = uitslaag.BEPCODE
+inner join {{project_id}}.{{dataset_id_raw}}.LAB_L_B_OMS omschrijving on omschrijving.BEP = uitslag.BEPCODE
 inner join {{project_id}}.{{dataset_id_raw}}.LAB_LABGROEP labgroep on omschrijving.GROEP = labgroep.GROEP
 inner join {{project_id}}.{{dataset_id_work}}.measurement__measurement_concept_id_usagi u on concat('LABO_', uitslag.BEPCODE) = u.sourceCode
 where u.mappingStatus = 'APPROVED' 

@@ -25,7 +25,7 @@ select
     ,cast(null as string) as unit_source_value
     ,cast(null as string) as qualifier_source_value
     ,kuur.omschrijv as value_source_value
-    ,cast(null as int) as observation_event_id
+    ,cast(null as string) as observation_event_id
     ,cast(null as string) as obs_event_field_concept_id 
 from {{project_id}}.{{dataset_id_raw}}.MEDICAT_KUUR kuur 
 inner join {{project_id}}.{{dataset_id_raw}}.MEDICAT_KUURDEEL deel on kuur.CODE = deel.KUURCD

@@ -35,7 +35,7 @@ select distinct
     ,cast(omschrijving.eenheid as string) as unit_source_value
     ,0 as unit_source_concept_id
     ,cast(uitslag.uitslag as string) as value_source_value 
-    ,cast(null as int) as measurement_event_id
+    ,cast(null as string) as measurement_event_id
     ,cast(null as string) as meas_event_field_concept_id   
 from {{project_id}}.{{dataset_id_raw}}.LAB_L_AANVRG aanvraag
 inner join {{project_id}}.{{dataset_id_raw}}.LAB_HUIDIGE_UITSLAG uitslag on uitslag.BRONCODE = aanvraag.BRONCODE and uitslag.AANVRAAGNR = aanvraag.AANVRAAGNR

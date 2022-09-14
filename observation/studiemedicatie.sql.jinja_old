@@ -25,7 +25,7 @@ select
     ,cast(null as string) as unit_source_value
     ,cast(null as string) as qualifier_source_value
     ,omschr as value_source_value
-    ,cast(null as int) as observation_event_id
+    ,cast(null as string) as observation_event_id
     ,cast(null as string) as obs_event_field_concept_id
 from {{project_id}}.{{dataset_id_raw}}.MEDICAT_RECDEEL rec
 left join {{project_id}}.{{dataset_id_raw}}.MEDICAT_DEELLST deel on rec.identif = deel.mocode

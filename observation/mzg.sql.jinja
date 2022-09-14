@@ -76,7 +76,7 @@ select
     ,cast(null as string) as unit_source_value
     ,cast(null as string) as qualifier_source_value
     ,cast(null as string) as value_source_value
-    ,cast(null as int) as observation_event_id
+    ,cast(null as string) as observation_event_id
     ,cast(null as string) as obs_event_field_concept_id
 from cte_mzg m
 inner join {{project_id}}.{{dataset_id_work}}.condition_occurrence__condition_concept_id_usagi i on concat('MZG_', m.icd_version, '_', (
