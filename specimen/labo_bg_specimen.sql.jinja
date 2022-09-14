@@ -1,0 +1,29 @@
+select distinct
+    concat('LABO_BG_', aanvraag.AANVRAAGNR) as specimen_id
+    ,aanvraag.patientnr as person_id
+    ,concat('LABO_',uitslag.BEPCODE,'_',regexp_replace(replace(replace(uitslag.UITSLAG,',',';'),'\\','/'),'(\n|\r|\t)+','_')) as specimen_concept_id
+    ,'ADMINISTRATION_RECORD' as specimen_type_concept_id
+    ,date(aanvraag.afdatum) as specimen_date
+    ,datetime(
+        DATE(aanvraag.afdatum), 
+        if(regexp_contains(trim(aanvraag.aftijd), r'^[0-9]{2}\:[0-9]{2}(?:\:[0-9]{2})?$')
+            ,time(
+                mod(coalesce(cast(regexp_extract(trim(aanvraag.aftijd), r'^([0-9]{2})\:[0-9]{2}(?:\:[0-9]{2})?$') as int),0),24)
+                ,mod(coalesce(cast(regexp_extract(trim(aanvraag.aftijd), r'^[0-9]{2}\:([0-9]{2})(?:\:[0-9]{2})?$') as int),0),60)
+                ,mod(coalesce(cast(regexp_extract(trim(aanvraag.aftijd), r'^[0-9]{2}\:[0-9]{2}(\:[0-9]{2})$') as int),0),60)
+            )
+            ,time(0,0,0)  
+        )
+    ) as specimen_datetime
+    ,cast(null as float64) as quantity
+    ,cast(null as string) as unit_concept_id
+    ,cast(null as string) as anatomic_site_concept_id
+    ,cast(null as string) as disease_status_concept_id 
+    ,aanvraag.AANVRAAGNR as specimen_source_id
+    ,uitslag.UITSLAG as specimen_source_value
+    ,cast(null as string) as unit_source_value
+    ,cast(null as string) as anatomic_site_source_value
+    ,cast(null as string) as disease_status_source_value
+from {{project_id}}.{{dataset_id_raw}}.LAB_L_AANVRG aanvraag
+inner join {{project_id}}.{{dataset_id_raw}}.LAB_HUIDIGE_UITSLAG uitslag on uitslag.BRONCODE = aanvraag.BRONCODE and uitslag.AANVRAAGNR = aanvraag.AANVRAAGNR
+where uitslag.bepcode = "00000655"  -- code for blood gas specimen type
