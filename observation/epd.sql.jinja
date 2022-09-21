@@ -1,7 +1,7 @@
 SELECT
     CONCAT('EPD_', e.DIAG_ID) AS observation_id	
     ,e.PATIENTNR AS person_id
-    ,i.sourceCode AS observation_concept_id
+    ,scm.source_code AS observation_concept_id
     ,DATE(COALESCE(e.DATUM, e.REGISTRATIONDATE)) AS observation_date
     ,DATETIME(
         DATE(COALESCE(e.DATUM, e.REGISTRATIONDATE)), 
@@ -20,8 +20,8 @@ SELECT
     ,e.ARTSCODE AS provider_id
     ,ARRAY_AGG(vs.x IGNORE NULLS ORDER BY vs.x ASC)[SAFE_OFFSET(0)] visit_occurrence_id
     ,cast(NULL AS STRING) AS visit_detail_id
-    ,i.sourceCode AS observation_source_value
-    ,i.sourceCode AS observation_source_concept_id
+    ,scm.source_code AS observation_source_value
+    ,scm.source_code AS observation_source_concept_id
     ,cast(NULL AS STRING) AS unit_source_value
     ,cast(NULL AS STRING) AS qualifier_source_value
     ,cast(null as string) as value_source_value
@@ -30,8 +30,10 @@ SELECT
 FROM `{{project_id}}.{{dataset_id_raw}}.DOSSIER_EPDDIAG` e
 LEFT JOIN `{{project_id}}.{{dataset_id_raw}}.CODELYST_CODEOMS` cc 
 ON e.CODE = cc.CODE
-INNER JOIN `{{project_id}}.{{dataset_id_work}}.condition_occurrence__condition_concept_id_usagi` i 
-ON concat('EPD_', e.CODE) = i.sourceCode
+INNER JOIN `{{project_id}}.{{dataset_id_omop}}.source_to_concept_map` scm
+ON concat('EPD_', e.CODE) = scm.source_code
+INNER JOIN `{{project_id}}.{{dataset_id_omop}}.concept` c
+ON scm.target_concept_id = c.concept_id
 LEFT JOIN `{{project_id}}.{{dataset_id_work}}.person_id_swap` p
 ON e.PATIENTNR = p.x
 LEFT JOIN `{{project_id}}.{{dataset_id_omop}}.visit_occurrence` v
@@ -44,5 +46,5 @@ WHERE e.CODE IS NOT NULL AND TRIM(e.CODE) <> ''
     AND cc.Omschrijving IS NOT NULL AND TRIM(cc.Omschrijving) <> ''
     AND e.DIAG_ID IS NOT NULL AND TRIM(e.DIAG_ID) <> ''
     AND e.PATIENTNR IS NOT NULL AND TRIM(e.PATIENTNR) <> ''
-    AND i.domainId not in ("Condition","Procedure","Drug","Measurement","Device")
-GROUP BY e.DIAG_ID, e.PATIENTNR, i.sourceCode, e.DATUM, e.REGISTRATIONDATE, e.STARTTIJD, e.EINDDATUM, e.EINDTIJD, e.ARTSCODE
+    AND c.domain_id not in ("Condition","Procedure","Drug","Measurement","Device")
+GROUP BY e.DIAG_ID, e.PATIENTNR, scm.source_code, e.DATUM, e.REGISTRATIONDATE, e.STARTTIJD, e.EINDDATUM, e.EINDTIJD, e.ARTSCODE

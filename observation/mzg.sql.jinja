@@ -56,7 +56,7 @@ with cte_mzg as (
 select 
     concat('MZG_', m.id) as observation_id
     ,m.pat_id as person_id
-	,trim(i.sourceCode) as observation_concept_id
+	,scm.source_code as observation_concept_id
     ,m.start_date as observation_date
     ,DATETIME(
        m.start_date, 
@@ -65,23 +65,30 @@ select
     ,'ADMINISTRATION_RECORD' as observation_type_concept_id
     ,cast(null as float64) as value_as_number
     ,cast(null as string) as value_as_string
-    ,trim(i.sourceCode) as value_as_concept_id -- MAPS TO VALUE
+    ,scm.source_code as value_as_concept_id -- MAPS TO VALUE
     ,cast(null as string) as qualifier_concept_id
     ,cast(null as string) as unit_concept_id
     ,m.dok_id as provider_id
     ,m.visit_id as visit_occurrence_id
     ,cast(null as string) as visit_detail_id
-    ,trim(i.sourceCode) as observation_source_value
-    ,trim(i.sourceCode) as observation_source_concept_id
+    ,scm.source_code as observation_source_value
+    ,scm.source_code as observation_source_concept_id
     ,cast(null as string) as unit_source_value
     ,cast(null as string) as qualifier_source_value
     ,cast(null as string) as value_source_value
     ,cast(null as string) as observation_event_id
     ,cast(null as string) as obs_event_field_concept_id
 from cte_mzg m
-inner join {{project_id}}.{{dataset_id_work}}.condition_occurrence__condition_concept_id_usagi i on concat('MZG_', m.icd_version, '_', (
-    case
-        when m.type in ('H', 'N') then 'D' --hoofd en neven diagnose --> diagnose
-        when m.type = 'I' then 'P' -- ingreep --> procedure
-    end), '_', trim(m.icd_code)) = trim(i.sourceCode)
-where i.domainId not in ("Condition","Procedure","Drug","Measurement","Device")
+inner join {{project_id}}.{{dataset_id_omop}}.source_to_concept_map scm
+on scm.source_code = concat('MZG_'
+							, m.icd_version
+							, '_'
+							, ( case
+									when m.type in ('H', 'N') then 'D' --hoofd en neven diagnose --> diagnose
+									when m.type = 'I' then 'P' -- ingreep --> procedure
+								end)
+							, '_'
+							, trim(m.icd_code))
+inner join {{project_id}}.{{dataset_id_omop}}.concept c
+on scm.target_concept_id = c.concept_id
+where c.domain_id not in ("Condition","Procedure","Drug","Measurement","Device")

@@ -1,3 +1,8 @@
+-- Build medication_usagi_pre file for specific omop dataset, starting from master usagi file
+-- Change ADD_INFO_... fields to ADD_INFO:... in csv after exporting
+-- Then process it to medication_usagi using medicatie_postprocess
+
+
 with medicatie as (
     select riz.RIZIVCODE, med.PRTYPECO, riz.VERVALLEN, riz.ISCNK, ATCCODE, med.omschr, rec.medicoms, med.code med_code, deel.code deel_code, rec.identif
     from {{project_id}}.{{dataset_id_raw}}.MEDICAT_RECDEEL rec

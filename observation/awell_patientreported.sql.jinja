@@ -1,4 +1,5 @@
-with awell_vragenlijsten as (select distinct 
+with awell_vragenlijsten as (
+	select distinct 
 	fq.form_id
 	,fq.question_id
 	,fq.label
@@ -16,19 +17,19 @@ with awell_vragenlijsten as (select distinct
 	,r.step_id
 	,r.episode_name
 	
-from {{project_id}}.awell.form_questions fq
-inner join {{project_id}}.awell.responses r on fq.form_id = r.form_id 
+from (select distinct form_id, question_id, label, label_en, sub_question_id, sub_label, sub_label_en
+	from {{project_id}}.awell.form_questions where form_id  in ('lung_cancer_baseline_patient_reported_form_azdelta', 
+'e0291233-050c-4501-a561-b90707906ce9', 
+'8109dad8-676e-490f-a14a-6469137153f6')) fq
+inner join (select distinct form_id, question_id, sub_question_id, response_value, user_id, submission_date, step_id, episode_name
+		from {{project_id}}.awell.responses) r on fq.form_id = r.form_id 
 	and fq.question_id = r.question_id 
 	and ((fq.sub_question_id is null and r.sub_question_id is null) or (fq.sub_question_id = r.sub_question_id))
-left outer join {{project_id}}.awell.form_responses fr on fr.form_id = fq.form_id 
+left outer join (select distinct form_id, question_id, response_value, response_label_nl, response_label_en from {{project_id}}.awell.form_responses) fr on fr.form_id = fq.form_id 
 	and fr.question_id = fq.question_id
 	and fr.response_value = r.response_value
-inner join {{project_id}}.awell.users u on u.user_id = r.user_id
-where fq.form_id  in ('lung_cancer_baseline_patient_reported_form_azdelta', 
-'e0291233-050c-4501-a561-b90707906ce9', 
-'8109dad8-676e-490f-a14a-6469137153f6')
-order by fq.form_id, fq.question_id, fq.sub_question_id, structured_answer_nl, free_answer)
-
+inner join (select distinct user_id, patient_code, doctor_id from {{project_id}}.awell.users) u on u.user_id = r.user_id
+)
 
 select distinct concat('AWELL_', form_id, '_', coalesce(sub_question_id, question_id), cast(submission_date as date), '_', patient_code) as observation_id
 ,cast(patient_code as string) as person_id
@@ -36,17 +37,33 @@ select distinct concat('AWELL_', form_id, '_', coalesce(sub_question_id, questio
 ,cast(submission_date as date) as observation_date
 ,cast(substring(cast(submission_date as string), 1,19) as datetime)  as observation_datetime
 ,'AWELL_OBSERVATION_TYPE' as observation_type_concept_id -- 'Patient filled survey - 32862'
-,case when label in ('Hoeveel sigaretten rookte u gemiddeld per dag over deze periode? (vul enkel een cijfer in)', 
-'Hoeveel jaar hebt u gerookt? (vul enkel een cijfer in)', 'Hoeveel jaar rookt u al? (vul enkel een cijfer in)', 'Hoeveel kg bent u ongeveer verloren? (vul enkel een cijfer in)',
-'Wat is uw huidige gewicht in kg? (vul enkel een cijfer in)') and REGEXP_CONTAINS(free_answer, '[0-9]') is false then null
-when label in ('Hoeveel sigaretten rookte u gemiddeld per dag over deze periode? (vul enkel een cijfer in)', 
-'Hoeveel jaar hebt u gerookt? (vul enkel een cijfer in)', 'Hoeveel jaar rookt u al? (vul enkel een cijfer in)', 'Hoeveel kg bent u ongeveer verloren? (vul enkel een cijfer in)',
-'Wat is uw huidige gewicht in kg? (vul enkel een cijfer in)') then cast(substring(replace(regexp_replace(trim(free_answer, ','), r'[^0-9,\.]', ''), ',', '.'), 1,5) as float64) 
-else cast(0 as float64) end as value_as_number
+,case 
+	when label in ('Hoeveel sigaretten rookte u gemiddeld per dag over deze periode? (vul enkel een cijfer in)', 
+				   'Hoeveel jaar hebt u gerookt? (vul enkel een cijfer in)', 
+				   'Hoeveel jaar rookt u al? (vul enkel een cijfer in)', 
+				   'Hoeveel kg bent u ongeveer verloren? (vul enkel een cijfer in)',
+				   'Wat is uw huidige gewicht in kg? (vul enkel een cijfer in)') 
+				   and REGEXP_CONTAINS(free_answer, '[0-9]') is false 
+		then null
+	when label in ('Hoeveel sigaretten rookte u gemiddeld per dag over deze periode? (vul enkel een cijfer in)', 
+				   'Hoeveel jaar hebt u gerookt? (vul enkel een cijfer in)', 
+				   'Hoeveel jaar rookt u al? (vul enkel een cijfer in)', 
+				   'Hoeveel kg bent u ongeveer verloren? (vul enkel een cijfer in)',
+					'Wat is uw huidige gewicht in kg? (vul enkel een cijfer in)') 
+		then cast(substring(replace(regexp_replace(trim(free_answer, ','), r'[^0-9,\.]', ''), ',', '.'), 1,5) as float64) 
+	else cast(0 as float64) 
+end as value_as_number
 ,cast(null as string) as value_as_string
-,cast(case when not label in ('Hoeveel sigaretten rookte u gemiddeld per dag over deze periode? (vul enkel een cijfer in)', 
-'Hoeveel jaar hebt u gerookt? (vul enkel een cijfer in)', 'Hoeveel jaar rookt u al? (vul enkel een cijfer in)', 'Hoeveel kg bent u ongeveer verloren? (vul enkel een cijfer in)',
-'Wat is uw huidige gewicht in kg? (vul enkel een cijfer in)') then concat('AWELL_', question_id, '_', coalesce(replace(structured_answer_nl, ' ', '_'), free_answer)) end as string) as value_as_concept_id
+,cast(
+	case 
+		when not label in ('Hoeveel sigaretten rookte u gemiddeld per dag over deze periode? (vul enkel een cijfer in)', 
+						   'Hoeveel jaar hebt u gerookt? (vul enkel een cijfer in)', 
+						   'Hoeveel jaar rookt u al? (vul enkel een cijfer in)', 
+						   'Hoeveel kg bent u ongeveer verloren? (vul enkel een cijfer in)',
+						   'Wat is uw huidige gewicht in kg? (vul enkel een cijfer in)') 
+			then concat('AWELL_', question_id, '_', coalesce(replace(structured_answer_nl, ' ', '_'), free_answer)) 
+	end 
+as string) as value_as_concept_id
 ,cast(null as string) as qualifier_concept_id
 ,cast(null as string) as unit_concept_id
 ,cast(null as string) as provider_id
@@ -56,6 +73,7 @@ else cast(0 as float64) end as value_as_number
 ,cast(null as string) as observation_source_concept_id
 ,cast(null as string) as unit_source_value
 ,cast(null as string) as qualifier_source_value
+,cast(null as string) as value_source_value
 ,cast(null as string) as observation_event_id
 ,cast(null as string) as obs_event_field_concept_id
 

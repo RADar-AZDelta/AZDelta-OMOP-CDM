@@ -51,14 +51,16 @@ select distinct
     ,cast(null as string) as condition_source_concept_id
     ,cast(null as string) as condition_status_source_value 
 from awell_vragenlijsten
-inner join {{project_id}}.{{dataset_id_work}}.condition_occurrence__condition_concept_id_usagi c 
-on concat('AWELL_', question_id, '_',sub_question_id) = c.sourceCode
-inner join {{project_id}}.{{dataset_id_work}}.condition_occurrence__condition_concept_id_usagi c2
+inner join {{project_id}}.{{dataset_id_omop}}.source_to_concept_map scm 
+on concat('AWELL_', question_id, '_',sub_question_id) = scm.source_code
+inner join {{project_id}}.{{dataset_id_omop}}.concept c 
+on c.concept_id = scm.target_concept_id
+inner join {{project_id}}.{{dataset_id_omop}}.source_to_concept_map scm2
 on concat(
     case when question_id = 'mutation_status' 
         then concat('AWELL_', question_id, '_', sub_question_id) 
         else concat('AWELL_', question_id)
         end
     , '_'
-    , coalesce(replace(structured_answer_nl, ' ', '_'), replace(free_answer, ' ', '_'))) = c2.sourceCode
-where c.domainId = 'Condition' and structured_answer_en = 'Yes' and not c.conceptId = 0
+    , coalesce(replace(structured_answer_nl, ' ', '_'), replace(free_answer, ' ', '_'))) = scm2.source_code
+where c.domain_id = 'Condition' and structured_answer_en = 'Yes'

@@ -1,7 +1,7 @@
 SELECT
     CONCAT('EPD_', e.DIAG_ID) as measurement_id	
     ,e.PATIENTNR as person_id
-    ,i.sourceCode as measurement_concept_id
+    ,stc.source_code as measurement_concept_id
     ,DATE(COALESCE(e.DATUM, e.REGISTRATIONDATE)) as measurement_date
     ,DATETIME(
         DATE(COALESCE(e.DATUM, e.REGISTRATIONDATE)), 
@@ -18,8 +18,8 @@ SELECT
     ,e.ARTSCODE as provider_id
     ,ARRAY_AGG(vs.x IGNORE NULLS ORDER BY vs.x ASC)[SAFE_OFFSET(0)] as visit_occurrence_id
     ,cast(null as string) as visit_detail_id
-    ,i.sourceCode as measurement_source_value
-    ,i.sourceCode as measurement_source_concept_id
+    ,stc.source_code as measurement_source_value
+    ,stc.source_code as measurement_source_concept_id
     ,cast(null as string) as unit_source_value
     ,cast(null as string) as unit_source_concept_id
     ,cast(null as string) as value_source_value 
@@ -28,8 +28,10 @@ SELECT
 FROM `{{project_id}}.{{dataset_id_raw}}.DOSSIER_EPDDIAG` e
 LEFT JOIN `{{project_id}}.{{dataset_id_raw}}.CODELYST_CODEOMS` cc 
 ON e.CODE = cc.CODE
-INNER JOIN `{{project_id}}.{{dataset_id_work}}.condition_occurrence__condition_concept_id_usagi` i 
-ON concat('EPD_', e.CODE) = i.sourceCode
+INNER JOIN `{{project_id}}.{{dataset_id_omop}}.source_to_concept_map` stc
+ON concat('EPD_', e.CODE) = stc.source_code
+INNER JOIN `{{project_id}}.{{dataset_id_omop}}.concept` c
+ON stc.target_concept_id = c.concept_id
 LEFT JOIN `{{project_id}}.{{dataset_id_work}}.person_id_swap` p
 ON e.PATIENTNR = p.x
 LEFT JOIN `{{project_id}}.{{dataset_id_omop}}.visit_occurrence` v
@@ -42,5 +44,5 @@ WHERE e.CODE IS NOT NULL AND TRIM(e.CODE) <> ''
     AND cc.Omschrijving IS NOT NULL AND TRIM(cc.Omschrijving) <> ''
     AND e.DIAG_ID IS NOT NULL AND TRIM(e.DIAG_ID) <> ''
     AND e.PATIENTNR IS NOT NULL AND TRIM(e.PATIENTNR) <> ''
-    AND i.domainId = 'Measurement'
-GROUP BY e.DIAG_ID, e.PATIENTNR, i.sourceCode, e.DATUM, e.REGISTRATIONDATE, e.STARTTIJD, e.EINDDATUM, e.EINDTIJD, e.ARTSCODE
+    AND c.domain_id = 'Measurement'
+GROUP BY e.DIAG_ID, e.PATIENTNR, stc.source_code, e.DATUM, e.REGISTRATIONDATE, e.STARTTIJD, e.EINDDATUM, e.EINDTIJD, e.ARTSCODE

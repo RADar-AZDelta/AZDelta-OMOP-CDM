@@ -27,3 +27,4 @@ select distinct
 from {{project_id}}.{{dataset_id_raw}}.LAB_L_AANVRG aanvraag
 inner join {{project_id}}.{{dataset_id_raw}}.LAB_HUIDIGE_UITSLAG uitslag on uitslag.BRONCODE = aanvraag.BRONCODE and uitslag.AANVRAAGNR = aanvraag.AANVRAAGNR
 where uitslag.bepcode = "00000655"  -- code for blood gas specimen type
+and not trim(lower(uitslag.uitslag)) in ("<memo>", "-volgt-")

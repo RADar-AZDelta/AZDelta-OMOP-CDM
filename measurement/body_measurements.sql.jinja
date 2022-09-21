@@ -24,16 +24,16 @@ select distinct
     ,array_agg(vs.x ignore nulls order by vs.x asc)[safe_offset(0)] as visit_occurrence_id
     ,cast(null as string) as visit_detail_id
     ,met.label as measurement_source_value
-    ,0 as measurement_source_concept_id
+    ,cast(null as string) as measurement_source_concept_id
     ,case met.label
         when "BMI" then "kilogram per square meter"
         when "Gewicht" then "kilogram"
         when "Lengte" then "centimeter"
         else cast(null as string)
         end as unit_source_value
-    ,0 as unit_source_concept_id
+    ,cast(null as string) as unit_source_concept_id
     ,met.Data1 as value_source_value 
-    ,cast(null as int) as measurement_event_id
+    ,cast(null as string) as measurement_event_id
     ,cast(null as string) as meas_event_field_concept_id    
 from {{project_id}}.{{dataset_id_raw}}.METINGEN_METING_FLAT met
 left join `{{project_id}}.{{dataset_id_work}}.person_id_swap` p

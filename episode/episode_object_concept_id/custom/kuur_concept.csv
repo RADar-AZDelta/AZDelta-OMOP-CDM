@@ -1,4 +1,4 @@
-CONCEPT_ID,CONCEPT_NAME,DOMAIN_ID,VOCABULARY_ID,CONCEPT_CLASS_ID,STANDARD_CONCEPT,CONCEPT_CODE,VALID_START_DATE,VALID_END_DATE,INVALID_REASON
+concept_id,concept_name,domain_id,vocabulary_id,concept_class_id,standard_concept,concept_code,valid_start_date,valid_end_date,invalid_reason
 0,"""Cisplatin, Etoposide, Atezolizumab""",Regimen,AZDELTA,Regimen,S,KUUR_0000001512,2021-12-20,2099-12-31,
 0,"""Cisplatin, Etoposide, Atezolizumab""",Regimen,AZDELTA,Regimen,S,KUUR_0000001513,2021-12-20,2099-12-31,
 0,Cisplatin + Emend,Regimen,AZDELTA,Regimen,S,KUUR_0000001346,2021-12-20,2099-12-31,

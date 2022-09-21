@@ -48,25 +48,15 @@ select
     ,cast(omschrijving.eenheid as string) as unit_source_value
     ,cast(null as string) as unit_source_concept_id
     ,cast(uitslag.uitslag as string) as value_source_value 
-<<<<<<< HEAD
-    ,cast(null as string) as measurement_event_id
-    ,cast(null as string) as meas_event_field_concept_id   
-from {{project_id}}.{{dataset_id_raw}}.LAB_L_AANVRG aanvraag
-inner join {{project_id}}.{{dataset_id_raw}}.LAB_HUIDIGE_UITSLAG uitslag on uitslag.BRONCODE = aanvraag.BRONCODE and uitslag.AANVRAAGNR = aanvraag.AANVRAAGNR
-inner join {{project_id}}.{{dataset_id_raw}}.LAB_L_B_OMS omschrijving on omschrijving.BEP = uitslag.BEPCODE
-inner join {{project_id}}.{{dataset_id_raw}}.LAB_LABGROEP labgroep on omschrijving.GROEP = labgroep.GROEP
-inner join {{project_id}}.{{dataset_id_work}}.measurement__measurement_concept_id_usagi u on concat('LABO_', uitslag.BEPCODE) = u.sourceCode
-where u.mappingStatus = 'APPROVED' 
-    and u.domainId = "Measurement"
-    and not lower(uitslag.uitslag) in ('#volgt', '#ini','volgt', 'ini', '<memo>', '-volgt-', '', '.', 'zie opm.')
-=======
     ,concat('LABO_BG_', aanvraag.AANVRAAGNR) as measurement_event_id
     ,"specimen" as meas_event_field_concept_id   
 from {{project_id}}.{{dataset_id_raw}}.LAB_L_AANVRG aanvraag
 inner join {{project_id}}.{{dataset_id_raw}}.LAB_HUIDIGE_UITSLAG uitslag on uitslag.BRONCODE = aanvraag.BRONCODE and uitslag.AANVRAAGNR = aanvraag.AANVRAAGNR
 inner join {{project_id}}.{{dataset_id_raw}}.LAB_L_B_OMS omschrijving on omschrijving.BEP = uitslag.BEPCODE
-inner join {{project_id}}.{{dataset_id_work}}.measurement__measurement_concept_id_usagi u 
-    on concat('LABO_', uitslag.BEPCODE) = u.sourceCode
+inner join {{project_id}}.{{dataset_id_omop}}.source_to_concept_map scm
+on scm.source_code = concat('LABO_', uitslag.BEPCODE)
+inner join {{project_id}}.{{dataset_id_omop}}.concept c
+on scm.target_concept_id = c.concept_id
 left join `{{project_id}}.{{dataset_id_work}}.person_id_swap` p
 on aanvraag.patientnr = p.x
 left join `{{project_id}}.{{dataset_id_omop}}.visit_occurrence` v
@@ -75,7 +65,7 @@ on date(aanvraag.afdatum) >= v.visit_start_date
     and p.y = v.person_id
 left join `{{project_id}}.{{dataset_id_work}}.visit_occurrence_id_swap` vs
 on v.visit_occurrence_ID = vs.y
-where u.domainId = "Measurement"
+where c.domain_id = 'Measurement'
     and not trim(lower(uitslag.uitslag)) in ('#volgt', '#ini','volgt', 'ini', '<memo>', '-volgt-', '', '.', 'zie opm.', '/', '//')
+    and date(aanvraag.afdatum) is not null
 group by aanvraag.aanvraagnr, aanvraag.patientnr, aanvraag.afdatum, aanvraag.aftijd, aanvraag.aanvrager, uitslag.bepcode, uitslag.uitslag, uitslag.grensval, omschrijving.eenheid
->>>>>>> e476899419df1d3f41013dab4b9d4445f4f4524a

@@ -8,7 +8,7 @@ WITH
     COALESCE(muse.conceptName, 'Unmapped') AS conceptName,
   FROM
     `{{project_id}}.ecg.ecg_diagnosis` ecg
-  CROSS JOIN
+  LEFT JOIN
     UNNEST(ecg.codes.list) c
   LEFT JOIN
     `{{project_id}}.ecg.muse_codes_usagi` muse
@@ -68,6 +68,8 @@ SELECT
   CAST(NULL AS string) AS assignedReviewer
 FROM
   cte_all
+WHERE
+  lower(sourceName) not like 'confirmed'
 ORDER BY
   sourceFrequency DESC,
   sourceCode ASC

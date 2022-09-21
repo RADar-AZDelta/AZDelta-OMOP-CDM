@@ -3,9 +3,9 @@ SELECT
     ,ecg.patient_id AS person_id
     ,CONCAT("HASH_",FARM_FINGERPRINT(ecg.diagnosis)) as condition_concept_id
     ,date(ecg.observation_datetime) as condition_start_date
-    ,ecg.observation_datetime as condition_start_datetime
+    ,datetime(ecg.observation_datetime) as condition_start_datetime
     ,date(ecg.observation_datetime) as condition_end_date
-    ,ecg.observation_datetime as condition_end_datetime
+    ,datetime(ecg.observation_datetime) as condition_end_datetime
     ,'ECG_PROTOCOL' as condition_type_concept_id
     ,'ECG_PROTOCOL_DIAGNOSIS' as condition_status_concept_id
     ,cast(null as string) as stop_reason

@@ -16,17 +16,18 @@ with awell_vragenlijsten as (select distinct
 	,r.step_id
 	,r.episode_name
 	
-from {{project_id}}.awell.form_questions fq
-inner join {{project_id}}.awell.responses r on fq.form_id = r.form_id 
+from (select distinct form_id, question_id, label, label_en, sub_question_id, sub_label, sub_label_en
+	from {{project_id}}.awell.form_questions 
+	where form_id = "lung_cancer_baseline_clinical_azdelta"
+	and not label in ('Date of pathological or clinical diagnosis', 'Histology')) fq
+inner join (select distinct form_id, question_id, sub_question_id, response_value, user_id, submission_date, step_id, episode_name from {{project_id}}.awell.responses) r on fq.form_id = r.form_id 
 	and fq.question_id = r.question_id 
 	and ((fq.sub_question_id is null and r.sub_question_id is null) or (fq.sub_question_id = r.sub_question_id))
-left outer join {{project_id}}.awell.form_responses fr on fr.form_id = fq.form_id 
+left outer join (select distinct form_id, question_id, response_value, response_label_nl, response_label_en from {{project_id}}.awell.form_responses) fr on fr.form_id = fq.form_id 
 	and fr.question_id = fq.question_id
 	and fr.response_value = r.response_value
-inner join {{project_id}}.awell.users u on u.user_id = r.user_id
-where fq.form_id = "lung_cancer_baseline_clinical_azdelta"
-order by fq.form_id, fq.question_id, fq.sub_question_id, structured_answer_nl, free_answer)
-
+inner join (select distinct user_id, patient_code, doctor_id from {{project_id}}.awell.users) u on u.user_id = r.user_id
+)
 
 select distinct concat('AWELL_', form_id, '_', coalesce(sub_question_id, question_id), cast(submission_date as date), '_', patient_code) as observation_id
 ,cast(patient_code as string) as person_id
@@ -36,8 +37,11 @@ select distinct concat('AWELL_', form_id, '_', coalesce(sub_question_id, questio
 ,'AWELL_OBSERVATION_TYPE' as observation_type_concept_id -- 'Patient filled survey - 32862'
 ,cast(null as float64) as value_as_number
 ,cast(null as string) as value_as_string
-,case when question_id = 'mutation_status' then concat('AWELL_',question_id, '_',sub_question_id, '_', coalesce(replace(structured_answer_nl, ' ', '_'), replace(free_answer, ' ', '_')))
-else concat('AWELL_',question_id, '_', coalesce(replace(structured_answer_nl, ' ', '_'), replace(free_answer, ' ', '_'))) end as value_as_concept_id
+,case 
+	when question_id = 'mutation_status' 
+		then concat('AWELL_',question_id, '_',sub_question_id, '_', coalesce(replace(structured_answer_nl, ' ', '_'), replace(free_answer, ' ', '_')))
+	else concat('AWELL_',question_id, '_', coalesce(replace(structured_answer_nl, ' ', '_'), replace(free_answer, ' ', '_'))) 
+end as value_as_concept_id
 ,cast(null as string) as qualifier_concept_id
 ,cast(null as string) as unit_concept_id
 ,cast(null as string) as provider_id
@@ -47,12 +51,16 @@ else concat('AWELL_',question_id, '_', coalesce(replace(structured_answer_nl, ' 
 ,cast(null as string) as observation_source_concept_id
 ,cast(null as string) as unit_source_value
 ,cast(null as string) as qualifier_source_value
+,cast(null as string) as value_source_value
 ,cast(null as string) as observation_event_id
 ,cast(null as string) as obs_event_field_concept_id
 
 
 from awell_vragenlijsten
-inner join {{project_id}}.{{dataset_id_work}}.CONDITION_OCCURRENCE__condition_concept_id_usagi u 
-on u.sourceCode = concat('AWELL_',question_id, '_', coalesce(replace(structured_answer_nl, ' ', '_'), replace(free_answer, ' ', '_')))
-where (not label in ('Date of pathological or clinical diagnosis', 'Histology')) and u.domainId = 'Observation'
+inner join {{project_id}}.{{dataset_id_omop}}.source_to_concept_map scm
+on scm.source_code = concat('AWELL_',question_id, '_', coalesce(replace(structured_answer_nl, ' ', '_'), replace(free_answer, ' ', '_')))
+inner join (select concept_id 
+	from {{project_id}}.{{dataset_id_omop}}.concept 
+	where domain_id not in ("Condition","Procedure","Drug","Measurement","Device")) c
+on scm.target_concept_id = c.concept_id
 

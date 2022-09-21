@@ -1,23 +1,26 @@
-with vragenlijsten_hix as (select vragenlijst.opslagid, lijstnaam.lijstnaam, vragen.stelling, keuzelijst.omschr, vragen.vraagid, antwoorden.patientnr, antwoorden.opslagid as antwoord_opslagid
-, antwoorden.antwoord, keuzelijst.code,vragenlijst.datum, vragenlijst.tijd, vragen.korteoms
-from {{project_id}}.hix.VRLIJST_VROPSLG antwoorden
+with vragenlijsten_hix as (
+    select vragenlijst.opslagid, lijstnaam.lijstnaam, vragen.stelling, keuzelijst.omschr, vragen.vraagid, antwoorden.patientnr, antwoorden.opslagid as antwoord_opslagid
+        , antwoorden.antwoord, keuzelijst.code,vragenlijst.datum, vragenlijst.tijd, vragen.korteoms
+    from {{project_id}}.hix.VRLIJST_VROPSLG antwoorden
     join {{project_id}}.hix.VRLIJST_LSTOPSLG  as vragenlijst on vragenlijst.OPSLAGID = antwoorden.BEANTWID
-  join {{project_id}}.hix.VRLIJST_LIJSTDEF  as lijstnaam on lijstnaam.LIJSTID = vragenlijst.LIJSTID
-  join  {{project_id}}.hix.VRLIJST_VRAGEN as vragen on vragen.VRAAGID = REALVRID
-    left outer join   {{project_id}}.hix.VRLIJST_KEUZELST as keuzelijst on  keuzelijst.CODE = antwoorden.Antwoord
-    where lijstnaam.lijstnaam = 'Registratieformulier MOC')
-
-,cte as (select distinct patientnr, opslagid, vraagid, antwoord_opslagid, stelling, antwoord
-from vragenlijsten_hix where opslagid in (select opslagid from vragenlijsten_hix where
-stelling = 'Nieuw/follow-up registratieformulier' and omschr = 'nieuw') 
-and vraagid in ('0000002091', '0000002092', '0000002093', 'ZH00000203', 'ZH00000204', 'ZH00000206', 'ZH00000209', 'ZH00000211', 'ZH00000212') and not antwoord in ('', 'onbekend', '999'))
-
-,cte2 as (select distinct patientnr, opslagid, antwoord, safe_cast(format_date('%Y-%m-%d', parse_date('%d-%m-%Y',antwoord)) as date) as measurement_date
-    ,safe_cast(concat(format_date('%Y-%m-%d', parse_date('%d-%m-%Y', antwoord)), ' 00:00:00') as datetime) as measurement_datetime
-from  vragenlijsten_hix where stelling = 'Incidentiedatum' and not antwoord = '')
-
-
-
+    join {{project_id}}.hix.VRLIJST_LIJSTDEF  as lijstnaam on lijstnaam.LIJSTID = vragenlijst.LIJSTID
+    join  {{project_id}}.hix.VRLIJST_VRAGEN as vragen on vragen.VRAAGID = REALVRID
+    left outer join {{project_id}}.hix.VRLIJST_KEUZELST as keuzelijst on  keuzelijst.CODE = antwoorden.Antwoord
+    where lijstnaam.lijstnaam = 'Registratieformulier MOC'
+),cte as (
+    select distinct patientnr, opslagid, vraagid, antwoord_opslagid, stelling, antwoord
+    from vragenlijsten_hix 
+    where opslagid in (
+            select opslagid 
+            from vragenlijsten_hix 
+            where stelling = 'Nieuw/follow-up registratieformulier' and omschr = 'nieuw'
+        ) 
+        and vraagid in ('0000002091', '0000002092', '0000002093', 'ZH00000203', 'ZH00000204', 'ZH00000206', 'ZH00000209', 'ZH00000211', 'ZH00000212') and not antwoord in ('', 'onbekend', '999')
+),cte2 as (
+    select distinct patientnr, opslagid, antwoord, safe_cast(format_date('%Y-%m-%d', parse_date('%d-%m-%Y',antwoord)) as date) as measurement_date
+        ,safe_cast(concat(format_date('%Y-%m-%d', parse_date('%d-%m-%Y', antwoord)), ' 00:00:00') as datetime) as measurement_datetime
+    from  vragenlijsten_hix where stelling = 'Incidentiedatum' and not antwoord = ''
+)
 select distinct
     concat('MOC_', cte.antwoord_opslagid, '_', cte.patientnr) as measurement_id	
     ,cte.patientnr as person_id
@@ -41,10 +44,11 @@ select distinct
     ,concat('HIXVRAGENLIJSTEN_', cte.vraagid) as measurement_source_value
     ,cast(null as string) as measurement_source_concept_id
     ,cast(null as string) as unit_source_value
+    ,cast(null as string) as unit_source_concept_id
     ,cast(cte.antwoord as string) as value_source_value 
-
+    ,cast(null as string) as measurement_event_id
+    ,cast(null as string) as meas_event_field_concept_id
 from cte 
 inner join cte2 on cte2.opslagid = cte.opslagid 
-
-
+where measurement_date is not null
 order by measurement_id
