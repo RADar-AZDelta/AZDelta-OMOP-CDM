@@ -6,7 +6,7 @@ with cte_ward as (
         ,concat('CAMPUS_', p.REFID) as location_id	
         ,c.LOCATIONID as care_site_source_value
         ,c.SOURCELOCCODE as place_of_service_source_value
-        ,c.*
+        --,c.*
     FROM iconic-guard-317109.hix.CSZISLIB_LOCATION c
     inner join iconic-guard-317109.hix.CSZISLIB_LOCATION p on p.LOCATIONID = c.PARENTID
         and p.SOURCELOCCODE = 'HOSPITAL'
