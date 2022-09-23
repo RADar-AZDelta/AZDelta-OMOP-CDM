@@ -14,16 +14,24 @@ with vragenlijsten_hix as (
   from vragenlijsten_hix where opslagid in (
     select opslagid 
     from vragenlijsten_hix 
-    where lijstnaam = 'Registratieformulier MOC' and stelling = 'Nieuw/follow-up registratieformulier' and omschr = 'nieuw'
+    where stelling = 'Nieuw/follow-up registratieformulier' and omschr = 'nieuw'
   )
 ),cte2 as (
   select distinct patientnr, opslagid, antwoord, safe_cast(format_date('%Y-%m-%d', parse_date('%d-%m-%Y',antwoord)) as date) as observation_date
     ,safe_cast(concat(format_date('%Y-%m-%d', parse_date('%d-%m-%Y', antwoord)), ' 00:00:00') as datetime) as observation_datetime
   from vragenlijsten_hix 
-  where lijstnaam = 'Registratieformulier MOC' and stelling = 'Incidentiedatum' and not antwoord = ''
+  where stelling = 'Incidentiedatum' and not antwoord = ''
+),cte3 as (
+  select distinct antwoord_opslagid, opslagid,  
+  from vragenlijsten_hix 
+  where opslagid in (
+    select opslagid 
+    from vragenlijsten_hix 
+    where stelling = 'Nieuw/follow-up registratieformulier' and omschr = 'nieuw')
+    and vraagid in ('ZH00001637', 'ZH00001664')
 )
 select 
-concat('MOC_', antwoord_opslagid, '_', cte.patientnr) as observation_id
+concat('MOC_', cte.antwoord_opslagid, '_', cte.patientnr) as observation_id
 ,cte.patientnr as person_id
 ,concat('HIXVRAGENLIJSTEN_', code, '_', vraagid) as observation_concept_id
 ,observation_date
@@ -42,10 +50,20 @@ concat('MOC_', antwoord_opslagid, '_', cte.patientnr) as observation_id
 ,cast(null as string) as unit_source_value
 ,cast(null as string) as qualifier_source_value
 ,cast(null as string) as value_source_value
-,cast(null as string) as observation_event_id
-,cast(null as string) as obs_event_field_concept_id
+,if(
+      cte3.antwoord_opslagid is not null,
+      concat('MOC_', cte3.antwoord_opslagid, '_', cte.patientnr),
+      cast(null as string) 
+) as observation_event_id
+,if(
+    cte3.antwoord_opslagid is not null,
+    "observation",
+    cast(null as string) 
+) as obs_event_field_concept_id
 from cte
-left join cte2 
+inner join cte2 
 on cte2.opslagid = cte.opslagid
+left join cte3
+on cte3.opslagid = cte.opslagid and cte.vraagid not in ('ZH00001637', 'ZH00001664')
 where vraagid in ('0000010445', 'ZH00001638') and not cte.antwoord = ''
 and observation_date is not null
