@@ -1,7 +1,7 @@
 AZDelta-OMOP-CDM
 ========
 
-Holds the OMOP CDM folder structure containing the queries, Usagi CSV's and custom concept CSV's
+Holds the OMOP CDM folder structure containing the queries, Usagi CSV's and custom concept CSV's of the [AZ Delta hospital vzw](https://www.azdelta.be).
 
 
 License
