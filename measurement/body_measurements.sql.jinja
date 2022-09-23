@@ -1,3 +1,5 @@
+{# Copyright 2022 RADar-AZDelta #}
+{# SPDX-License-Identifier: gpl3+ #}
 select distinct
     concat("METINGEN_",upper(met.label),'_', AutoID) as measurement_id	
     ,cast(met.patientnr as string) as person_id

@@ -1,3 +1,5 @@
+{# Copyright 2022 RADar-AZDelta #}
+{# SPDX-License-Identifier: gpl3+ #}
 with cte_visit_detail as (
     select 'OPNAME_OPNMUT' as SOURCE, o.PATIENTNR as PAT_ID, o.INSCHRNR as VISIT_ID, o.PLANNR, om.INGDAT as START_DATE, om.INGTIJD as START_TIME, om.EINDDAT as END_DATE, om.EINDTIJD as END_TIME, o.LOCATIE as CAMPUS, om.AFDELING as WARD, om.KAMER as ROOM, cast(om.BEDNR as STRING) as BED, '' as BESTEMAFD, om.SPECIALISM, o.AANMELARTS as ADMITTING_DOCTOR, om.BEHANDELAA as PERFORMING_DOCTOR, om.MUTATIEID as SOURCEOBJID
     from {{project_id}}.{{dataset_id_raw}}.OPNAME_OPNMUT om

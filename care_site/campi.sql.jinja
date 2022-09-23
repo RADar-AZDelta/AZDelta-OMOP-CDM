@@ -1,3 +1,5 @@
+{# Copyright 2022 RADar-AZDelta #}
+{# SPDX-License-Identifier: gpl3+ #}
 SELECT 
     concat(c.code) as care_site_id
     ,IFNULL(IF(c.TEXTREGEL2 = '', null, c.TEXTREGEL2), c.LOCOMSCH) as care_site_name
