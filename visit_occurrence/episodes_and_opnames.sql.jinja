@@ -1,3 +1,5 @@
+{# Copyright 2022 RADar-AZDelta #}
+{# SPDX-License-Identifier: gpl3+ #}
 with cte_visit as (
     SELECT 
         ei.DBCNUMMER as visit_occurrence_id
@@ -28,7 +30,7 @@ with cte_visit as (
 
     union all 
 
-    SELECT 
+    SELECT --PRE HIX TIJDPERK
         oo.INSCHRNR as visit_occurrence_id
         ,oo.PATIENTNR as person_id
         ,ei.SOORTINSCH as visit_concept_id

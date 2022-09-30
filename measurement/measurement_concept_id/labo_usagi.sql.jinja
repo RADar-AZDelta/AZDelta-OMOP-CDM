@@ -1,3 +1,5 @@
+{# Copyright 2022 RADar-AZDelta #}
+{# SPDX-License-Identifier: gpl3+ #}
 WITH cte_loinc AS (
   SELECT DISTINCT lo.BEP
         ,ARRAY_AGG(le.EXTERNALCODE IGNORE NULLS ORDER BY ml.LOINC___NUMBER DESC)[SAFE_OFFSET(0)] EXTERNALCODE

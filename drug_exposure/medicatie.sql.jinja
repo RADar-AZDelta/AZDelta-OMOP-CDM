@@ -1,3 +1,5 @@
+{# Copyright 2022 RADar-AZDelta #}
+{# SPDX-License-Identifier: gpl3+ #}
 SELECT DISTINCT
     IF(deel.CODE IS NULL
         , CONCAT('MEDICATIE_', patientnr,'_', med.code, '_', identif)

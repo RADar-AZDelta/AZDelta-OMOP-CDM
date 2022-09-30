@@ -1,3 +1,5 @@
+{# Copyright 2022 RADar-AZDelta #}
+{# SPDX-License-Identifier: gpl3+ #}
 with cte_first_encounter as (
     select PATIENTNR, min(START_DATE) as START_DATE
     from (
