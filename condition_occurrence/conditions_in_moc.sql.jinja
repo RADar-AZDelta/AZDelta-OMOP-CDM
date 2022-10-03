@@ -46,6 +46,6 @@ select distinct
   ,cast(null as string) as condition_source_concept_id
   ,cast(null as string) as condition_status_source_value 
 from cte
-inner join cte2 on cte2.opslagid = cte.opslagid
+right join cte2 on cte2.opslagid = cte.opslagid
 left join cte3 on cte3.patientnr = cte2.patientnr
 order by cte.patientnr
