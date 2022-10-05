@@ -162,7 +162,7 @@ SELECT DISTINCT
     ,UNIX_MILLIS(CURRENT_TIMESTAMP()) as createdOn
     ,cast(null AS string) AS assignedReviewer
 FROM omop_mapped o
-LEFT JOIN `iconic-guard-317109.{{dataset_id_usagi}}.mzg_usagi` master
+LEFT JOIN `{{project_id}}.{{dataset_id_usagi}}.mzg_usagi` master
 ON o.sourceCode = master.sourceCode
     AND (o.sourceName = master.sourceName OR (o.sourceName IS NULL AND master.sourceName IS NULL))
     AND master.mappingStatus = "APPROVED"

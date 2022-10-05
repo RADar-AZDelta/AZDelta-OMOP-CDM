@@ -6,10 +6,10 @@
 
 with medicatie as (
     select riz.RIZIVCODE, med.PRTYPECO, riz.VERVALLEN, riz.ISCNK, ATCCODE, med.omschr, rec.medicoms, med.code med_code, deel.code deel_code, rec.identif
-    from iconic-guard-317109.{{dataset_id_raw}}.MEDICAT_RECDEEL rec
-    left join iconic-guard-317109.{{dataset_id_raw}}.MEDICAT_DEELLST deel on rec.identif = deel.mocode
-    left join iconic-guard-317109.{{dataset_id_raw}}.MEDICAT_MEDICIJN med on med.code = rec.medcd
-    left join iconic-guard-317109.{{dataset_id_raw}}.ZINDEX_004RIZIV riz on med.IMPCD = riz.ATKODE and riz.ISCNK and  not riz.VERVALLEN and med.PRTYPECO = 'A'
+    from {{project_id}}.{{dataset_id_raw}}.MEDICAT_RECDEEL rec
+    left join {{project_id}}.{{dataset_id_raw}}.MEDICAT_DEELLST deel on rec.identif = deel.mocode
+    left join {{project_id}}.{{dataset_id_raw}}.MEDICAT_MEDICIJN med on med.code = rec.medcd
+    left join {{project_id}}.{{dataset_id_raw}}.ZINDEX_004RIZIV riz on med.IMPCD = riz.ATKODE and riz.ISCNK and  not riz.VERVALLEN and med.PRTYPECO = 'A'
     where rec.geaccordee and ((rec.vrschrtyp in ('K') and deel.toegediend) --ziekenhuis en toegediend
     or rec.vrschrtyp in ('R', 'P', 'V')) --rusthuis/thuis/vaccin
 ), cnk as (
@@ -23,15 +23,15 @@ with medicatie as (
         FROM medicatie
         WHERE PRTYPECO = 'A' AND NOT VERVALLEN AND ISCNK
     ) m
-    LEFT JOIN `iconic-guard-317109.{{dataset_id_omop}}.concept` c_cnk 
+    LEFT JOIN `{{project_id}}.{{dataset_id_omop}}.concept` c_cnk 
     ON c_cnk.standard_concept <> 'S'
         AND c_cnk.vocabulary_id = "GGR"
         AND c_cnk.domain_id = "Drug"
         AND m.cnk_code = c_cnk.concept_code
-    LEFT JOIN `iconic-guard-317109.{{dataset_id_omop}}.concept_relationship` r 
+    LEFT JOIN `{{project_id}}.{{dataset_id_omop}}.concept_relationship` r 
     ON r.relationship_id = "Maps to"
         AND c_cnk.concept_id = r.concept_id_1
-    LEFT JOIN `iconic-guard-317109.{{dataset_id_omop}}.concept` c_s 
+    LEFT JOIN `{{project_id}}.{{dataset_id_omop}}.concept` c_s 
     ON c_s.standard_concept = 'S'
         AND c_s.domain_id = "Drug"
         AND r.concept_id_2 = c_s.concept_id
@@ -45,15 +45,15 @@ with medicatie as (
         SELECT DISTINCT ATCCODE atc_code
         FROM medicatie
      ) m
-    LEFT JOIN `iconic-guard-317109.{{dataset_id_omop}}.concept` c_atc 
+    LEFT JOIN `{{project_id}}.{{dataset_id_omop}}.concept` c_atc 
     ON c_atc.standard_concept <> 'S'
         AND c_atc.vocabulary_id = "ATC"
         AND c_atc.domain_id = "Drug"
         AND m.atc_code = c_atc.concept_code
-    LEFT JOIN `iconic-guard-317109.{{dataset_id_omop}}.concept_relationship` r 
+    LEFT JOIN `{{project_id}}.{{dataset_id_omop}}.concept_relationship` r 
     ON r.relationship_id IN ("ATC - RxNorm", "Maps to")
         AND c_atc.concept_id = r.concept_id_1
-    LEFT JOIN `iconic-guard-317109.{{dataset_id_omop}}.concept` c_s 
+    LEFT JOIN `{{project_id}}.{{dataset_id_omop}}.concept` c_s 
     ON c_s.standard_concept = 'S'
         AND c_s.domain_id = "Drug"
         AND r.concept_id_2 = c_s.concept_id
@@ -141,7 +141,7 @@ ON m.cnk = cnk.cnk
     AND not m.VERVALLEN
     AND m.ISCNK
 LEFT JOIN atc ON m.atc = atc.atc
-LEFT JOIN `iconic-guard-317109.{{dataset_id_omop}}.concept` c 
+LEFT JOIN `{{project_id}}.{{dataset_id_omop}}.concept` c 
 ON atc.concept_id = c.concept_id
     AND c.standard_concept = 'S'
     AND c.domain_id = "Drug"

@@ -9,14 +9,59 @@ with cte_ward as (
         ,c.LOCATIONID as care_site_source_value
         ,c.SOURCELOCCODE as place_of_service_source_value
         --,c.*
-    FROM iconic-guard-317109.hix.CSZISLIB_LOCATION c
-    inner join iconic-guard-317109.hix.CSZISLIB_LOCATION p on p.LOCATIONID = c.PARENTID
+    FROM {{project_id}}.{{dataset_id_raw}}.CSZISLIB_LOCATION c
+    inner join {{project_id}}.{{dataset_id_raw}}.CSZISLIB_LOCATION p on p.LOCATIONID = c.PARENTID
         and p.SOURCELOCCODE = 'HOSPITAL'
     where c.SOURCELOCCODE = 'ADMWARD'
         and c.SHORTDESCR not in ('2176', '4970', '4971', '523A', '523B', '533A', '533B', '4940', '4950') --IZ
+        and c.REFCLASSID != 'OK_AFDELING'
+        and c.REFCLASSID != 'SEH_LOCATIE'
+), cte_iz as (
+    SELECT 
+        concat(p.REFID, '_', c.SHORTDESCR) as care_site_id
+        ,c.DESCRIPTION as care_site_name
+        ,'IZ' as place_of_service_concept_id
+        ,concat('CAMPUS_', p.REFID) as location_id	
+        ,c.LOCATIONID as care_site_source_value
+        ,'IZ' as place_of_service_source_value
+    FROM {{project_id}}.{{dataset_id_raw}}.CSZISLIB_LOCATION c
+    inner join {{project_id}}.{{dataset_id_raw}}.CSZISLIB_LOCATION p on p.LOCATIONID = c.PARENTID
+        and p.SOURCELOCCODE = 'HOSPITAL'
+    where c.SOURCELOCCODE = 'ADMWARD'
+        and c.SHORTDESCR in ('2176', '4970', '4971', '523A', '523B', '533A', '533B', '4940', '4950') --IZ
+), cte_ok as (
+    SELECT 
+        concat(p.REFID, '_', c.SHORTDESCR) as care_site_id
+        ,c.DESCRIPTION as care_site_name
+        ,c.REFCLASSID as place_of_service_concept_id
+        ,concat('CAMPUS_', p.REFID) as location_id	
+        ,c.LOCATIONID as care_site_source_value
+        ,c.REFCLASSID as place_of_service_source_value
+    FROM {{project_id}}.{{dataset_id_raw}}.CSZISLIB_LOCATION c
+    inner join {{project_id}}.{{dataset_id_raw}}.CSZISLIB_LOCATION p on p.LOCATIONID = c.PARENTID
+        and p.SOURCELOCCODE = 'HOSPITAL'
+    where c.REFCLASSID = 'OK_AFDELING'
+), cte_seh as (
+    SELECT 
+        concat(p.REFID, '_', c.SHORTDESCR) as care_site_id
+        ,c.DESCRIPTION as care_site_name
+        ,c.REFCLASSID as place_of_service_concept_id
+        ,concat('CAMPUS_', p.REFID) as location_id	
+        ,c.LOCATIONID as care_site_source_value
+        ,c.REFCLASSID as place_of_service_source_value
+    FROM {{project_id}}.{{dataset_id_raw}}.CSZISLIB_LOCATION c
+    inner join {{project_id}}.{{dataset_id_raw}}.CSZISLIB_LOCATION p on p.LOCATIONID = c.PARENTID
+        and p.SOURCELOCCODE = 'HOSPITAL'
+    where c.REFCLASSID = 'SEH_LOCATIE'
 ), cte_ward2 as ( --remove duplicates
-    select *, ROW_NUMBER() OVER (PARTITION BY care_site_id) as row_number 
+    select cte_ward.*, ROW_NUMBER() OVER (PARTITION BY cte_ward.care_site_id) as row_number 
     from cte_ward
+    left outer join cte_iz on cte_iz.care_site_id = cte_ward.care_site_id
+    left outer join cte_ok on cte_ok.care_site_id = cte_ward.care_site_id
+    left outer join cte_seh on cte_seh.care_site_id = cte_ward.care_site_id
+    where cte_iz.care_site_id is null 
+        and cte_ok.care_site_id is null
+        and cte_seh.care_site_id is null
 ), cte_ward3 as (
     select * except(row_number) 
     from cte_ward2
