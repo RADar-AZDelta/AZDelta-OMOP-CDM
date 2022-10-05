@@ -69,7 +69,7 @@ with awell_vragenlijsten as (
 	from awell_vragenlijsten 
 	where question_id like '%TXSTOPDATE')
 select distinct 
-concat('AWELL_', e1.form_id, '_', e1.question_id, '_', e1.patient_code) as episode_id
+concat('AWELL_', e1.form_id, '_', e1.question_id, '_', e1.patient_code,'_',episode_start_date) as episode_id
 ,cast(e1.patient_code as string) as person_id 
 ,case when (e1.question_id = 'RADIOTXSTARTDATE' or structured_answer_nl = 'EARLY_STAGE_LUNGCANCER_RADIOTHERAPIE') then 'RADIOTHERAPY'
 when e1.question_id = 'CHEMOTXSTARTDATE' then 'CHEMO'
