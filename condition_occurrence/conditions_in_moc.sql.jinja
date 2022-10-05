@@ -26,13 +26,13 @@ with
     vraagid in ('0000002082', '0000002083', '0000002084', '0000002085', '0000002086', '0000002087', '0000002088') and omschr = 'ja'
   )
 select distinct
-  case when not cte.patientnr in (select patientnr from cte3) then concat('MOC_', cte.antwoord_opslagid, '_', cte.patientnr) 
+  case when not cte2.patientnr in (select patientnr from cte3) then concat('MOC_', cte.antwoord_opslagid, '_', cte.patientnr) 
   else concat('MOC_', cte3.antwoord_opslagid, '_', cte3.patientnr) end as condition_occurrence_id
-  ,cte.patientnr as person_id
-  ,case when not cte.patientnr in (select patientnr from cte3) then concat('HIXVRAGENLIJSTEN_',cte.vraagid)
+  ,cte2.patientnr as person_id
+  ,case when not cte2.patientnr in (select patientnr from cte3) then concat('HIXVRAGENLIJSTEN_',cte.vraagid)
   else concat('HIXVRAGENLIJSTEN_',cte3.vraagid) end as condition_concept_id
-  ,cast(format_date('%Y-%m-%d', parse_date('%d-%m-%Y',antwoord)) as date) as condition_start_date
-  ,cast(concat(format_date('%Y-%m-%d', parse_date('%d-%m-%Y', antwoord)), ' 00:00:00') as datetime) as condition_start_datetime
+  ,safe_cast(format_date('%Y-%m-%d', parse_date('%d-%m-%Y',antwoord)) as date) as condition_start_date
+  ,safe_cast(concat(format_date('%Y-%m-%d', parse_date('%d-%m-%Y', antwoord)), ' 00:00:00') as datetime) as condition_start_datetime
   ,cast(null as date) as condition_end_date
   ,cast(null as datetime) as condition_end_datetime
   ,'ADMINISTRATION_RECORD' as condition_type_concept_id
@@ -41,11 +41,13 @@ select distinct
   ,cast(null as string) as provider_id
   ,cast(null as string) as visit_occurrence_id
   ,cast(null as string) as visit_detail_id
-  ,case when not cte.patientnr in (select patientnr from cte3) then concat('HIXVRAGENLIJSTEN_',cte.vraagid)
+  ,case when not cte2.patientnr in (select patientnr from cte3) then concat('HIXVRAGENLIJSTEN_',cte.vraagid)
   else concat('HIXVRAGENLIJSTEN_',cte3.vraagid) end as condition_source_value
   ,cast(null as string) as condition_source_concept_id
   ,cast(null as string) as condition_status_source_value 
 from cte
 right join cte2 on cte2.opslagid = cte.opslagid
 left join cte3 on cte3.patientnr = cte2.patientnr
-order by cte.patientnr
+where safe_cast(format_date('%Y-%m-%d', parse_date('%d-%m-%Y',antwoord)) as date) is not null
+and (case when not cte2.patientnr in (select patientnr from cte3) then concat('MOC_', cte.antwoord_opslagid, '_', cte.patientnr) 
+  else concat('MOC_', cte3.antwoord_opslagid, '_', cte3.patientnr) end) is not null
