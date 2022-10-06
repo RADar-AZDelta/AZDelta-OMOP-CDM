@@ -15,7 +15,7 @@ with vragenlijsten_hix as (
     and opslagid in (select opslagid from vragenlijsten_hix where omschr like 'C34.%')
 )
 select distinct
-    concat('MOC_', antwoord_opslagid, '_', l.patientnr) as measurement_id	
+    concat('MOC_', antwoord_opslagid, '_', l.patientnr, '_', measurement_datetime) as measurement_id
     ,l.patientnr as person_id
     ,concat('HIXVRAGENLIJSTEN_',vraagid) as measurement_concept_id
     ,measurement_date

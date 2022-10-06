@@ -33,7 +33,7 @@ with vragenlijsten_hix as (
         and vraagid in ('ZH00001637', 'ZH00001664')
 )
 select distinct
-    concat('MOC_', cte.antwoord_opslagid, '_', cte.patientnr) as measurement_id	
+    concat('MOC_', cte.antwoord_opslagid, '_', cte.patientnr, '_', measurement_datetime) as measurement_id	
     ,cte.patientnr as person_id
     ,concat('HIXVRAGENLIJSTEN_',cte.vraagid) as measurement_concept_id
     ,measurement_date
