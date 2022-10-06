@@ -1,6 +1,6 @@
 {# Copyright 2022 RADar-AZDelta #}
 {# SPDX-License-Identifier: gpl3+ #}
-select distinct concat('OK_', oi.operatienr) as procedure_occurrence_id
+select distinct concat('OK_', oi.operatienr, '_', ver.OKID) as procedure_occurrence_id
 	,patientnr as person_id
     ,concat("OK_", VER_CODE) as procedure_concept_id
     ,cast(operatie_d as date) as procedure_date
