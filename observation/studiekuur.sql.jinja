@@ -1,7 +1,7 @@
 {# Copyright 2022 RADar-AZDelta #}
 {# SPDX-License-Identifier: gpl3+ #}
 select 
-    concat('STUDIE_', kuur.code) as observation_id	
+    concat('STUDIE_', kuur.code, '_', CAST(deel.startdt as DATE), '_', deel.starttd) as observation_id
     ,kuur.patnum as person_id
     ,'HIX_STUDIEMEDICATIE' as observation_concept_id
     ,cast(deel.startdt as DATE) as observation_date
@@ -32,3 +32,4 @@ select
 from {{project_id}}.{{dataset_id_raw}}.MEDICAT_KUUR kuur 
 inner join {{project_id}}.{{dataset_id_raw}}.MEDICAT_KUURDEEL deel on kuur.CODE = deel.KUURCD
 where omschrijv like '%ST %'
+    and concat('STUDIE_', kuur.code, '_', CAST(deel.startdt as DATE), '_', deel.starttd) is not null

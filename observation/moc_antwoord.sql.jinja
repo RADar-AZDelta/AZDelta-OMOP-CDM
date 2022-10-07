@@ -31,7 +31,7 @@ with vragenlijsten_hix as (
     and vraagid in ('ZH00001637', 'ZH00001664')
 )
 select 
-concat('MOC_', cte.antwoord_opslagid, '_', cte.patientnr) as observation_id
+concat('MOC_', cte.antwoord_opslagid, '_', cte.patientnr, '_', cte2.observation_datetime) as observation_id
 ,cte.patientnr as person_id
 ,concat('HIXVRAGENLIJSTEN_', code, '_', vraagid) as observation_concept_id
 ,observation_date
@@ -67,3 +67,4 @@ left join cte3
 on cte3.opslagid = cte.opslagid and cte.vraagid not in ('ZH00001637', 'ZH00001664')
 where vraagid in ('0000010445', 'ZH00001638') and not cte.antwoord = ''
 and observation_date is not null
+and concat('MOC_', cte.antwoord_opslagid, '_', cte.patientnr, '_', cte2.observation_datetime) is not null

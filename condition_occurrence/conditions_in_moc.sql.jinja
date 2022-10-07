@@ -26,8 +26,8 @@ with
     vraagid in ('0000002082', '0000002083', '0000002084', '0000002085', '0000002086', '0000002087', '0000002088') and omschr = 'ja'
   )
 select distinct
-  case when not cte2.patientnr in (select patientnr from cte3) then concat('MOC_', cte.antwoord_opslagid, '_', cte.patientnr) 
-  else concat('MOC_', cte3.antwoord_opslagid, '_', cte3.patientnr) end as condition_occurrence_id
+  case when not cte2.patientnr in (select patientnr from cte3) then concat('MOC_', cte.antwoord_opslagid, '_', cte.patientnr, '_', antwoord) 
+  else concat('MOC_', cte3.antwoord_opslagid, '_', cte3.patientnr, '_', antwoord) end as condition_occurrence_id
   ,cte2.patientnr as person_id
   ,case when not cte2.patientnr in (select patientnr from cte3) then concat('HIXVRAGENLIJSTEN_',cte.vraagid)
   else concat('HIXVRAGENLIJSTEN_',cte3.vraagid) end as condition_concept_id

@@ -1,7 +1,7 @@
 {# Copyright 2022 RADar-AZDelta #}
 {# SPDX-License-Identifier: gpl3+ #}
 select 
-    concat('STUDIE_',patientnr, '_', identif) as observation_id	
+    concat('STUDIE_',patientnr, '_', identif, deel.tddatum, '_', deel.tdtijd) as observation_id	
     ,patientnr as person_id
     ,'HIX_STUDIEMEDICATIE' as observation_concept_id
     ,CAST(IFNULL(deel.tddatum, MIN(vrschrdat)) as DATE) as observation_date
@@ -38,4 +38,5 @@ where rec.geaccordee = true
   and ((rec.vrschrtyp in ('K') and deel.toegediend = true) --ziekenhuis en toegediend
     or rec.vrschrtyp in ('R', 'P', 'V')) --rusthuis/thuis/vaccin
   and omschr like 'ST %' and kuurdcd = '' --get medication that is not part of an episode (otherwise duplicate data)
+  and concat('STUDIE_',patientnr, '_', identif, deel.tddatum, '_', deel.tdtijd) is not null
 GROUP BY patientnr, identif, med.code, omschr, medicoms, stpreden, schemaoms, rec.toedcd, atccode, toedoms, deel.code, tdtijd, tddatum, c.concept_id

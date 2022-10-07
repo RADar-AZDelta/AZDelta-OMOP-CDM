@@ -31,7 +31,7 @@ left outer join (select distinct form_id, question_id, response_value, response_
 inner join (select distinct user_id, patient_code, doctor_id from {{project_id}}.awell.users) u on u.user_id = r.user_id
 )
 
-select distinct concat('AWELL_', form_id, '_', coalesce(sub_question_id, question_id), cast(submission_date as date), '_', patient_code) as observation_id
+select distinct concat('AWELL_', form_id, '_', coalesce(sub_question_id, question_id), submission_date, '_', patient_code) as observation_id
 ,cast(patient_code as string) as person_id
 ,case 
 	when label = 'Date of pathological or clinical diagnosis' 
@@ -64,4 +64,4 @@ end as value_as_string
 ,cast(null as string) as obs_event_field_concept_id
 
 from awell_vragenlijsten 
-
+where concat('AWELL_', form_id, '_', coalesce(sub_question_id, question_id), submission_date, '_', patient_code) is not null

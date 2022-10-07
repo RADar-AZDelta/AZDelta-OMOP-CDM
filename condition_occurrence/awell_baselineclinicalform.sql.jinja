@@ -32,7 +32,7 @@ with awell_vragenlijsten as (
     order by fq.form_id, fq.question_id, fq.sub_question_id, structured_answer_nl, free_answer
 )
 select distinct
-    concat('AWELL_', form_id, '_', coalesce(sub_question_id, question_id), cast(submission_date as date), '_', patient_code) as condition_occurrence_id
+    concat('AWELL_', form_id, '_', coalesce(sub_question_id, question_id), submission_date, '_', patient_code) as condition_occurrence_id
     ,patient_code as person_id
     ,case when question_id = 'mutation_status' then  concat('AWELL_', question_id, '_',sub_question_id) 
     else concat('AWELL_',question_id)

@@ -32,7 +32,7 @@ with awell_vragenlijsten as (
     inner join (select distinct user_id, patient_code, doctor_id from {{project_id}}.awell.users) u on u.user_id = r.user_id
 )
 select distinct
-   concat('AWELL_', form_id, '_', coalesce(sub_question_id, question_id), '_', cast(submission_date as date), '_', patient_code) as measurement_id	
+   concat('AWELL_', form_id, '_', coalesce(sub_question_id, question_id), '_', submission_date, '_', patient_code) as measurement_id	
     ,patient_code as person_id
     ,concat('AWELL_',question_id) as measurement_concept_id
     ,cast(submission_date as date) as measurement_date
