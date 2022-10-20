@@ -56,7 +56,7 @@ with cte_mzg as (
 	order by pat_id, visit_id, icd_code
 ) 
 select 
-    concat('MZG_', m.id) as condition_occurrence_id
+    concat('MZG_', m.id, '_', m.pat_id) as condition_occurrence_id
     ,m.pat_id as person_id
     ,scm.source_code as condition_concept_id
     ,m.start_date as condition_start_date
