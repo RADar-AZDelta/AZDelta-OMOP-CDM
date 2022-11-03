@@ -24,7 +24,8 @@ with cte_visit as (
     FROM {{project_id}}.{{dataset_id_raw}}.EPISODE_EPISODE ee
     inner join {{project_id}}.{{dataset_id_raw}}.EPISODE_INSCHRIJVING ei on ei.EPISODE = ee.EPISODE
     left outer join {{project_id}}.{{dataset_id_raw}}.OPNAME_OPNAME oo on ei.DBCNUMMER = oo.INSCHRNR
-    where oo.INSCHRNR is null
+    where oo.WORKFLOWSTATUS <> 'DT000125' -- GEANNULEERD
+        and oo.INSCHRNR is null
         and ei.BEGINDAT is not null
         and CAST(ei.BEGINDAT as DATE) < CURRENT_DATE()
 

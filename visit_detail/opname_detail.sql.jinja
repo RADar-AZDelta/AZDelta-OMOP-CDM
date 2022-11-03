@@ -5,6 +5,7 @@ with cte_visit_detail as (
     from {{project_id}}.{{dataset_id_raw}}.OPNAME_OPNMUT om
     inner join {{project_id}}.{{dataset_id_raw}}.OPNAME_OPNAME o on o.PLANNR = om.PLANNR
     where o.INSCHRNR is not null and o.INSCHRNR <> ''
+        and o.WORKFLOWSTATUS <> 'DT000125' -- GEANNULEERD
     union all
     select 'OK_OKINFO' as SOURCE, o.PATIENTNR as PAT_ID, oi.EPISODENR as VISIT_ID, o.PLANNR, okr.STARTDATE as START_DATE, okr.STARTTIME as START_TIME, okr.VERTREKDAT as END_DATE, okr.VERTREKTIJ as END_TIME, oi.ZKHLOCCODE as CAMPUS, okr.LOCATIEAFD as WARD, oi.OKKAMER as ROOM, '01' as BED, okr.BESTEMAFD, oi.SPECIALISM, o.AANMELARTS as ADMITTING_DOCTOR, oi.SNIJD_SPEC as PERFORMING_DOCTOR, oi.OPERATIENR as SOURCEOBJID
     from {{project_id}}.{{dataset_id_raw}}.OK_OKINFO oi
@@ -13,6 +14,7 @@ with cte_visit_detail as (
     left join {{project_id}}.{{dataset_id_raw}}.CSZISLIB_LOCATION okl on okl.LOCATIONID = okk.LOCATIONID
     inner join {{project_id}}.{{dataset_id_raw}}.OPNAME_OPNAME o on o.PLANNR = oi.OPNAMENR
     where oi.EPISODENR is not null and oi.EPISODENR <> ''
+        and o.WORKFLOWSTATUS <> 'DT000125' -- GEANNULEERD
     union all
     select 'SEH_SEHMUT' as SOURCE, o.PATIENTNR as PAT_ID, o.INSCHRNR as VISIT_ID, o.PLANNR, sm.DATUM as START_DATE, sm.BEGINTIJD as START_TIME, sm.EINDDATUM as END_DATE, sm.EINDTIJD as END_TIME, sm.ZKHLOCCODE as CAMPUS, 'SEH' as WARD, sm.BEHKAMERCO as ROOM, sm.BEDNR as BED,
       '' as BESTEMAFD, o.SPECIALISM, o.AANMELARTS as ADMITTING_DOCTOR, sm.ARTSID as PERFORMING_DOCTOR, sm.SEHMUTID as SOURCEOBJID
@@ -20,6 +22,7 @@ with cte_visit_detail as (
     inner join {{project_id}}.{{dataset_id_raw}}.SEH_SEHREG sr on sr.SEHID = sm.SEHID
     inner join {{project_id}}.{{dataset_id_raw}}.OPNAME_OPNAME o on o.PLANNR = sr.OPNAMEID
     where o.INSCHRNR is not null and o.INSCHRNR <> ''
+        and o.WORKFLOWSTATUS <> 'DT000125' -- GEANNULEERD
 ), cte_visit_detail2 as (
     select 
         concat(VISIT_ID, '_', START_DATE, '_', START_TIME) as visit_detail_id 

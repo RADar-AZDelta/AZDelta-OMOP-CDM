@@ -1,5 +1,29 @@
 {# Copyright 2022 RADar-AZDelta #}
 {# SPDX-License-Identifier: gpl3+ #}
+with cte_visit as (
+    select distinct(PATIENTNR)
+    from (
+        SELECT 
+            ei.PATIENTNR
+        FROM {{project_id}}.{{dataset_id_raw}}.EPISODE_EPISODE ee
+        inner join {{project_id}}.{{dataset_id_raw}}.EPISODE_INSCHRIJVING ei on ei.EPISODE = ee.EPISODE
+        left outer join {{project_id}}.{{dataset_id_raw}}.OPNAME_OPNAME oo on ei.DBCNUMMER = oo.INSCHRNR
+        where oo.INSCHRNR is null
+            and ei.BEGINDAT is not null
+            and CAST(ei.BEGINDAT as DATE) < CURRENT_DATE()
+
+        union all 
+
+        SELECT --PRE HIX TIJDPERK
+            oo.PATIENTNR
+        FROM {{project_id}}.{{dataset_id_raw}}.OPNAME_OPNAME oo
+        left outer join {{project_id}}.{{dataset_id_raw}}.EPISODE_INSCHRIJVING ei on ei.DBCNUMMER = oo.INSCHRNR
+        where oo.WORKFLOWSTATUS <> 'DT000125' -- GEANNULEERD
+            and oo.OPNDAT is not null
+            and CAST(oo.OPNDAT as DATE) < CURRENT_DATE()
+            and oo.INSCHRNR is not null and oo.INSCHRNR <> ''
+    )
+)
 SELECT distinct
     p.PATIENTNR as person_id
     ,p.GESLACHT gender_concept_id
@@ -20,5 +44,6 @@ SELECT distinct
     ,cast(null as string) as ethnicity_source_value
     ,cast(null as string) as ethnicity_source_concept_id
 FROM {{project_id}}.{{dataset_id_raw}}.PATIENT_PATIENT p
-LEFT join {{project_id}}.{{dataset_id_raw}}.CSZISLIB_POSTCODE pc on pc.CODEBEGIN = p.POSTCODE and pc.LANDCODE = p.LAND
---order by 1
+left outer join {{project_id}}.{{dataset_id_raw}}.CSZISLIB_POSTCODE pc on pc.CODEBEGIN = p.POSTCODE and pc.LANDCODE = p.LAND
+left outer join cte_visit v on v.PATIENTNR = p.PATIENTNR
+where (p.GEBDAT is not null or v.PATIENTNR is not null)
