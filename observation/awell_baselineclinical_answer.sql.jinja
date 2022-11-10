@@ -1,68 +1,75 @@
 {# Copyright 2022 RADar-AZDelta #}
 {# SPDX-License-Identifier: gpl3+ #}
-with awell_vragenlijsten as (select distinct 
-	fq.form_id
-	,fq.question_id
-	,fq.label
-	,fq.label_en
-	,fq.sub_question_id
-	,fq.sub_label
-	,fq.sub_label_en
-	,fr.response_label_en as structured_answer_en
-	,fr.response_label_nl as structured_answer_nl
-	,IF(fr.response_label_nl is not null, r.response_value, null) as structured_answer_code
-	,IF(fr.response_label_nl is null, r.response_value, null) as free_answer
-	,u.patient_code
-	,u.doctor_id
-	,r.submission_date
-	,r.step_id
-	,r.episode_name
-	
-from (select distinct form_id, question_id, label, label_en, sub_question_id, sub_label, sub_label_en
-	from {{project_id}}.awell.form_questions 
-	where form_id = "lung_cancer_baseline_clinical_azdelta"
-	and not label in ('Date of pathological or clinical diagnosis', 'Histology')) fq
-inner join (select distinct form_id, question_id, sub_question_id, response_value, user_id, submission_date, step_id, episode_name from {{project_id}}.awell.responses) r on fq.form_id = r.form_id 
-	and fq.question_id = r.question_id 
-	and ((fq.sub_question_id is null and r.sub_question_id is null) or (fq.sub_question_id = r.sub_question_id))
-left outer join (select distinct form_id, question_id, response_value, response_label_nl, response_label_en from {{project_id}}.awell.form_responses) fr on fr.form_id = fq.form_id 
-	and fr.question_id = fq.question_id
-	and fr.response_value = r.response_value
-inner join (select distinct user_id, patient_code, doctor_id from {{project_id}}.awell.users) u on u.user_id = r.user_id
+with awell_vragenlijsten as (
+	select distinct 
+		fq.form_id
+		,fq.question_id
+		,fq.label
+		,fq.label_en
+		,fq.sub_question_id
+		,fq.sub_label
+		,fq.sub_label_en
+		,fr.response_label_en as structured_answer_en
+		,fr.response_label_nl as structured_answer_nl
+		,IF(fr.response_label_nl is not null, r.response_value, null) as structured_answer_code
+		,IF(fr.response_label_nl is null, r.response_value, null) as free_answer
+		,u.patient_code
+		,u.doctor_id
+		,r.submission_date
+		,r.step_id
+		,r.episode_name
+	from (select distinct form_id, question_id, label, label_en, sub_question_id, sub_label, sub_label_en
+		from {{project_id}}.awell.form_questions 
+		where form_id = "lung_cancer_baseline_clinical_azdelta"
+		and not label in ('Date of pathological or clinical diagnosis', 'Histology')) fq
+	inner join (select distinct form_id, question_id, sub_question_id, response_value, user_id, submission_date, step_id, episode_name from {{project_id}}.awell.responses) r on fq.form_id = r.form_id 
+		and fq.question_id = r.question_id 
+		and ((fq.sub_question_id is null and r.sub_question_id is null) or (fq.sub_question_id = r.sub_question_id))
+	left outer join (select distinct form_id, question_id, response_value, response_label_nl, response_label_en from {{project_id}}.awell.form_responses) fr on fr.form_id = fq.form_id 
+		and fr.question_id = fq.question_id
+		and fr.response_value = r.response_value
+	inner join (select distinct user_id, patient_code, doctor_id from {{project_id}}.awell.users) u on u.user_id = r.user_id
+), cte as (
+	select distinct 
+		concat('AWELL_', form_id, '_', coalesce(sub_question_id, question_id), submission_date, '_', patient_code) as observation_id
+		,cast(patient_code as string) as person_id
+		,concat('AWELL_',question_id, '_', coalesce(replace(structured_answer_nl, ' ', '_'), replace(free_answer, ' ', '_'))) as observation_concept_id
+		,cast(submission_date as date) as observation_date
+		,cast(substring(cast(submission_date as string), 1,19) as datetime)  as observation_datetime
+		,'AWELL_OBSERVATION_TYPE' as observation_type_concept_id -- 'Patient filled survey - 32862'
+		,cast(null as float64) as value_as_number
+		,cast(null as string) as value_as_string
+		,case 
+			when question_id = 'mutation_status' 
+				then concat('AWELL_',question_id, '_',sub_question_id, '_', coalesce(replace(structured_answer_nl, ' ', '_'), replace(free_answer, ' ', '_')))
+			else concat('AWELL_',question_id, '_', coalesce(replace(structured_answer_nl, ' ', '_'), replace(free_answer, ' ', '_'))) 
+		end as value_as_concept_id
+		,cast(null as string) as qualifier_concept_id
+		,cast(null as string) as unit_concept_id
+		--,cast(null as string) as provider_id
+		--,cast(null as string) as visit_occurrence_id
+		--,cast(null as string) as visit_detail_id
+		,cast(concat('AWELL_',coalesce(sub_question_id, question_id)) as string) as observation_source_value
+		,cast(null as string) as observation_source_concept_id
+		,cast(null as string) as unit_source_value
+		,cast(null as string) as qualifier_source_value
+		,cast(null as string) as value_source_value
+		,cast(null as string) as observation_event_id
+		,cast(null as string) as obs_event_field_concept_id
+	from awell_vragenlijsten
+	inner join {{project_id}}.{{dataset_id_omop}}.source_to_concept_map scm 
+		on scm.source_code = concat('AWELL_',question_id, '_', coalesce(replace(structured_answer_nl, ' ', '_'), replace(free_answer, ' ', '_')))
+	inner join (select concept_id 
+		from {{project_id}}.{{dataset_id_omop}}.concept 
+		where domain_id not in ("Condition","Procedure","Drug","Measurement","Device")) c 
+		on scm.target_concept_id = c.concept_id
+	where concat('AWELL_', form_id, '_', coalesce(sub_question_id, question_id), submission_date, '_', patient_code) is not null
 )
-
-select distinct concat('AWELL_', form_id, '_', coalesce(sub_question_id, question_id), submission_date, '_', patient_code) as observation_id
-,cast(patient_code as string) as person_id
-,concat('AWELL_',question_id, '_', coalesce(replace(structured_answer_nl, ' ', '_'), replace(free_answer, ' ', '_'))) as observation_concept_id
-,cast(submission_date as date) as observation_date
-,cast(substring(cast(submission_date as string), 1,19) as datetime)  as observation_datetime
-,'AWELL_OBSERVATION_TYPE' as observation_type_concept_id -- 'Patient filled survey - 32862'
-,cast(null as float64) as value_as_number
-,cast(null as string) as value_as_string
-,case 
-	when question_id = 'mutation_status' 
-		then concat('AWELL_',question_id, '_',sub_question_id, '_', coalesce(replace(structured_answer_nl, ' ', '_'), replace(free_answer, ' ', '_')))
-	else concat('AWELL_',question_id, '_', coalesce(replace(structured_answer_nl, ' ', '_'), replace(free_answer, ' ', '_'))) 
-end as value_as_concept_id
-,cast(null as string) as qualifier_concept_id
-,cast(null as string) as unit_concept_id
-,cast(null as string) as provider_id
-,cast(null as string) as visit_occurrence_id
-,cast(null as string) as visit_detail_id
-,cast(concat('AWELL_',coalesce(sub_question_id, question_id)) as string) as observation_source_value
-,cast(null as string) as observation_source_concept_id
-,cast(null as string) as unit_source_value
-,cast(null as string) as qualifier_source_value
-,cast(null as string) as value_source_value
-,cast(null as string) as observation_event_id
-,cast(null as string) as obs_event_field_concept_id
-
-
-from awell_vragenlijsten
-inner join {{project_id}}.{{dataset_id_omop}}.source_to_concept_map scm
-on scm.source_code = concat('AWELL_',question_id, '_', coalesce(replace(structured_answer_nl, ' ', '_'), replace(free_answer, ' ', '_')))
-inner join (select concept_id 
-	from {{project_id}}.{{dataset_id_omop}}.concept 
-	where domain_id not in ("Condition","Procedure","Drug","Measurement","Device")) c
-on scm.target_concept_id = c.concept_id
-where concat('AWELL_', form_id, '_', coalesce(sub_question_id, question_id), submission_date, '_', patient_code) is not null
+SELECT cte.*
+    , COALESCE(ARRAY_AGG(vd.provider_id ORDER BY vd.visit_detail_start_datetime DESC LIMIT 1)[OFFSET(0)], ARRAY_AGG(v.provider_id ORDER BY v.visit_start_datetime DESC LIMIT 1)[OFFSET(0)]) as provider_id
+    , ARRAY_AGG(v.visit_occurrence_id ORDER BY v.visit_start_datetime DESC LIMIT 1)[OFFSET(0)] as visit_occurrence_id
+    , ARRAY_AGG(vd.visit_detail_id ORDER BY vd.visit_detail_start_datetime DESC LIMIT 1)[OFFSET(0)] as visit_detail_id
+FROM cte
+LEFT OUTER JOIN {{project_id}}.{{dataset_id_work}}.visit_occurrence_upload v ON v.person_id = cte.person_id AND cte.observation_datetime >= v.visit_start_datetime and cte.observation_datetime <= v.visit_end_datetime 
+LEFT OUTER JOIN {{project_id}}.{{dataset_id_work}}.visit_detail_upload vd ON v.visit_occurrence_id = vd.visit_occurrence_id AND cte.observation_datetime >= vd.visit_detail_start_datetime and cte.observation_datetime <= vd.visit_detail_start_datetime
+GROUP BY 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18

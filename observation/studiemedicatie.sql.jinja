@@ -1,42 +1,52 @@
 {# Copyright 2022 RADar-AZDelta #}
 {# SPDX-License-Identifier: gpl3+ #}
-select 
-    concat('STUDIE_',patientnr, '_', identif, deel.tddatum, '_', deel.tdtijd) as observation_id	
-    ,patientnr as person_id
-    ,'HIX_STUDIEMEDICATIE' as observation_concept_id
-    ,CAST(IFNULL(deel.tddatum, MIN(vrschrdat)) as DATE) as observation_date
-    ,DATETIME(
-        CAST(IFNULL(deel.tddatum, MIN(vrschrdat)) as DATE),
-        CASE
-            WHEN REGEXP_CONTAINS(deel.tdtijd, r'^[0-9]{2}:[0-9]{2}:[0-9]{2}$') THEN PARSE_TIME('%H:%M:%S', deel.tdtijd)
-            WHEN REGEXP_CONTAINS(deel.tdtijd, r'^[0-9]{2}:[0-9]{2}$') THEN PARSE_TIME('%H:%M', deel.tdtijd)
-            ELSE TIME(0, 0, 0)
-        END
-    ) as observation_datetime
-    ,'ADMINISTRATION_RECORD' as observation_type_concept_id
-    ,cast(null as float64) as value_as_number
-    ,omschr as value_as_string
-    ,cast(null as string) as value_as_concept_id 
-    ,cast(null as string) as qualifier_concept_id
-    ,cast(null as string) as unit_concept_id
-    ,cast(null as string) as provider_id
-    ,cast(null as string) as visit_occurrence_id
-    ,cast(null as string) as visit_detail_id
-    ,'HIX_STUDIEMEDICATIE' as observation_source_value
-    ,cast(null as string) as observation_source_concept_id
-    ,cast(null as string) as unit_source_value
-    ,cast(null as string) as qualifier_source_value
-    ,omschr as value_source_value
-    ,cast(null as string) as observation_event_id
-    ,cast(null as string) as obs_event_field_concept_id
-from {{project_id}}.{{dataset_id_raw}}.MEDICAT_RECDEEL rec
-left join {{project_id}}.{{dataset_id_raw}}.MEDICAT_DEELLST deel on rec.identif = deel.mocode
-left join {{project_id}}.{{dataset_id_raw}}.MEDICAT_MEDICIJN med on med.code = rec.medcd
-left join {{project_id}}.{{dataset_id_raw}}.ZINDEX_004RIZIV riz on med.IMPCD = riz.ATKODE and riz.ISCNK = true and riz.VERVALLEN = false
-left join {{project_id}}.{{dataset_id_omop}}.concept c on c.concept_code = atccode and c.VOCABULARY_ID = 'ATC'
-where rec.geaccordee = true
-  and ((rec.vrschrtyp in ('K') and deel.toegediend = true) --ziekenhuis en toegediend
-    or rec.vrschrtyp in ('R', 'P', 'V')) --rusthuis/thuis/vaccin
-  and omschr like 'ST %' and kuurdcd = '' --get medication that is not part of an episode (otherwise duplicate data)
-  and concat('STUDIE_',patientnr, '_', identif, deel.tddatum, '_', deel.tdtijd) is not null
-GROUP BY patientnr, identif, med.code, omschr, medicoms, stpreden, schemaoms, rec.toedcd, atccode, toedoms, deel.code, tdtijd, tddatum, c.concept_id
+WITH cte AS (
+  select 
+      concat('STUDIE_',patientnr, '_', identif, deel.tddatum, '_', deel.tdtijd) as observation_id	
+      ,patientnr as person_id
+      ,'HIX_STUDIEMEDICATIE' as observation_concept_id
+      ,CAST(IFNULL(deel.tddatum, MIN(vrschrdat)) as DATE) as observation_date
+      ,DATETIME(
+          CAST(IFNULL(deel.tddatum, MIN(vrschrdat)) as DATE),
+          CASE
+              WHEN REGEXP_CONTAINS(deel.tdtijd, r'^[0-9]{2}:[0-9]{2}:[0-9]{2}$') THEN PARSE_TIME('%H:%M:%S', deel.tdtijd)
+              WHEN REGEXP_CONTAINS(deel.tdtijd, r'^[0-9]{2}:[0-9]{2}$') THEN PARSE_TIME('%H:%M', deel.tdtijd)
+              ELSE TIME(0, 0, 0)
+          END
+      ) as observation_datetime
+      ,'ADMINISTRATION_RECORD' as observation_type_concept_id
+      ,cast(null as float64) as value_as_number
+      ,omschr as value_as_string
+      ,cast(null as string) as value_as_concept_id 
+      ,cast(null as string) as qualifier_concept_id
+      ,cast(null as string) as unit_concept_id
+      --,cast(null as string) as provider_id
+      --,cast(null as string) as visit_occurrence_id
+      --,cast(null as string) as visit_detail_id
+      ,'HIX_STUDIEMEDICATIE' as observation_source_value
+      ,cast(null as string) as observation_source_concept_id
+      ,cast(null as string) as unit_source_value
+      ,cast(null as string) as qualifier_source_value
+      ,omschr as value_source_value
+      ,cast(null as string) as observation_event_id
+      ,cast(null as string) as obs_event_field_concept_id
+  from {{project_id}}.{{dataset_id_raw}}.MEDICAT_RECDEEL rec
+  left join {{project_id}}.{{dataset_id_raw}}.MEDICAT_DEELLST deel on rec.identif = deel.mocode
+  left join {{project_id}}.{{dataset_id_raw}}.MEDICAT_MEDICIJN med on med.code = rec.medcd
+  left join {{project_id}}.{{dataset_id_raw}}.ZINDEX_004RIZIV riz on med.IMPCD = riz.ATKODE and riz.ISCNK = true and riz.VERVALLEN = false
+  left join {{project_id}}.{{dataset_id_omop}}.concept c on c.concept_code = atccode and c.VOCABULARY_ID = 'ATC'
+  where rec.geaccordee = true
+    and ((rec.vrschrtyp in ('K') and deel.toegediend = true) --ziekenhuis en toegediend
+      or rec.vrschrtyp in ('R', 'P', 'V')) --rusthuis/thuis/vaccin
+    and omschr like 'ST %' and kuurdcd = '' --get medication that is not part of an episode (otherwise duplicate data)
+    and concat('STUDIE_',patientnr, '_', identif, deel.tddatum, '_', deel.tdtijd) is not null
+  GROUP BY patientnr, identif, med.code, omschr, medicoms, stpreden, schemaoms, rec.toedcd, atccode, toedoms, deel.code, tdtijd, tddatum, c.concept_id
+)
+SELECT cte.*
+    , COALESCE(ARRAY_AGG(vd.provider_id ORDER BY vd.visit_detail_start_datetime DESC LIMIT 1)[OFFSET(0)], ARRAY_AGG(v.provider_id ORDER BY v.visit_start_datetime DESC LIMIT 1)[OFFSET(0)]) as provider_id
+    , ARRAY_AGG(v.visit_occurrence_id ORDER BY v.visit_start_datetime DESC LIMIT 1)[OFFSET(0)] as visit_occurrence_id
+    , ARRAY_AGG(vd.visit_detail_id ORDER BY vd.visit_detail_start_datetime DESC LIMIT 1)[OFFSET(0)] as visit_detail_id
+FROM cte
+LEFT OUTER JOIN {{project_id}}.{{dataset_id_work}}.visit_occurrence_upload v ON v.person_id = cte.person_id AND cte.observation_datetime >= v.visit_start_datetime and cte.observation_datetime <= v.visit_end_datetime 
+LEFT OUTER JOIN {{project_id}}.{{dataset_id_work}}.visit_detail_upload vd ON v.visit_occurrence_id = vd.visit_occurrence_id AND cte.observation_datetime >= vd.visit_detail_start_datetime and cte.observation_datetime <= vd.visit_detail_start_datetime
+GROUP BY 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18

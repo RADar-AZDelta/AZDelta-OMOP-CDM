@@ -8,43 +8,52 @@ with vragenlijsten_hix as (
     join {{project_id}}.hix.VRLIJST_LIJSTDEF  as lijstnaam on lijstnaam.LIJSTID = vragenlijst.LIJSTID
     join {{project_id}}.hix.VRLIJST_VRAGEN as vragen on vragen.VRAAGID = REALVRID
         left outer join   {{project_id}}.hix.VRLIJST_KEUZELST as keuzelijst on  keuzelijst.CODE = antwoorden.Antwoord
-), cte as (
+), cte_moc as (
     select distinct patientnr, cast(format_date('%Y-%m-%d', parse_date('%d-%m-%Y',antwoord)) as date) as measurement_date
         ,cast(concat(format_date('%Y-%m-%d', parse_date('%d-%m-%Y', antwoord)), ' 00:00:00') as datetime) as measurement_datetime
     from vragenlijsten_hix where lijstnaam = 'Registratieformulier MOC' and stelling = 'Incidentiedatum' and (not antwoord = '')
     and opslagid in (select opslagid from vragenlijsten_hix where omschr like 'C34.%')
+), cte as (
+    select distinct
+        concat('MOC_', antwoord_opslagid, '_', l.patientnr, '_', measurement_datetime) as measurement_id
+        ,l.patientnr as person_id
+        ,concat('HIXVRAGENLIJSTEN_',vraagid) as measurement_concept_id
+        ,measurement_date
+        ,measurement_datetime
+        ,cast(null as string) as measurement_time
+        ,'ADMINISTRATION_RECORD' as measurement_type_concept_id
+        ,case when regexp_contains(antwoord, '<') then 'LESS'
+            when regexp_contains(antwoord, '>') then 'MORE' 
+            else 'EQUAL' end as operator_concept_id 
+        ,case 
+            when regexp_contains(antwoord, '[0-9]') 
+                then cast(replace(regexp_replace(trim(antwoord, ','), r'[^0-9,\.]', ''), ',', '.') as float64) 
+            else null end as value_as_number
+        ,cast(null as string) as value_as_concept_id
+        ,concat('HIXVRAGENLIJSTEN_', vraagid) as unit_concept_id 
+        ,cast(null as float64) as range_low
+        ,cast(null as float64) as range_high
+        --,cast(null as string) as provider_id
+        --,cast(null as string) as visit_occurrence_id
+        --,cast(null as string) as visit_detail_id
+        ,concat('HIXVRAGENLIJSTEN_', vraagid) as measurement_source_value
+        ,cast(null as string) as measurement_source_concept_id
+        ,cast(null as string) as unit_source_value
+        ,cast(null as string) as unit_source_concept_id
+        ,cast(antwoord as string) as value_source_value 
+        ,cast(null as string) as measurement_event_id
+        ,cast(null as string) meas_event_field_concept_id
+    from  vragenlijsten_hix l
+    inner join cte_moc on cte_moc.patientnr = l.patientnr
+    where lijstnaam = 'MOC longtumor' and vraagid in ('0000002091', '0000002092', '0000002093') and not l.antwoord in ('', 'onbekend', '999')
+        and measurement_date is not null
+    order by measurement_id
 )
-select distinct
-    concat('MOC_', antwoord_opslagid, '_', l.patientnr, '_', measurement_datetime) as measurement_id
-    ,l.patientnr as person_id
-    ,concat('HIXVRAGENLIJSTEN_',vraagid) as measurement_concept_id
-    ,measurement_date
-    ,measurement_datetime
-    ,cast(null as string) as measurement_time
-    ,'ADMINISTRATION_RECORD' as measurement_type_concept_id
-    ,case when regexp_contains(antwoord, '<') then 'LESS'
-        when regexp_contains(antwoord, '>') then 'MORE' 
-        else 'EQUAL' end as operator_concept_id 
-    ,case 
-        when regexp_contains(antwoord, '[0-9]') 
-            then cast(replace(regexp_replace(trim(antwoord, ','), r'[^0-9,\.]', ''), ',', '.') as float64) 
-        else null end as value_as_number
-    ,cast(null as string) as value_as_concept_id
-    ,concat('HIXVRAGENLIJSTEN_', vraagid) as unit_concept_id 
-    ,cast(null as float64) as range_low
-    ,cast(null as float64) as range_high
-    ,cast(null as string) as provider_id
-    ,cast(null as string) as visit_occurrence_id
-    ,cast(null as string) as visit_detail_id
-    ,concat('HIXVRAGENLIJSTEN_', vraagid) as measurement_source_value
-    ,cast(null as string) as measurement_source_concept_id
-    ,cast(null as string) as unit_source_value
-    ,cast(null as string) as unit_source_concept_id
-    ,cast(antwoord as string) as value_source_value 
-    ,cast(null as string) as measurement_event_id
-    ,cast(null as string) meas_event_field_concept_id
-from  vragenlijsten_hix l
-inner join cte on cte.patientnr = l.patientnr
-where lijstnaam = 'MOC longtumor' and vraagid in ('0000002091', '0000002092', '0000002093') and not l.antwoord in ('', 'onbekend', '999')
-and measurement_date is not null
-order by measurement_id
+SELECT cte.*
+    , COALESCE(ARRAY_AGG(vd.provider_id ORDER BY vd.visit_detail_start_datetime DESC LIMIT 1)[OFFSET(0)], ARRAY_AGG(v.provider_id ORDER BY v.visit_start_datetime DESC LIMIT 1)[OFFSET(0)]) as provider_id
+    , ARRAY_AGG(v.visit_occurrence_id ORDER BY v.visit_start_datetime DESC LIMIT 1)[OFFSET(0)] as visit_occurrence_id
+    , ARRAY_AGG(vd.visit_detail_id ORDER BY vd.visit_detail_start_datetime DESC LIMIT 1)[OFFSET(0)] as visit_detail_id
+FROM cte
+LEFT OUTER JOIN {{project_id}}.{{dataset_id_work}}.visit_occurrence_upload v ON v.person_id = cte.person_id AND cte.measurement_datetime >= v.visit_start_datetime and cte.measurement_datetime <= v.visit_end_datetime 
+LEFT OUTER JOIN {{project_id}}.{{dataset_id_work}}.visit_detail_upload vd ON v.visit_occurrence_id = vd.visit_occurrence_id AND cte.measurement_datetime >= vd.visit_detail_start_datetime and cte.measurement_datetime <= vd.visit_detail_start_datetime
+GROUP BY 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20

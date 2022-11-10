@@ -1,73 +1,81 @@
 {# Copyright 2022 RADar-AZDelta #}
 {# SPDX-License-Identifier: gpl3+ #}
-select
-    concat('LABO_', aanvraag.AANVRAAGNR, '_', uitslag.BEPCODE) as measurement_id	
-    ,aanvraag.patientnr as person_id
-    ,concat('LABO_',uitslag.BEPCODE) as measurement_concept_id
-    ,date(aanvraag.afdatum) as measurement_date
-    ,datetime(
-        DATE(aanvraag.afdatum), 
-        if(regexp_contains(trim(aanvraag.aftijd), r'^[0-9]{2}\:[0-9]{2}(?:\:[0-9]{2})?$')
-            ,time(
-                mod(coalesce(cast(regexp_extract(trim(aanvraag.aftijd), r'^([0-9]{2})\:[0-9]{2}(?:\:[0-9]{2})?$') as int),0),24)
-                ,mod(coalesce(cast(regexp_extract(trim(aanvraag.aftijd), r'^[0-9]{2}\:([0-9]{2})(?:\:[0-9]{2})?$') as int),0),60)
-                ,mod(coalesce(cast(regexp_extract(trim(aanvraag.aftijd), r'^[0-9]{2}\:[0-9]{2}(\:[0-9]{2})$') as int),0),60)
+with cte as (
+    select
+        concat('LABO_', aanvraag.AANVRAAGNR, '_', uitslag.BEPCODE) as measurement_id	
+        ,aanvraag.patientnr as person_id
+        ,concat('LABO_',uitslag.BEPCODE) as measurement_concept_id
+        ,date(aanvraag.afdatum) as measurement_date
+        ,datetime(
+            DATE(aanvraag.afdatum), 
+            if(regexp_contains(trim(aanvraag.aftijd), r'^[0-9]{2}\:[0-9]{2}(?:\:[0-9]{2})?$')
+                ,time(
+                    mod(coalesce(cast(regexp_extract(trim(aanvraag.aftijd), r'^([0-9]{2})\:[0-9]{2}(?:\:[0-9]{2})?$') as int),0),24)
+                    ,mod(coalesce(cast(regexp_extract(trim(aanvraag.aftijd), r'^[0-9]{2}\:([0-9]{2})(?:\:[0-9]{2})?$') as int),0),60)
+                    ,mod(coalesce(cast(regexp_extract(trim(aanvraag.aftijd), r'^[0-9]{2}\:[0-9]{2}(\:[0-9]{2})$') as int),0),60)
+                )
+                ,time(0,0,0)  
             )
-            ,time(0,0,0)  
-        )
-    ) as measurement_datetime    
-    ,aanvraag.aftijd as measurement_time
-    ,'ADMINISTRATION_RECORD' as measurement_type_concept_id
-    ,case
-        when contains_substr(uitslag.uitslag, '<') and contains_substr(uitslag.uitslag, '>') then null
-        when contains_substr(uitslag.uitslag, '<') and contains_substr(uitslag.uitslag, '=') then 'LABO_<='
-        when contains_substr(uitslag.uitslag, '>') and contains_substr(uitslag.uitslag, '=') then 'LABO_>='
-        when contains_substr(uitslag.uitslag, '<') then 'LABO_<'
-        when contains_substr(uitslag.uitslag, '>') then 'LABO_>'
-        else 'LABO_=' end as operator_concept_id
-    ,if(REGEXP_CONTAINS(trim(uitslag.uitslag), r'^[+-]?([0-9]+[.,]?[0-9]*)$'),cast(replace(trim(uitslag.uitslag), ",", ".") as float64),cast(null as float64)) as value_as_number
-    ,concat('LABO_',uitslag.BEPCODE,'_',regexp_replace(replace(replace(uitslag.UITSLAG,',',';'),'\\','/'),'(\n|\r|\t)+','_')) as value_as_concept_id
-    ,concat('LABO_',omschrijving.eenheid) as unit_concept_id
-    ,case
-        when REGEXP_CONTAINS(trim(uitslag.GRENSVAL), r'^>\s*[+-]?\s*([0-9]+[.,]?[0-9]*)$')
-            then cast(replace(REGEXP_EXTRACT(trim(uitslag.GRENSVAL), r'^>\s*[+-]?\s*([0-9]+[.,]?[0-9]*)$'), ',','.') as float64)
-        when REGEXP_CONTAINS(uitslag.GRENSVAL, r'^([0-9]+[.,]?[0-9])*\s*-\s*[0-9]+[.,]?[0-9]*$')
-            then cast(replace(REGEXP_EXTRACT(trim(uitslag.GRENSVAL), r'^([0-9]+[.,]?[0-9])*\s*-\s*[0-9]+[.,]?[0-9]*$'), ',','.') as float64)
-        else cast(null as float64) 
-        end as range_low
-    ,case
-        when REGEXP_CONTAINS(trim(uitslag.GRENSVAL), r'^<\s*[+-]?\s*([0-9]+[.,]?[0-9]*)$')
-            then cast(replace(REGEXP_EXTRACT(trim(uitslag.GRENSVAL), r'^<\s*[+-]?\s*([0-9]+[.,]?[0-9]*)$'), ',','.') as float64)
-        when REGEXP_CONTAINS(uitslag.GRENSVAL, r'^[0-9]+[.,]?[0-9]*\s*-\s*([0-9]+[.,]?[0-9]*)$')
-            then cast(replace(REGEXP_EXTRACT(trim(uitslag.GRENSVAL), r'^[0-9]+[.,]?[0-9]*\s*-\s*([0-9]+[.,]?[0-9]*)$'), ',','.') as float64)
-        else cast(null as float64) 
-        end as range_high
-    ,aanvraag.aanvrager as provider_id
-    ,array_agg(vs.x ignore nulls order by vs.x asc)[safe_offset(0)] as visit_occurrence_id
-    ,cast(null as string) as visit_detail_id
-    ,concat('LABO_',uitslag.BEPCODE) as measurement_source_value
-    ,cast(null as string) as measurement_source_concept_id
-    ,cast(omschrijving.eenheid as string) as unit_source_value
-    ,cast(null as string) as unit_source_concept_id
-    ,cast(uitslag.uitslag as string) as value_source_value 
-    ,concat('LABO_BG_', aanvraag.AANVRAAGNR) as measurement_event_id
-    ,"specimen" as meas_event_field_concept_id   
-from {{project_id}}.{{dataset_id_raw}}.LAB_L_AANVRG aanvraag
-inner join {{project_id}}.{{dataset_id_raw}}.LAB_HUIDIGE_UITSLAG uitslag on uitslag.BRONCODE = aanvraag.BRONCODE and uitslag.AANVRAAGNR = aanvraag.AANVRAAGNR
-inner join {{project_id}}.{{dataset_id_raw}}.LAB_L_B_OMS omschrijving on omschrijving.BEP = uitslag.BEPCODE
-inner join {{project_id}}.{{dataset_id_omop}}.source_to_concept_map scm
-on scm.source_code = concat('LABO_', uitslag.BEPCODE)
-inner join {{project_id}}.{{dataset_id_omop}}.concept c
-on scm.target_concept_id = c.concept_id
-left join `{{project_id}}.{{dataset_id_work}}.person_id_swap` p
-on aanvraag.patientnr = p.x
-left join `{{project_id}}.{{dataset_id_omop}}.visit_occurrence` v
-on date(aanvraag.afdatum) >= v.visit_start_date 
-    and date(aanvraag.afdatum) <= v.visit_end_date
-    and p.y = v.person_id
-left join `{{project_id}}.{{dataset_id_work}}.visit_occurrence_id_swap` vs
-on v.visit_occurrence_ID = vs.y
-where c.domain_id = 'Measurement'
-    and not trim(lower(uitslag.uitslag)) in ('#volgt', '#ini','volgt', 'ini', '<memo>', '-volgt-', '', '.', 'zie opm.', '/', '//')
-    and date(aanvraag.afdatum) is not null
-group by aanvraag.aanvraagnr, aanvraag.patientnr, aanvraag.afdatum, aanvraag.aftijd, aanvraag.aanvrager, uitslag.bepcode, uitslag.uitslag, uitslag.grensval, omschrijving.eenheid
+        ) as measurement_datetime    
+        ,aanvraag.aftijd as measurement_time
+        ,'ADMINISTRATION_RECORD' as measurement_type_concept_id
+        ,case
+            when contains_substr(uitslag.uitslag, '<') and contains_substr(uitslag.uitslag, '>') then null
+            when contains_substr(uitslag.uitslag, '<') and contains_substr(uitslag.uitslag, '=') then 'LABO_<='
+            when contains_substr(uitslag.uitslag, '>') and contains_substr(uitslag.uitslag, '=') then 'LABO_>='
+            when contains_substr(uitslag.uitslag, '<') then 'LABO_<'
+            when contains_substr(uitslag.uitslag, '>') then 'LABO_>'
+            else 'LABO_=' end as operator_concept_id
+        ,if(REGEXP_CONTAINS(trim(uitslag.uitslag), r'^[+-]?([0-9]+[.,]?[0-9]*)$'),cast(replace(trim(uitslag.uitslag), ",", ".") as float64),cast(null as float64)) as value_as_number
+        ,concat('LABO_',uitslag.BEPCODE,'_',regexp_replace(replace(replace(uitslag.UITSLAG,',',';'),'\\','/'),'(\n|\r|\t)+','_')) as value_as_concept_id
+        ,concat('LABO_',omschrijving.eenheid) as unit_concept_id
+        ,case
+            when REGEXP_CONTAINS(trim(uitslag.GRENSVAL), r'^>\s*[+-]?\s*([0-9]+[.,]?[0-9]*)$')
+                then cast(replace(REGEXP_EXTRACT(trim(uitslag.GRENSVAL), r'^>\s*[+-]?\s*([0-9]+[.,]?[0-9]*)$'), ',','.') as float64)
+            when REGEXP_CONTAINS(uitslag.GRENSVAL, r'^([0-9]+[.,]?[0-9])*\s*-\s*[0-9]+[.,]?[0-9]*$')
+                then cast(replace(REGEXP_EXTRACT(trim(uitslag.GRENSVAL), r'^([0-9]+[.,]?[0-9])*\s*-\s*[0-9]+[.,]?[0-9]*$'), ',','.') as float64)
+            else cast(null as float64) 
+            end as range_low
+        ,case
+            when REGEXP_CONTAINS(trim(uitslag.GRENSVAL), r'^<\s*[+-]?\s*([0-9]+[.,]?[0-9]*)$')
+                then cast(replace(REGEXP_EXTRACT(trim(uitslag.GRENSVAL), r'^<\s*[+-]?\s*([0-9]+[.,]?[0-9]*)$'), ',','.') as float64)
+            when REGEXP_CONTAINS(uitslag.GRENSVAL, r'^[0-9]+[.,]?[0-9]*\s*-\s*([0-9]+[.,]?[0-9]*)$')
+                then cast(replace(REGEXP_EXTRACT(trim(uitslag.GRENSVAL), r'^[0-9]+[.,]?[0-9]*\s*-\s*([0-9]+[.,]?[0-9]*)$'), ',','.') as float64)
+            else cast(null as float64) 
+            end as range_high
+        ,aanvraag.aanvrager as provider_id
+        --,array_agg(vs.x ignore nulls order by vs.x asc)[safe_offset(0)] as visit_occurrence_id
+        --,cast(null as string) as visit_detail_id
+        ,concat('LABO_',uitslag.BEPCODE) as measurement_source_value
+        ,cast(null as string) as measurement_source_concept_id
+        ,cast(omschrijving.eenheid as string) as unit_source_value
+        ,cast(null as string) as unit_source_concept_id
+        ,cast(uitslag.uitslag as string) as value_source_value 
+        ,concat('LABO_BG_', aanvraag.AANVRAAGNR) as measurement_event_id
+        ,"specimen" as meas_event_field_concept_id   
+    from {{project_id}}.{{dataset_id_raw}}.LAB_L_AANVRG aanvraag
+    inner join {{project_id}}.{{dataset_id_raw}}.LAB_HUIDIGE_UITSLAG uitslag on uitslag.BRONCODE = aanvraag.BRONCODE and uitslag.AANVRAAGNR = aanvraag.AANVRAAGNR
+    inner join {{project_id}}.{{dataset_id_raw}}.LAB_L_B_OMS omschrijving on omschrijving.BEP = uitslag.BEPCODE
+    inner join {{project_id}}.{{dataset_id_omop}}.source_to_concept_map scm
+    on scm.source_code = concat('LABO_', uitslag.BEPCODE)
+    inner join {{project_id}}.{{dataset_id_omop}}.concept c
+    on scm.target_concept_id = c.concept_id
+    left join `{{project_id}}.{{dataset_id_work}}.person_id_swap` p
+    on aanvraag.patientnr = p.x
+    left join `{{project_id}}.{{dataset_id_omop}}.visit_occurrence` v
+    on date(aanvraag.afdatum) >= v.visit_start_date 
+        and date(aanvraag.afdatum) <= v.visit_end_date
+        and p.y = v.person_id
+    left join `{{project_id}}.{{dataset_id_work}}.visit_occurrence_id_swap` vs
+    on v.visit_occurrence_ID = vs.y
+    where c.domain_id = 'Measurement'
+        and not trim(lower(uitslag.uitslag)) in ('#volgt', '#ini','volgt', 'ini', '<memo>', '-volgt-', '', '.', 'zie opm.', '/', '//')
+        and date(aanvraag.afdatum) is not null
+)
+SELECT cte.*
+    , ARRAY_AGG(v.visit_occurrence_id ORDER BY v.visit_start_datetime DESC LIMIT 1)[OFFSET(0)] as visit_occurrence_id
+    , ARRAY_AGG(vd.visit_detail_id ORDER BY vd.visit_detail_start_datetime DESC LIMIT 1)[OFFSET(0)] as visit_detail_id
+FROM cte
+LEFT OUTER JOIN {{project_id}}.{{dataset_id_work}}.visit_occurrence_upload v ON v.person_id = cte.person_id AND cte.measurement_datetime >= v.visit_start_datetime and cte.measurement_datetime <= v.visit_end_datetime 
+LEFT OUTER JOIN {{project_id}}.{{dataset_id_work}}.visit_detail_upload vd ON v.visit_occurrence_id = vd.visit_occurrence_id AND cte.measurement_datetime >= vd.visit_detail_start_datetime and cte.measurement_datetime <= vd.visit_detail_start_datetime
+GROUP BY 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21

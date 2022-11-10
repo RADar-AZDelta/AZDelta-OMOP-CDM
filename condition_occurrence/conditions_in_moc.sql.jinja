@@ -1,7 +1,6 @@
 {# Copyright 2022 RADar-AZDelta #}
 {# SPDX-License-Identifier: gpl3+ #}
-with 
-  vragenlijsten_hix as (
+with vragenlijsten_hix as (
     select vragenlijst.opslagid, lijstnaam.lijstnaam, vragen.stelling, keuzelijst.omschr, vragen.vraagid, antwoorden.patientnr, antwoorden.opslagid as antwoord_opslagid
       , antwoorden.antwoord, keuzelijst.code,vragenlijst.datum, vragenlijst.tijd, vragen.korteoms
     from {{project_id}}.hix.VRLIJST_VROPSLG antwoorden
@@ -9,45 +8,51 @@ with
     join {{project_id}}.hix.VRLIJST_LIJSTDEF as lijstnaam on lijstnaam.LIJSTID = vragenlijst.LIJSTID
     join {{project_id}}.hix.VRLIJST_VRAGEN as vragen on vragen.VRAAGID = REALVRID
     left outer join {{project_id}}.hix.VRLIJST_KEUZELST as keuzelijst on  keuzelijst.CODE = antwoorden.Antwoord
-  ),
-  cte as (
+), cte_vragenlijsten as (
     select distinct patientnr, opslagid, vraagid, antwoord_opslagid, stelling, omschr
     from vragenlijsten_hix where opslagid in (select opslagid from  vragenlijsten_hix where
     lijstnaam = 'Registratieformulier MOC' and stelling = 'Nieuw/follow-up registratieformulier' and omschr = 'nieuw') 
     and vraagid in ('0000002082', '0000002083', '0000002084', '0000002085', '0000002086', '0000002087', '0000002088') and omschr = 'ja'
-  ),
-  cte2 as (
+), cte_vragenlijsten2 as (
     select distinct patientnr, opslagid, antwoord, 
     from vragenlijsten_hix where lijstnaam = 'Registratieformulier MOC' and stelling = 'Incidentiedatum' and not antwoord = ''
-  ),
-  cte3 as (
+), cte_vragenlijsten3 as (
     select distinct patientnr, opslagid, vraagid, antwoord_opslagid, stelling, omschr 
     from vragenlijsten_hix where lijstnaam = 'MOC longtumor' and 
     vraagid in ('0000002082', '0000002083', '0000002084', '0000002085', '0000002086', '0000002087', '0000002088') and omschr = 'ja'
-  )
-select distinct
-  case when not cte2.patientnr in (select patientnr from cte3) then concat('MOC_', cte.antwoord_opslagid, '_', cte.patientnr, '_', antwoord) 
-  else concat('MOC_', cte3.antwoord_opslagid, '_', cte3.patientnr, '_', antwoord) end as condition_occurrence_id
-  ,cte2.patientnr as person_id
-  ,case when not cte2.patientnr in (select patientnr from cte3) then concat('HIXVRAGENLIJSTEN_',cte.vraagid)
-  else concat('HIXVRAGENLIJSTEN_',cte3.vraagid) end as condition_concept_id
-  ,safe_cast(format_date('%Y-%m-%d', parse_date('%d-%m-%Y',antwoord)) as date) as condition_start_date
-  ,safe_cast(concat(format_date('%Y-%m-%d', parse_date('%d-%m-%Y', antwoord)), ' 00:00:00') as datetime) as condition_start_datetime
-  ,cast(null as date) as condition_end_date
-  ,cast(null as datetime) as condition_end_datetime
-  ,'ADMINISTRATION_RECORD' as condition_type_concept_id
-  ,'MZG_TYPE_N' as condition_status_concept_id 
-  ,cast(null as string) as stop_reason
-  ,cast(null as string) as provider_id
-  ,cast(null as string) as visit_occurrence_id
-  ,cast(null as string) as visit_detail_id
-  ,case when not cte2.patientnr in (select patientnr from cte3) then concat('HIXVRAGENLIJSTEN_',cte.vraagid)
-  else concat('HIXVRAGENLIJSTEN_',cte3.vraagid) end as condition_source_value
-  ,cast(null as string) as condition_source_concept_id
-  ,cast(null as string) as condition_status_source_value 
-from cte
-right join cte2 on cte2.opslagid = cte.opslagid
-left join cte3 on cte3.patientnr = cte2.patientnr
-where safe_cast(format_date('%Y-%m-%d', parse_date('%d-%m-%Y',antwoord)) as date) is not null
-and (case when not cte2.patientnr in (select patientnr from cte3) then concat('MOC_', cte.antwoord_opslagid, '_', cte.patientnr) 
-  else concat('MOC_', cte3.antwoord_opslagid, '_', cte3.patientnr) end) is not null
+), cte as (
+  select distinct
+    case when not cte_vragenlijsten2.patientnr in (select patientnr from cte_vragenlijsten3) then concat('MOC_', cte_vragenlijsten.antwoord_opslagid, '_', cte_vragenlijsten.patientnr, '_', antwoord) 
+    else concat('MOC_', cte_vragenlijsten3.antwoord_opslagid, '_', cte_vragenlijsten3.patientnr, '_', antwoord) end as condition_occurrence_id
+    ,cte_vragenlijsten2.patientnr as person_id
+    ,case when not cte_vragenlijsten2.patientnr in (select patientnr from cte_vragenlijsten3) then concat('HIXVRAGENLIJSTEN_',cte_vragenlijsten.vraagid)
+    else concat('HIXVRAGENLIJSTEN_',cte_vragenlijsten3.vraagid) end as condition_concept_id
+    ,safe_cast(format_date('%Y-%m-%d', parse_date('%d-%m-%Y',antwoord)) as date) as condition_start_date
+    ,safe_cast(concat(format_date('%Y-%m-%d', parse_date('%d-%m-%Y', antwoord)), ' 00:00:00') as datetime) as condition_start_datetime
+    ,cast(null as date) as condition_end_date
+    ,cast(null as datetime) as condition_end_datetime
+    ,'ADMINISTRATION_RECORD' as condition_type_concept_id
+    ,'MZG_TYPE_N' as condition_status_concept_id 
+    ,cast(null as string) as stop_reason
+    --,cast(null as string) as provider_id
+    --,cast(null as string) as visit_occurrence_id
+    --,cast(null as string) as visit_detail_id
+    ,case when not cte_vragenlijsten2.patientnr in (select patientnr from cte_vragenlijsten3) then concat('HIXVRAGENLIJSTEN_',cte_vragenlijsten.vraagid)
+    else concat('HIXVRAGENLIJSTEN_',cte_vragenlijsten3.vraagid) end as condition_source_value
+    ,cast(null as string) as condition_source_concept_id
+    ,cast(null as string) as condition_status_source_value 
+  from cte_vragenlijsten
+  right join cte_vragenlijsten2 on cte_vragenlijsten2.opslagid = cte_vragenlijsten.opslagid
+  left join cte_vragenlijsten3 on cte_vragenlijsten3.patientnr = cte_vragenlijsten2.patientnr
+  where safe_cast(format_date('%Y-%m-%d', parse_date('%d-%m-%Y',antwoord)) as date) is not null
+  and (case when not cte_vragenlijsten2.patientnr in (select patientnr from cte_vragenlijsten3) then concat('MOC_', cte_vragenlijsten.antwoord_opslagid, '_', cte_vragenlijsten.patientnr) 
+    else concat('MOC_', cte_vragenlijsten3.antwoord_opslagid, '_', cte_vragenlijsten3.patientnr) end) is not null
+)
+SELECT cte.*
+    , COALESCE(ARRAY_AGG(vd.provider_id ORDER BY vd.visit_detail_start_datetime DESC LIMIT 1)[OFFSET(0)], ARRAY_AGG(v.provider_id ORDER BY v.visit_start_datetime DESC LIMIT 1)[OFFSET(0)]) as provider_id
+    , ARRAY_AGG(v.visit_occurrence_id ORDER BY v.visit_start_datetime DESC LIMIT 1)[OFFSET(0)] as visit_occurrence_id
+    , ARRAY_AGG(vd.visit_detail_id ORDER BY vd.visit_detail_start_datetime DESC LIMIT 1)[OFFSET(0)] as visit_detail_id
+FROM cte
+LEFT OUTER JOIN {{project_id}}.{{dataset_id_work}}.visit_occurrence_upload v ON v.person_id = cte.person_id AND cte.condition_start_datetime >= v.visit_start_datetime and cte.condition_start_datetime <= v.visit_end_datetime 
+LEFT OUTER JOIN {{project_id}}.{{dataset_id_work}}.visit_detail_upload vd ON v.visit_occurrence_id = vd.visit_occurrence_id AND cte.condition_start_datetime >= vd.visit_detail_start_datetime and cte.condition_start_datetime <= vd.visit_detail_start_datetime
+GROUP BY 1,2,3,4,5,6,7,8,9,10,11,12,13
