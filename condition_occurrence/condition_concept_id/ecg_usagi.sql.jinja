@@ -71,7 +71,7 @@ SELECT
 FROM
   cte_all
 WHERE
-  lower(sourceName) not like 'confirmed'
+  lower(sourceName) not like 'confirmed%'
 ORDER BY
   sourceFrequency DESC,
   sourceCode ASC

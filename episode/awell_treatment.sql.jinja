@@ -97,6 +97,8 @@ from awell_vragenlijsten a
 inner join epstartdate e1 on a.patient_code = e1.patient_code and a.submission_date = e1.submission_date
 left join epsenddate e2 on e1.patient_code = e2.patient_code and e1.submission_date = e2.submission_date and 
 substring(e1.question_id, 1, 4) = substring(e2.question_id, 1, 4)
+inner join {{project_id}}.{{dataset_id_work}}.person_upload p
+on cast(a.patient_code as string) = p.person_id
 
 where (not structured_answer_code in ('EARLY_STAGE_LUNGCANCER_CHIRURGIE', 'no_treatment',
 'no_treatment_palliative', 'no_treatment_with_weekly_follow_up')) and a.question_id in ('TX', 'choose_treatment')

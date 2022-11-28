@@ -1,0 +1,23 @@
+-- remap new ecg_usagi_raw using old ecg_usagi
+
+SELECT 
+  DISTINCT sourceCode,
+  sourceName,
+  raw.sourceFrequency,
+  CAST(NULL AS string) AS sourceAutoAssignedConceptIds,
+  1 AS matchScore,
+  IF(old.mappingStatus = "APPROVED", old.mappingStatus, raw.mappingStatus) AS mappingStatus,
+  IF(old.mappingStatus = "APPROVED", old.equivalence, raw.equivalence) AS equivalence,
+  IF(old.mappingStatus = "APPROVED", old.statusSetBy, raw.statusSetBy) AS statusSetBy,
+  UNIX_MILLIS(CURRENT_TIMESTAMP()) AS statusSetOn,
+  IF(old.mappingStatus = "APPROVED", old.conceptId, raw.conceptId) AS conceptId,
+  IF(old.mappingStatus = "APPROVED", old.conceptName, raw.conceptName) AS conceptName,
+  IF(old.mappingStatus = "APPROVED", old.domainId, raw.domainId) AS domainId,
+  IF(old.mappingStatus = "APPROVED", old.mappingType, raw.mappingType) AS mappingType,
+  IF(old.mappingStatus = "APPROVED", old.comment, raw.comment) AS comment,
+  IF(old.mappingStatus = "APPROVED", old.createdBy, raw.createdBy) AS createdBy,
+  UNIX_MILLIS(CURRENT_TIMESTAMP()) AS createdOn,
+  CAST(NULL AS string) AS assignedReviewer
+FROM `{{project_id}}.ecg.ecg_usagi_raw` raw
+JOIN `{{project_id}}.ecg.ecg_usagi` old
+USING (sourceCode, sourceName)

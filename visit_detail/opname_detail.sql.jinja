@@ -70,7 +70,9 @@ with cte_visit_detail as (
     from cte_visit_detail3
     where row_number = 1
 )
-select *
+select cte_visit_detail4.*
     ,LAG (visit_detail_id) OVER (partition by visit_detail_id ORDER BY visit_detail_start_datetime asc) as preceding_visit_detail_id
 from cte_visit_detail4
+inner join {{project_id}}.{{dataset_id_work}}.visit_occurrence_upload vo
+on cte_visit_detail4.visit_occurrence_id = vo.visit_occurrence_id
 order by 2, 5 desc 
