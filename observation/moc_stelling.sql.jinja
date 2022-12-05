@@ -56,7 +56,7 @@ with vragenlijsten_hix as (
     ,cast(null as string) as value_source_value
     ,if(
         cte_moc3.antwoord_opslagid is not null,
-        concat('MOC_', cte_moc3.antwoord_opslagid, '_', cte_moc.patientnr),
+        concat('MOC_', cte_moc3.antwoord_opslagid, '_', cte_moc.patientnr, '_', cte_moc2.observation_datetime),
         cast(null as string) 
     ) as observation_event_id
     ,if(
