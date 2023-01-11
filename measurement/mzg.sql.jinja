@@ -40,10 +40,10 @@ with cte_mzg as (
 	select CONCAT(TRIM(i.formnr), '_', TRIM(i.pat_std), '_', i.vlgnr) as id 
 		,TRIM(v.PATIENTNR) as pat_id
 		,TRIM(v.INSCHRNR) as visit_id
-		,CAST(m.vandat as DATE) as start_date
-		,CAST(m.vanuur as TIME) as start_time
-		,CAST(m.totdat as DATE) as end_date
-		,CAST(m.totuur as TIME) as end_time
+		,CAST(i.datum as DATE) as start_date
+		,CAST(NULL as TIME) as start_time
+		,CAST(i.datum as DATE) as end_date
+		,CAST(NULL as TIME) as end_time
 		,TRIM(i.uitvoerder) as dok_id 
 		,TRIM(i.ingreep) as icd_code
 		,'I' as type
