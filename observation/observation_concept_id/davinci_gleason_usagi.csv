@@ -1,0 +1,4 @@
+sourceCode,sourceName,sourceFrequency,sourceAutoAssignedConceptIds,matchScore,mappingStatus,equivalence,statusSetBy,statusSetOn,conceptId,conceptName,domainId,mappingType,comment,createdBy,createdOn,assignedReviewer
+DV_totale gleasonscore,totale gleasonscore,710,,0.00,APPROVED,EQUAL,etl,1659434616166,4157602,Gleason score,Observation,MAPS_TO,AUTO MAPPED,etl,1659434616166,
+DV_dominante graad,dominante graad,737,,0.00,APPROVED,EQUAL,etl,1659434616166,4293445,Primary Gleason pattern,Observation,MAPS_TO,AUTO MAPPED,etl,1659434616166,
+DV_secundaire graad,secundaire graad,705,,0.00,APPROVED,EQUAL,etl,1659434616166,4297948,Secondary Gleason pattern,Observation,MAPS_TO,AUTO MAPPED,etl,1659434616166,

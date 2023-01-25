@@ -1,0 +1,13 @@
+sourceCode,sourceName,sourceFrequency,sourceAutoAssignedConceptIds,matchScore,mappingStatus,equivalence,statusSetBy,statusSetOn,conceptId,conceptName,domainId,mappingType,comment,createdBy,createdOn,assignedReviewer
+LABO_Normaal,Normaal,0,,1,APPROVED,EQUAL,etl,1660056835962,45884153,Normal,Meas Value,MAPS_TO,AUTO MAPPED,etl,1660056835962,
+LABO_Abnormaal,Abnormaal,0,,1,APPROVED,EQUAL,etl,1660056835962,45878745,Abnormal,Meas Value,MAPS_TO,AUTO MAPPED,etl,1660056835962,
+
+LABO_nee,nee,0,,1,APPROVED,EQUAL,etl,1660056835962,45878245,No,Meas Value,MAPS_TO,AUTO MAPPED,etl,1660056835962, --of beter 4188540 ?? (answer vs qualifier value, loinc vs snomed)
+LABO_neen,neen,0,,1,APPROVED,EQUAL,etl,1660056835962,45878245,No,Meas Value,MAPS_TO,AUTO MAPPED,etl,1660056835962, --of beter 4188540 ?? (answer vs qualifier value, loinc vs snomed)
+LABO_Nee,Nee,0,,1,APPROVED,EQUAL,etl,1660056835962,45878245,No,Meas Value,MAPS_TO,AUTO MAPPED,etl,1660056835962, --of beter 4188540 ?? (answer vs qualifier value, loinc vs snomed)
+LABO_Neen,Neen,0,,1,APPROVED,EQUAL,etl,1660056835962,45878245,No,Meas Value,MAPS_TO,AUTO MAPPED,etl,1660056835962, --of beter 4188540 ?? (answer vs qualifier value, loinc vs snomed)
+LABO_Negatief,Negatief,0,,1,APPROVED,EQUAL,etl,1660056835962,45878245,No,Meas Value,MAPS_TO,AUTO MAPPED,etl,1660056835962, --of beter 4188540 ?? (answer vs qualifier value, loinc vs snomed)
+LABO_ja,ja,0,,1,APPROVED,EQUAL,etl,1660056835962,45877994,Yes,Meas Value,MAPS_TO,AUTO MAPPED,etl,1660056835962, --of beter 4188539 ?? (answer vs qualifier value, loinc vs snomed)
+LABO_Ja,Ja,0,,1,APPROVED,EQUAL,etl,1660056835962,45877994,Yes,Meas Value,MAPS_TO,AUTO MAPPED,etl,1660056835962, --of beter 4188539 ?? (answer vs qualifier value, loinc vs snomed)
+
+-- Waar toe te voegen? Niet echt measurements, wel procedures, of observations?
