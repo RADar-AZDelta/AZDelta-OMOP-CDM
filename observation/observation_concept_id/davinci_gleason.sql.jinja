@@ -8,7 +8,7 @@ with gleason_davinci as (
     INNER JOIN {{project_id}}.davinci.Protocol AS PRO  ON cod.proID = pro.PRO_SYSID
     join {{project_id}}.davinci.ProtocolTemplateValue as templ on templ.proID = pro.pro_SysID
     join {{project_id}}.davinci.TemplateField as veldnaam on tef_SysID = templ.ptvDynGuid
-    INNER JOIN ({{project_id}}.davinci.Request AS REQ INNER JOIN ({{project_id}}.RequestOrigin AS REO1
+    INNER JOIN ({{project_id}}.davinci.Request AS REQ INNER JOIN ({{project_id}}.davinci.RequestOrigin AS REO1
     INNER JOIN {{project_id}}.davinci.RequestOriginType ret1 ON reo1.retID = ret1.RET_SYSID) ON REQ.reoID = reo1.REO_SYSID
     INNER JOIN {{project_id}}.davinci.Site AS SIT1 ON REQ.sitID = sit1.SIT_SYSID
     INNER JOIN {{project_id}}.davinci.Location LOC ON req.locID = LOC.LOC_SYSID
