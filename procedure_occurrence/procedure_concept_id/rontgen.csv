@@ -1,0 +1,3062 @@
+source_code,source_term,source_frequency
+RAD_TH1,Thorax 1cl,371347
+RAD_TH2,Thorax 2cl.,346806
+RAD_CTAB,CT abdomen 15cl,156170
+RAD_ECHO,Echo gastro SC,142471
+RAD_MRWM,MR cwz/dwz/lwz,130396
+RAD_RXBOB,RX tractie-aspiratie/bead/monit,125990
+RAD_CTHE,CT hersenen,125084
+RAD_CC,Cytologie cervix,109332
+RAD_ECLM,Echo lidmaat,106249
+RAD_PATHOL,PATHOL,103160
+RAD_GB1,Gewone biopsie 1x,95911
+RAD_CS00000009,ECG,92897
+RAD_MRAF,MR hoofd,88463
+RAD_CTWM,CT wervelzuil,87826
+RAD_?,Onderzoek tbv verslag,87409
+RAD_LWZ,RX LWZ,82653
+RAD_MRLM,MR lidmaat,76443
+RAD_ZH00000079,CR Thorax Aan Bed,74339
+RAD_ZH00005209,Audiometrie (tonaal),70490
+RAD_ZH00000081,CR Thorax F/P,66846
+RAD_MAM1,RX mammo unilateraal,66590
+RAD_T_TH2,RX Thorax FP,66432
+RAD_ZH00005208,Impedantiemetrie,64054
+RAD_ZH00000080,CR Thorax Face,63907
+RAD_BEK,RX bekken,58389
+RAD_THORAX,Thorax,54685
+RAD_ECBO,Echo borsten,53940
+RAD_BOT,Botscan,49532
+RAD_0000008724,Echo Urologie 2,47258
+RAD_CS00000033,Fietsergometrie - maximaal,46898
+RAD_ABD,RX abdomen,46816
+RAD_ETAD,Echo tot abdomen evt doppler,46155
+RAD_KNIE,Knie,45466
+RAD_ZH00005182,Echocardiografie adhoc,44677
+RAD_CWZ,RX cervicale wervelzuil,41402
+RAD_ZH00000253,Echo Abdomen,40221
+RAD_ZH00000391,MR LWZ Standaard/PLIF,38882
+RAD_T_TH1,RX Thorax,38612
+RAD_CS00000331,C-Boog,38120
+RAD_T_EAB,Echo Abd Totaal,37564
+RAD_1401,THORAX,37238
+RAD_KNR,RX knie re,35893
+RAD_KNL,RX knie li,35668
+RAD_HEUR,RX heup re,35638
+RAD_MSCR,RX Mammoscreening,34779
+RAD_HEUL,RX heup li,34121
+RAD_T_ABD,RX Abdomen Int,33279
+RAD_ZH00000127,CT Hersenen Standaard,33185
+RAD_MRAB,MR hals/thorax/abdomen/bekk,31118
+RAD_CTTH,CT Thorax,29484
+RAD_ZH00000157,CT Abdomen Standaard met contrast,28601
+RAD_11,cervico-vaginale cyto,28547
+RAD_ZH00000121,MA Mammoscreening Bilateraal,28400
+RAD_SCHE,RX SCHEDEL,28335
+RAD_VOR,RX voet re,28286
+RAD_VOL,RX voet li,27668
+RAD_ZH00000267,Echo Borsten (met inbegrip van de axilla),26868
+RAD_CS00000332,Scopie (Videotoren),26862
+RAD_VOET,Voet(en),26829
+RAD_CSKD,Echo K.Dujardin,25966
+RAD_SCHR,RX schouder re,25799
+RAD_0000008546,Echo Urologie 1,25081
+RAD_POL,RX pols li,24884
+RAD_T_THS,RX THmECG/BA/ASP,23460
+RAD_CS00000015,Echocardiografie,23426
+RAD_1712,ECHO LIDMAAT,23050
+RAD_ZH00000041,CR Heup Rechts,23003
+RAD_SCHL,RX schouder li,22883
+RAD_ZH00005267,C-boog,22784
+RAD_ZH00005442,Echo Abdomen (adhoc) E,22402
+RAD_ZH00000040,CR Heup Links,21886
+RAD_POR,RX pols re,21781
+RAD_ECHO LID,ECHO LIDMAAT,21615
+RAD_DWZ,RX DWZ,21564
+RAD_ENR,RX enkel re,21497
+RAD_COR,CORONARO (DIAGNOSTISCH),21484
+RAD_MAM,RX mammo,21360
+RAD_T_CABD,CT Abdomen,21156
+RAD_ENL,RX enkel li,20964
+RAD_CTLM,CT lidmaat,20949
+RAD_DUHM,duplex hals,20908
+RAD_T_ELID,Echo Lidmaat,20886
+RAD_1211,KNIE,20883
+RAD_HAR,RX hand re,20220
+RAD_CSMD,Echo M.De Ceuninck,20088
+RAD_HAL,RX hand li,19728
+RAD_T_CSCH-,CT Schedel - Contrast,19527
+RAD_ZH00005084,Whole body met SPECT/CT (low dose CT) scan,19426
+RAD_ZH00005083,Whole body met SPECT/CT (low dose CT) inj,19392
+RAD_T_LWZ,RX Lumbale Wervelzuil,19153
+RAD_ZH00000147,CT LWZ Standaard,18789
+RAD_CA1,Cytologie andere 1x,18294
+RAD_ZH00000017,CR Schouder Rechts,18163
+RAD_ZH00000029,CR Voet Rechts,18126
+RAD_6006,NMR WERVELZUIL,17897
+RAD_T_CLWZ,CT Lumbale Wervelzuil,17625
+RAD_CS00000158,EEG,17508
+RAD_HEUP,Heup,17505
+RAD_ZH00000384,MR CWZ Standaard,17304
+RAD_6007,NMR LIDMAAT,17255
+RAD_T_CVHW,Consultatie Dr Van Haute,16987
+RAD_ZH00000028,CR Voet Links,16973
+RAD_ZH00000466,MR Knie Rechts 15ch AA,16541
+RAD_T_BEKR,RX Bekken Re,16522
+RAD_ZH00000016,CR Schouder Links,16288
+RAD_PO,RX pols,16240
+RAD_ZH00000117,MA Mammo Bilateraal,16131
+RAD_1231,HEUP,16023
+RAD_ENK,RX Enkel,15966
+RAD_ZH00000031,CR Enkel Rechts,15828
+RAD_ZH00005178,ECG ad-hoc,15646
+RAD_ZH00000465,MR Knie Links 15ch AA,15478
+RAD_ZH00000008,CR Pols Links,15446
+RAD_ZH00000036,"CR Knie Standaard Staande (""4 opnames"") Rechts",15390
+RAD_ZH00000034,"CR Knie Standaard Staande (""4 opnames"") Links",15288
+RAD_ZH00000043,CR Bekken Staand,14996
+RAD_ZH00000049,CR LWZ,14940
+RAD_ZH00000174,CT Thorax-Abdomen Standaard,14921
+RAD_ZH00000030,CR Enkel Links,14899
+RAD_ZH00005217,Spraakaudiometrie,14632
+RAD_ZH00000009,CR Pols Rechts,14418
+RAD_CSFS,Echo F.Stammen,14383
+RAD_CSSVDW,Echo S.Van de Walle,14335
+RAD_T_VOBMAM,Mammo Prev VOB,14061
+RAD_ZH00005237,echo totaal abdomen,14005
+RAD_CT WERVE,CT WERVEL 2 (12),13939
+RAD_WBSP,Total Body + spect,13893
+RAD_ZH00000006,CR Hand Rechts,13836
+RAD_1665,CT WERVEL 2 (12),13808
+RAD_ARTR,RX arthrografie,13795
+RAD_ZH00005185,Volledige longfunctie,13725
+RAD_1669,CT ABDOMEN,13702
+RAD_1,Echo LEVER / GB /GW,13230
+RAD_CT HALS/,CT HALS/THORAX/ABDOMEN ZONDER/MET (30),13078
+RAD_BEKKEN,Bekken,12983
+RAD_ZH00005179,Echocardiografie,12972
+RAD_1233,BEKKEN,12953
+RAD_ZH00000287,Echo Schouder Rechts,12900
+RAD_HA,RX hand,12703
+RAD_ZH00005212,Eenvoudig evenwichtsonderzoek/Positioneringstesten,12654
+RAD_KM1,Kleine makroscopie 1x,12548
+RAD_CTTHAB,CT Thorax en abdomen,12344
+RAD_ZH00000152,CT Thorax Standaard,12335
+RAD_ZH00000005,CR Hand Links,12322
+RAD_T_VOER,RX Voet Re,12181
+RAD_0000008749,COVID19CT,12063
+RAD_CS00000034,24 uurs holter,12049
+RAD_SCH,RX Schouder,11904
+RAD_HEU,RX heup,11837
+RAD_TTE1,Transthoracale echocardiografie,11725
+RAD_ZH00000042,CR Bekken Liggend,11427
+RAD_MRAG,MR angiografie,11349
+RAD_ZH00000286,Echo Schouder Links,11178
+RAD_T_VOEL,RX Voet Li,11061
+RAD_ECAB,echo abdomen,11021
+RAD_1181,VOET,11004
+RAD_ZH00000340,MR Hersenen Standaard,10878
+RAD_T_CWZ,RX Cervicale Wervelzuil,10856
+RAD_T_ENKR,RX Enkel Re,10641
+RAD_T_CTH,CT Thorax,10314
+RAD_LWZ2R,CT WERVEL 2 (12),10285
+RAD_T_KNIL,RX Knie Li,10266
+RAD_T_KNIR,RX Knie Re,10245
+RAD_VIL,RX vinger li,10119
+RAD_1252,LWZ2R,10100
+RAD_T_SCHR,RX Schouder Re,10058
+RAD_ZH00000089,CR Abdomen Staand,9980
+RAD_CT SCHED,CT SCHEDELBASIS (12),9917
+RAD_BMCA,Botdensitometrie,9876
+RAD_T_POLL,RX Pols Li,9875
+RAD_VIR,RX vinger Re,9758
+RAD_T_ENKL,RX Enkel Li,9695
+RAD_T_OPG,OPG,9485
+RAD_ZH00000155,CT Thorax Embolen,9471
+RAD_1161,SCHOUDER,9407
+RAD_5011,TBSPECT/A,9209
+RAD_ZH00005181,Fietsergonometrie - maximaal adhoc,9070
+RAD_T_HEUR,RX Heup Re,8995
+RAD_T_SCHL,RX Schouder Li,8877
+RAD_SCHOUDER,Schouder,8866
+RAD_T_POLR,RX Pols Re,8820
+RAD_T_CLID,CT Lidmaat,8783
+RAD_ECHA,Echo hals,8756
+RAD_ZH00005118,Conebeam sinussen,8729
+RAD_THB,THB,8702
+RAD_ELL,RX elleboog li,8625
+RAD_T_HEUL,RX Heup Li,8550
+RAD_SMD,RX SMD 10cl,8534
+RAD_DULM,Duplex lidmaat,8524
+RAD_SK,Schildklierscan,8480
+RAD_ELR,RX elleboog re,8455
+RAD_T_HANR,RX Hand Re,8425
+RAD_ENKEL,Enkel(s),8342
+RAD_ZH00005218,Allergietesten,8294
+RAD_SAC,RX SACRUM,8192
+RAD_T_BEKL,RX Bekken Li,8190
+RAD_CTFA,CT of CBCT faciaal massief (sinussen) zonder contr,8138
+RAD_1650,CT SCHEDEL ZONDER (10),8081
+RAD_ZH00000620,PETscan,8042
+RAD_1191,ENKEL,7923
+RAD_ZH00000037,CR Knie Trauma (F-P-3/4) Rechts,7912
+RAD_ECHOCARD,amb zaal 1&2,7870
+RAD_ZH00000143,CT CWZ Standaard,7865
+RAD_ZH00000305,Echo Heup Rechts,7858
+RAD_T_EMAM,Echo Borst,7802
+RAD_VI,RX vinger,7691
+RAD_ZH00000088,CR Abdomen Liggend,7687
+RAD_T_HANL,RX Hand Li,7657
+RAD_SB1,Superbiopsie 1x,7643
+RAD_T_MRSCH,MRI Schedel,7626
+RAD_ZH00000035,CR Knie Trauma (F-P-3/4) Links,7606
+RAD_ZH00000265,Echo Hals,7541
+RAD_T_HUMR,RX Humerus Re,7505
+RAD_ZH00000304,Echo Heup Links ,7493
+RAD_ZH00000177,CT Thorax-Abdomen Restaging Met Contrast,7469
+RAD_ZH00000047,CR CWZ,7445
+RAD_T_CCWZ,CT CWZ,7375
+RAD_B3F,Botscan 3 fasen,7267
+RAD_SM1,Supermakroscopie 1x,7229
+RAD_EL,"ECHO LEVER, GALBLAAS, GALWEGEN EN UROGENITAAL SYST",7175
+RAD_1121,POLS,7078
+RAD_CTRS,CT rotsbeenderen/sella tursica,7056
+RAD_ZH00000130,CT Hersenen Trauma,7014
+RAD_POLS,POLS,6991
+RAD_ZH00000307,Duplex-Dopler Carotiden + Vertebralis,6974
+RAD_ZH00000012,CR Elleboog Links,6954
+RAD_CSWA,Echo W.Anné,6940
+RAD_6001,NMR HOOFD,6926
+RAD_ZH00000169,CT Urolithiase,6836
+RAD_T_SIN,RX Sinussen,6733
+RAD_WBSPCT,Total Body + spectCT,6713
+RAD_1708,ECHO ABDOMEN,6687
+RAD_RIBL,RX ribben li,6679
+RAD_ZH00000153,CT Thorax Zonder Contrast,6672
+RAD_CS00000120,Spirometrie,6639
+RAD_ZH00000013,CR Elleboog Rechts,6613
+RAD_PET,PETscan,6527
+RAD_T_HUML,RX Humerus Li,6448
+RAD_ECHO ABD,ECHO ABDOMEN,6435
+RAD_RIBR,RX ribben re,6403
+RAD_1668,CT THORAX,6274
+RAD_ABDOMENE,ABDOMENENKEL,6226
+RAD_NMR LIDM,NMR LIDMAAT,6217
+RAD_FULL,RX Full leg,6156
+RAD_SN,Smith & Nephew Roeselare,6138
+RAD_ZH00005210,Tinnitusanalyse,6137
+RAD_T_CSCH+,CT Schedel + Contrast,6092
+RAD_ZH00000048,CR DWZ,6060
+RAD_CSPP,Echo P.Pollet,6057
+RAD_NMR WERV,NMR WERVELZUIL,5860
+RAD_ZH00000004,CR Vinger Rechts,5812
+RAD_COLE,RX colon enkel contrast,5802
+RAD_CWZMAX,CWZ,5799
+RAD_1401B,THORAX BOBBY,5779
+RAD_ZH00000003,CR Vinger Links,5774
+RAD_T_VINR,RX VIinger Re,5718
+RAD_DUUV,Duplex unilateraal veneus,5654
+RAD_T_VINL,RX Vinger Li,5651
+RAD_1402,THORAX (2 OPNAMEN),5533
+RAD_ZH00000430,MR Schouder Arthro Rechts,5520
+RAD_ZH00000341,MR Hersenen CVA,5497
+RAD_T_DWZ,RX Dorsale Wervelzuil,5455
+RAD_T_CSIN,CT Sinussen,5448
+RAD_TEE,TransEsophageale Echocardiografie,5440
+RAD_ZH00000063,CR Arthro Schouder Rechts,5396
+RAD_1704,ECHO BORST,5394
+RAD_ZH00005479,coronarografie,5371
+RAD_ZH00005216,OAE,5352
+RAD_ZH00005186,Volledige longfunctie met reversibiliteit,5343
+RAD_CU1,Cytologie urine-sputum 1x,5306
+RAD_T_ABHYP,RX Abdomen Hypch,5210
+RAD_RIB2,RX ribben ,5187
+RAD_T_MAM2,Mammografie 2,5175
+RAD_T_MRLWZ,MRI Lumbale Wervelzuil,5163
+RAD_1351,MAMMOGRAFIE,5047
+RAD_CTHA,CT Hals,5010
+RAD_MRMA,MR mammae,4972
+RAD_ZH00000001,CR Duim Links,4904
+RAD_HAND,HAND,4902
+RAD_1301,ABDOMENENKEL,4843
+RAD_OBEE,RX onderbeen,4818
+RAD_T_CDECK,Consultatie Dr Deckers,4814
+RAD_1246,CWZMAX,4797
+RAD_ZH00000084,CR Ribbenrooster Links,4768
+RAD_ZH00000261,Echo Nieren - Blaas,4721
+RAD_ZH00000002,CR Duim Rechts,4712
+RAD_T_EHWD,Echo Hals,4580
+RAD_0000008684,Video Head Impuls Test,4520
+RAD_1111,HAND,4504
+RAD_ZH00000085,CR Ribbenrooster Rechts,4497
+RAD_T_CSTR,Consultatie Dr Stroef,4466
+RAD_1101,VINGER,4385
+RAD_CYST,RX cystografie,4381
+RAD_T_ELLL,RX Elleboog Li,4359
+RAD_ZH00000301,Echo Knie Rechts,4348
+RAD_ZH00000411,MR Prostaat Screening,4343
+RAD_T_ELLR,RX Elleboog Re,4339
+RAD_0000008512,Pacemaker DDD,4339
+RAD_LPE,Longperfusie,4300
+RAD_OBR,RX onderbeen re,4268
+RAD_ZH00000429,MR Schouder Arthro Links,4244
+RAD_OL,OL,4244
+RAD_ZH00000300,Echo Knie Links,4223
+RAD_ZH00000062,CR Arthro Schouder Links,4191
+RAD_SLOK,RX slokdarm 6cl,4183
+RAD_T_CTHAB,CT Thorax en Abdomen,4161
+RAD_ECHO BOR,ECHO BORST,4148
+RAD_OBL,RX onderbeen li,4143
+RAD_ZH00000044,CR Bekken Calibratiekogel,4105
+RAD_1724,OL,4103
+RAD_DUKL,DUPLEX ABD/TH,4094
+RAD_ZH00000319,Duplex-Dopler Onderste Lidmaat Veneus Links,4056
+RAD_FRAX,Botdensitometrie terugbetaald (DEXA),4047
+RAD_NEUS,RX Neus,4042
+RAD_ZH00000271,Echo Liezen,4017
+RAD_1666,CT LIDMAAT (6),3934
+RAD_ZH00005113,"CT CORONAIREN - Angio (-,+)/EKG",3918
+RAD_9004,ARTHROGRAFIE 4,3887
+RAD_T_SCH,RX Schedel,3870
+RAD_ZH00000320,Duplex-Dopler Onderste Lidmaat Veneus Rechts,3845
+RAD_ZH00000170,CT Urografie,3809
+RAD_ZH00000406,MR Lever Coöperatief,3784
+RAD_ZH00000345,MR Hersenen Tumor,3732
+RAD_IVP,RX IVP,3729
+RAD_ZH00000187,CT Onderste Ledematen,3705
+RAD_T_ST,RX Sternum/Thorax FP,3678
+RAD_CS00000197,BAEP,3670
+RAD_MAM2,RX mammo bilateraal,3653
+RAD_VINGER,Vinger*,3652
+RAD_ZH00000318,Duplex-Dopler Onderste Lidmaten Ven. Bilateraal,3636
+RAD_BMCH,Botdensitometrie,3632
+RAD_ZH00005213,Videonystagmografie,3556
+RAD_ZH00000484,MR Mammo Dynamic,3541
+RAD_0000008616,CT Abdomen Standaard zonder contrast,3522
+RAD_ELLEBOOG,Ellebo(o)g(en),3490
+RAD_0000008607,CR EOS Onderste Ledematen / pre-op 3D / post-op 3D,3456
+RAD_EURD,Echo urinair evt doppler,3427
+RAD_FSP,RX Full spine 1CL,3413
+RAD_T_CABD-,CT Abdomen -,3399
+RAD_OPAN,ORTHOPANTOGRAM,3347
+RAD_CSBBS,Echo B. Bergez stadscampus,3334
+RAD_OAL,RX onderarm li,3327
+RAD_CS00000107,NO bronchiaal,3308
+RAD_T_RIBL,RX Ribben Li,3279
+RAD_T_DLIDKN,duplex kleur 1 x per jaar niet ter bet,3275
+RAD_ZH00000297,Echo Enkel Rechts,3274
+RAD_1141,ELLEBOOG,3268
+RAD_T_RIBR,RX Ribben Re,3262
+RAD_ZH00000296,Echo Enkel Links,3245
+RAD_0,Pro Deo,3219
+RAD_ZH00000472,MR Enkel Standaard Rechts,3178
+RAD_BBER,RX bovenbeen re,3166
+RAD_MIRU,Myocardscan rust,3161
+RAD_BMC,BONE MINERAL CONTENT BEPALING,3151
+RAD_T_THSA,RX Thorax EKG  spoed,3151
+RAD_BBEL,RX bovenbeen li,3130
+RAD_ZH00000144,CT CWZ Trauma,3118
+RAD_ZH00000206,CT Bekken,3077
+RAD_ZH00000295,Echo Voet Rechts,3061
+RAD_ZH00000389,MR DWZ Standaard,3060
+RAD_CT LIDMA,CT LIDMAAT (6),3053
+RAD_ZH00000010,CR Voorarm Links,3046
+RAD_ZH00000471,MR Enkel Standaard Links,3029
+RAD_OARM,RX onderarm,3028
+RAD_T_CDI,Consultatie Dr Van Iseghem,3008
+RAD_ZH00000033,CR Onderbeen Rechts,3002
+RAD_ZH00000283,Echo Elleboog Rechts,2995
+RAD_CS00000123,Spirometrie met reversibiliteit,2985
+RAD_ZH00000392,MR LWZ Postop Micro/Discitis/Meta,2976
+RAD_ZH00000294,Echo Voet Links,2955
+RAD_T_GASTRO,Gastro Intern,2949
+RAD_PTAO,PTA onderbeen,2947
+RAD_T_CBSIN,CBCT Sinussen,2944
+RAD_ZH00000344,MR Hersenen MS,2920
+RAD_ZH00005085,Whole body met SPECT en diagnostische CT inj,2917
+RAD_T_CDST,Consultatie De De Sutter,2909
+RAD_T_MRCWZ,MRI Cervicale Wervelzuil,2898
+RAD_ZH00000279,Echo Pols Rechts,2885
+RAD_ZH00005086,Whole body met SPECT en diagnostische CT scan,2874
+RAD_B1100,TBSPECT,2821
+RAD_ZH00000032,CR Onderbeen Links,2815
+RAD_ZH00000132,CT Hersenen Stroke met Perfusie,2802
+RAD_MAMMOGRA,MAMMOGRAFIE UNILATERAAL,2802
+RAD_T_CKLB,CT Klein Bekken,2793
+RAD_TLPE,Th.scan Persantine,2789
+RAD_0000005146,Myocardscintigrafie (Tc99m) rust inj,2757
+RAD_ZH00000393,MR Sacrum Sacro Ilitis,2749
+RAD_MRCA,MR cardio,2747
+RAD_HUML,RX humerus li,2746
+RAD_VB1,Vriesbiopsie 1x,2721
+RAD_ZH00000038,CR Femur Links,2720
+RAD_LYSC,Lymfescan,2714
+RAD_T_BOTDNT,Botdensitometrie NT,2712
+RAD_HUMR,RX humerus re,2710
+RAD_ZH00000011,CR Voorarm Rechts,2690
+RAD_ZH00000140,CT Hals Standaard,2672
+RAD_CT50,CT50,2670
+RAD_ZH00000039,CR Femur Rechts,2669
+RAD_ZH00000497,Punctie Borst (Anatomopathologie),2660
+RAD_ZH00000278,Echo Pols Links,2651
+RAD_ZH00000020,CR Clavicula Links,2651
+RAD_CWZ6,CWZ6,2650
+RAD_TEEN,Toe,2647
+RAD_CSGHS,Echo G. Hollanders stadscampus,2613
+RAD_T_ESCH1,Echo Schouder Unilateraal,2611
+RAD_ZH00005016,SSEP bovenste extremiteiten,2611
+RAD_FEM,FEM,2603
+RAD_T_CHWD,CT Hals,2592
+RAD_GB2,Gewone biopsie 2x,2590
+RAD_OAR,RX onderarm re,2585
+RAD_ZH00000342,MR Hersenen Migraine,2568
+RAD_ZH00005038,ICD controle,2555
+RAD_ECTH,Echo thorax,2551
+RAD_NMR HOOF,NMR HOOFD,2550
+RAD_ZH00000027,CR Teen I II III IV V Rechts,2541
+RAD_ZH00000015,CR Humerus Rechts,2540
+RAD_CBCTFA,CBCT Faciaal Massief,2535
+RAD_GBIM1,Gewone biopsie + 1 immuno,2529
+RAD_ECHOHN,Echo Cardio Menen Nachtergaele,2527
+RAD_ZH00005464,Fibroscan,2487
+RAD_SLIK,RX slikfunctie,2472
+RAD_PBOR,Punctie borst,2466
+RAD_ZH00000026,CR Teen I II III IV V Links,2452
+RAD_ZH00000349,MR Hersenen Dementie,2451
+RAD_CS00000333,Echo,2450
+RAD_SLMA,Slokdarm.6CL.Maag 2CL,2445
+RAD_ZH00005037,PM controle,2440
+RAD_ZH00000282,Echo Elleboog Links,2433
+RAD_ZH00005419,Echo abdomen (adhoc) D,2429
+RAD_ZH00000137,CT Maxillo-Faciaal Massief Zonder Contrast,2417
+RAD_T_DUKL,Duplex Kleur,2412
+RAD_ZH00000554,Botdensitometrie Terugbetaald,2411
+RAD_ECSC,Echo scrotum,2394
+RAD_6002,NMR HALS THORAX ABDOMEN,2384
+RAD_0000008805,CR Knie Post-OP Links (F/P),2367
+RAD_ZH00000014,CR Humerus Links,2354
+RAD_0000008806,CR Knie Post-OP Rechts (F/P),2343
+RAD_T_GB-,RX Gastricband-,2336
+RAD_T_DLIDV1,Duplex Veneus Eenzijdig,2332
+RAD_ZH00000120,MA Mammo Verhoogd Risico,2325
+RAD_SCHO,SCHO,2306
+RAD_ZH00000021,CR Clavicula Rechts,2294
+RAD_ZH00000056,CR Schedel,2289
+RAD_CLAL,RX clavicula li,2286
+RAD_ZH00005270,CR Voet Links Staande,2276
+RAD_MIPE,Myocardscan Persantine,2274
+RAD_ZH00000665,SPECT-CT LWZ,2261
+RAD_T_TEER,RX Teen Re,2260
+RAD_ZH00000269,Echo Scrotum,2250
+RAD_T_NS,RX Neus,2249
+RAD_ZH00000268,Echo Borsten Verhoogd Risico,2248
+RAD_ZH00000323,DX Botdensitometrie  LWZ + Beide Heupen,2244
+RAD_CBCTHE,CT Accuitomo Radiologie,2220
+RAD_NCTWZ,CT Wervelzuil,2209
+RAD_T_CPGA,Consultatie Dr Galvao,2196
+RAD_CLAR,RX clavicula re,2180
+RAD_ZH00000160,CT Abdomen Inflammatie,2170
+RAD_T_ONBL,RX Onderbeen Li,2166
+RAD_ZH00005272,CR Voet Rechts Staande,2153
+RAD_T_HWD,RX Halswekedelen,2142
+RAD_ZH00000045,CR Sacro-Iliacale Gewrichten,2129
+RAD_ZH00000148,CT LWZ Trauma,2120
+RAD_CTAR,CT gewricht met arthrografie,2110
+RAD_HUM,RX humerus,2110
+RAD_ZH00005105,CT CORONAIREN - Calcium score bepaling (-)/EKG,2092
+RAD_ZH00000119,MA Mammo Rechts,2092
+RAD_TRAN,RX transit,2089
+RAD_HWD,Hals weke delen,2084
+RAD_T_ONBR,RX Onderbeen Re,2059
+RAD_CTCOR,CT Coronaro,2026
+RAD_SCOPIE,Scopie in operatiezaal,2026
+RAD_0000005150,Myocardscintigrafie (Tc99m) Stress Farmaco inj,2026
+RAD_T_TEEL,RX Teen Li,2013
+RAD_CS00000088,Diffusie,2005
+RAD_0000005151,Myocardscintigrafie (Tc99m) Stress Farmaco scan,1996
+RAD_TER,RX Teen/voorvoet rechts,1991
+RAD_ZH00000118,MA Mammo Links,1983
+RAD_CBBETT,CT Accuitomo Bettens,1977
+RAD_T_MRKNIR,MRI Knie Re,1939
+RAD_T_COLOE,Colo Extern,1924
+RAD_CSMG,Echo M.Goethals,1919
+RAD_ZH00000259,Echo Lever - Galblaas,1901
+RAD_0000008793,Microscoop,1883
+RAD_21,behandelen zonder repositie van fractuur van 1 vin,1878
+RAD_DUBV,Duplex lidmaat bilateraal,1867
+RAD_T_MRKNIL,MRI Knie Li,1863
+RAD_ZH00005192,Whole body + diagn spect/CT LEDEMATEN scan,1840
+RAD_ERC+,Ercp + papillotomie,1827
+RAD_CF,cervixcytologie follow-up,1825
+RAD_CTAF,CTH AX+FRONT 2X10C,1823
+RAD_RIBBEN,Ribben,1816
+RAD_1236,RIBBEN,1807
+RAD_T_GB+,RX Gastricband+ ,1803
+RAD_0000005147,Myocardscintigrafie (Tc99m) rust scan + Ca,1800
+RAD_TEL,RX teen/voorvoet li,1795
+RAD_ZH00005191,Whole body + diagn spect/CT LEDEMATEN inj,1793
+RAD_1162,CLAVICULA,1788
+RAD_ZH00000136,CT Sinussen,1783
+RAD_ZH00005226,Rhinomanometrie + Allergietesten,1781
+RAD_KMIM4,Kleine Macroscopie + 4 immuno's,1772
+RAD_ZH00005204,Beenmergpunctie (+/- Botboorbiopsie) adhoc,1766
+RAD_ZH00000409,MR Pancreas Coöperatief,1756
+RAD_T_VOAL,RX Voorarm Li,1756
+RAD_T_SLMA,Slokdarm-Maag,1751
+RAD_MYEL-OLD,LUMBALE MYELO 4C,1749
+RAD_ZH00000128,CT Hersenen Standaard Zonder/Met Contrast,1746
+RAD_EMAR,echo meerdere anat regio's,1744
+RAD_SBIM4,Superbiopsie + 4 immuno's,1733
+RAD_CT GEWRI,CT GEWRICHT (10),1732
+RAD_ZH00000166,CT Pancreas,1725
+RAD_T_CMAHE,Consultatieruimte Dr Maes,1725
+RAD_CLAVICUL,Sleutelbeen,1721
+RAD_1201,ONDERBEEN,1713
+RAD_ZH00005239,echo nier/retroperitoneum,1701
+RAD_1667,CT GEWRICHT (10),1694
+RAD_T_EURO,Echo Urinair,1691
+RAD_STE,RX sternum,1684
+RAD_ZH00000178,CT Thorax-Abdomen Blanco,1681
+RAD_MB2,Minibiopsie 2x,1675
+RAD_ZH00005033,MR Fossa Posterior,1673
+RAD_ONDERBEE,ONDERBEEN,1650
+RAD_CS00000029,24 uurs bloeddrukmeting,1636
+RAD_ZH00000156,CT Thorax Hoge Resolutie,1634
+RAD_BBEE,RX Bovenbeen,1626
+RAD_0000008804,CT Hersenen Stroke zonder Perfusie,1625
+RAD_DUAB,duplex TH/ABD/BEK,1625
+RAD_1751,MAMMOGRAFIE,1625
+RAD_T_CEA,Consultatie Dr Dhondt,1600
+RAD_ZH00000181,CT Trauma - Hersenen + CWZ,1598
+RAD_ZH00000347,MR Hersenen Metastase,1586
+RAD_ZH00000046,CR Sacrum/Coccyx,1581
+RAD_ZH00000298,Echo Onderbeen Links,1577
+RAD_ZH00005215,BERA,1574
+RAD_ZH00000464,MR Bekken Pubalgie,1558
+RAD_T_ABURO,RX Abdomen Uro,1557
+RAD_ZH00000139,CT Rotsbeenderen,1556
+RAD_ZH00005177,EMG,1551
+RAD_ARTHROGR,arthro,1532
+RAD_CWZ4,CWZ4,1518
+RAD_1310,SMD,1517
+RAD_T_VOAR,RX Vooram Re,1510
+RAD_ZH00000401,MR MRCP Coöperatief,1508
+RAD_SCHEDEL,Schedel,1504
+RAD_1171,TEEN,1503
+RAD_ZH00000299,Echo Onderbeen Rechts,1496
+RAD_ZH00000312,Duplex-Dopler Onderste Lidmaten Art. Bilateraal,1491
+RAD_0000008502,Holter 24 torhout,1485
+RAD_0000008503,TEE + reconversie Rumbeke,1481
+RAD_SB2,Superbiopsie 2x,1470
+RAD_ZH00000270,Echo Axillae,1463
+RAD_N1665,CT WERVELZUIL,1462
+RAD_ZH00005187,Spiro en volumes,1462
+RAD_1248,DORSAAL,1459
+RAD_NCTLM,CT Lidmaat,1458
+RAD_T_FEML,RX Femur Li,1456
+RAD_ZH00000094,CR Slokdarm + Maag + Duodenum (SMD),1439
+RAD_CDROM,opgeladen cd,1438
+RAD_6007I,NMR LIDMAAT (IZEGEM),1438
+RAD_T_CNM,Consultatie Dr Naessens,1432
+RAD_ZH00000179,CT Polytrauma - Total Body,1402
+RAD_DORSAAL,DWZ,1397
+RAD_ZH00005189,Whole body + diagn spect/CT WERVELZUIL inj,1383
+RAD_ZH00000164,CT Abdomen Zonder Contrast Nierinsufficientie,1374
+RAD_ZH00005190,Whole body + diagn spect/CT WERVELZUIL scan,1365
+RAD_ZH00000129,CT Hersenen Standaard Met Contrast,1362
+RAD_8500,DENS1500/-,1361
+RAD_ZH00000277,Echo Hand Rechts,1352
+RAD_ZH00005415,Onderzoek urinesediment nefrologie (adhoc) D,1344
+RAD_T_CCX,Consultatie Dr Verhaert,1334
+RAD_ZH00000663,SPECT-CT CWZ,1330
+RAD_ZH00000186,CT AAA,1330
+RAD_ZH00005446,CT Knie Rechts MAKO-Protocol,1328
+RAD_ZH00000145,CT DWZ Standaard,1327
+RAD_ZH00000007,CR Hand Botleeftijd,1327
+RAD_CS00000193,VEP,1314
+RAD_ZH00000149,CT LWZ Postop PLIF,1313
+RAD_FCTLWZ,Facetinfiltratie LWZ,1311
+RAD_ZH00000184,CT Halsvaten,1310
+RAD_ZH00000302,Echo Femur Links,1301
+RAD_T_SEK,Toeslag EKG/BA/ASP/TR,1301
+RAD_TEER,TEE + Reconversie,1298
+RAD_0000008808,Consultatie audioloog,1293
+RAD_T_FEMR,RX Femur Re,1292
+RAD_SBIM3,Superbiopsie + 3 immuno's,1279
+RAD_ZH00000303,Echo Femur Rechts,1275
+RAD_ZH00000509,Punctie Lymfeklier,1272
+RAD_ZH00000346,MR Hersenen Tumor Perfusie,1256
+RAD_ZH00000266,Echo Thorax,1252
+RAD_ZH00000314,Duplex-Dopler Onderste Lidmaat Arterieel Rechts,1246
+RAD_ZH00005223,Fitting BAHA / CI,1242
+RAD_CORPO,CORONARO POST-OP,1229
+RAD_T_CLAL,RX Clavicula Li,1224
+RAD_ZH00000522,Plaatsen PICC,1220
+RAD_ZH00000306,Duplex-Dopler Carotiden,1217
+RAD_AB,ARTHREX Brugsestwg,1212
+RAD_BDN,Botdensitometrie Nomenclatuur,1211
+RAD_ZH00005445,CT Knie Links MAKO-Protocol,1208
+RAD_0000005168,MR Craniale Zenuwen - Nervus facialis & vestibulo,1199
+RAD_GBIM4,Gewone biopsie + 4 immuno's,1198
+RAD_ZH00000334,MR Cardio Standaard / Viabiliteit,1181
+RAD_HYST,RX hysterografie,1177
+RAD_ZH00000276,Echo Hand Links,1175
+RAD_CLAV,CLAV,1174
+RAD_ZH00000263,Echo Schedelinhoud,1170
+RAD_THI,Therapie I 131,1166
+RAD_TLFI,Thalliumscan fiets,1164
+RAD_ECVB,Echo vrouwelijk bekken,1164
+RAD_ZH00000458,MR Heup Unilateraal Rechts,1161
+RAD_0000008658,CR EOS Onderste Ledematen / lengtemeting,1156
+RAD_ZH00000457,MR Heup Unilateraal Links,1151
+RAD_T_EXTOE,Extern Uitgevoerde Onderzoeken,1141
+RAD_CS00000046,6 - min wandeltest,1133
+RAD_ZH00000050,CR LWZ + Flexie/Extentie,1133
+RAD_ZH00000275,Echo Vinger Rechts,1123
+RAD_ZH00000165,CT Lever,1122
+RAD_0000008509,Positioneringstesten,1119
+RAD_CS00000195,SSEP onderste extremiteiten,1112
+RAD_LVE,Longventilatie,1108
+RAD_ZH00000333,MR Angio Onderste Ledematen,1107
+RAD_ZH00000173,CT Hals-Thorax,1105
+RAD_0000008604,CR EOS Wervelzuil / 3D Full Spine,1101
+RAD_ZH00005082,3-fasen skeletscintigrafie scan,1092
+RAD_0000008674,Echo Buikwand,1091
+RAD_ZH00005081,3-fasen skeletscintigrafie inj,1090
+RAD_ZH00000555,Botdensitometrie,1085
+RAD_T_CLAR,RX Clavicula Re,1080
+RAD_K,Knie,1078
+RAD_SNM,Smith & Nephew Menen,1077
+RAD_1702,ECHO HALS,1074
+RAD_1221,FEMUR,1074
+RAD_MAG3,Nierscan MAG3/DTPA,1072
+RAD_1131,VOORARM,1072
+RAD_EG,Echo gastro SC,1067
+RAD_ZH00000416,MR Cervix/Uterus/Endometrium,1066
+RAD_ZH00000222,CT Arthro  Schouder Rechts,1063
+RAD_0000008769,ESWL Rumbeke,1063
+RAD_PBCB,Punctie Borst core biopsie,1056
+RAD_CORR,CORONARO EN RECHTER HART,1052
+RAD_T_EHEUP1,Echo Heup Unilateraal,1046
+RAD_0000008542,CR Arthro Schouder Rechts (CT),1043
+RAD_CLA,RX Clavicula,1043
+RAD_ZH00005244,duplex veneus OL/BL,1033
+RAD_ZH00000057,CR Neus,1033
+RAD_1352,MAMMOGRAFIE,1018
+RAD_ZH00000313,Duplex-Dopler Onderste Lidmaat Arterieel Links,1009
+RAD_ZH00005219,Akoestische rhinometrie,1008
+RAD_FEMUR,Femur-obeen,1003
+RAD_CSBB,Echo B. Bergez,1001
+RAD_MAAG,Maaglediging,998
+RAD_DUBA,bilaterale duplex arteriele bloedvaten,994
+RAD_ZH00000154,CT Thorax Low Dose,988
+RAD_1660,CT HALS,986
+RAD_0000008790,Spraak in ruis test,983
+RAD_DLME,echo&duplex lidmaat,980
+RAD_ZH00000446,MR Hand/Pols Standaard Rechts,978
+RAD_0000008550,Pacemaker VVI,971
+RAD_ZH00000379,MR Hals Standaard,966
+RAD_ZH00000477,MR Voorvoet Standaard Links,962
+RAD_0000008593,Echo Klierstreken,961
+RAD_CT ABDOM,CT ABDOMEN,960
+RAD_CAROTIDE,CAROTIDEN + VERTEBRALIS,960
+RAD_ZH00000478,MR Voorvoet Standaard Rechts,959
+RAD_1718,CAROTIDEN + VERTEBRALIS,951
+RAD_ZH00000055,CR Scannografie Onderste Ledematen As,948
+RAD_T_CANGIO,CT Angio,945
+RAD_T_CDENTA,CT Dentascan,943
+RAD_CS00000196,MEP bovenste extremiteiten,943
+RAD_CS00000002,OPG,943
+RAD_1234,SIGEWRICHT,942
+RAD_T_CKNIR,CT Knie Re,939
+RAD_T_DCAV,Duplex Car & Vert,936
+RAD_T_DLIDV2,Duplex Veneus Tweezijdig,935
+RAD_ZH00000180,CT Trauma - Hersenen + MFM,929
+RAD_ZH00000274,Echo Vinger Links,929
+RAD_VIRCOL,Virt. colonscopie enkel,926
+RAD_ZH00005087,Longventilatie en -perfusie met SPECT/CT inh,925
+RAD_KM2,Kleine Macroscopie 2x,923
+RAD_MIFI,Myocardscan fiets,922
+RAD_SMIM4,Supermakroscopie + 4 immuno's,922
+RAD_ERCP,ERCP,918
+RAD_ZH00000498,Punctie Borst (Cytologie),916
+RAD_BEK2,BEK2,902
+RAD_VOORARM,Voorarm(en),901
+RAD_0000008792,Myocardscintigrafie (Tc99m) rust scan,901
+RAD_DUUA,Duplex unilateraal arterieel,891
+RAD_ZH00005111,"CT HART - Pre ablatie (-,+)/EKG",889
+RAD_0000005145,Dopamine transporter SPECT scan,888
+RAD_0000005144,Dopamine transporter SPECT inj,887
+RAD_ZH00000241,Conebeam Bovenkaak,887
+RAD_T_ECH2,Echo 2,887
+RAD_ZH00005088,Longventilatie en -perfusie met SPECT/CT scan,885
+RAD_T_CKNIL,CT Knie Li,882
+RAD_ZH00000343,MR Hersenen Vertigo,878
+RAD_DOPA,Dopamine transporter SPECT-scintigrafie,869
+RAD_SIGEWRIC,SIG,868
+RAD_T_MRROTS,MRI Rotsbeenderen,867
+RAD_AAOL-OLD,ART.AO + OND.LED.,867
+RAD_ESCH,Echo schedelinhoud,867
+RAD_0000008592,Studie: niet ten laste van patiënt,861
+RAD_ZH00000199,CT Schouder Rechts,859
+RAD_T_MRABD,MRI Abdomen,850
+RAD_ZH00000208,CT Heup Rechts,849
+RAD_ZH00000348,MR Hersenen Epilepsie,844
+RAD_1151,HUMERUS,842
+RAD_ZH00005273,CR Enkel Links Staande,841
+RAD_T_ESCH,Echo Schedel,840
+RAD_ZH00000207,CT Heup Links,839
+RAD_T_ELG,Echo Lever-Galblaas,834
+RAD_T_CTH-,CT Thorax -,832
+RAD_T_EKNIE1,Echo Knie Unilateraal,830
+RAD_ZH00000445,MR Hand/Pols Standaard Links,828
+RAD_ZH00000146,CT DWZ Trauma,826
+RAD_NMR HALS,NMR HALS THORAX,825
+RAD_ZH00005275,CR Enkel Rechts Staande,823
+RAD_ZH00000360,MR Hersenen Hypofyse Micro,823
+RAD_HUMERUS,Humerus,822
+RAD_XTOFIX,Echo cardiologie,819
+RAD_ZH00005188,"Spiro, volumes en reversibiliteit",816
+RAD_ZH00000387,MR CWZ MS,814
+RAD_ZH00000150,CT SIG Standaard,811
+RAD_ZH00000488,Onderzoek Onder Narcose,810
+RAD_BDP,Botdensitometrie pseudonummer,809
+RAD_ZH00000211,CT Knie Links,809
+RAD_N1666,CT LIDMAAT,801
+RAD_ZH00000091,CR Slikfunctie,800
+RAD_T_MAM1,Mammografie 1,799
+RAD_ZH00000198,CT Schouder Links,793
+RAD_T_SMD,Slokd-Maag-Du,792
+RAD_M201,kl.macro + kl.micro,789
+RAD_ZH00000490,MR Pediatrie Hersenen >2jr,785
+RAD_ZH00000350,MR Hersenen Parkinson,777
+RAD_ECNB,echo nier en blaas,776
+RAD_ZH00000086,CR Sternum,776
+RAD_EUS,EUS,767
+RAD_1732,UNILATER DUPLEX VENEUZE ONDERSTE OF BOVENSTE LIDM,766
+RAD_ZH00000221,CT Arthro Schouder Links,764
+RAD_T_CDWZ,CT Dorsale Wervelzuil,762
+RAD_COLD,RX colon dubbel contrast,760
+RAD_WBSPRCT,Whole body SPECT en diagn CT,760
+RAD_SECTRA,Onderzoeken Sectra,759
+RAD_ZH00000317,Duplex-Dopler Bovenste Lidmaat Veneus Rechts,758
+RAD_ZH00000161,CT Abdomen Bloeding,748
+RAD_T_CAOL,CT Angio Onderste Ledematen,747
+RAD_ZH00000212,CT Knie Rechts,746
+RAD_0000008541,CR Arthro Schouder Links (CT),744
+RAD_EMBO,embolisatie,744
+RAD_ZH00000440,MR Elleboog Standaard Rechts,743
+RAD_ZH00000273,Echo Duim Rechts,740
+RAD_T_CROTS,CT Rotsbeenderen,739
+RAD_ZH00000069,CR Arthro Heup Rechts,739
+RAD_0000008571,Echo blaas en nieren,737
+RAD_ZH00000218,CT Enkel Rechts,734
+RAD_PTCA1,PTCA 1 TAK,732
+RAD_ZH00005243,duplex carotiden + vertebralis,730
+RAD_1707,ECHO NIER/BLOEDVATEN,730
+RAD_41,1x niet cx-uitstr.+celbl.,722
+RAD_ZH00000272,Echo Duim Links,719
+RAD_ZH00000351,MR Hersenen Trauma,718
+RAD_ZH00000316,Duplex-Dopler Bovenste Lidmaat Veneus Links,717
+RAD_1235,SCANIOMETRIE,717
+RAD_ZH00000308,Duplex-Dopler Abdomen/Pelvis (oa. AAA),716
+RAD_SIN,RX sinussen,710
+RAD_ZH00000183,CT Circ. Van Willis,709
+RAD_ECZW,echo zwangerschap,708
+RAD_ZH00005034,MR Circulus van Willis,707
+RAD_0000005148,Myocardscintigrafie (Tc99m) Stress Fiets inj,707
+RAD_0000005149,Myocardscintigrafie (Tc99m) Stress Fiets scan,704
+RAD_GB3,Gewone biopsie 3x,700
+RAD_ZH00000242,Conebeam Onderkaak,699
+RAD_KMIM3,Kleine Macroscopie + 3 immuno's,698
+RAD_ZH00000438,MR Lidmaat Rechts,694
+RAD_ZH00000437,MR Lidmaat Links,688
+RAD_PLON,Punctie long,687
+RAD_T_EKLV,Echo Klein Bekken V,686
+RAD_ZH00000202,CT Pols Links,685
+RAD_ZH00000217,CT Enkel Links,683
+RAD_ZH00000421,MR Rectum,678
+RAD_CWZ3,CWZ3,675
+RAD_6005,NMR BEIDE MAMAE,674
+RAD_0000008765,TEE - Klepfunctie / kunstklep / bioklep / plas RUM,673
+RAD_T_FSP,RX Full Spine,671
+RAD_ZH00000686,SPECT-CT Voet Links,671
+RAD_THORAX/A,THORAX/ABDOMEN/PELVIS,671
+RAD_SB2I4,2 x superbiopsie + 4 immuno's,670
+RAD_ZH00000415,MR Ovariële Massa,670
+RAD_0000008751,Shearwave,670
+RAD_CS00000106,Metacholine/histamine provocatietest,669
+RAD_FULL SPI,SPINE,667
+RAD_KMIM2,Kleine Macroscopie + 2 immuno's,663
+RAD_AVKFCN,ABLATIE VKF (CARTO)  + NARCOSE,662
+RAD_ZH00000167,CT Nieren,658
+RAD_ZH00005225,Rhinomanometrie,657
+RAD_T_TRX2,RX Teleradiografie,656
+RAD_ZH00000687,SPECT-CT Voet Rechts,651
+RAD_T_OK_DEF,Ingreep (niet gedefinieerd),648
+RAD_ZH00000109,CR Cystografie + Permictionele Opnames,648
+RAD_DUPL ABD,DUPL ABD,647
+RAD_T_MRSCHR,MRI Schouder Re,639
+RAD_CTHATH,CT Hals en Thorax,638
+RAD_ECHO HAL,ECHO HALS,637
+RAD_CT HALS,CT HALS,635
+RAD_IVDP,IVDSA PERIFERE INJ,635
+RAD_T_ESCR,Echo Scrotum,633
+RAD_CWZ2,CWZ2,631
+RAD_ZH00005214,VEMP,629
+RAD_DMSA,Nierscan met DMSA,627
+RAD_GBIM3,Gewone biopsie + 3 immuno's,625
+RAD_ZH00000463,MR Heup Arthro Rechts,624
+RAD_ZH00000203,CT Pols Rechts,623
+RAD_AAOL,Art. ao + ond. led.,621
+RAD_T_MRDWZ,MRI Dorsale Wervelzuil,618
+RAD_GBIM2,Gewone biopsie + 2 immuno's,618
+RAD_ZH00005407,MR Nieren,610
+RAD_ZH00000503,Punctie Borst + Harpoenplaatsing op echo,610
+RAD_ZH00000423,MR Entero,608
+RAD_NSE,RX nierstreek,607
+RAD_0000008707,Sentinel Borst SPECT/CT (LDCT) scan,605
+RAD_AXPE,RX axiaal skelet + prox extr,605
+RAD_ZH00000068,CR Arthro Heup Links,605
+RAD_SMDT,RX SMDT 16cl,605
+RAD_ZH00000175,CT Thorax-Abdomen Trauma/Bloeding,604
+RAD_0000008716,Schildklierscan Tc99m met SPECT/CT (LDCT) scan,604
+RAD_0000008705,Schildklierscan Tc99m met SPECT/CT (LDCT) inj,603
+RAD_T_MRMAM,MRI Borst  R L ,603
+RAD_ZH00000219,CT Voet Links,600
+RAD_ZH00000023,CR AC-Gewricht Rechts,600
+RAD_T_IVP,RX IVP,598
+RAD_S,Schouder,597
+RAD_ZH00000102,CR Colpo-Cysto-Defaecografie (CCD),596
+RAD_0000008791,CT Cardio NG,594
+RAD_1261,FULL SPINE 1,593
+RAD_6006I,NMR WERVELZUIL(IZEGEM),593
+RAD_AP,Arteriografie peroperatief,591
+RAD_0000008706,Sentinel Borst SPECT/CT (LDCT) inj,591
+RAD_BLWZ,BLWZ,587
+RAD_ZH00000220,CT Voet Rechts,586
+RAD_1652,CT SINUSSEN,585
+RAD_CATRL,RECHTER HART ZONDER COR,579
+RAD_T_CKLB-,CT Klein Bekken -,577
+RAD_CYSTOG +,CYSTO,577
+RAD_ZH00000448,MR Pols TFCC Rechts,574
+RAD_ZH00005074,Schildklierscintigrafie inj,570
+RAD_T_MRKLB,MRI Klein Bekken,570
+RAD_T_CYS,Cystografie,566
+RAD_ZH00000507,Punctie Long,565
+RAD_2,Echo URINAIR,565
+RAD_SBIM2,Superbiopsie + 2 immuno's,564
+RAD_ZH00005122,CR Heup + Cross table rechts,560
+RAD_T_SEKA,EKG+ saturatie,560
+RAD_ZH00000255,Echo Vrouwelijk Bekken,559
+RAD_ZH00000654,Borstklierinspuiting,559
+RAD_PSCHCI,Schildklierpunctie voor cyto,557
+RAD_ZH00000439,MR Elleboog Standaard Links,555
+RAD_ZH00000495,Punctie Ascites,555
+RAD_0000008545,Punctie gewricht,554
+RAD_0000008764,TEE - Endocarditis Rumbeke,549
+RAD_ZH00000385,MR CWZ Postop,548
+RAD_T_PUDR1,Punctie en drainage +,547
+RAD_AA,Aneurysma Aorta,546
+RAD_ZH00000182,CT Trauma - Thorax-Abdomen,544
+RAD_ZH00005199,Duplex halsvaten en vertebrales (adhoc) E,544
+RAD_ZH00005075,Schildklierscintigrafie scan,541
+RAD_T_ARTHN,Arthrografie,541
+RAD_T_EENKEL,Echo Enkel Unilateraal,540
+RAD_ZH00000022,CR AC-Gewricht Links,537
+RAD_T_MRBEK,MRI Bekken MSK,534
+RAD_ZH00000462,MR Heup Arthro Links,534
+RAD_0000008763,TEE - Emboliebron Rumbeke,533
+RAD_CA2,Cytologie andere 2x,532
+RAD_ZH00000142,CT Dental Nobelguide,530
+RAD_ZH00000019,CR Scapula Rechts,530
+RAD_T_EVOET1,Echo Voet Unilateraal,528
+RAD_DPMI,DDD-PACEMAKER-IMPLANTATIE,527
+RAD_201,makro + 1x biopsie,526
+RAD_ZH00000176,CT Thorax-Abdomen + Longembolen,524
+RAD_ZH00000398,MR Full Spine (bij specif. oncologische path.),521
+RAD_0000008573,Echo cardiografie,521
+RAD_TBSPECT/,SPECT^07_SPECT_Sentinel (Adult),518
+RAD_1824,CB-SINUSSEN,518
+RAD_ZH00005079,Whole Bodyscintigrafie inj,515
+RAD_ZH00005080,Whole Bodyscintigrafie scan,515
+RAD_T_SACR,RX Sacrum-Coccyx,510
+RAD_EFR,Ventriculografie/Ejectiefractie,509
+RAD_0000008818,CR EOS MAKO-protocol STAAND,506
+RAD_ZH00000285,Echo Humerus Rechts,504
+RAD_ZH00000018,CR Scapula Links,504
+RAD_0000008817,CR EOS MAKO-protocol ZITTEND,503
+RAD_0000008608,CR EOS Onderste Ledematen / post-op THA,503
+RAD_CARTO,Fixen carto onderzoeken,499
+RAD_T_EHEUP2,Echo Heup Bilateraal,497
+RAD_SLOKDARM,SMD,497
+RAD_ECLE,Echo lever,496
+RAD_EGD,Echo gastro Dr. Dewyspelaere,494
+RAD_T_MRSCHL,MRI Schouder Li,492
+RAD_CS00000039,TEE - Emboliebron,491
+RAD_9004I,ARTOGRAFIE 4 (IZEGEM),489
+RAD_B1102,DRIEFAZEN,489
+RAD_ZH00000447,MR Pols TFCC Links,484
+RAD_S201,gr.macro + gr.micro,483
+RAD_ZH00000390,MR DWZ Tumor/Discitis,482
+RAD_ZH00005121,CR Heup + Cross table links,482
+RAD_0000008563,Punctie Drainage Abces,481
+RAD_FI,Fluoscan Insight Roeselare,480
+RAD_CS00000070,Arteriepunctie zonder zuurstof,480
+RAD_HP,Hand/pols,477
+RAD_ZH00000505,Punctie Heup,476
+RAD_ZH00005514,VKF-ablatie (CARTO) + narcose,473
+RAD_ZIEHM,Scopie Neurologie OK Roeselare,470
+RAD_ZH00000281,Echo Voorarm Rechts,470
+RAD_T_EELL1,Echo Elleboog Unilateraal,467
+RAD_ZH00005008,4 dagen holter,465
+RAD_ZH00000158,CT Abdomen Restaging,463
+RAD_ZH00000172,CT Colon,463
+RAD_31,celblok 1x,461
+RAD_ZH00005220,Stemonderzoek,457
+RAD_PBCI,Punctie Borst cyto-inspuiting,456
+RAD_TT,Transthoracale Echocardiografie IZ,456
+RAD_T_EPOLS1,Echo Pols Unilateraal,455
+RAD_6001I,NMR HOOFD (IZEGEM),455
+RAD_ZH00005268,Echo,454
+RAD_0000008562,CT TPS Localisatie K79,451
+RAD_GAL,GALLIUMSCAN,449
+RAD_CS00000271,Nachtelijke Saturatie,448
+RAD_T_DLIDE,Duplex & Echo Lever,448
+RAD_CS00000680,IC - Echo,447
+RAD_ZH00000501,Punctie - Vacuumgeassisteerd Borst op Mammo + Clip,445
+RAD_SCANIOME,SCANNO,444
+RAD_ZH00000284,Echo Humerus Links,442
+RAD_1PTCA1,1 TIJDS PTCA 1 TAK,439
+RAD_1271,NEUS,439
+RAD_ZH00000328,MR Angio Carotiden,438
+RAD_ZH00000413,MR Prostaat Pré Radiotherapie,437
+RAD_ZH00000280,Echo Voorarm Links,436
+RAD_ZH00000195,CT Thoracale Aorta,436
+RAD_ZH00000386,MR CWZ Trauma,433
+RAD_1722,DUPL ABD,432
+RAD_T_ETH,Echo Thorax,431
+RAD_ZH00005120,CR Heup + Dunn view rechts,431
+RAD_T_COLOI,Colo Intern,430
+RAD_T_MRPROS,MRI Prostaat,428
+RAD_T_CBDENT,CBCT Dentascan terugbetaalbaar,428
+RAD_ZH00000331,MR Angio A. Renalis,425
+RAD_ZH00005100,Sentinel Borst inj,424
+RAD_MRFU,MR Functioneel,422
+RAD_CS00000094,Ergospirometrie,421
+RAD_TL,Thrombolyse,421
+RAD_T_SLF,Slikfunctie,420
+RAD_T_FL,RX Lengtemeting,420
+RAD_1272,SCHEDEL,420
+RAD_CS00000035,48 uurs holter,416
+RAD_1711,ECHO SCROTUM,416
+RAD_TOMO,TOMO,416
+RAD_B1101,TOTAAL SKELET,416
+RAD_CSFD,Echo Prof. De Wolf - Gent,414
+RAD_CLYSMA E,PERITO,411
+RAD_ZH00000240,Conebeam Rotsbeenderen,405
+RAD_ECHO NIE,ECHO NIER/BLOEDVATEN,403
+RAD_0000008614,CT Abdomen Angor Abdominalis,403
+RAD_ZH00005112,"CT HART - Pre TAVI (-,-,+)/EKG",400
+RAD_1827,CB-LIDMAAT,399
+RAD_EP,Echo prostaat,396
+RAD_ZH00005538,PCI,392
+RAD_0000008816,CT Heup Rechts MAKO-protocol,392
+RAD_SBIM1,Superbiopsie + 1 immuno,389
+RAD_ZH00000106,CR Nierstreek enkel,385
+RAD_0000008815,CT Heup Links MAKO-protocol,383
+RAD_CS00000040,TEE - Klepfunctie / kunstklep / bioklep / plastiek,382
+RAD_T_EKLM,Echo Klein Bekken M,379
+RAD_CBSIN,Conebeam sinussen,379
+RAD_SCAL,RX scapula li,377
+RAD_ZH00000051,CR Full Spine Face en Profiel,376
+RAD_T_PUBO1,Borstpunctie +,376
+RAD_ZH00000432,MR Schouder Geen Arthro Rechts,375
+RAD_ZH00000468,MR Knie Body Matrix Rechts,375
+RAD_SCAR,RX scapula re,373
+RAD_PART,Gewrichtspunctie,371
+RAD_ZH00000397,MR Full Spine Myelum,371
+RAD_ZH00000367,MR Craniale Zenuwen - Nervus Trigeminus,370
+RAD_T_MRHWD,MRI Hals,367
+RAD_1305,SLOKDARM,365
+RAD_ZH00000356,MR Hersenen Neuronavigatie,362
+RAD_T_EONB,Echo Onderbeen,362
+RAD_1705,ECHO LEVER,360
+RAD_ZH00000196,CT Perforanten (DIEP),360
+RAD_N8500,BOTDENSITOMETRIE NIET TERUGBETAALD,360
+RAD_T_SLMA+,Slokdarm-Maag GB+,359
+RAD_ZH00005101,Sentinel Borst scan,358
+RAD_ZH00000355,MR Hersenen Vasculaire Malformatie /AVM,358
+RAD_CTCARDIO,CT Cardio,358
+RAD_ZH00005269,TEE scopiekamer,358
+RAD_ZH00000098,CR ERCP,357
+RAD_C2, cervixcytologie tweede lezing,357
+RAD_ZH00000461,MR Heup Metabekken,356
+RAD_ZH00005493,DDD-Pacemakerimplantatie,354
+RAD_ERCP-OLD,ERCP ZONDER TOMIE,354
+RAD_ZH00005241,echo mannelijk bekken,352
+RAD_ECMB,Echo mannelijk bekken,352
+RAD_ZH00005240,echo vrouwelijk bekken,351
+RAD_ZH00005200,Duplex ledematen (adhoc) D,350
+RAD_0000008732,MA Operatiestuk (voorafgaand mammo),348
+RAD_DCVE,echo&duplex hals,348
+RAD_ZH00000422,MR Fistel,347
+RAD_T_ENIER,Echo Nieren,347
+RAD_AXSKOLD,AXSK,347
+RAD_ZH00000487,MR Mammo Verhoogd Risico,345
+RAD_0000008778,Echo Rug (Weke Delen),344
+RAD_ZH00000388,MR CWZ Meta/Discitis,343
+RAD_T_DLIDA2,Duplex Arterieel Tweezijdig,343
+RAD_ZH00000354,MR Hersenen Sinustrombose +,343
+RAD_ZH00000506,Punctie Lever,340
+RAD_1317,DEFAECOGRAFIE,339
+RAD_N8100,BDM TERUGBETAALD ( 5 JAAR ),336
+RAD_HSP,Hersenscan SPECT,335
+RAD_9016,CYSTOG + MICTIE,335
+RAD_MYCD-OLD,MYELO CERV/DORS 6C,335
+RAD_CS00000050,Epicutane allergietest,334
+RAD_0000008591,Punctie Pleura,334
+RAD_ZH00000108,CR Cystografie,334
+RAD_1449,NSE,328
+RAD_RXOPER,rx operatiezaal,328
+RAD_ZH00005119,CR Heup + Dunn view links,326
+RAD_THBOB,Thorax + Bobby tractie,326
+RAD_CAR6-OLD,BIL-FPS,325
+RAD_HARP,Harpoenplaatsing,325
+RAD_ZH00000417,MR Endometriose,323
+RAD_T_DEFEC,Defaecografie,323
+RAD_1733,UNILATER DUPLEX VAN ARTERIELE ONDERSTE OF BOVENSTE,323
+RAD_9015,CYSTOGRAFIE,323
+RAD_0000008918,Epidurale Lumbaal,321
+RAD_PTCA,PTCA planning,321
+RAD_ZH00005401,CT TPS Thorax,321
+RAD_CS00000038,TEE - Endocarditis,319
+RAD_T_CCOLO,Virtuele Colonoscopie,319
+RAD_ZH00000200,CT Elleboog Links,319
+RAD_PLYMF,puntie lymfeklier,318
+RAD_0000008609,CR EOS Full Body / sag - cor balans,317
+RAD_T_DLIDA1,Duplex Arterieel Eenzijdig,316
+RAD_ZH00005197,Echo hals (adhoc) E,316
+RAD_KMGB,Kleine Macroscopie + gewone biopsie,313
+RAD_ZH00000201,CT Elleboog Rechts,311
+RAD_ZH00000095,CR SMD + Transit,311
+RAD_T_MRENKR,MRI Enkel Re,310
+RAD_ZH00000467,MR Knie Body Matrix Links,307
+RAD_ZH00000361,MR Hersenen Hypofyse Macro,307
+RAD_1163,SCAPULA,306
+RAD_BYMI,Bijschildklierscan,305
+RAD_ZH00005537,coronaro + rechter hartkatheterisatie,304
+RAD_ZH00000336,MR Cardio Myocarditis,303
+RAD_OEC9900,Onderzoek OK Menen,302
+RAD_ZH00005304,Veneuze Duplex Onderste Ledematen,301
+RAD_ZH00005124,CR Bekken + In-en outlet,301
+RAD_T_EVIN1,Echo Vinger Unilateraal,301
+RAD_FSP1,FSP1,301
+RAD_ZH00005631,C-boog ERCP,300
+RAD_PTAVE,PTA veneus,300
+RAD_CAIM4,Cytologie andere + 4x immuno,299
+RAD_ZH00000431,MR Schouder Geen Arthro Links,299
+RAD_CAV4,Bil-fps-v new,299
+RAD_CWZ5,CWZ5,299
+RAD_ZH00005232,BERA + ALGO,297
+RAD_T_PROCTO,Procto Endoscopie,296
+RAD_T_SANT,Alg Anesthesie,294
+RAD_KASK,KASK,293
+RAD_SIG,SIG,290
+RAD_SB2I1,2 x superbiopsie + 1 immuno,289
+RAD_T_MRENKL,MRI Enkel Li,288
+RAD_T_CTHH,CT Thorax Hoge Resolutie,287
+RAD_ZH00000215,CT Knie TAGT,286
+RAD_ZH00000476,MR Enkel Achillespees Rechts,286
+RAD_0000008801,Duplex-Dopler Carotiden + Echo Abdomen,284
+RAD_ZH00000239,Conebeam Maxillo-Faciaal Massief,284
+RAD_ZH00000138,CT Maxillo-Faciaal Massief Met Contrast,284
+RAD_ZH00005017,MEP onderste extremiteiten,283
+RAD_1734,DUPLEX FOLLOW UP ARTERIELE BLOEDVATEN,282
+RAD_T_STV,Scopie-TV OP,282
+RAD_BDL,Botscan deel,282
+RAD_0000008690,Punctie Borst (Inspuiten technetium),281
+RAD_ZH00005299,Arteriële Duplex Onderste Ledematen,279
+RAD_CS00000010,Ritmestrook ECG,277
+RAD_ZH00000516,Punctie Schildklier (Cytologie),274
+RAD_LVLSP,Longventilatie gecombineerd met een longperfusie S,273
+RAD_T_FNAC1,FNAC ,273
+RAD_CTPS,CTPS,271
+RAD_ZH00000093,CR Slokdarm + Maag  ,269
+RAD_CAU1,Cytologie urine & bladderwash,269
+RAD_ZH00000205,CT Hand Rechts,268
+RAD_ZH00000311,Duplex-Dopler Bovenste Lidmaat Arterieel Rechts,268
+RAD_ZH00000474,MR Enkel OCD Rechts,267
+RAD_ZH00005123,CR Bekken + Judet opnames,266
+RAD_ZH00000171,CT Onderbuik,266
+RAD_T_MRCP,MRI RCP,265
+RAD_ZH00005294,Arteriële Duplex Halsvaten,265
+RAD_DEFO,DIAGNOSTISCH EFO ,265
+RAD_T_CSCH,CT SCHEDEL ZONDER KONTRAST,264
+RAD_DUPLEXBI,Duplex Bil ledematen art of ven,262
+RAD_ZH00000382,MR Plexus Brachialis Plexus,261
+RAD_ZH00005040,Late potentialen,260
+RAD_ZH00000455,MR Heup Bilateraal,260
+RAD_0000008551,Pacemaker looprecorder,258
+RAD_MF3,Materiaal Forfait PCI binnen DES indicatie,258
+RAD_0000008613,CT volledige wervelzuil of combinatie 2 regio's,258
+RAD_0000008761,DigitaalOK,258
+RAD_0000008760,TEE scopiekamer Rumbeke,258
+RAD_ZH00000159,CT Abdomen Screening Tumor,255
+RAD_ZH00005404,CT TPS Pelvis,254
+RAD_BP,Borstpunctie,253
+RAD_1673,CT CORONARO,253
+RAD_1599,PUNCTIE HAEMATOOM,252
+RAD_CAIM3,Cytologie andere + 3x immuno,252
+RAD_PTAS,PTA supra-aortische vaten,251
+RAD_VE,Voet/Enkel,248
+RAD_PELV,RX pelvimetrie,247
+RAD_T_HSG,Hysterosalpinografie,247
+RAD_IMRLM,MR lidmaat IZEGEM,246
+RAD_CYSTOGRA,CYSTO,246
+RAD_ALMK,Art. lidm via Katheter,245
+RAD_AM,ARTHREX Menen,245
+RAD_AAOR-OLD,AO.THOR.OF ABD 3CL,245
+RAD_T_MRACER,MRI Angio Cerebraal,244
+RAD_T_MRVOER,MRI Voet Re,243
+RAD_T_MRPOLR,MRI Pols Re,243
+RAD_ZH00000491,MR Pediatrie Hersenen <2jr,243
+RAD_0000008606,CR EOS Wervelzuil / sag - cor balans,242
+RAD_1700,ECHO SCHEDEL,242
+RAD_T_MRLEV,MRI Lever,241
+RAD_ECHO LEV,ECHO LEVER,241
+RAD_ZH00000475,MR Enkel Achillespees Links,240
+RAD_ZH00005234,Lumbaalpunctie (adhoc),239
+RAD_ZH00000515,Punctie Schildklier (Anatomopathologie),239
+RAD_ZH00005056,Longweerstandsbepaling,239
+RAD_0000008813,ENDOERCP,238
+RAD_MRLMI,MR lidmaat IZEGEM,237
+RAD_T_CYSON,Cystografie + Sondage,237
+RAD_DUPLEXHV,Duplex halsvaten,235
+RAD_ZH00000473,MR Enkel OCD Links,235
+RAD_T_BOTDX,Botdensitometrie,234
+RAD_ARZP,Arthro zonder punctie,234
+RAD_ZH00005063,Nierscintigrafie MAG3 volw,233
+RAD_ZH00005009,Cardiologie tilt tafel test,232
+RAD_ECHO SCR,ECHO SCROTUM,232
+RAD_T_MRVOEL,MRI Voet Li,231
+RAD_ZH00000403,MR Bijnieren Standaard,231
+RAD_ZH00005049,CT Klein bekken veneus-angio,230
+RAD_ZH00000374,MR Labyrinthitis Hydrops,229
+RAD_TBI,Tot.body Ioodscan + SPECT,228
+RAD_T_AOL,Bolus Art OL ,228
+RAD_T_PULO,Punctie long,228
+RAD_ZH00000087,CR Hals Weke Delen,227
+RAD_ZH00000204,CT Hand Links,226
+RAD_ZH00005096,Lymfescintigrafie onderste ledematen fase 1 en 2,226
+RAD_ECNI,ECNI,225
+RAD_ZH00005097,Lymfescintigrafie onderste ledematen fase 3,225
+RAD_SB2I3,2 x superbiopsie + 3 immuno's,223
+RAD_ZH00000141,CT Hals Goiter,222
+RAD_6002I,NMR HALS THORAX ABDOMEN (IZEGEM),221
+RAD_ZH00000054,CR Scannografie Lengte,221
+RAD_VIRCO2,Virt. colonscopie dubbel,221
+RAD_T_MRHEUR,MRI Heup Re,220
+RAD_0000008747,C-Boog MDL,220
+RAD_T_MRPOLL,MRI Pols Li,220
+RAD_0000008508,Hoog frequentie audiometrie,217
+RAD_ZH00005231,VNG + VEMP,217
+RAD_T_EFEM,Echo Femur,216
+RAD_PTCA2,PTCA 2 OF MR TAKKEN,215
+RAD_1703,ECHO THORAX,214
+RAD_0000008789,Reuktesten,213
+RAD_1717,CAROTIDEN,212
+RAD_T_SMDT,Slokd-Maag-Tran,211
+RAD_T_EHAN1,Echo Hand Unilateraal,210
+RAD_ECHOSCH,Echo schildklier,207
+RAD_IMRWM,MR cwz/dwz/lwz IZEGEM,207
+RAD_ZH00000460,MR Heup AVN Rechts,207
+RAD_FCTCWZ,Facetinfiltratie CWZ,207
+RAD_ZH00000100,CR Colon Inloop,206
+RAD_ZH00000358,MR Hersenen Neuronavigatie Radiotherapie,206
+RAD_CWZ+,CWZ+,204
+RAD_CT THORA,CT THORAX,203
+RAD_T_MRHEUL,MRI Heup Li,203
+RAD_T_CTHA,CT Angio Thorax,203
+RAD_T_CSAC,CT Sacro-Iliacaal,202
+RAD_ZH00000683,SPECT-CT Knieprothese Rechts,202
+RAD_101,heelkundige behandeling van pseudarthrose van midd,201
+RAD_ZH00000310,Duplex-Dopler Bovenste Lidmaat Arterieel Links,201
+RAD_ZH00000381,MR Tempero-Mandibulaire Gewrichten,199
+RAD_T_SLO,Slokdarm,199
+RAD_ZH00000352,MR Hersenen Hydrocephalie NPH,197
+RAD_MRHE,MRHE,197
+RAD_ERC+OLD,ERCP +PAPILLOTOMIE,196
+RAD_T_ESCH2,Echo Schouder Bilateraal,196
+RAD_ECHO SCH,ECHO SCHEDEL,196
+RAD_TROM,THROMBOLYSE I.A.,195
+RAD_ZH00005417,Duplex ledematen (adhoc) E,195
+RAD_T_CCARDX,CT Hart op Aanvraag Cardioloog,194
+RAD_0000008683,Duplex halsvaten adhoc,193
+RAD_ZH00005400,CT TPS Hoofd-Hals,192
+RAD_0000008766,TEE - PFO / ASD / re-li shunt Rumbeke,192
+RAD_IM1,immuno 1x,191
+RAD_ZH00000373,MR Cholesteatoom,191
+RAD_ZH00000682,SPECT-CT Knieprothese Links,191
+RAD_WMRAF,MRW hoofd,191
+RAD_ZH00005459,Echo urogenitaal (adhoc) D,190
+RAD_ZH00000315,Duplex-Dopler Bovenste Lidmaten Ven. Bilateraal,188
+RAD_WARTR,Arthrografie WAREGEM,188
+RAD_H,Heup,187
+RAD_T_PULE1,Leverpunctie +,187
+RAD_IMRAF,MR hoofd IZEGEM,186
+RAD_ZH00000685,SPECT-CT Enkel Rechts,186
+RAD_ZH00000408,MR Lever Hemochromatose (GEEN EVAL. LEVERLETSELS),186
+RAD_1405,RIBBEN - STERNUM,185
+RAD_ZH00000330,MR Angio Aortaboog,184
+RAD_T_CHWTH,CT Hals en Thorax,184
+RAD_SMIM2,Supermakroscopie + 2 immuno's,183
+RAD_ZH00005090,Maaglediging scan,182
+RAD_ZH00005089,Maaglediging inj,182
+RAD_ZH00000412,MR Prostaat Staging,181
+RAD_CS00000032,Fietsergometrie - met spirometrie,181
+RAD_0000008858,CT Hals-Thorax-Abd. - Screening Hematol. Work-up,179
+RAD_ZH00000092,CR Slokdarm,178
+RAD_B1303,MIBI RUST,178
+RAD_ZH00000370,MR fMRI ,177
+RAD_ZH00000185,CT Nierarteries,177
+RAD_ZH00000479,MR Voorvoet Morton Links,177
+RAD_ZH00005480,coronarografie postop,176
+RAD_CBLIDM,Conebeam lidmaat,176
+RAD_WMRLM,MRW lidmaat,176
+RAD_B1304,MIBISTRESS,176
+RAD_NMR BEID,NMR BEIDE MAMAE,176
+RAD_ZH00000052,CR Full Spine Face,175
+RAD_ZH00000254,Echo Mannelijk Bekken,175
+RAD_ZH00000162,CT Abdomen Perforatie,175
+RAD_CS00000003,Faux Profile (CEPH),175
+RAD_ZH00000480,MR Voorvoet Morton Rechts,174
+RAD_1316,E.R.C.P.,174
+RAD_ZH00000134,CT Hersenen Pre-Neuronavigatie,174
+RAD_T_CDPF,Consultatie Dr De Pauw,174
+RAD_ZH00000647,Xofigo Therapie en consultatie,173
+RAD_0000008788,Consultatie NG,173
+RAD_ZH00000681,SPECT-CT Knie Rechts,172
+RAD_ZZOK,Echo anesthesie IE33 operatiekwartier,172
+RAD_ZH00000454,MR Vinger Klein FOV Rechts,169
+RAD_0000008917,Epidurale Cervicaal,169
+RAD_ZH00005195,Echo nieren (adhoc) E,169
+RAD_PLEV,Punctie lever,168
+RAD_PTA1,ANGIODILAT 1 ART,168
+RAD_E.R.C.P.,CHOLAN,167
+RAD_ZH00000680,SPECT-CT Knie Links,167
+RAD_ZH00000188,CT Bovenste Ledematen Standaard,167
+RAD_WMRWM,MRW cwz/dwz/lwz,167
+RAD_1735,DUPLEX FOLLOW UP VENEUZE BLOEDVATEN,167
+RAD_ZH00005114,CT AORTA - Diameterbepaling aortaboog (+)/EKG,165
+RAD_KMIM1,Kleine Macroscopie + 1 immuno,165
+RAD_1607,THROMBOLYSIS,165
+RAD_T_SIG,RX Sacro-iliacale Gewrichten,165
+RAD_0000008759,Studie: niet ten laste van patiënt,164
+RAD_TTE2,Transthoracale echocardiografie,163
+RAD_ASC,Ascitespunctie,162
+RAD_T_DCAR,Duplex Carotiden,161
+RAD_EPRO,Transrectale prostaatecho,161
+RAD_ZH00000337,MR Cardio ARVD,160
+RAD_T_CBROTS,CBCT Rotsbeenderen huisartsen,160
+RAD_CAV4-OLD,BIL-FPS-V,160
+RAD_ZH00000684,SPECT-CT Enkel Links,159
+RAD_EVAR,EVAR,159
+RAD_T_CPOLY,CT Polytrauma,157
+RAD_1355,HYSTEROGRAFIE,156
+RAD_ZH00000400,MR Cervicodorsaal MS,155
+RAD_ZZICU,Echo anesthesie CX50 intensieve,155
+RAD_DCVA,duplex hals&abdomen,154
+RAD_ZH00005410,MR Whole-Body Ovarium/Colon/Pediatrie,153
+RAD_ZH00005551,TAVI + narcose + firma,153
+RAD_ZH00000131,CT Hersenen 1e Controle Postoperatief,153
+RAD_KMVB,Kleine Macroscopie + vriesbiopsie,153
+RAD_T_BHEH,BKN Echo TH/ECG/ASP/BA,153
+RAD_ZH00000502,Punctie Borst + Clipplaatsing,152
+RAD_ZH00005497,DDD-Pacemakervervanging,151
+RAD_T_SCAL,RX Scapula Li,150
+RAD_ZH00000151,CT SIG Trauma,149
+RAD_BA,Bovenarm,148
+RAD_SCAPULA,Schouderblad,148
+RAD_T_CLID+,CT Lidmaat +,147
+RAD_ZH00000230,CT Arthro Knie Rechts,146
+RAD_0000008809,Nachtelijke Saturatie zonder O2,146
+RAD_ZH00000264,Echo Oog/Orbita,146
+RAD_STRYKER,Onderzoek Stryker,145
+RAD_MB1,Minibiopsie 1x,145
+RAD_ZH00000260,Echo Pancreas - Milt,145
+RAD_ZH00005077,Schildklier I123/Bijschildklier Tc99m MIBI inj,144
+RAD_ZH00000485,MR Mammo Implantaten,144
+RAD_CRTICDIN,CRT ICD-IMPLANTATIE,144
+RAD_ZH00005238,echo lever/GB/GW,144
+RAD_HSCOPCUR,Hysteroscopie & curettage,144
+RAD_CAIM2,Cytologie andere + 2x immuno,144
+RAD_T_SCAR,RX Scapula Re,144
+RAD_ZH00000375,MR Orbita Screening,144
+RAD_CBCTTA,Conebeam CT no contrast boven_onderkaak,143
+RAD_ZH00000642,Therapie I131  ambulant,142
+RAD_VACC,Vaco stereotaxie met clipplaatsing,142
+RAD_0000008599,MR Buikwand,141
+RAD_SPEE,Speekselklierscan,141
+RAD_ZH00005078,Schildklier I123/Bijschildklier Tc99m MIBI scan,141
+RAD_FLLM-OLD,FLEBOGR.LIDMAAT,141
+RAD_ZH00005458,Echo nieren (adhoc) D,140
+RAD_ZH00000293,Echo Teen I II III IV V Rechts,140
+RAD_TAVI,TRANSCATHETER AORTIC VALVE IMPLANTATION,140
+RAD_TE,Transoesofagale Echocardiografie IZ,140
+RAD_T_PUAS1,Ascitespunctie +,140
+RAD_ZH00000520,Diagnostische arteriografie 4-vaten studie,139
+RAD_1304,SLIKFUNKTIE,138
+RAD_ZH00000292,Echo Teen I II III IV V Links,138
+RAD_1656,CT SCHEDELBASIS (12),138
+RAD_PYEL,RX opstijgende pyelografie,137
+RAD_6003,NMR ANGIOGRFIE BLOEDVATEN,137
+RAD_T_CLWZ+,CT Lumbaal +,136
+RAD_ZH00000210,CT Heupprothese Rechts,136
+RAD_ECHOHF30,Echo Hartfalen 30',135
+RAD_ZH00000243,Conebeam Pols Links,135
+RAD_ZH00000459,MR Heup AVN Links,134
+RAD_T_TRA,Transit,134
+RAD_IVDC,IVDSA Centrale KAT,134
+RAD_CTFC,CT faciaal massief met contrast,133
+RAD_COR1P,1TIJDS PTCA,133
+RAD_1731,DUPLEX ARTERIELE BLOEDVATEN V BEIDE BOV EN ONDER L,132
+RAD_T_CL8GG,ColonG,132
+RAD_ZH00005499,Diagnostisch EFO,131
+RAD_ZH00000209,CT Heupprothese Links,131
+RAD_ZH00000394,MR Sacrum Trauma,131
+RAD_ZH00005221,Fitting CI eerste maal,130
+RAD_VACO,stereotactische vacora,130
+RAD_0000008840,CR Bekken Lateraal Staand,130
+RAD_SMIM1,Supermakroscopie + 1 immuno,129
+RAD_0000008510,Ablatie AVNRT,129
+RAD_SCA,RX Scapula,129
+RAD_PICC,PICC,128
+RAD_1PTCA2,1 TIJDS PTCA 2 OF MR TAKKEN,128
+RAD_LW,LWZ 2 CL,128
+RAD_EGLH,Echo gastro Dr. Harlet,127
+RAD_FIST,RX fistulografie,127
+RAD_0000008538,CR Arthro Knie Rechts (CT),127
+RAD_AFN,ABLATIE FLUTTER (RECHTS) + NARCOSE,127
+RAD_MECK,Meckelscan,127
+RAD_RL,Rug Lumbaal,126
+RAD_1454,OPSTIJGENDE PYELO UNI,126
+RAD_T_MRPANC,MRI Pancreas,126
+RAD_ZH00000453,MR Vinger Klein FOV Links,124
+RAD_ZH00005032,MR Craniale zenuwen,124
+RAD_ZH00000357,MR Hersenen Neuronavigatie + 3D Flair,124
+RAD_T_CARTH,CT Arthrografie,124
+RAD_ZH00000244,Conebeam Pols Rechts,124
+RAD_SMKM,Supermakroscopie + kleine makroscopie,123
+RAD_PTAB,PTA bovenbeen,122
+RAD_ZH00000514,"Punctie Retroperitoneaal (bvb. Nier, ...)",122
+RAD_0000008720,ICD controle AdHoc,121
+RAD_0000008752,MR Prostaat Active Surveillance,121
+RAD_0000008537,CR Arthro Knie Links (CT),121
+RAD_ECHO BEK,ECHO BEKKEN VROUW,121
+RAD_PTAV,PTA viscerale vaten,121
+RAD_ZH00005399,CT TPS Hersenen,121
+RAD_0000008725,CR Extravasatie (incl. melding INFOLAND),120
+RAD_THROMBOL,A.JODI,120
+RAD_ZH00000229,CT Arthro Knie Links,120
+RAD_WMRAB,MRW hals/thorax abdomen bekken,120
+RAD_T_MRFULL,MRI Full Spine,120
+RAD_KMD3I1,KMD3I1,119
+RAD_TMRAF,MRT hoofd,117
+RAD_T_URET,Urethrografie,117
+RAD_ZH00005041,Duplex halsvaten,116
+RAD_1586,PUNCTIE OVARIUM-KYSTE,116
+RAD_SMD3I1,SMD3I1,115
+RAD_1585,PUNCTIE BORST,114
+RAD_IVC-OLD,INTRAVEN.GALBL.6C,114
+RAD_ZH00005029,Sentinel Maligne Melanoma dynamisch SPECT/CT (LD),114
+RAD_B1135,THYROID + UPTAKE,114
+RAD_PASC,Punctie ascites,114
+RAD_CAR6,Bil-fps,114
+RAD_FLDY,Fleb. dialysefistel,113
+RAD_RETROGRA,URETR,113
+RAD_T_PUBO,Borstpunctie,113
+RAD_DUSV,Duplex controle veneus letsel,113
+RAD_PERITONE,PERITONEO,113
+RAD_ZH00005116,CR Orthopantogram (OPG),113
+RAD_CSFDS,Echo Prof. De Wolf - Gent sc,113
+RAD_ZH00000527,Flebografie,112
+RAD_T_CORBI,CT Orbita,112
+RAD_0000008842,CR Bekken Lateraal Zittend,111
+RAD_EGV,Echo gastro Dr. Vandecandelaere,110
+RAD_ACG,ACG,110
+RAD_T_MAMHR,Mammografie Hoog Risico,109
+RAD_ZH00005290,Ventriculografie/ejectiefractiebepaling scan,109
+RAD_0000008719,Pacemaker DDD AdHoc,109
+RAD_ECHOLE,Echo LEVER / GB /GW,109
+RAD_ZH00005289,Ventriculografie/ejectiefractiebepaling inj,108
+RAD_ZH00000483,MR Sternum (Thorax),108
+RAD_ZH00000399,MR Full Spine SpA,108
+RAD_IM4,immuno 4x,108
+RAD_ZH00000363,MR Craniale Zenuwen - Nervus Olfactiorius,107
+RAD_DPMV,DDD-PACEMAKER-VERVANGING,106
+RAD_ZH00000396,MR Sacrum Plexus,106
+RAD_T_EMAMHR,Echo Mammo HR,105
+RAD_AAOS,AO-Supplement,105
+RAD_AAB2-OLD,SEL.2 OF + ABD.ART,105
+RAD_CTHTA,"CT Thorax,hals,abdomen",104
+RAD_DUHC,DUHC,104
+RAD_PORT,PORT,104
+RAD_PTAI,PTA iliacaal,104
+RAD_AAB2,Sel. 2 of + abd. art,103
+RAD_ECHO THO,ECHO THORAX,103
+RAD_CS00000049,Ademspierkrachtmeting,103
+RAD_ZH00000675,SPECT-CT Bekken,103
+RAD_0000008822,TEE - volledige narcose,103
+RAD_ECOG,Echo oog/orbita,103
+RAD_1651,CT SCHEDEL FACIAAL MASSIEF,102
+RAD_ZH00000380,MR Hals Sinus Tumor,101
+RAD_ZH00000656,Consultatie ambulant NG,101
+RAD_T_MRELLR,MRI Elleboog Re,101
+RAD_ZH00000482,MR Voorvoet Arthritis Rechts,100
+RAD_ZH00000168,CT Bijnieren,100
+RAD_0000008811,CT Full Body Low Dose (ikv opsporen botletsels),99
+RAD_ZH00000364,MR Craniale Zenuwen - Nervus Opticus,98
+RAD_T_DLID,Duplex ledematen,98
+RAD_0000008770,VNG + VEMP + BERA,97
+RAD_ZH00000436,MR Lidmaat Tumor Rechts,97
+RAD_AORTA + ,BENEN,96
+RAD_0000005138,WBCscan autologe merking SPECT/CT (LD CT) 21u pi,95
+RAD_ZH00000414,MR Scrotum,95
+RAD_ECHOUR,Echo URINAIR,95
+RAD_ZH00005201,Nierbiopt onder echogeleide (E),95
+RAD_0000005136,WBCscan autologe merking SPECT/CT (LD CT) scan,94
+RAD_0000005137,WBCscan autologe merking SPECT/CT (LD CT) 4u pi,94
+RAD_0000005134,WBCscan autologe merking SPECT/CT (LD CT) bloedafn,94
+RAD_0000005135,WBCscan autologe merking SPECT/CT (LD CT) inj,94
+RAD_0000008880,Studie: niet ten laste van patiënt,94
+RAD_ZH00000288,Echo Clavicula Links,93
+RAD_GB4,Gewone biopsie 4x,93
+RAD_ZH00000435,MR Lidmaat Tumor Links,93
+RAD_CRTPMIN,CRT PM-IMPLANTATIE + NARCOSE,93
+RAD_CAR2-OLD,UNIL-FPS-IE,92
+RAD_SLIKFUNK,SLIK,92
+RAD_T_FSP2,RX Full Spine FP,92
+RAD_T_COPSUB,Co PortACath ,92
+RAD_MIBG,MIBG - scan,91
+RAD_0000008572,Echo hersenen,91
+RAD_VICDIN,VVI ICD-IMPLANTATIE,91
+RAD_ZH00000126,MA Hysterosalpingografie,91
+RAD_ZH00000530,Embolisatie Bloeding Bovenbuik,91
+RAD_1674,CT COLON,90
+RAD_ZH00005106,CT HART- Evaluatie aortaklep calcificaties (-)/EKG,90
+RAD_ID,immuno duurdere,90
+RAD_ZH00000433,MR Bovenarm Links,90
+RAD_OCT,Octreotide scan,90
+RAD_SMIM3,Supermakroscopie + 3 immuno's,89
+RAD_MYEL,Myelo LWZ,89
+RAD_GDL,Galliumscan deel,89
+RAD_ZH00000524,Embolisatie pseudo-aneurysma,89
+RAD_VBGB,Vriesbiopsie + gewone biopsie,88
+RAD_ZH00000578,Longperfusie met SPECT/CT (low dose CT),87
+RAD_AXSK,RX axiaal skelet,87
+RAD_VPMI,VVI_PACEMAKER-IMPLANTATIE,87
+RAD_MRWMI,MR cwz/dwz/lwz IZEGEM,87
+RAD_0000008504,Reconversie,87
+RAD_1826,CB-CWZ,87
+RAD_MF4,Materiaal Forfait PCI meerdere bloedvaten,86
+RAD_SB2I2,2x SUPERBIOPSIE + 2 IMMUNO's,86
+RAD_LYSCLEDE,Lymfescan onderste/bovenste ledematen,85
+RAD_ZH00000534,PTC + Stenting,85
+RAD_T_CURO,CT Urografie,85
+RAD_ZH00000262,Echo Aorta,85
+RAD_T_ERCP2,ERCP + Papilotomie,84
+RAD_IMRAB,MR hals/th/abd/bekk IZEGEM,84
+RAD_ZH00000542,Embolisatie Bloeding Onderbuik,84
+RAD_ZH00000677,SPECT-CT Heup Rechts,84
+RAD_FFR,CORONAIRE FFR,84
+RAD_ZH00000321,Duplex-Dopler Follow-up Arterieel,83
+RAD_EMABL,Endometriumablatie,82
+RAD_S97,gr.macro + gr.micro + 3 immuno's,82
+RAD_CORPOR,CORONARO POST-OP EN RECHTER HART,82
+RAD_SMD TRAN,SMD TR,82
+RAD_ZH00000676,SPECT-CT Heup Links,82
+RAD_B1503,SENTINEL BORST + TOMO,82
+RAD_PHEU,Punctie heupgewricht,81
+RAD_ZH00005510,loop recorder implantatie,81
+RAD_ZH00000678,SPECT-CT Heupprothese Links,81
+RAD_AF,ABLATIE FLUTTER (RECHTS),81
+RAD_0000008865,LuPSMA cyclus 2 of meer injectie,81
+RAD_0000008800,CT Slokdarm,80
+RAD_TCD,Transcraniële Doppler,80
+RAD_T_DLIDVF,Duplex Veneus Opvolging,80
+RAD_MF2,Materiaal Forfait PCI met cor stent,80
+RAD_FLLM,Flebografie lidmaat,80
+RAD_AVESC,ABLATIE VES CARTO,80
+RAD_ZH00000289,Echo Clavicula Rechts,80
+RAD_0000008821,CT Hersenen Wake Up Stroke,79
+RAD_0000008768,Reconversie Rumbeke,79
+RAD_PPLEU,Pleurapunctie met naald,79
+RAD_N8300,PET-CT,79
+RAD_ZH00000427,MR Urografie,79
+RAD_0000005125,Nierscintigrafie met DMSA pediatrie inj,78
+RAD_BB,Bovenbeen,78
+RAD_ZH00005117,CR Teleradiografie,78
+RAD_0000008556,MR Angio Abdominale Aorta,78
+RAD_OB,Onderbeen,78
+RAD_PFO,PFO-SLUITING,78
+RAD_ZH00000291,Echo AC-Gewricht Rechts,78
+RAD_6005I,NMR BEIDE MAMAE (IZEGEM),78
+RAD_ZH00000672,SPECT-CT Pols Rechts,78
+RAD_ZH00005296,Duplex Aneurysma,78
+RAD_T_MRHANR,MRI Hand Re,78
+RAD_T_FLG,RX Full Leg,77
+RAD_ZH00000674,SPECT-CT Hand Rechts,77
+RAD_300,Autopsie,77
+RAD_0000008507,Whole body met SPECT scan,76
+RAD_ZH00000504,Punctie Bot ,76
+RAD_PTC,PTCA-PROTOCOL,76
+RAD_HERN,HERNIOGRAFIE,76
+RAD_ALMK-OLD,ART.LIDM VIA KATHE,76
+RAD_ZH00000426,MR Urethra,75
+RAD_CAR1-OLD,UNIL-FP-C,75
+RAD_ZH00000101,CR Defaecografie,75
+RAD_0000008866,LuPSMA cyclus 2 of meer scan Dag6,75
+RAD_92,heelkundige behandeling van pseudarthrose van olec,74
+RAD_ZH00000508,Punctie Lumbaal,74
+RAD_T_EVOAR,Echo Voorarm,73
+RAD_ZH00005247,evacuerende pleurapunctie,73
+RAD_0000008506,Whole body met SPECT inj,73
+RAD_ZH00000309,Duplex-Dopler Bovenste Lidmaten Art. Bilateraal,73
+RAD_ZH00000083,CR Thorax F/P Arbeidsgeneeskunde,73
+RAD_0000008680,Plaatsen Nefrostomiesonde,72
+RAD_PSCHCB,Schildklierpunctie voor core biopt,72
+RAD_ZH00000625,Nierscintigrafie MAG3 pediatrie,72
+RAD_ZH00000434,MR Bovenarm Rechts,72
+RAD_1605,EMBOL. ARTERIEEL,72
+RAD_CAR4,Unil-fps-c,72
+RAD_ZH00000671,SPECT-CT Pols Links,71
+RAD_ZH00000664,SPECT-CT DWZ,71
+RAD_BYMISPIO,SK (I123) en BijSK (TcMIBI) SPECT,71
+RAD_22,behandelen met repositie van enkelluxatie (tibiota,70
+RAD_T_CHEUL,CT Heup Li,70
+RAD_ZH00000322,Duplex-Dopler Follow-up Veneus,70
+RAD_T_MRHYP,MRI Hypofyse,70
+RAD_CU2,Cytologie urine-sputum 2x,70
+RAD_T_BRONCH,Bronchoscopie,69
+RAD_ZH00000407,MR Lever Non Coöperatief,69
+RAD_AAV,ABLATIE AVRT (WPW),68
+RAD_ZH00005420,Echo hals (adhoc) D,68
+RAD_ZH00000481,MR Voorvoet Arthritis Links,68
+RAD_ARTERIO,Arterio,68
+RAD_1825,CB-ROTSBEENDEREN,68
+RAD_0000008688,"CT HART - sluiten hartoortje (-,+)/EKG",68
+RAD_ZH00000378,MR Orbita Tumor,68
+RAD_0000008812,Nierbiopsie NEF (adhoc) D,68
+RAD_LVLSPCT,Longventilatie gecombineerd met een longperfusie S,68
+RAD_CONSULT,Consult,67
+RAD_0000009051,CT TPS Radiotherapie,67
+RAD_T_CHEUR,CT Heup Re,67
+RAD_AAOR,Ao. thor. of abd 3 cl.,67
+RAD_ECHOTH,Echo THORAX,67
+RAD_BE,BoneXpert,66
+RAD_ZH00000124,MA Contrast Enhanced Spectral Mammography,66
+RAD_TMRWM,MRT cwz/dwz/lwz,66
+RAD_ZH00005301,Duplex Aorta & Iliacaal,66
+RAD_ECHOHA,Echo HALS,66
+RAD_XO,Xofigo,66
+RAD_T_CSIN+,CT Sinussen +,66
+RAD_0000008531,CR Arthro Elleboog Rechts (CT),66
+RAD_ECHOBOB,Echo tractie-aspiratie/bead/monit,66
+RAD_PELVIMET,Bekken,66
+RAD_ZH00000673,SPECT-CT Hand Links,66
+RAD_CBRSH,Conebeam rotsbeenderen,65
+RAD_0000008557,MEP conversie,65
+RAD_ZH00005457,Echo lidmaat (adhoc) D,65
+RAD_1406,LARYNX-TRACHEA,65
+RAD_LARYNX-T,hals weke delen,64
+RAD_1589,PUNCTIE HEUP,64
+RAD_MRAFI,MR hoofd IZEGEM,64
+RAD_T_FIS,Fistulografie,63
+RAD_ZH00000679,SPECT-CT Heupprothese Rechts,63
+RAD_T_CVOER,CT Voet Re,63
+RAD_CAR2,Unil-fps-ie,63
+RAD_LAPADNEX,Laparascopie voor adnexectomie,63
+RAD_ZH00005474,Ablatie klassieke flutter + narcose,63
+RAD_93,heelkundige behandeling van pseudarthrose van diaf,63
+RAD_1710,ECHO BEKKEN VROUW,62
+RAD_T_MRELLL,MRI Elleboog Li,62
+RAD_RISA,Cysternografie,62
+RAD_BOB,Supplement Bobby,62
+RAD_RIB1,RIB1,62
+RAD_1587,REPERAGE,62
+RAD_ZH00000115,CR Nefrostomogram Links,61
+RAD_T_PULE,Leverpunctie,61
+RAD_ZH00000324,DX Botdensitometrie LWZ,61
+RAD_ZH00000224,CT Arthro Elleboog Rechts,61
+RAD_CLIP,Clip Plaatsing,61
+RAD_ZH00005398,CR Diafragmakoepels scopie,60
+RAD_CA3,Cytologie andere 3x,60
+RAD_NMR ANGI,NMR ANGIOGRFIE B,60
+RAD_B1177,MAAGEVACUATIE,60
+RAD_ZH00000329,MR Angio Carotiden Dissectie,59
+RAD_T_MRHANL,MRI Hand Li,58
+RAD_ZH00000420,MR Pelvimetrie,58
+RAD_LYSCSPCT,LYSCan met SPECTCT-opnames,57
+RAD_DICDIN,DDD ICD-IMPLANTATIE,57
+RAD_PLUM,Punctie lumbale,57
+RAD_ZH00000213,CT Knieprothese Links,57
+RAD_1320,FISTULOGRAFIE,57
+RAD_ZH00000099,CR ERCP + Papillotomie,56
+RAD_ZH00000214,CT Knieprothese Rechts,56
+RAD_0000008861,MR Blaas Staging,56
+RAD_LAPSTERI,Laparascopische sterilisatie,56
+RAD_AO,Abdomen Overzicht,56
+RAD_ZH00000638,Sentinel Maligne Melanoma dynamisch,55
+RAD_0000008737,CT Sternoclaviculair gewricht,55
+RAD_KM2I4,2 x kleine Macroscopie + 4 immuno's,55
+RAD_0000008532,CR Arthro Enkel Links (CT),55
+RAD_T_CL8,COLON,55
+RAD_HYSPOL,Op hysterscopie + poliepectomie of myomectomie,55
+RAD_ZH00005544,PFO sluiting + TEE + narcose,55
+RAD_0000008711,Nierscintigrafie met DMSA SPECT/CT (LDCT) scan,55
+RAD_ZH00000383,MR Plexus Brachialis Tumor,54
+RAD_0000008710,Nierscintigrafie met DMSA SPECT/CT (LDCT) inj,54
+RAD_IVUS,IVUS (intravasculaire ultrasound) ,54
+RAD_0000005126,Nierscintigrafie met DMSA pediatrie scan,54
+RAD_1323,PERITONEO,54
+RAD_ZH00000395,MR Sacrum Piriformis,54
+RAD_VBIM4,vriescoupe + 4 immuno's,53
+RAD_CS00000041,TEE - PFO / ASD / re-li shunt,53
+RAD_1719,CAROTIS + PERIFEER,53
+RAD_CAIM1,Cytologie andere + 1x immuno,52
+RAD_KMSB,Kleine Macroscopie + superbiopsie,52
+RAD_ZH00005406,MR DBS,52
+RAD_T_PUBOSP,Punctie borst met Spirotome,52
+RAD_CS00000071,Arteriepunctie met zuurstof,51
+RAD_EGGG,Echo gastro Dr. Ghillebert,51
+RAD_T_EHUM,Echo Humerus,51
+RAD_CAVE-OLD,CAVERNOSOGRAFIE,51
+RAD_ZH00005115,"CT AORTA - Eval. dissectie aortaboog (-,+,+)/EKG",51
+RAD_SMGB,Supermakroscopie + gewone biopsie,51
+RAD_0000008533,CR Arthro Enkel Rechts (CT),51
+RAD_ZH00000521,Trombectomie,51
+RAD_T_MRFOS,MRI Fossa Post,51
+RAD_ZH00005517,VVI ICD-implantatie,51
+RAD_CSRB,Echo R.Beeuwsaert,51
+RAD_ZH00005222,Fitting BAHA / PONTO eerste maal,51
+RAD_ZH00000163,CT Abdomen Enterografie Crohn,50
+RAD_ZH00000025,CR Sterno-Claviculair Gewricht Rechts,50
+RAD_ZH00005403,CT TPS Abdomen,50
+RAD_T_DU2,Duplex 2,50
+RAD_SM2,Supermakroscopie 2x,50
+RAD_94,biopsie + 4 x immuno,50
+RAD_CBCWZ,Conebeam cwz,50
+RAD_0000008669,CT Virtopsie ikv gerechtelijk onderzoek,50
+RAD_0000008536,CR Arthro Heup Rechts (CT),50
+RAD_ZH00000456,MR Heup BilateraaL MARS,49
+RAD_ZH00000116,CR Nefrostomogram Rechts,49
+RAD_0000008560,MR Milt,49
+RAD_BSP,Botscan SPECT,49
+RAD_ZH00000061,CR Kaakgewrichten,48
+RAD_WOND,Wondhechting,48
+RAD_ZH00000290,Echo AC-Gewricht Links,48
+RAD_ZH00000231,CT Arthro Enkel Links,48
+RAD_ZH00000228,CT Arthro Heup Rechts,48
+RAD_T_MRAHWD,MRI Angio Halsvaten,47
+RAD_ZH00005402,CT TPS Thorax 4D,47
+RAD_RIBBEN -,Sternum,47
+RAD_ZH00000630,Sentinel Borst (LDCT),47
+RAD_AORTA,AORTAGRAM,47
+RAD_ZH00005194,Echo urogenitaal (adhoc) E,46
+RAD_T_EKNIE2,Echo Knie Bilateraal,46
+RAD_ZH00000104,CR Fistulografie,46
+RAD_0000008783,C-boog Endoscopie,46
+RAD_ZH00000543,Embolisatie Uterus,46
+RAD_T_CSCHL,CT Schouder Li,46
+RAD_KMGI2,Kleine Macroscopie + gewone biopsie + 2 immuno's,45
+RAD_ZH00005490,DDD-ICD implantatie,45
+RAD_0000008676,MR Voorarm Rechts,45
+RAD_DAR,Diagn. arteriografie radiologie,45
+RAD_B1153,VQ MET 2 TOMOS,45
+RAD_M97,kl.macro + kl. micro + 3 immuno's,45
+RAD_ZH00000332,MR Angio A. Subclavia (TOS),45
+RAD_T_PUSCH,Schildklierpunctie,45
+RAD_9009,FLEBOGRAFIE,45
+RAD_AAVN,ABLATIE AVRT (WPW) + NARCOSE,44
+RAD_ZH00005055,Bepalen longvolumina met bodyplethysmografie,44
+RAD_ZH00005440,Transjugulaire Leverbiopsie,44
+RAD_0000005153,Therapie I131 TB SPECT (LD) 100-150-200 mCi inn,44
+RAD_ZH00005245,duplex controle veneus OL/B,44
+RAD_91,biopsie + 1 x immuno,44
+RAD_1823,CB-MFM,44
+RAD_0000008628,Studie: niet ten laste van patiënt,44
+RAD_0000005154,Therapie I131 TB SPECT(LD) 100-150-200 mCi scan,44
+RAD_ZH00000232,CT Arthro Enkel Rechts,44
+RAD_FCTDWZ,Facetinfiltratie DWZ,44
+RAD_ZH00000668,SPECT-CT Schouder Rechts,43
+RAD_PERI,PERICARDPUNCTIE,43
+RAD_INFWBCCT,"WBCscan, autologe merking, low CT",43
+RAD_VPMV,VVI_PACEMAKER-VERVANGING,43
+RAD_ZH00000410,MR Pancreas Non Coöperatief,42
+RAD_T_CSCHR,CT Schouder Re,42
+RAD_ZH00000024,CR Sterno-Claviculair Gewricht Links,42
+RAD_ZH00000402,MR MRCP Non coöperatief,42
+RAD_ZH00000113,CR Urethrografie,42
+RAD_AATCN,ABLATIE LINKER ATRIALE TACHYCARDIE CARTO + NARCOSE,42
+RAD_AVTCN,ABLATIE VENTRICULAIRE TACHYCARDIE (CARTO) + NARCOS,42
+RAD_SB2I5,2 x superbiopsie + 5 immuno's,42
+RAD_CA2V,CA2V,42
+RAD_0000008535,CR Arthro Heup Links (CT),41
+RAD_T_CBVOER,CBCT Voet Rechts,41
+RAD_PTAVV,PTA viscerale vaten,41
+RAD_T_CPOLL,CT Pols Li,41
+RAD_PFON,PFO-SLUITING + NARCOSE,41
+RAD_ZH00000492,MR Pediatrie Hypofyse,41
+RAD_ZH00000246,Conebeam Hand Rechts,41
+RAD_ZH00000366,MR Craniale Zenuwen - Nervus Trochlearis,40
+RAD_ZH00000452,MR Pols Arthritis Rechts,40
+RAD_CAR4-OLD,UNIL-FPS-C,40
+RAD_ZH00005246,diagnostische pleurapunctie,40
+RAD_KMD3I2,KMD3I2,40
+RAD_CS00000274,0. Functieonderzoek t.b.v. HCK,40
+RAD_ZH00000372,MR Spectroscopie,40
+RAD_GB2I4,Gewone biopsie 2x + 4 immuno's,40
+RAD_T_CENKL,CT Enkel Li,39
+RAD_DUSA,Duplex controle arterieel letsel,39
+RAD_FLEBOGRA,A.JODI,39
+RAD_T_CVOEL,CT Voet Li,39
+RAD_ZH00000666,SPECT-CT Sacro-Illiacale Gewrichten,39
+RAD_ZH00005520,VVI-pacemakerimpantatie,39
+RAD_ZH00005413,Ascites punctie (adhoc),39
+RAD_0000008530,CR Arthro Elleboog Links (CT),39
+RAD_FISTULOG,KL,39
+RAD_DUPLEXAB,Duplex abdomen / Tx / pelvis,39
+RAD_T_MRNIER,MRI Nieren,38
+RAD_ZH00000223,CT Arthro Elleboog Links,38
+RAD_WILGENST,Wilgenstraat,38
+RAD_TEL1,TELERX SCHEDEL 1CL,38
+RAD_CA2IM4,Cytologie andere 2x + 4x immuno,38
+RAD_CAR5,Bil-fp,38
+RAD_102,vriescoupe + 2 controles,38
+RAD_ZH00000058,CR MFM / Orbita Links,38
+RAD_PABSDR,Percutaan inbrengen catheters ,38
+RAD_NMR CERV,NMR CERVICALE OF,38
+RAD_T_CDWZ+,CT Dorsaal +,38
+RAD_CAV3,Bil-fp-v new,38
+RAD_0000008771,MR Whole Body Myeloom/Prostaat/Botmetastasen,38
+RAD_ZH00005109,"CT HART - Aortaklep calcificaties (-,+)/EKG",37
+RAD_HSCOPIE,Hysteroscopie,37
+RAD_1591,PUNCTIE LEVER,37
+RAD_CHSO,Cholangio via sonde,37
+RAD_ZH00000245,Conebeam Hand Links,37
+RAD_T_CL8BA,ColonB,37
+RAD_INFWBC,"WBCscan, autologe merking",37
+RAD_ZH00005015,EMG single fiber,37
+RAD_0000008673,CRT ICD implantatie + narcose,37
+RAD_0000008802,Duplex-Dopler A/V Onderste Led. + Echo Abdomen,37
+RAD_ZH00000499,Punctie - Vacuumgeassisteerd Borst op Echo + Clip,37
+RAD_C,Cervicaal,37
+RAD_ZH00000539,Pre-SIRT,37
+RAD_T_CCWZ+,CT Cervicaal +,36
+RAD_SB2I6,2 x superbiopsie + 6 immuno's,36
+RAD_ECHO TRA,ECHO TRANSVAGINAAL,36
+RAD_0000008675,MR Voorarm Links,36
+RAD_1510,AORTA + BENEN,36
+RAD_PNIE,Punctie nier,36
+RAD_0000008824,Studie: niet ten laste van patiênt,36
+RAD_N7680,POORTKATHETER,36
+RAD_ZH00000227,CT Arthro Heup Links,35
+RAD_VA,Vasculaire Acces,35
+RAD_0000008685,TEN-test,35
+RAD_0000008733,MA Operatiestuk (zonder voorafgaande mammo),35
+RAD_T_MRPLBR,MRI Plexus Brachialis,35
+RAD_513,1 VC + 3 x immuno,35
+RAD_ROTA,ROTABLATOR,35
+RAD_ZH00000489,MR Pediatrie Hersenen Neonaat <3mnd,35
+RAD_ABDS,Abdomen Studie aortaverkalking,35
+RAD_CAV3-OLD,BIL-FP-V,34
+RAD_T_PUR1,Biopsie retroperitoneaal +,34
+RAD_COC,COC,34
+RAD_VERT-OLD,VERTEBRALIS 1 OF 2,34
+RAD_T_PUAS,Ascitespunctie,34
+RAD_TJLB,transjugulaire leverbioptie,34
+RAD_AVKFCRN,ABLATIE VKF (CRYO) + NARCOSE,34
+RAD_ZH00000556,Botdensitometrie,34
+RAD_ZH00000667,SPECT-CT Schouder Links,34
+RAD_ZH00005504,Lead revisie,34
+RAD_ZH00000377,MR Orbita Neuritus Optica,34
+RAD_T_EVOET2,Echo Voet Bilateraal,34
+RAD_T_CNIER,CT NIEREN,34
+RAD_B1169,DATSCAN,34
+RAD_ZH00000353,MR Hersenen Sinustrombose - (zwanger),33
+RAD_TARTR,Arthrografie TIELT,33
+RAD_LSP,Longperfusie SPECT,33
+RAD_ZH00000533,PTC + Externe drainage,33
+RAD_ZH00000251,Conebeam Voet Links,33
+RAD_VERT,Vertebralis 1 of 2,33
+RAD_ZH00000404,MR Bijnieren Standaard + Angio,32
+RAD_T_AAA,Aortaboog,32
+RAD_ZH00005010,Duplex,32
+RAD_ZH00000237,Conebeam Stomatologie,32
+RAD_T_B1,gewone biopsie,32
+RAD_T_CBSCH,CBCT Schedel,32
+RAD_CRTPMI,CRT PM-IMPLANTATIE,32
+RAD_LAAN,LAA CLOSURE + NARCOSE,32
+RAD_ZH00000338,MR Cardio Pericarditis,32
+RAD_EMBN,EMBOLISATIE NEURO,32
+RAD_DUPL LED,DUPL LEDEM + AND STR,32
+RAD_ZH00005471,Ablatie linker atriale tachycardie  CARTO+ narcose,31
+RAD_ZH00005530,ABLATIE VES CARTO,31
+RAD_CS00000109,NO nasaal,31
+RAD_CHOL: VI,CHOLAN,31
+RAD_0000008862,LuPSMA cyclus 1 injectie,31
+RAD_0000005160,Total body scan I123 SPECT/CT (low dose CT) inj,31
+RAD_T_CBPOLL,CBCT Pols Links,31
+RAD_ZH00005227,Onderzoek 30 minuten,31
+RAD_0000005161,Total body scan I123 SPECT/CT (low dose CT) scan,31
+RAD_0000008807,MR Guided Biopsie van de Borst,31
+RAD_TMRAB,MRT hals/thorax/abdomen/bekken,31
+RAD_T_CBPOLR,CBCT Pols Rechts,31
+RAD_0000008566,CR Schedel 3D rotationele fluoroscopie,31
+RAD_CAV2,Unil-fps-v new,31
+RAD_ZH00005507,Pericardpunctie,31
+RAD_0000008539,CR Arthro Pols Links (CT),31
+RAD_ZH00000541,Embolisatie Aneurysma Onderbuik,31
+RAD_ZH00005553,LAA Closure + TEE + narcose,31
+RAD_BMCK,Botdensitometrie,30
+RAD_B1107,LYMFOGRAFIE,30
+RAD_0000008863,LuPSMA cyclus 1 scan Dag1,30
+RAD_T_PUP1,Pleurapunctie +,30
+RAD_ZH00005531,VKF-ablatie (CRYO) + narcose,30
+RAD_THOR,Thoracoscopie,30
+RAD_REVIMP,LOOP RECORDER - IMPLANTATIE,30
+RAD_ZH00005462,Leverbiopsie,30
+RAD_T_CENKR,CT Enkel Re,30
+RAD_ZH00000418,MR Uterus Pre Embolisatie Myomen Groot,30
+RAD_WMRMA,MRW mammae,30
+RAD_ZH00000090,CR Diafragmakoepels,29
+RAD_SBGB,Superbiopsie + gewone biopsie,29
+RAD_T_ERCP1,ERCP Z Papilotomie,29
+RAD_SCAN,RX Scanometrie,29
+RAD_IMRMA,MR mammae IZEGEM,29
+RAD_ZH00000096,CR Transit,29
+RAD_T_ETEEN1,Echo Teen Unilateraal,29
+RAD_ZH00000335,MR Cardio Stress-Perfusie,29
+RAD_M210,kl.macro + kl. micro + kl. macro + kl. micro,29
+RAD_0000008864,LuPSMA cyclus 1 scan Dag6,29
+RAD_CSMDP,Echo Prof.M. De Pauw,29
+RAD_CS00000020,Stressecho,29
+RAD_AORTA T+,A.JODI,29
+RAD_ECVA,transvaginale echo,29
+RAD_ZH00000365,MR Craniale Zenuwen - Nervus Oculomotorius,29
+RAD_ZH00000540,SIRT,29
+RAD_42,heelkundige behandeling van oude luxatie van elleb,28
+RAD_LIMPL,LEAD IMPLANTATIE,28
+RAD_B1116,RENO MAG3,28
+RAD_ZH00000450,MR Pols Scaphoid AVN Rechts,28
+RAD_ZH00005509,loop recorder explantatie,28
+RAD_ZH00000059,CR MFM / Orbita Rechts,28
+RAD_1580,PUNCTIE ASCITES,28
+RAD_0000008540,CR Arthro Pols Rechts (CT),28
+RAD_ZH00005562,TEE conversie,28
+RAD_ZH00000531,TIPSS,27
+RAD_T_CELLL,CT Elleboog Li,27
+RAD_LR,LEAD REVISIE,27
+RAD_ZH00005357,QC Quality Control CR,27
+RAD_3,biopsie 3x,27
+RAD_0000008568,Lymfangiografie + embolisatie,27
+RAD_AAB1,Sel. 1 adb. arterie,27
+RAD_AAN,ABLATIE AVNRT + NARCOSE,26
+RAD_DUPLEXOL,Duplex onderlste ledematen,26
+RAD_TH1IDW,Thorax 1cl IDEWE,26
+RAD_T_CJC,RX Co Jugcath,26
+RAD_ZH00005211,Stemvorkproeven,26
+RAD_T_COLPO,colpocystodefecografie,26
+RAD_ZH00005198,Echo lidmaat (adhoc) E,26
+RAD_CAR3,Unil-fp-ie,26
+RAD_ZH00005483,CRT ICD-vervanging,26
+RAD_97,heelkundige behandeling van pseudarthrose van femu,26
+RAD_CATR,RECHTER HARTCATHETERISATIE,26
+RAD_AAB1-OLD,SEL.1 ABD.ARTERIE,26
+RAD_0000008876,MR Schouder INDIRECTE arthro Rechts (I.V.),25
+RAD_ZH00000545,RFA/microwave ablatie,25
+RAD_DICDVN,DDD ICD-VERVANGING,25
+RAD_B1159,LEUCOCYTEN TOMO,25
+RAD_0000008661,CR Cysto-Defaeco-Peritoneografie,25
+RAD_0000005128,Nierscintigrafie met DMSA volw inj,25
+RAD_VIRCOS,Vir. Colonscopie voor studie,25
+RAD_ZH00000376,MR Orbita Visuele Banen,25
+RAD_TRAK,TRAK,25
+RAD_VBIM3,Vriescoupe + 3 immuno's,25
+RAD_T_MRAAIL,MRI Aorta Iliacaal,25
+RAD_ZH00005485,CRT PM-implantatie + narcose,25
+RAD_ZH00000216,CT Rotatiemetingen,25
+RAD_ZH00000623,Nierscintigrafie met DMSA SPECT,25
+RAD_B1115,DMSA,25
+RAD_LAPCYST,Laparascopie cystectomie eierstokken,25
+RAD_MRABI,MR hals/th/abd/bekk IZEGEM,25
+RAD_ZH00005418,Duplex halsvaten en vertebrales (adhoc) D,24
+RAD_FLDY-OLD,FLEB.DIALYSEFISTEL,24
+RAD_T_MRLWZ+,MRI LWZ Operatie,24
+RAD_CAV2-OLD,UNIL-FPS-V,24
+RAD_ZH00005481,CRT ICD-implantatie,24
+RAD_ZH00005183,PM controle adhoc,24
+RAD_ZH00000226,CT Arthro Pols Rechts,24
+RAD_1311,SMD TRANSIT,24
+RAD_CAV1-OLD,UNIL-FP-V,24
+RAD_T_MRFEMR,MRI Femur Re,24
+RAD_ECHO PAN,ECHO PANCREAS/MILT,24
+RAD_LAVH,L.A.V.H. (lap. Geassist.vag.hysterectomie),24
+RAD_T_CBVOEL,CBCT Voet Links,24
+RAD_TPM,TIJDELIJKE PACEMAKER,24
+RAD_B1151,EJEKTIE FRACTIE,24
+RAD_T_PFNSCH,FNAC Schildklier,24
+RAD_THY,Therapie Yttrium,24
+RAD_ZH00000225,CT Arthro Pols Links,23
+RAD_MD TRANS,SMD TR,23
+RAD_503,3 x immuno,23
+RAD_T_MRONBR,MRI Onderbeen Re,23
+RAD_0000008569,Total body scan I123 SPECT/CT (low d CT) scan 24u,23
+RAD_ZH00000060,CR Sinussen,23
+RAD_ZH00000449,MR Pols Scaphoid AVN Links,23
+RAD_ZH00005529,ABLATIE VES CARTO + narcose,23
+RAD_1822,CB-DENTAL,23
+RAD_T_MRORBI,MRI Orbitae,23
+RAD_ZH00000536,Embolisatie Endoleak,23
+RAD_ZH00000526,Embolisatie Bloeding Thorax,23
+RAD_DLAPZB,Diagn. laparascopie zonder biopsie,23
+RAD_KMGI4,Kleine Macroscopie + gewone biopsie + 4 immuno's,23
+RAD_GALB-OLD,PERORALE GALBLAAS,23
+RAD_ZH00000451,MR Pols Arthritis Links,23
+RAD_PTA2,PTA 2 STENOSEN,23
+RAD_SBD3I1,SBD3I1,23
+RAD_T_FL2,RX Full Leg,23
+RAD_ZH00000053,CR Full Spine Profiel,23
+RAD_CAR5-OLD,BIL-FP,22
+RAD_ZH00000584,Divertikel van Meckel scintigrafie (dynamisch),22
+RAD_1725,SCH+TH+LGPM+ABDV+KL B,22
+RAD_0000005139,Galzuurresorptietest (SehCat) inname,22
+RAD_T_CPOLR,CT Pols Re,22
+RAD_ZH00000250,Conebeam Enkel Rechts,22
+RAD_T_ALID,Art Lidmaat,22
+RAD_IM2,immuno 2x,22
+RAD_ZH00000614,MAA voorbereidend onderzoek SIRT,22
+RAD_LYSCSP,LYSCSP,22
+RAD_T_OPP1,Opst Pyelogr 1,21
+RAD_ZH00000369,MR Craniale Zenuwen - Nervus 9 tem 12,21
+RAD_T_PUW1,Botbiopsie +,21
+RAD_MAR2-OLD,KATHET.MEERD.ARTER,21
+RAD_SMKI4,Supermakroscopie + kleine makroscopie + 4 immuno's,21
+RAD_ZH00000249,Conebeam Enkel Links,21
+RAD_GASP,Galliumscan + spect,21
+RAD_ZH00000644,SIRT therapie,21
+RAD_ZH00000425,MR CCD,21
+RAD_SCAP,SCAP,21
+RAD_0000005140,Galzuurresorptietest (SehCat) DAG 1,21
+RAD_CU3,Cytologie urine-sputum 3x,21
+RAD_TMRLM,MRT lidmaat,21
+RAD_GB2I3,Gewone biopsie 2x + 3 immuno's,21
+RAD_T_CELLR,CT Elleboog Re,20
+RAD_ZH00000114,CR Nefrostomogram,20
+RAD_LPESPCT,Longperf SPECTCT low dose,20
+RAD_0000008871,CT Orbita met contrast,20
+RAD_ZH00005519,VVI-ICD vervanging,20
+RAD_CAV1,unil-fp-v new,20
+RAD_TIPS,Portacava Shunt new,20
+RAD_ZH00000558,Schildklierscan Tc99m (LDCT),20
+RAD_ZH00005046,Diagnostische arteriografie a. abdominalis,20
+RAD_ZH00005302,Veneuze Duplex Bovenste Ledematen,20
+RAD_THP,Therapie Fosfor 32,20
+RAD_SAA,onderzoek Arcadis Avantic,20
+RAD_SMD3I2,SMD3I2,20
+RAD_RECO,Reconversie,20
+RAD_ZH00005362,QC Quality Control CT,20
+RAD_0000008889,CT Thorax-Abdomen Prelevatieprotocol,20
+RAD_0000008756,Echo Barbotage Schouder Rechts,20
+RAD_CAR1,Unil-fp-c new,20
+RAD_EMBOL. V,A.JODI,20
+RAD_CRTICDVN,CRT ICD-VERVANGING,20
+RAD_0000008663,Conebeam Elleboog Rechts,20
+RAD_STEN,stentplaatsing,20
+RAD_ZH00005473,Ablatie AVRT (WPW) + narcose,20
+RAD_T_EPOLS2,Echo Pols Bilateraal,19
+RAD_T_MRFEML,MRI Femur Li,19
+RAD_B1133,VENTIL PERF MET 1 TOMO,19
+RAD_FLEB1,Flebografie 1 lidmaat,19
+RAD_ECG,E.C.G.,19
+RAD_T_CWT,RX CWZ Trauma,19
+RAD_BYSK,Bijschildklierscan,19
+RAD_ECGB,ECGB,19
+RAD_ZH00000633,Sentinel Maligne Melanoma SPECT/CT (low dose CT),19
+RAD_0000005141,Galzuurresorptietest (SehCat) DAG 8,19
+RAD_1675,CALCIUM SCORE,19
+RAD_TCMO,Tc 99 - molecule,19
+RAD_OCTREOCT,Octreotide scan met SPECT en low CT,18
+RAD_KMSBI1,Kleine macroscopie + superbiopsie + 1 immuno,18
+RAD_S98,gr.macro + gr.micro + 4 immuno's,18
+RAD_ASDS,ASD-SLUITING,18
+RAD_EMBOL. A,A.JODI,18
+RAD_PYE2,Bilaterale pyelo,18
+RAD_1706,ECHO PANCREAS/MILT,18
+RAD_ECAO,Echo oarta retroperitoneum,18
+RAD_SMSB,Supermakroscopie + superbiopsie,18
+RAD_0000008718,Pacemaker VVI AdHoc,18
+RAD_T_MRABDB,MRI Bovenbuik,18
+RAD_ZH00000252,Conebeam Voet Rechts,18
+RAD_VBSB,Vriescoupe + superbiopt,18
+RAD_ZH00000586,Speekselklierscintigrafie,18
+RAD_T_EMBY1,EMB + glob art + 1x selectief,18
+RAD_T_MRONBL,MRI Onderbeen Li,18
+RAD_SIRTMAA,MAA voorber. ondzk,17
+RAD_1315,CHOL: VIA DRAIN,17
+RAD_MR1010,MR Defaecografie,17
+RAD_T_MDT,Maag-Du-Tran,17
+RAD_AJMAL,AJMALINE TEST,17
+RAD_ZH00000325,DX Botdensitometrie beide Heupen,17
+RAD_1664,CT WERVEL 1 (6),17
+RAD_CBCTMSK,CBCT musculoskeletale toepassing,17
+RAD_0000008897,MR Thoraxwand,17
+RAD_T_ZDUMMY,zdummy,17
+RAD_T_CBENKR,CBCT Enkel Rechts,17
+RAD_DEFVKF,DEFIBRILLATIE VKF,17
+RAD_T_MRASCH,MRI Arthro Schouder Rechts,17
+RAD_0000008620,coronaro + biopsie,17
+RAD_ZH00005475,Ablatie hisbundel,17
+RAD_DLAPMBC,Diagn. laparascopie met biopsie of cytologie,17
+RAD_ZH00005039,Dobutamine stress echocardiografie,17
+RAD_TRANSIT ,SMD TR,17
+RAD_ZH00005524,VVI-Pacemakervervanging,17
+RAD_T_CBENKL,CBCT Enkel Links,17
+RAD_T_CHANR,CT Hand Re,17
+RAD_0000008754,CT Schouder Rechts ZIMMER ONE,17
+RAD_ZH00000072,CR Arthro Enkel Links,16
+RAD_ZH00000494,MR Pediatrie Abdomen,16
+RAD_PBOT,Punctie bot,16
+RAD_FLEB2,Flebografie 2 ledematen,16
+RAD_ZH00000133,CT Hersenen Pre-Radiotherapie,16
+RAD_GBD1I3,GBD1I3,16
+RAD_ZH00000326,DX Botdensitometrie heup Links,16
+RAD_0000008624,Ajmalinetest,16
+RAD_ZH00000544,Embolisatie Varicocoele/ Vena ovarica,16
+RAD_RBC,RBC - volume,16
+RAD_0000008598,Plaatsen Tenckhoff-catheter,16
+RAD_CBMFM,Conebeam mfm,16
+RAD_ZH00000327,DX  Botdensitometrie heup Rechts,16
+RAD_MB2GB,2x minibiopt + gewone biopsie,16
+RAD_RXDEF,Rx defecografie,16
+RAD_ZH00005598,VKF ablatie CARTO + flutter ablatie + narcose,16
+RAD_KMGB2,Kleine Macroscopie + 2x gewone biopsie,16
+RAD_T_H1,Histochemie,16
+RAD_T_EELL2,Echo Elleboog Bilateraal,16
+RAD_1709,ECHO BEKKEN MANNELIJK,16
+RAD_ZH00000615,HIDA FRL dynamisch en SPECT/CT (low dose CT),16
+RAD_0000005129,Nierscintigrafie met DMSA volw scan,16
+RAD_0000008717,PM controle ADHOC,16
+RAD_TMRMA,MRT mammae,16
+RAD_0000008555,Slaapregistratie polysomnografie Torhout,16
+RAD_DENS1500,NULL,16
+RAD_AH,ABLATIE HISBUNDEL,16
+RAD_ECHOLI,Echo LIDMAAT,16
+RAD_ZH00005295,Arteriële Duplex Bovenste Ledematen,16
+RAD_ZH00005477,Ablatie Ventriculaire Tachycardie (Carto) + Narcos,16
+RAD_M201?,kl.macro + kl.micro : gegev. opvr.,16
+RAD_ZH00005535,coronarografie + FFR,15
+RAD_KMGI1,Kleine macroscopie + gewone biopsie + 1 immuno,15
+RAD_T_CCAR,CT Hart,15
+RAD_0000008511,Ablatie AVNRT + narcose,15
+RAD_0000008859,CT Thorax Controle Dialysekatheter,15
+RAD_1602,DRAINAGE ABCES,15
+RAD_0000008547,CT Heup Materialise Links,15
+RAD_VICDVN,VVI ICD-VERVANGING,15
+RAD_0000008870,CT Orbita zonder contrast,15
+RAD_PORTA,Poortkatheter,15
+RAD_RENA,NIERANGIO,15
+RAD_ZH00005484,CRT PM-implantatie,15
+RAD_T_POCH,Postop Cholangio,15
+RAD_ZH00000103,CR Peritoneografie,15
+RAD_CAD2I2,CAD2I2,15
+RAD_PTA,Angiodil.zond.bal,15
+RAD_T_MRAAA,MRI Angio Abd Nierv,15
+RAD_T_MRSIN,MRI Sinussen,15
+RAD_CA2IM3,cytologie andere 2x + 3 immuno's ,15
+RAD_VBIM2,Vriescoupe + 2 immuno's,15
+RAD_AVESCN,ABLATIE VES CARTO + NARCOSE,15
+RAD_ZH00000519,Punctie Wervel,15
+RAD_1606,DILATATIE PERCUT,15
+RAD_ZH00005405,CT TPS Extremiteiten,15
+RAD_LEXT,LEAD EXTRACTIE,15
+RAD_ZH00005577,rechts links met TAVI protocol,15
+RAD_GB2I2,Gewone biopsie 2x + 2 immuno's,15
+RAD_ZH00000532,Chemo-embolisatie,14
+RAD_CAR3-OLD,UNIL-FP-IE,14
+RAD_SMD3I3,SMD3I3,14
+RAD_T_EHAN2,Echo Hand Bilateraal,14
+RAD_ZH00000192,CT Coronaro,14
+RAD_APUL-OLD,PULMONALIS ANGIO,14
+RAD_ZH00005533,SUBCUTANE  ICD implantatie + narcose,14
+RAD_ZH00000443,MR Elleboog Nervus Ulnaris Links,14
+RAD_T_DSCH,Duplex Schedel,14
+RAD_ZH00000082,CR Thorax Face Arbeidsgeneeskunde,14
+RAD_PS,PTA Subclavia,14
+RAD_IARTR,RX ARTHROGRAFIE IZEGEM,14
+RAD_KM2GB,2 x kleine Macroscopie + gewone biopsie,14
+RAD_SB2I8,2 x superbiopsie + 8 immuno's,14
+RAD_PTHY,punctie thyroid,13
+RAD_T_PUDR-1,"DRAIN, plaatsen Pigtail, ECHO/CT aanrekenbaar",13
+RAD_ZH00000122,MA Mammoscreening Links,13
+RAD_9017,BOBBY,13
+RAD_CS00000036,72 uurs holter,13
+RAD_ZH00005205,Botboorbiopsie (adhoc),13
+RAD_ZH00000529,Embolisatie Aneurysma Bovenbuik,13
+RAD_1723,URINAIRE ECHOGRAFIE,13
+RAD_0000008548,CT Heup Materialise Rechts,13
+RAD_IABP,INTRA-AORTALE BALLONPOMP,13
+RAD_CS00000160,EEG na slaapdeprivatie,13
+RAD_T_TRX1,RX TELERADIOGRAF,13
+RAD_SBD3I3,SBD3I3,13
+RAD_ZH00000071,CR Arthro Knie Rechts,13
+RAD_TIPSS,A.JODI,13
+RAD_KMGI3,Kleine Macroscopie + gewone biopsie + 3 immuno's,13
+RAD_MRMAI,MR mammae IZEGEM,13
+RAD_ZH00005658,LuPSMA therapie STUDIE scan,13
+RAD_1726,DUPL LEDEM + AND STR,13
+RAD_DEFVTVF,DEFIBRILLATIE VT OF VF,12
+RAD_ZH00005098,Lymfescintigrafie bovenste ledematen fase 1 en 2,12
+RAD_THSIRT,SIRT Therapie,12
+RAD_T_PUDR,PUNCTIE DRAINAGE,12
+RAD_MF1,Materiaal Forfait PCI zdr cor stent,12
+RAD_CBDENT,Conebeam Dental,12
+RAD_T_STEREO,Stereotaxie,12
+RAD_B1302,MIBI2TOMOS1DAG,12
+RAD_ZH00005397,Diagnostische arteriografie bovenste ledematen,12
+RAD_202,makro + 2x biopsie,12
+RAD_SB2I7,2 x superbiopsie + 7 immuno's,12
+RAD_T_ERCPO,ERCPO,12
+RAD_ZH00005657,LuPSMA therapie STUDIE inj,12
+RAD_ZH00005099,Lymfescintigrafie bovenste ledematen fase 3,12
+RAD_ZH00005596,Diagnostische EFO + looprecorder implantatie,12
+RAD_ASA,ALCOHOLISCHE SEPTUM ABLATIE ,12
+RAD_ZH00005460,Duplex abdominale vaten (adhoc) D,12
+RAD_PDAR,PLAATSEN DARMKATHE,12
+RAD_HIL,RX hiel li,12
+RAD_VTS,VT-STUDIE,12
+RAD_T_MRTEMP,MRI Temp-Mandiblr,12
+RAD_ZH00005536,coronarografie postop + rechter hartkatheterisatie,12
+RAD_SUBPUN,SUBCLAVIA PUNCTIE,12
+RAD_VCF,VCF,12
+RAD_ZH00000553,Botscan enkel injectie tracer,12
+RAD_CAFI,PLAATS.CAVAFILTER,12
+RAD_DPMIN,DDD-PACEMAKER-IMPLANTATIE + NARCOSE,12
+RAD_MYCD,Myelo CWZ/DWZ,12
+RAD_ZH00000419,MR Uterus Pre Embolisatie Myomen Klein,12
+RAD_ZH00000585,Divertikel van Meckel SPECT/CT (low dose CT),12
+RAD_0000008916,Punctie Borst Harpoenplaatsing stereotaxie,12
+RAD_AVKFPN,ABLATIE VKF (PVAC) + NARCOSE,11
+RAD_KMSI2,Kleine macroscopie + superbiopsie + 2 immuno's,11
+RAD_HIR,RX hiel re,11
+RAD_TBI131DI,Tot.body  I131 diagnost + SPECT/CT (lokalisatieCT),11
+RAD_0000008662,Conebeam Elleboog Links,11
+RAD_0000008708,Sentinel Cervix SPECT/CT (LDCT) inj,11
+RAD_HSPCER,HersenSPECT met Ceretec GE,11
+RAD_ZH00000444,MR Elleboog Nervus Ulnaris Rechts,11
+RAD_T_AVISC2,TR Coel  AMS en/of REN,11
+RAD_TBOT-OLD,TOMO BEENDEREN 4CL,11
+RAD_0000008829,Holmium scout pre-therapie scan,11
+RAD_TES,Testisscan,11
+RAD_B1500,MELANOOM,11
+RAD_32,heelkundige behandeling van acromioclaviculaire lu,11
+RAD_0000008709,Sentinel Cervix SPECT/CT (LDCT) scan,11
+RAD_ZH00005373,diagnostische gewrichtspunctie,11
+RAD_T_MRCWZ-,MRI CWZ Hernia,11
+RAD_ZH00005595,Wireless pacemaker (Micra),11
+RAD_ALMP,Art. lidm. via naald,11
+RAD_ZH00005549,Rotablator + PCI,11
+RAD_REVEXP,LOOP RECORDER - EXPLANTATIE,11
+RAD_T_TMG,RX Temporo-mandibulaire gewrichten,11
+RAD_ZH00005534,Rechter hartkatheterisatie,11
+RAD_T_PART60,Art Punctie K60,11
+RAD_ERCP + E,CHOLAN,11
+RAD_T_PULE-1,PUNCTIE LEVER MET ECHO of CT,11
+RAD_T_CVOER+,CT Voet Re +,11
+RAD_0000008755,Echo Barbotage Schouder Links,11
+RAD_TEL2,TELERX SHEDEL 2 CL,11
+RAD_T_EPA,Echo Pancreas-Milt,10
+RAD_T_SCOPIE,Scopie (ORT),10
+RAD_ZH00005494,DDD-Pacemakerimplantatie + narcose,10
+RAD_ASDSN,ASD-SLUITING + NARCOSE,10
+RAD_0000005156,Therapie I131 met TB SPECT/CT (LD CT) 30 mCi scan,10
+RAD_0000008721,Late potentialen AdHoc,10
+RAD_1318,CLYSMA DUBBEL,10
+RAD_0000008692,Bloeddrukmeting,10
+RAD_T_MRAATO,MRI Angio Thorax,10
+RAD_ZH00000470,MR Knie Zimmer Rechts,10
+RAD_0000008797,CR Virtopsie (CR Babygram),10
+RAD_COR-1PTC,CORONARO & 1T PTCA 2 LETSELS,10
+RAD_0000005155,Therapie I131 met TB SPECT/CT (LD CT) 30 mCi inn,10
+RAD_BIOP,BIOPSIE,10
+RAD_ZH00000579,Longperfusie SPECT,10
+RAD_GB5,Halsted of Pattey,10
+RAD_ZH00000670,SPECT-CT Elleboog Rechts,10
+RAD_ZH00000469,MR Knie Zimmer Links,10
+RAD_BOTD,alleen injectie,10
+RAD_ERCA,ERCP ambulant,10
+RAD_T_EUROD,Echo Uro Compl,10
+RAD_T_COC,RX Coccyx,10
+RAD_9051,PUNCTIE SCHILDKLIER CY,10
+RAD_ZH00005102,Sentinel Cervix inj,10
+RAD_103,heelkundige behandeling van pseudarthrose van clav,10
+RAD_T_CHANL,CT Hand Li,10
+RAD_M98,kl.macro + kl.micro + 4 immuno's,10
+RAD_ZH00005492,DDD-ICD vervanging,10
+RAD_LEXTN,LEAD EXTRACTIE + NARCOSE,10
+RAD_104,heelkundige behandeling van pseudarthrose van onde,10
+RAD_ZH00000073,CR Arthro Enkel Rechts,10
+RAD_ZH00000371,MR fMRI Tinnitus,10
+RAD_9066,ECHO ABD < 5 JAAR,10
+RAD_T_CBELLR,CBCT Elleboog Rechts,10
+RAD_ZH00000405,MR Bijnieren Urotheliale Tumor,10
+RAD_ECMI,Echo milt,10
+RAD_T_GVPNT,Gewrichtspunctie,9
+RAD_0000008594,Echo Combinatie,9
+RAD_CA1V,CA1V,9
+RAD_AAHN,ABLATIE ARTERIELE HYPERTENSIE + NARCOSE,9
+RAD_T_AVISC1,AMS TR Coel of Ren,9
+RAD_THQ,Quadramet,9
+RAD_DILATATI,A.JODI,9
+RAD_EMKA,COAX.KATH.EMBOLIS.,9
+RAD_0000008885,CT AORTA – Acute Aortasyndromen (+),9
+RAD_1604,EMBOL. V:SPERM,9
+RAD_MAND,MAND,9
+RAD_ZH00000189,CT Bovenste Ledematen Thoracic Outlet,9
+RAD_0000008919,Epidurale Thoracaal,9
+RAD_T_ADN,RX Adenoiden,9
+RAD_NMR,NMR BEKKEN,9
+RAD_ZH00005543,Dilatatie arteria renalis,9
+RAD_ZH00000669,SPECT-CT Elleboog Links,9
+RAD_ARTP,ARTP,9
+RAD_0000008597,Complexe interventionele procedure,9
+RAD_GALA-OLD,GALACTOGRAFIE,9
+RAD_96,heelkundige behandeling van pseudarthrose van femu,9
+RAD_T_SRE,Toeslag Echo in OP,9
+RAD_ALMP-OLD,ART.LIDM.VIA NAALD,9
+RAD_VBIM1,Vriescoupe + 1 immuno,9
+RAD_ZH00005488,CRT PM-vervanging,9
+RAD_CS00000016,Echocardiografie TEE,9
+RAD_KMD3I3,KMD3I3,9
+RAD_KMMB2,Kleine Macroscopie + minibiopsie 2x,9
+RAD_0000008753,CT Schouder Links ZIMMER ONE,9
+RAD_LRN,LEAD REVISIE + NARCOSE,9
+RAD_ECHONI,Echo NIEREN,9
+RAD_T_DLIDAF,Duplex Arterieel Opvolging,9
+RAD_GBMB2,Gewone biopsie + 2x minibiopsie,9
+RAD_T_CVOEL+,CT Voet Li +,9
+RAD_CLYSMA D,KL,9
+RAD_0000008830,Holmium therapie inj,9
+RAD_SBD1I3,SBD1I3,9
+RAD_T_MRSPON,MRI Spondyl,9
+RAD_0000008831,Holmium therapie scan,9
+RAD_33,celblok 3X,8
+RAD_VBSBI4,Vriesbiopt + superbiopt + 4 immuno's,8
+RAD_CUIM1,Cytologie urine + immuno,8
+RAD_ZH00000582,Longventilatie,8
+RAD_S206,gr. macro + gr. micro + kl. macro,8
+RAD_ZH00005588,PCI + IVUS,8
+RAD_KMD3I4,KMD3I4,8
+RAD_ZH00005249,evacuerende ascitespunctie,8
+RAD_T_LWT,RX LWZ Trauma,8
+RAD_0000008827,Holmium scout pre-therapie inj,8
+RAD_MSCRVR,RX mammoscreening risicoprofiel,8
+RAD_T_FLID,Flebografie Lidmaat,8
+RAD_T_MLWNT,Myelo LWZ,8
+RAD_ECHOVR,Echo VROUWELIJK BEKKEN,8
+RAD_ZH00000123,MA Mammoscreening Rechts,8
+RAD_T_PUH,Punctie heup,8
+RAD_VASC,Vasculaire scan,8
+RAD_T_FLM,RX Full Leg,8
+RAD_T_CBELLL,CBCT Elleboog Links,8
+RAD_ZH00005248,diagnostische ascitespunctie,8
+RAD_AAT,ABLATIE LINKER ATRIALE TACHYCARDIE CARTO,8
+RAD_0000008552,EUS Circulair,8
+RAD_MRAFS,mr hersenen voor studie,8
+RAD_0000008899,CR Abdomen - Pelletstudy dag 1,8
+RAD_ECHOHF60,Echo Hartfalen 60',8
+RAD_ZH00005580,coronarografie + PCI,8
+RAD_T_PART40,Art Punctie K40,8
+RAD_1500,AORTA T+A,8
+RAD_0000008875,MR Schouder INDIRECTE arthro Links (I.V.),8
+RAD_POVA,Punctie Ovarium,8
+RAD_TRPUN,TRANSSEPTALE PUNCTIE,8
+RAD_KMSI4,Kleine Macroscopie + superbiopsie + 4 immuno's,8
+RAD_THM,Therapie Metastron,8
+RAD_ZH00000256,Echo Zwangerschap,8
+RAD_ZH00005303,Veneuze Duplex AV Fistel,8
+RAD_PRET,punctie retroperitoneaal,8
+RAD_ZH00000622,Nierscintigrafie met DMSA (LDCT),7
+RAD_ZH00005298,Arteriële Duplex Abdomen,7
+RAD_1325,ERCP + ECTOMIE,7
+RAD_1713,ECHO TRANSVAGINAAL,7
+RAD_LUMP-OLD,LUMBAAL PUNKTIE,7
+RAD_LAPEXTRA,"Laprascopie extra uterine, cystectomie, endometrio",7
+RAD_T_MRSCH-,MRI Schedel Screening,7
+RAD_MDT,Maag-duodenum-transit 14cl,7
+RAD_T_SRX,BKN RX in OP,7
+RAD_ZH00005466,1. Plaatsen PM,7
+RAD_ZH00005300,Veneuze Duplex Halsvaten,7
+RAD_WNDREV,WOND REVISIE,7
+RAD_SGBI4,Superbiop + gewone biop + 4 immuno's,7
+RAD_SCICDIN,SUBCUTANE ICD IMPLANTATIE,7
+RAD_B1134,PARATHYROID,7
+RAD_DOPD,Alleen Tracer,7
+RAD_ZH00005582,coronarografie + TAVI + TEE + firma + narcose,7
+RAD_0000008900,CR Abdomen - Pelletstudy dag 3,7
+RAD_MIBG-OLD,Gebruiksk.molecule,7
+RAD_TBO2-OLD,TOMO BOT 2 REEKSEN,7
+RAD_PTCA1PO,PTCA 1 TAK POST-OP,7
+RAD_CA2IM2,Cytologie andere 2x + 2x immuno,7
+RAD_ZH00005229,Onderzoek 90 minuten,7
+RAD_PTCA3,PTCA 3 OF MEER LETSELS,7
+RAD_ZH00005470,5. Ablatie linker atriale tachycardie CARTO,7
+RAD_TTE1S,Transthoracale echocardiografie sc,7
+RAD_N1660,CT HALS_THORAX ABDOMEN,7
+RAD_TTE,TRANS THORACAAL ECHOCARDIOGRAM,7
+RAD_ANGIO 1 ,A.JODI,7
+RAD_ARPUN,ARTERIE PUNCTIE,7
+RAD_PWER,Punctie wervellichaam,7
+RAD_85,heelkundige behandeling van fractuur van 1 teen,7
+RAD_ZH00005542,ASD-sluiting + TEE + narcose,7
+RAD_EN,Echo nieren,7
+RAD_ECAK,ECAK,7
+RAD_1551,PNEUMANGIO 1 INV,7
+RAD_URINAIRE,URINAIRE ECHOGRAFIE,7
+RAD_GBID1,GBID1,7
+RAD_FLA2,SEL.ABD.FLEBO 2+,7
+RAD_CR0000,Scopie op rx,7
+RAD_T_CBARTH,CBCT Arthrografie,7
+RAD_T_CFOS,CT Fossa Post +,7
+RAD_SMGI4,Supermakroscopie + gewone biopsie + 4 immuno's,7
+RAD_ZH00005587,PCI + CTO,7
+RAD_KMVBI4,Kleine Macroscopie + vriesbiop + 4 immuno's,7
+RAD_S95,gr.macro + gr.micro + 1 immuno,7
+RAD_0000008819,MR Hersenen Gezichtsarteries – 3D-TOF MOTSA,7
+RAD_KLEUREND,Small Parts,7
+RAD_ZH00000581,Longventilatie SPECT,6
+RAD_MAMC,Mammografie met contrast ,6
+RAD_ZH00000339,MR Cardio Coronairen,6
+RAD_ZH00000511,Punctie Ovarium,6
+RAD_S96,gr.macro + gr.micro + 2 immuno's,6
+RAD_SMKI2,Supermakroscopie + kleine makroscopie + 2 immuno's,6
+RAD_SKSP,schildkliertomografie,6
+RAD_T_EVIN2,Echo Vinger Bilateraal,6
+RAD_IM3,immuno 3x,6
+RAD_CAVO-OLD,CAVOGRAFIE,6
+RAD_T_CFEMR,CT Femur Re,6
+RAD_SMD3I4,SMD3I4,6
+RAD_ARAT,ABLATIE RECHTER ATRIALE TACHYCARDIE,6
+RAD_PTMV,PTMV-MITRALISKLEPPLASTIE,6
+RAD_0000005132,Octreotidescintigrafie SPECT/CT (low dose CT) inj,6
+RAD_-,-,6
+RAD_DPMR,DDD-PACEMAKER-REVISIE,6
+RAD_0000008814,MR Planning radiotherapie Brughoektumor,6
+RAD_ZH00005103,Sentinel Cervix scan,6
+RAD_T_CONBR+,CT Onderbeen Re +,6
+RAD_ORBL,RX orbita li,6
+RAD_9065,ECHO NIER < 5 JAAR,6
+RAD_1730,CAROTIS + PERIFEER,6
+RAD_ZH00000441,MR Elleboog Triceps Links,6
+RAD_ORBR,RX orbita re,6
+RAD_DMSAREN,Nierscan met Renocis,6
+RAD_PMICDE,PACEMAKER OF ICD EXTRACTIE,6
+RAD_ZH00005583,coronarografie + PFO sluiting + TEE + narcose,6
+RAD_T_PART75,Arteriop K75,6
+RAD_ZH00000580,Longperfusie,6
+RAD_CG,Cholangiography,6
+RAD_KMSBI3,Kleine macroscopie + superbiopsie + 3 immuno,6
+RAD_ZH00005110,"CT HART - Evaluatie kunstklep (-,+)/EKG",6
+RAD_SM2I4,2x supermacroscopie + 4x immuno,6
+RAD_GB6,Halsted of pattey met vriescoupe,6
+RAD_0000008553,EUS Punctie,6
+RAD_0000008686,Lymfescan ledematen SPECT/CT (LD CT),6
+RAD_0000005142,Hersenscan SPECT Ceretec GE inj,6
+RAD_0000008879,Echo-Kleurendoppler penile vaten bij erectiele sto,6
+RAD_0000005130,MIBGscintigrafie SPECT/CT (low dose CT) inj,6
+RAD_ECHOSC,Echo SCROTUM,6
+RAD_T_PUNIER,Nierpunctie +,6
+RAD_4,biopsie 4x,6
+RAD_EGJD,Echo gastro Dr. Decaestecker,6
+RAD_0000008901,CR Abdomen - Pelletstudy dag 7,6
+RAD_T_EABD,ECHO ABDOMEN,6
+RAD_CT,CT,6
+RAD_501,1 x immuno,6
+RAD_ZH00000070,CR Arthro Knie Links,6
+RAD_KMMB1,Kleine Macroscopie + minibiopsie 1x,6
+RAD_0000008671,MR Virtopsie ikv gerechtelijk onderzoek,6
+RAD_CAD1I3,CAD1I3,6
+RAD_0000008687,Lymfescan ledematen SPECT/CT (LD CT),6
+RAD_S210,gr.macro + gr.micro + gr. macro + gr. micro,6
+RAD_ZH00005640,MR Blaas Staging,6
+RAD_HMASS,HART MASSAGE,6
+RAD_KM2I5,2 x kleine Macroscopie + 5 immuno's,6
+RAD_0000005131,MIBGscintigrafie SPECT/CT (low dose CT) scan,6
+RAD_GB2I1,Gewone biopsie 2x + 1 immuno,6
+RAD_ZH00005472,Ablatie AVRT (WPW),6
+RAD_0000005133,Octreotidescintigrafie SPECT/CT (low dose CT) scan,6
+RAD_T_MRST,MRI Sternoclavic,6
+RAD_71,heelkundige behandeling van fractuur van beide tib,6
+RAD_ZH00005545,PTAV,6
+RAD_CRTPMV,CRT PM-VERVANGING,6
+RAD_KM2I7,2 x kleine Macroscopie + 7 immuno's,6
+RAD_ZH00005047,Diagnostische arteriografie onderste ledematen,6
+RAD_T_CBHANL,CBCT Hand Links,6
+RAD_ID3,Immuno duurdere 3x,5
+RAD_SBD2I4,SBD2I4,5
+RAD_ZH00000559,Schildklierscan Tc99m met SPECT,5
+RAD_105,vriescoupe + 5 controles,5
+RAD_K2D3I3,K2D3I3,5
+RAD_B2008,JOOD8THERAPIE,5
+RAD_SGBI2,Superbiop + gewone biop + 2 immuno's,5
+RAD_SEHCAT,galzuurresorptietest (SehCat),5
+RAD_SI,Stent iliacaal,5
+RAD_ARATN,ABLATIE RECHTER ATRIALE TACHYCARDIE + NARCOSE,5
+RAD_ERA+,Amb ERCP+papillotomie,5
+RAD_ECHOOPER,Echo operatiezaal,5
+RAD_1615,TIPSS,5
+RAD_SM2KM,Supermakroscopie 2 x + kleine makro,5
+RAD_1319,P.T.C.,5
+RAD_0000008860,CT Angio Klein Bekken en Penis,5
+RAD_GIBL,G-I Bloedverlies,5
+RAD_ZH00005581,coronarografie + nierangio,5
+RAD_PDOUG,Punctie Douglas,5
+RAD_CS00000019,Transthoracaal echo,5
+RAD_ZH00000550,Whole body met SPECT,5
+RAD_T_SOMNT,Maagsondage,5
+RAD_T_CBHANR,CBCT Hand Rechts,5
+RAD_0000008798,CT Virtopsie,5
+RAD_SBD1I4,SBD1I4,5
+RAD_ZH00005467,2. Vervangen batterij PM,5
+RAD_SBD2I2,SBD2I2,5
+RAD_ZH00000523,Trombolyse,5
+RAD_K2D3I1,K2D3I1,5
+RAD_ZH00000538,Viscerale angio,5
+RAD_T_MRHUMR,MRI Humerus Re,5
+RAD_CUIM2,cytologie urine - sputum + 2x immuno,5
+RAD_T_CBKNIR,CBCT Knie Rechts,5
+RAD_CAD1I4,CAD1I4,5
+RAD_ZH00005515,VT-studie,5
+RAD_T_DWT,RX DWZ Trauma,5
+RAD_1450,IVP,5
+RAD_ZH00005060,Andere,5
+RAD_DEFON,DIAGNOSTISCH EFO + NARCOSE,5
+RAD_KM2I2,2 x Kleine macroscopie + 2 immuno's,5
+RAD_0000008872,CT Medacta My Spine Single,5
+RAD_1251,LUMBALE WERVELS BIJKOMENDE OPNAME,5
+RAD_T_DCAVE,Duplex Car & Echo,5
+RAD_206,2 x makro + 2 x biopsie,5
+RAD_SMVB,Supermakroscopie + vriesbiopsie,5
+RAD_ZH00000657,Consultatie hosp,5
+RAD_RVAP,RV OF AP (angiogram),5
+RAD_B1176,REFLUX,5
+RAD_RX ENKEL,RX ENKEL,5
+RAD_BYMISPTC,BYMISPTCCT,5
+RAD_KM2I3,2 x kleine Macroscopie + 3 immuno's,5
+RAD_CORPO-1P,CORPO & 1T PTCA 2 LETSELS,5
+RAD_ECHO ZWA,Small Parts,5
+RAD_GBD2I2,GBD2I2,5
+RAD_0000008767,TEE conversie Rumbeke,5
+RAD_ZH00005283,Mammo Elders Gemaakte Beelden,5
+RAD_CAD2I3,CAD2I3,5
+RAD_TENC,plaatsen cath Tenckhoff,5
+RAD_WMRAG,MRW Angiografie,5
+RAD_SBID3,Superbiopsie + 3 duurdere immuno's,5
+RAD_ENTE,RX Enteroclysma,5
+RAD_DMSASP,DMSA met spect-opname,5
+RAD_SMKM2,Supermakroscopie + 2 x kleine makroscopie,5
+RAD_1617,EMBOL. ARTERIEEL LEDEMATEN,5
+RAD_514,1 VC + 4 x immuno,5
+RAD_ZH00005539,coronaro + IVUS,5
+RAD_ECBOVR,Echo borsten verhoogd risico,5
+RAD_AATN,ABLATIE ATRIALE TACHYCARDIE + NARCOSE,5
+RAD_ZH00005447,CT Knie Links ZIMMER PSI,4
+RAD_ZH00005521,VVI-pacemakerimplantatie + narcose,4
+RAD_GBD1I4,GBD1I4,4
+RAD_0000008601,MIBGscintigrafie niet-oncologisch injectie,4
+RAD_AVTC,ABLATIE VENTRICULAIRE TACHYCARDIE (CARTO),4
+RAD_GB3I3,Gewone biopsie 3x + 3 immuno's,4
+RAD_MRMAVR,MR mammae verhoogd risico,4
+RAD_T_SEH,Echo  IZ ,4
+RAD_0000008581,Echo abdomen,4
+RAD_0000008837,CT Schouder Wright Blueprint Links,4
+RAD_ECPA,Echo pancreas,4
+RAD_PTCA2PO,PTCA 2 OF MR TAKKEN POST-OP,4
+RAD_0000008626,Revisie wonde,4
+RAD_CTCOG,CT Congenitale cardio ,4
+RAD_ZH00005279,CR Elders Gemaakte Beelden,4
+RAD_T_MRVOAL,MRI Voorarm Li,4
+RAD_ZH00000065,CR Arthro Elleboog Rechts,4
+RAD_SB,Stent bovenbeen,4
+RAD_ZH00005586,coronaro + nierangio + PTA nierarterie,4
+RAD_KMD3,KMD3,4
+RAD_0000008723,CT HART - beoordeling kunstkleppen (-/+) EKG,4
+RAD_ZH00005184,ICD controle adhoc,4
+RAD_0000008838,CT Schouder Wright Blueprint Rechts,4
+RAD_ZH00005635,LuPSMA cyclus 1 scan Dag6,4
+RAD_VPMIN,VVI_PACEMAKER-IMPLANTATIE + NARCOSE,4
+RAD_ERGO,ERGONOVINETEST,4
+RAD_ZH00000658,SPECT-CT Schedel,4
+RAD_T_CBVINR,CBCT Vinger Rechts,4
+RAD_ZH00000592,Hersenscan SPECT/CT (low dose CT) Ceretec GE,4
+RAD_T_SOBNT,Blaassondage,4
+RAD_ZH00000636,Sentinel Cervix (LDCT),4
+RAD_GB8,Gewone biopsie 8x,4
+RAD_SBD3I2,SBD3I2,4
+RAD_LSV,Longventilatie SPECT,4
+RAD_1455,OPSTIJGENDE PYELO BI,4
+RAD_B1140,PERFUSIE-HSA,4
+RAD_T_CBRSP,CBCT RSP,4
+RAD_SMGI1,Supermakroscopie + gewone biopsie + immuno,4
+RAD_KMD2I2,KMD2I2,4
+RAD_VSD,VSD,4
+RAD_TRNW-OLD,TRAANWEG + KONTR.,4
+RAD_0000008637,Conebeam Arthro Pols Rechts,4
+RAD_1322,TRANSIT 10 CL,4
+RAD_CBCTTAP,CBCT Tandheelkunde pseudo,4
+RAD_ZH00000535,Embolisatie Shunt,4
+RAD_CS00000031,Fietsergometrie - Loopband,4
+RAD_INFAB,"WBCscan, MoAB gemerkt",4
+RAD_APUL,Pulmonalis angio,4
+RAD_CA3I4,Cytologie andere 3x + 4x immuno,4
+RAD_PNEF,Percut. nefrostomie,4
+RAD_PMIN,DDD-PACEMAKERIMPLANTATIE + NARCOSE,4
+RAD_ZH00000097,CR Cholangiografie,4
+RAD_T_CWZ1,CT Wervelzuil,4
+RAD_SM3,Supermakroscopie 3x,4
+RAD_GBID3,GBID3,4
+RAD_0000008799,MR Virtopsie,4
+RAD_ZH00005579,coronarografie + rechter hartkatheterisatie + biop,4
+RAD_B1156,V/P STATISCH,4
+RAD_HYSTEROG,hyst,4
+RAD_ZH00005603,PTA nierarterie,4
+RAD_ZH00005591,PCI+OCT,4
+RAD_T_ARCAH3,Arcuscar Hals 3,4
+RAD_ZH00000518,Punctie Vene Jugularis/Subclavia/Femoralus ,4
+RAD_KM3,Kleine Macroscopie 3x,4
+RAD_AVKFP,ABLATIE VKF (PVAC),4
+RAD_0000008636,Conebeam Arthro Pols Links,4
+RAD_ZH00005375,Wissel SPS,4
+RAD_CAD1I2,CAD1I2,3
+RAD_MAOR-OLD,KATHETER IN AORTA,3
+RAD_CA3I3,Cytologie andere 3x + 3x immuno,3
+RAD_ECPR,ECPR,3
+RAD_M96,kl.macro + kl.micro + 2 immuno's,3
+RAD_0000008618,CR Babygram,3
+RAD_SMD2I1,SMD2I1,3
+RAD_ZH00005578,coronarografie + rechter hartkatheterisatie + NO,3
+RAD_ZH00000500,Punctie - Vacuumgeassisteerd Borst op Mammo,3
+RAD_AST,ABLATIE SUPRAVENT. TACHYCARDIE,3
+RAD_ZH00000486,MR Mammo Galactografie - Breast Coil Only,3
+RAD_ZH00005593,DDD-PM implantatie + looprecorder extractie,3
+RAD_D3IM1,D3IM1,3
+RAD_B1136,SCHILDKLIER MET TOMO,3
+RAD_ZH00000655,Injectie via poortkatheter,3
+RAD_COLLSPCT,Colloidscan met SPECTCT low dose,3
+RAD_T_CHEUL+,CT Heup Li +,3
+RAD_VID,videofluoroscopie,3
+RAD_512,1 VC + 2 x immuno,3
+RAD_VPMR,VVI_PACEMAKER-REVISIE,3
+RAD_ZH00005599,VKF ablatie CARTO + AT ablatie + narcose,3
+RAD_MF5,Materiaal Forfait PCI znd cor stent met DEB,3
+RAD_T_MRUTER,MRI Uterus-Ovariae,3
+RAD_0000008670,CR Virtopsie ikv gerechtelijk onderzoek,3
+RAD_SBIDI4,1 x superbiopt + 1 x immuno duurdere + 4 x gewone ,3
+RAD_T_EOOG,Echo Oog,3
+RAD_T_CHUML,Ct Humerus Li,3
+RAD_PTC-OLD,PTC MIN.3CL,3
+RAD_1729,SUPPL OP,3
+RAD_CS00000126,Spirometrie zittend/liggend,3
+RAD_PBLA,Punctie blaas,3
+RAD_1312,MD TRANSIT,3
+RAD_ZH00005482,CRT ICD-revisie,3
+RAD_T_MRVOAR,MRI Voorarm Re,3
+RAD_ZH00005512,Tijdelijke pacemaker,3
+RAD_MIBGCT,MIBG - scan met SPECT en low CT,3
+RAD_EMBL,Embolisatie lidmaat,3
+RAD_CAD2,CAD2,3
+RAD_ZH00000067,CR Arthro Pols Rechts,3
+RAD_23,niet cervix cyto 3x,3
+RAD_0000008915,MR Pediatrie Full Spine,3
+RAD_T_MRHUML,MRI Humerus Li,3
+RAD_ZH00005607,coronaro + FFR + PCI,3
+RAD_SMSBI4,Supermakro + superbiopsie + 4x immuno¿s,3
+RAD_BYMISP,Bijschildklierscan met SPECT-opnames met Tc-Sestam,3
+RAD_0000008574,XA Elders Gemaakte Beelden,3
+RAD_0000008727,CT Schouder Links ZIMMER PSI,3
+RAD_ZH00000551,Botscan deel lichaam,3
+RAD_CAD2I1,CAD2I1,3
+RAD_SBD3,SBD3,3
+RAD_B1138,TOMO NA THERAPIE I131,3
+RAD_K2D3I4,K2D3I4,3
+RAD_ZH00000574,Myocardscintigrafie (Tl201)  Stress Farmacologisch,3
+RAD_1511,ANGIO 1 LID,3
+RAD_ZH00005495,DDD-Pacemakerrevisie,3
+RAD_9024,VISC FLEBOGRAFIE,3
+RAD_ZH00005293,Drukmetingen Bovenste Ledematen,3
+RAD_KM2I1,2 x Kleine macroscopie + 1 immuno,3
+RAD_KMGB3,Kleine Macroscopie + 3x gewone biopsie,3
+RAD_0000008873,CT Medacta My Spine Multi,3
+RAD_ZH00000248,Conebeam Knie Rechts,3
+RAD_ZH00005465,PHmetrie IMP MDL,3
+RAD_0000008920,CT TPS Hersenen,3
+RAD_0000005143,Hersenscan SPECT Ceretec GE scan,3
+RAD_VBSBI1,vriesbiopt + superbiopt + 1 immuno,3
+RAD_HSPCERCT,Hersenscan SPECTCTopnames Ceretec GE,3
+RAD_GER,Gastro-oesofagale reflux,3
+RAD_T_CFEML,CT Femur Li,3
+RAD_PC,Port-a-cath,3
+RAD_1663,CT STAG.2 REG.Z/M +50%,3
+RAD_RISASPCT,Cysternografie + SPECT/CT (lok CT),3
+RAD_B2012,JOOD12THERAPIE,3
+RAD_TC99,Tc 99,3
+RAD_KMD1I3,KMD1I3,3
+RAD_0000008602,MIBGscintigrafie niet-oncologisch scan,3
+RAD_ZH00005282,MR Elders Gemaakte Beelden,3
+RAD_ZH00000496,Punctie Blaas,3
+RAD_ZH00005502,Lead Extractie,3
+RAD_PGLW,Punctie galwegen,3
+RAD_T_ADE,Adenoiden,3
+RAD_ZH00005633,LuPSMA cyclus 1 injectie,3
+RAD_SIAL-OLD,SIALOGRAFIE,3
+RAD_1681,WORTELINFILTRATIE,3
+RAD_0000008853,CR Expertise ikv gerechtelijk onderzoek,3
+RAD_EPI,EPICARDIALE LEAD OK,3
+RAD_B2015,JOOD15THERAPIE,3
+RAD_SMKMI1,SMKMI1,3
+RAD_T_PLUM,Punctie lumbaal,3
+RAD_ZH00005230,Onderzoek 120 minuten,3
+RAD_ZH00005057,Inspanningsprovocatietest astma,3
+RAD_SGB3,Superbiop + gewone biop + 3 immuno's,3
+RAD_0000008622,Overige,3
+RAD_VBSBI2,Vriescoupe + 2 immuno's + superbiopt,3
+RAD_SBD3I4,SBD3I4,3
+RAD_ZH00000135,CT Hersenen PSI,3
+RAD_T_B0,minibiopsie,3
+RAD_P.T.C.,PERITO,3
+RAD_ZH00000107,CR Intra-Veneuze Urografie,3
+RAD_ABDOMEN,Abdomen,3
+RAD_0000008854,CT Expertise ikv gerechtelijk onderzoek,3
+RAD_ZH00005506,Nierangio,2
+RAD_0000008810,Echo hals (adhoc) Endocrino,2
+RAD_ZH00005350,Port-a-cath - OK Menen,2
+RAD_ZH00000078,CR Reumaskelet,2
+RAD_0000008610,CT Bovenkaak,2
+RAD_CA3I2,Cytologie andere 3x + 2x immuno,2
+RAD_PIR,POW IMPORT WILG,2
+RAD_KMSBI5,Kleine macroscopie + superbiopsie + 5 immuno's,2
+RAD_CAD3I2,CAD3I2,2
+RAD_GBID2,GBID2,2
+RAD_HPRT,expertise-protocollering,2
+RAD_SO,Stent onderbeen,2
+RAD_LLIMPLN,LINKER LEAD IMPLANTATIE + Narcose,2
+RAD_EVST,STENT MET BALLON,2
+RAD_1270,SCHEDEL-SINUSSEN BIJKOMENDE OPNAME,2
+RAD_ZH00005505,Lead revisie + narcose,2
+RAD_ECM,ONDERZOEKEN ECHOTOESTEL,2
+RAD_TBI123,Total Body scan met I123 en SPECT-opnames,2
+RAD_0000008632,Conebeam Arthro Elleboog Links,2
+RAD_T_ENT,Enteroclysma,2
+RAD_6003I,NMR ANGIOGFIE BLOEDVATEN,2
+RAD_ZH00000247,Conebeam Knie Links,2
+RAD_73,heelkundige behandeling van metafysaire fractuur v,2
+RAD_T_COFT1_,COFT1_ONDERZOEK,2
+RAD_T_EMBY2,Emb + glob art + 2x selectief,2
+RAD_LEVE,Lever-milt scan,2
+RAD_ZH00005584,coronarografie + LAA sluiting + narcose + TEE,2
+RAD_TH2IDW,Thorax 2cl IDEWE,2
+RAD_GBD2I4,GBD2I4,2
+RAD_74,heelkundige behandeling van peroneotibiale luxatie,2
+RAD_REUMA,Reumaskelet (geen tarif),2
+RAD_M202,mac/M + 2x biopsie,2
+RAD_T_CBKNIL,CBCT Knie Links,2
+RAD_PNEUMANG,A.JODI,2
+RAD_T_OPP2,Opst Pyelogr 2,2
+RAD_ZH00000561,Schildklier I123/Bijschildklier Tc99m MIBI SPECT,2
+RAD_GBD3I2,GBD3I2,2
+RAD_ZH00000589,Gastro-intestinaal bloedverlies,2
+RAD_ZH00005203,Duplex thoracale vaten (adhoc) E,2
+RAD_EGFM,Echo gastro Dr. Marolleau,2
+RAD_GB7,partiële mammectomie + okselevidement,2
+RAD_T_CVOAL,CT Voorarm Li,2
+RAD_ATA,AT-ABLATIE (CARTO),2
+RAD_ZH00005570,coronaro + IMPELLA,2
+RAD_TRACER,tracer,2
+RAD_SMD1,SMD1,2
+RAD_KMD2I4,KMD2I4,2
+RAD_T_CABD1,CT Abdomen,2
+RAD_THSIRT2,SIRT Therapie 2,2
+RAD_BRON-OLD,BRONCHOGRAFIE 3 CL,2
+RAD_TC,inspuiting technetium,2
+RAD_CAROTIS,CAROTIS + PERIFEER,2
+RAD_ZH00000576,Longventilatie en -perfusie met SPECT,2
+RAD_ZH00000513,Punctie Prostaat,2
+RAD_ZH00005281,CT Elders Gemaakte Beelden,2
+RAD_ZH00005108,CT HART - Evaluatie kunstklep (-)/EKG,2
+RAD_C2D1I3,C2D1I3,2
+RAD_QDR1_120,adenoidectomie,2
+RAD_PMR,PACEMAKER-REVISIE,2
+RAD_95,biopsie/makro + 1 immuno,2
+RAD_AATC,ABLATIE LINKER ATRIALE TACHYCARDIE (CARTO),2
+RAD_CTW1,CTW1,2
+RAD_VBGBI3,Vriesbiopsie + gewoon biopt + 3 immuno's,2
+RAD_T_PUB1,Blaaspunctie +,2
+RAD_0000008787,Punctie Galblaas,2
+RAD_CBCTCWZ,CBCT cervicale wervelzuil,2
+RAD_STADSCAM,Brugsesteenweg,2
+RAD_504,4 x immuno,2
+RAD_ZH00005486,CRT PM-revisie,2
+RAD_MECKSPCT,Meckel + low dos SPECT-CT,2
+RAD_KMD1I4,KMD1I4,2
+RAD_PGAL-OLD,PUNC.galactografie,2
+RAD_ORTHO RO,ORTHO ROESELARE,2
+RAD_VBGBI4,Vriesbiopsie + gewoon biopt + 4 immuno's,2
+RAD_SMD1I3,SMD1I3,2
+RAD_CRTPMRN,CRT PM-REVISIE + NARCOSE,2
+RAD_1256,LUMBALE WERVELZUIL (6 OPNAMEN),2
+RAD_T_ARCUH,Arcus Aortae,2
+RAD_PUNCTIE,PUNCTIE,2
+RAD_ZH00005540,ECMO,2
+RAD_KM2G2,2 x kleine macroscopie + 2 x gewone biopsie,2
+RAD_SMKMI3,SMKMI3,2
+RAD_T_-,-,2
+RAD_B2005,JOOD5THERAPIE,2
+RAD_GB3I4,Gewone biopsie 3x + 4 immuno's,2
+RAD_0000008611,CT Onderkaak,2
+RAD_N2000,PATIENT WEIGERT,2
+RAD_DKAT,DILATATIEBALLONKAT,2
+RAD_ZH00005629,Subcutane ICD vervanging + narcose,2
+RAD_B1130,LONG PERFUSIE + TOMO,2
+RAD_SBD1I2,SBD1I2,2
+RAD_ZH00005476,Ablatie hisbundel  + narcose,2
+RAD_ZH00000537,Stenting A. renalis,2
+RAD_0000008906,MR Knie Episealer Links,2
+RAD_ENDOVASC,A.JODI,2
+RAD_ZH00005601,coronarografie + PTAV,2
+RAD_GB3I2,Gewone biopsie 3x + 2 immuno's,2
+RAD_T_BPU,"Bijkomend nr., ECHO/CT niet aanrekenbaar",2
+RAD_ES,Echotoestellen stadscampus,2
+RAD_ZH00000442,MR Elleboog Triceps Rechts,2
+RAD_0000008738,CT Parathyroïd (4D),2
+RAD_SBGI4,Superbiopsie + gewone biopsie + 4 immuno's,2
+RAD_KMVBI3,Kleine Macroscopie + vriesbiop + 3 immuno's,2
+RAD_1350,PELVIMETRIE,2
+RAD_VBGBI2,VBGBI2,2
+RAD_GBD2I3,GBD2I3,2
+RAD_ZH00005508,PM/ICD Extractie + narcose,2
+RAD_KMG2I2,Kleine macroscopie + 2 x gewone biopsie + 2 immuno,2
+RAD_0000008693,Plaatsen Holter Westlaan,2
+RAD_KMVBI2,Kleine Macroscopie + vriesbiop + 2 immuno's,2
+RAD_PECH,PECH,2
+RAD_ZH00005452,Beperkt TEE onderzoek,2
+RAD_KM2SB,2 x kleine Macroscopie + superbiopsie,2
+RAD_ZH00005448,CT Knie Rechts ZIMMER PSI,2
+RAD_DUPL CAR,Small Parts,2
+RAD_SUBT,BIJK.HON.SUBTRACTI,2
+RAD_T_CORA,Consultatie Medische Beeldvorming,2
+RAD_ZH00000598,DATscan alleen injectie tracer,2
+RAD_SMSBI2,SMSBI2,2
+RAD_THID,Therapie I 131 zonder prestatie,2
+RAD_1727,DUPL CAR + AND ECHO,2
+RAD_ASAN,ALCOHOLISCHE SEPTUM ABLATIE + NARCOSE,2
+RAD_MERGSP,Beenmergscan met SPECT opnames,2
+RAD_0000008931,CT TPS Thorax met contrast,2
+RAD_KMID,KMID,2
+RAD_ZH00005518,VVI-ICD revisie,2
+RAD_N6022,NANOCOLL/N,2
+RAD_0000008744,VVI ICD-implantatie + Narcose,2
+RAD_ZH00000510,Punctie Nier,2
+RAD_ZH00005500,Diagnostisch EFO + narcose,2
+RAD_5,biopsie 5x,2
+RAD_AHN,ABLATIE HISBUNDEL + NARCOSE,2
+RAD_ZH00005546,PTMV + TEE + narcose,2
+RAD_CRTPMVN,CRT PM-VERVANGING + NARCOSE,2
+RAD_MERG,Beenmergscan,2
+RAD_GBD1I1,GBD1I1,2
+RAD_T_EMBN1,"Emb + 1s selectief, géén globale art",2
+RAD_0000008554,EUS Rectum,2
+RAD_SMSBI1,SMSBI1,2
+RAD_CORONARO,interventie,2
+RAD_ZH00005291,Drukmetingen Onderste Ledematen,2
+RAD_CA2IM5,CA2IM5,2
+RAD_ZH00005292,Inspanningstest,2
+RAD_1620,PLAATSING TENCKHOFF KATHETER ONDER ECHO,2
+RAD_T_CSCH2,CT SCHEDEL 2VLAKKEN,2
+RAD_2° DILAT,A.JODI,1
+RAD_CAD2I4,CAD2I4,1
+RAD_T_PELV,RX Pelvimetrie,1
+RAD_CFCA,CFCA,1
+RAD_0000008745,VVI-ICD revisie + Narcose,1
+RAD_CRTPMR,CRT PM-REVISIE,1
+RAD_CONSULTH,Consult Hosp,1
+RAD_ZH00005224,CI selectie,1
+RAD_T_MAM,Scintimammografie,1
+RAD_81,heelkundige behandeling van fractuur van middelvoe,1
+RAD_ZH00000512,Punctie Pericard,1
+RAD_T_DSA VC,Dig Substr V Cava,1
+RAD_ZH00000112,CR Opstijgende Pyelografie Rechts,1
+RAD_KSD2I2,KSD2I2,1
+RAD_KMD2I3,KMD2I3,1
+RAD_1257,LWZ + BEKKEN,1
+RAD_0000008714,Cisternografie SPECT/CT (LDCT) 24u pi,1
+RAD_DOPL,DOPL,1
+RAD_C2D2I3,C2D2I3,1
+RAD_0000008857,CT Schouder Rechts Lima Smart Space,1
+RAD_T_CENKL+,CT Enkel Li +,1
+RAD_T_CFEMR+,CT Femur Re +,1
+RAD_0000008730,Total Body scan I123 WB scan,1
+RAD_SMK2I4,SMK2I4,1
+RAD_ZH00000660,SPECT-CT Maxilli-Faciaal Massief,1
+RAD_EVB,Echo volle blaas,1
+RAD_CATHLAB,Onderzoeken cathlab,1
+RAD_AEP,Edgard Prihadi assistentie,1
+RAD_T_CBVINL,CBCT Vinger Links,1
+RAD_9068,OPNAME IN OP,1
+RAD_DPMVN,DDD-PACEMAKER-VERVANGING + NARCOSE,1
+RAD_SMKMGB,Supermakroscopie + kleine makroscopie + biopsie,1
+RAD_LYMF-OLD,LYMFOGRAFIE,1
+RAD_KN4R,RX Knie 4 opnames re,1
+RAD_T_CVOAR,CT Voorarm Re,1
+RAD_516,3 VC + 2 x immuno,1
+RAD_ZH00000362,MR Hersenen Functionele Stereotaxie,1
+RAD_B1157,LEUKOCYTENSCAN,1
+RAD_0000008930,CT TPS Hoofd-Hals met contrast,1
+RAD_KMSB2I3,kleine Macroscopie + 2 x superbiopsie + 3 immuno's,1
+RAD_ECHORH,Echo Cardio Menen Haspeslagh,1
+RAD_ZH00005597,Diagnostische EFO + ajmaline,1
+RAD_1306,MAAG-DUODENUM,1
+RAD_S201?,gr.macro + gr.micro : gegev. opvr.,1
+RAD_ZH00005461,Duplex thoracale vaten (adhoc) D,1
+RAD_CS00000329,Echo,1
+RAD_CA2IM6,CA2IM6,1
+RAD_1662,CT STAG.2 REG. MET 50%,1
+RAD_CA4,CYTOLOGIE ANDERE 4X,1
+RAD_T_EXTERN,EXTERN UITGEVOERDE ONDERZOEKEN,1
+RAD_T_CFEML+,CT Femur Li +,1
+RAD_T_CHUMR,CT Humerus Re,1
+RAD_M200,kl.macro,1
+RAD_KMGI5,Kleine Macroscopie + gewone biopsie + 5 immuno's,1
+RAD_TLGA,Tl201 Indium-Galli,1
+RAD_0000008924,CT TPS Thorax,1
+RAD_CAVOGRAF,A.JODI,1
+RAD_T_B2,superbiopsie,1
+RAD_ZH00005468,3. Tijdelijke PM,1
+RAD_0000008825,Holmium scout pre-therapie,1
+RAD_106,vriescoupe + 6 controles,1
+RAD_CAU2,1x urine en 2x bladderwash,1
+RAD_KMD1I2,KMD1I2,1
+RAD_502,2 x immuno,1
+RAD_NE,Neuro embolisatie,1
+RAD_0000008757,ECG studie,1
+RAD_KM2D3I5,KM2D3I5,1
+RAD_0000005158,Total body scan I131 diagn SPECT/CT (LD CT) scan,1
+RAD_CU4,CYTOLOGIE URINE OF SPUTUM 4X,1
+RAD_SCH+TH+L,Artery,1
+RAD_EXTR,Extractie vreemd lichaam,1
+RAD_ZH00000552,Botscan SPECT zonder WB,1
+RAD_VACE,Vacora onder echo,1
+RAD_T_CONBL+,CT Onderbeen Li +,1
+RAD_SMMB2,Supermakroscopie + 2 x minibiopt,1
+RAD_LAPDO,Laparascopie drilling ovaria,1
+RAD_ZH00000517,Punctie Testes,1
+RAD_COLL,Scan nanocolloid,1
+RAD_KMIM5,KMIM5,1
+RAD_SKD3I2,SKD3I2,1
+RAD_9007,OPSTIJGENDE MYELO,1
+RAD_SMD1I4,SMD1I4,1
+RAD_ZH00005541,Alcoholische septumablatie + TEE + narcose,1
+RAD_T_CONBL,CT Onderbeen Li,1
+RAD_ZH00005605,loop recorder implantatie + narcose,1
+RAD_1728,SUPPL AAN BED,1
+RAD_VEN: DIL,A.JODI,1
+RAD_T_ACAR3,Art Carotis SEL,1
+RAD_B1202,ECTOPISCH MAAGSLIJMVLIES,1
+RAD_EGFB,Echo gastro Dr. Baert,1
+RAD_CS00000118,Slaapregistratie polygrafie,1
+RAD_CAID1,CAID1,1
+RAD_SBID2,SBID2,1
+RAD_RX KNIE,RX KNIE,1
+RAD_AWA,Wim Anné Assistentie,1
+RAD_KM5,KM5,1
+RAD_M206,M206,1
+RAD_T_CSELTU,CT Sella Tursica,1
+RAD_ZH00000111,CR Opstijgende Pyelografie Links,1
+RAD_T_CONS,Consultatie,1
+RAD_T_CHEUR+,CT Heup Re +,1
+RAD_1608,VENA CAVA FILTER,1
+RAD_24,niet-cx cyto 4x,1
+RAD_ZH00000604,Total body scan I131 diagn SPECT,1
+RAD_ZH00005023,Bijschildklier Tc99m MIBI 2 tijden en LD CT,1
+RAD_NEFRO,RX nefro-skelet,1
+RAD_VBGB2,Vriesbiopsie + 2 gewone biopsie,1
+RAD_CACC,CACC,1
+RAD_SMD4I2,SMD4I2,1
+RAD_T_PTCH,Percut Cholangio,1
+RAD_CS00000092,Echo thorax zonder punctie,1
+RAD_KMD2I1,KMD2I1,1
+RAD_ZH00005491,DDD-ICD revisie,1
+RAD_DPB,Duplex penile bloedvaten,1
+RAD_NMR HART,breast^dyn tumor,1
+RAD_GB4I2,Gewone biopsie 4x + 2 immuno's,1
+RAD_S2D2I1,S2D2I1,1
+RAD_0000008925,CT TPS Thorax 4D,1
+RAD_GB4I3,GB4I3,1
+RAD_VENP-OLD,PUNCTIE VENE,1
+RAD_T_ec58b7,ec58b74.doc,1
+RAD_CAD3I4,CAD3I4,1
+RAD_B1450,TOTAL BODY MIBG + SPECT,1
+RAD_SMKI8,Supermakroscopie + kleine makroscopie + 8 immuno's,1
+RAD_T_PER,Peritoneografie,1
+RAD_0000008729,Total Body scan I123 WB inj,1
+RAD_109,vriescoupe + 9 controles,1
+RAD_SM3KM,SM3KM,1
+RAD_SBD1,SBD1,1
+RAD_TEST,test,1
+RAD_ZH00005644,Holmium scout pre-therapie scan,1
+RAD_ZH00005614,coronarografie post-op + re hartkath + biopsie,1
+RAD_ZH00000632,Sentinel Maligne Melanoma,1
+RAD_ZH00000105,CR Videofluoroscopie,1
+RAD_SBD1I1,SBD1I1,1
+RAD_sleutelb,Sleutelbeen,1
+RAD_SBD2I1,SBD2I1,1
+RAD_GB3IM8,GB3IM8,1
+RAD_ZH00005576,TEE + cardioversie - poli,1
+RAD_ZH00005615,coronarografie post-op + PCI,1
+RAD_ASTN,ABLATIE SUPRAVENT. TACHYCARDIE + NARCOSE,1
+RAD_SMVBI1,SMVBI1,1
+RAD_0000008923,CT TPS Hoofd-Hals,1
+RAD_CS00000209,Tympanometrie,1
+RAD_ZH00005053,Mannitol provocatietest,1
+RAD_43,heelkundige behandeling van elleboogfractuur-luxat,1
+RAD_ZH00005242,echo pancreas/milt,1
+RAD_1404,THORAX (4 OPNAMEN),1
+RAD_CS00000161,24 uurs EEG,1
+RAD_KN4L,RX knie 4 opn li,1
+RAD_T_EZW,Echo Zwangerschap,1
+RAD_0000008715,Cisternografie SPECT/CT (LDCT) 48u pi,1
+RAD_DICDRN,DDD ICD-REVISIE,1
+RAD_XTOFIXS,Echo cardiologie stadscampus,1
+RAD_GBD1I2,GBD1I2,1
+RAD_KM2M2G2,2 x Kleine Macroscopie + 2 immuno's + 2 gewone bio,1
+RAD_ZH00000570,Myocardscintigrafie (Tc99m) rust + Ca,1
+RAD_KM2I8,2 x Kleine Macroscopie + 8 immuno's,1
+RAD_KVD3I4,KVD3I4,1
+RAD_CBCT,CT Tanden,1
+RAD_T_CSIN2,sinus 2 vlakken,1
+RAD_SMGI2,Supermakroscopie + gewone biospie + 2 immuno's,1
+RAD_3D,3d mapping systeem,1
+RAD_0000008713,Cisternografie SPECT/CT (LDCT) scan,1
+RAD_T_SSC,Scopie Interne OZ,1
+RAD_DOSI,Dosimetrie nummer,1
+RAD_ZH00005525,VVI-Pacemakervervanging + narcose,1
+RAD_T_LAPPEN,Lap. Appendectomie (CHI),1
+RAD_0000008578,Echo Cor / TTE,1
+RAD_ZH00005469,4. Verwijderen PM,1
+RAD_MBIM3,MBIM3,1
+RAD_CAD3I1,CAD3I1,1
+RAD_PUNCTIEL,Punctie Leverbiopt,1
+RAD_CHOP,RX peroperatieve cholangiografie,1
+RAD_TLON-OLD,TOMO LONGEN 4 CL,1
+RAD_GB3I1,Gewone biopsie 3x  + 1 immuno,1
+RAD_ZH00005618,coronarografie post-op+ PCI + IVUS,1
+RAD_SMKI3,Supermakroscopie + kleine makroscopie + 3 immuno's,1
+RAD_T_CONBR,CT Onderbeen Re,1
+RAD_VBSBD1,VBSBD1,1
+RAD_CS00000097,Bepalen longvolumina met Heliumdilutie,1
+RAD_ZH00005496,DDD-Pacemakerrevisie + narcose,1
+RAD_EGDD,Echo gastro Dr. Dewulf,1
+RAD_CAD3,CAD3,1
+RAD_BDSLPCT,Botscan met SPECT/CT(ldCT) no WB,1
+RAD_TL2,Gallium GA67,1
+RAD_MB2GBI3,2x minibiopt + gewone biopsie + 3 i,1
+RAD_SBD2,SBD2,1
+RAD_ZH00005624,coronaro post-op + nierangio + PTA nierarterie,1
+RAD_1721,ZWANGERSCHAP,1
+RAD_IMPELLA,IMPELLA,1
+RAD_ZH00005235,ECG,1
+RAD_84,heelkundige behandeling van tarso-metatarsale luxa,1
+RAD_1242,CERVICALE WERVELZUIL (2 OPNAMEN),1
+RAD_S2D3I3,S2D3I3,1
+RAD_ZH00005564,SSEP conversie,1
+RAD_C2D1I4,C2D1I4,1
+RAD_0000005157,Total body scan I131 diagn SPECT/CT (LD CT) inn,1
+RAD_ASV,Van de Walle Stefaan  assistentie,1
+RAD_ZH00005489,CRT PM-vervanging + narcose,1
+RAD_T_SCHNT,RX Schedel NT,1
+RAD_CBCTRP,CBCT rotsbeen pseudo,1
+RAD_EVOL,Echo Voluson,1
+RAD_CUIM3,cytologie urine - sputum + 3x immuno,1
+RAD_SMD2I3,SMD2I3,1
+RAD_T_B3,kleine macro,1
+RAD_MBIM4,Minibiopt + 4 immuno's,1
+RAD_1407,TOESLAG BOBBY,1
+RAD_T_ENDO,Echo Transrectaal,1
+RAD_GB11,Gewone biopsie 11x,1
+RAD_T_EMB,embolisatie z arter,1
+RAD_0000008525,CT + CR Knie Arthro Rechts,1
+RAD_ZH00005487,CRT PM-revisie + narcose,1
+RAD_T_B4,supermacro,1
+RAD_INTENSIE,Intensieve zorgen,1
+RAD_GBIDI1,GBIDI1,1
+RAD_NO,NO PROVOCATIETEST,1
+RAD_ZH00000359,MR Hersenen Non Coop,1
+RAD_T_OPG15-,RX ORTHOPANTOMGR,1
+RAD_T_DLIDO,DUPLEX LIDMAAT,1
+RAD_ZH00000110,CR Opstijgende Pyelografie,1
+RAD_OPERATIE,Operatiekwartier,1
+RAD_OPG,Schedel,1
+RAD_B2010,JOOD10THERAPIE,1
+RAD_KM2GI4,KM2GI4,1
+RAD_CRTICDRN,CRT ICD-REVISIE,1
+RAD_0000008905,CT Enkel rechts Episealer,1
+RAD_1592,PUNCTIE MILT,1
+RAD_205,makro + 2 biop + 3 immuno,1
+RAD_TMRAG,MRT Angiografie,1
+RAD_25,vertebrale osteosynthese,1
+RAD_ZH00005202,Duplex abdominale vaten (adhoc) E,1
+RAD_SKTL,Schildkl.scanTl201,1
+RAD_KMD2,KMD2,1
+RAD_0000008728,CT Schouder Rechts ZIMMER PSI,1
+RAD_MIBGNO,MIBG-scan niet oncologische indicatie,1
+RAD_T_CFOS-,CT Fossa Post -,1
+RAD_1456,DEFERENTOGRAFIE,1
+RAD_ID2IM2,ID2IM2,1
+RAD_ZH00000626,Nierscintigrafie DTPA,1
+RAD_SBGB2,Superbiopsie + 2 gewone biopsies,1
+RAD_0000008712,Cisternografie SPECT/CT (LDCT) inj,1
+RAD_T_CENKR+,CT Enkel Re +,1
+RAD_QDR1_104,cystoscopie,1
+RAD_0000008505,EndoECHO,1
+RAD_SBD2I3,SBD2I3,1
+RAD_ZH00000631,Sentinel Borst SPECT,1
+RAD_SKD2I3,SKD2I3,1
+RAD_F16.89.0,Medische voorgeschiedenis,1
+RAD_82,heelkundige behandeling van fractuur van verscheid,1
+RAD_ZH00005566,MR + CR Schouder Arthro Rechts,1
+RAD_STERNUM,Sternum,1
+RAD_unilater,Carotid STEDELIJK,1
+RAD_IDIM3,IDIM3,1
+RAD_SMGB2,Supermakroscopie + 2 x gewone biopsie,1
+RAD_SMD1I2,SMD1I2,1
+RAD_GB2I6,Gewone biopsie 2x + 6 immuno's,1
+RAD_ZH00005378,ABLATIE AVNRT,1
+RAD_1503,CAROTIS,1
+RAD_ZH00000424,MR Entero Groot FOV,1
+RAD_K2D3I2,K2D3I2,1
+RAD_204,makro + 2 biop + 2 immuno,1
+RAD_KMGI6,Kleine Macroscopie + gewone biopsie + 6 immuno's,1
+RAD_CS00000275,Echo cardio,1
+RAD_0000008935,CT TPS Extremiteiten met contrast,1
+RAD_RX SCHED,RX SCHEDEL,1
+RAD_98,heelkundige behandeling van pseudarthrose van pate,1
+RAD_0000008586,Echo puncties,1
+RAD_SM2I1,Supermakroscopie 2x + immuno,1
+RAD_FLAB,SEL.ABD.FLEB 1,1
+RAD_ZH00005498,DDD-Pacemakervervanging + narcose,1
+RAD_SB2D2I4,SB2D2I4,1
+RAD_M95,kl.macro + kl. micro + 1 immuno,1
+RAD_SMVBI3,Supermakroscopie + vriesbiopsie + 3 immuno's,1
+RAD_ZH00005638,LuPSMA cyclus 2 of meer scan Dag6,1
+RAD_ZH00005228,Onderzoek 60 minuten,1
+RAD_IMH,Immuunhistochemie,1

@@ -1,0 +1,14 @@
+{# Copyright 2022 RADar-AZDelta #}
+{# SPDX-License-Identifier: gpl3+ #}
+select concat('RAD_', rrvcode.CODE)  as source_code 
+	,rrvcode.OMSCHR as source_term
+	,count(*) as source_frequency
+from hix.RONTGEN_RONTGEN rr
+inner join hix.ORDERCOM_ORDSTAT ostat on ostat.STATUSCODE = rr.WORKFSTATUS
+inner join hix.RONTGEN_RONTVERR rrv on rrv.ONDERZNR = rr.ONDERZNR
+inner join hix.RONTGEN_VERRCODE rrvcode on rrvcode.CODE = rrv.CODE
+where rr.AANVRAAGOK = true
+	and rr.ONDERZDAT < CAST(DATE_ADD(CURRENT_DATE(), INTERVAL 1 DAY) AS TIMESTAMP)
+	and ostat.OMSCHR not in ('Geannuleerd', 'Opgeroepen', 'Afgesproken', 'Verzocht', 'Gemeld', 'Ingevoerd')
+group by rrvcode.CODE, rrvcode.OMSCHR
+order by 3 desc

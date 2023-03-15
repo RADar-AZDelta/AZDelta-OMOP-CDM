@@ -1,0 +1,2 @@
+concept_id,concept_name,domain_id,vocabulary_id,concept_class_id,standard_concept,concept_code,valid_start_date,valid_end_date,invalid_reason
+RAD_accession_number,RADIOLOGICAL ACCESSION NUMBER (the unique record number in the local Radiological Information System (RIS) for the Diagnostic Imaging test),Observation,AZDELTA,Radiology,S,accession_number,2023-03-15,2099-12-31,
