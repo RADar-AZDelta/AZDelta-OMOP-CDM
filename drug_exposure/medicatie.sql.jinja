@@ -1,3 +1,8 @@
+{# Copyright 2022 RADar-AZDelta #}
+{# SPDX-License-Identifier: gpl3+ #}
+
+{# TODO: add Device/Procedure/Observation/Meas Value to other tables #}
+
 with cte as (
     SELECT DISTINCT
         IF(deel.CODE IS NULL
@@ -61,6 +66,14 @@ with cte as (
             or rec.vrschrtyp in ('R', 'P', 'V')) --rusthuis/thuis/vaccin
         and patientnr is not null and med.code is not null and identif is not null
     GROUP BY patientnr, identif, med.code, omschr, medicoms, stpreden, schemaoms, rec.toedcd, rec.AANVRCODE, atccode, toedoms, deel.code, tdtijd, tddatum
+), cte_filt_drug as (
+    SELECT cte.*
+    FROM cte
+    INNER JOIN `{{project_id}}.{{dataset_id_omop}}.source_to_concept_map` scm
+    ON cte.drug_concept_id = scm.source_code
+    INNER JOIN `{{project_id}}.{{dataset_id_omop}}.concept` c
+    ON scm.target_concept_id = c.concept_id
+    WHERE c.domain_id = 'Drug'
 )
 
 SELECT cte.*
@@ -68,7 +81,7 @@ SELECT cte.*
     , vd.visit_detail_id #}
     , ARRAY_AGG(v.visit_occurrence_id ORDER BY v.visit_start_datetime DESC LIMIT 1)[OFFSET(0)] as visit_occurrence_id
     , ARRAY_AGG(vd.visit_detail_id ORDER BY vd.visit_detail_start_datetime DESC LIMIT 1)[OFFSET(0)] as visit_detail_id
-FROM cte
+FROM cte_filt_drug cte
 LEFT OUTER JOIN {{project_id}}.{{dataset_id_work}}.visit_occurrence_upload v ON v.person_id = cte.person_id AND cte.drug_exposure_start_date >= v.visit_start_datetime and cte.drug_exposure_start_date <= v.visit_end_datetime 
 LEFT OUTER JOIN {{project_id}}.{{dataset_id_work}}.visit_detail_upload vd ON vd.visit_occurrence_id = v.visit_occurrence_id AND cte.drug_exposure_start_date >= vd.visit_detail_start_datetime and cte.drug_exposure_start_date <= vd.visit_detail_start_datetime
 inner join {{project_id}}.{{dataset_id_work}}.person_upload p
