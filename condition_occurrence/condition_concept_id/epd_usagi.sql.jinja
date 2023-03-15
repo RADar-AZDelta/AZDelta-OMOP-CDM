@@ -1,51 +1,80 @@
-{# Copyright 2022 RADar-AZDelta #}
-{# SPDX-License-Identifier: gpl3+ #}
 WITH automapped AS (
-    SELECT CONCAT('EPD_', e.CODE) AS sourceCode
-        , STRING_AGG(DISTINCT REGEXP_REPLACE(REGEXP_REPLACE(cc.Omschrijving,r',',r'.'),r'\s',r' '), ". ") AS sourceName
-        , COUNT(*) AS sourceFrequency
-        , ARRAY_AGG(c_std.concept_id IGNORE NULLS ORDER BY c.standard_concept DESC)[SAFE_OFFSET(0)] AS conceptId
-    FROM `{{project_id}}.{{dataset_id_raw}}.DOSSIER_EPDDIAG` e
-    LEFT JOIN `{{project_id}}.{{dataset_id_raw}}.CODELYST_CODEOMS` cc 
-    ON e.CODE = cc.CODE
-    LEFT JOIN `{{project_id}}.{{dataset_id_omop}}.concept_synonym` cs
-    ON cc.Omschrijving = cs.concept_synonym_name
-        AND cc.LanguageCode = "en-GB"
-    LEFT JOIN `{{project_id}}.{{dataset_id_omop}}.concept` c
-    ON c.concept_id = cs.concept_id
-        AND c.domain_id IN ("Condition", "Observation")
+    SELECT automapped_arrays.* EXCEPT (conceptId_arrays), c_std.concept_id concept_id
+    FROM (
+        SELECT CONCAT('EPD_', e.CODE) AS sourceCode
+            , STRING_AGG(DISTINCT REGEXP_REPLACE(REGEXP_REPLACE(cc.Omschrijving,r',',r'.'),r'\s',r' '), ". ") AS sourceName
+            , COUNT(*) AS sourceFrequency
+            , ARRAY_AGG(DISTINCT COALESCE(c_snomed.concept_id, c_syn.concept_id) IGNORE NULLS) AS conceptId_arrays
+            --, ARRAY_AGG(DISTINCT COALESCE(c_snomed.concept_id, cr_icd10cm_snomed.concept_id_2, cr_icd10_snomed.concept_id_2, c_syn.concept_id) IGNORE NULLS) AS conceptId_arrays
+        FROM `{{project_id}}.{{dataset_id_raw}}.DOSSIER_EPDDIAG` e
+        LEFT JOIN `{{project_id}}.{{dataset_id_raw}}.CODELYST_CODEOMS` cc 
+        ON e.CODE = cc.CODE
+
+        LEFT JOIN `{{project_id}}.{{dataset_id_raw}}.CODELYST_CODEMAP` cm_snomed
+        ON cc.CODE = cm_snomed.SourceCode AND LOWER(TRIM(cm_snomed.TargetListType)) = "snomed"
+        LEFT JOIN `{{project_id}}.{{dataset_id_omop}}.concept` c_snomed
+        ON cm_snomed.TargetExternalCode = c_snomed.concept_code
+            AND c_snomed.vocabulary_id = "SNOMED" 
+            AND c_snomed.domain_id IN ("Condition", "Observation")
+        /* CHECK IF ICD CODES ARE CORRECT IN NEWER VERSIONS OF CODELYST_CODEMAP BEFORE ADDING
+        LEFT JOIN `{{project_id}}.{{dataset_id_raw}}.CODELYST_CODEMAP` cm_icd10
+        ON cc.CODE = cm_icd10.SourceCode AND LOWER(TRIM(cm_icd10.TargetListType)) = "icd10"
+        LEFT JOIN `{{project_id}}.{{dataset_id_omop}}.concept` c_icd10cm
+        ON cm_icd10.TargetExternalCode = c_icd10cm.concept_code
+            AND c_icd10cm.vocabulary_id = "ICD10CM"
+            AND c_icd10cm.domain_id IN ("Condition", "Observation")
+        LEFT JOIN `{{project_id}}.{{dataset_id_omop}}.concept_relationship` cr_icd10cm_snomed
+        ON c_icd10cm.concept_id = cr_icd10cm_snomed.concept_id_1
+            AND cr_icd10cm_snomed.relationship_id = 'Maps to'
+
+        LEFT JOIN `{{project_id}}.{{dataset_id_omop}}.concept` c_icd10
+        ON cm_icd10.TargetExternalCode = c_icd10.concept_code
+            AND c_icd10.vocabulary_id = "ICD10"
+            AND c_icd10.domain_id IN ("Condition", "Observation")
+        LEFT JOIN `{{project_id}}.{{dataset_id_omop}}.concept_relationship` cr_icd10_snomed
+        ON c_icd10cm.concept_id = cr_icd10_snomed.concept_id_1
+            AND cr_icd10_snomed.relationship_id = 'Maps to'
+        */
+
+        LEFT JOIN `{{project_id}}.{{dataset_id_omop}}.concept_synonym` cs
+        ON cc.Omschrijving = cs.concept_synonym_name
+            AND cc.LanguageCode = "en-GB"
+        LEFT JOIN `{{project_id}}.{{dataset_id_omop}}.concept` c_syn
+        ON c_syn.concept_id = cs.concept_id
+            AND c_syn.domain_id IN ("Condition", "Observation")
+        
+        WHERE e.CODE IS NOT NULL AND TRIM(e.CODE) <> '' AND cc.Omschrijving IS NOT NULL AND TRIM(cc.Omschrijving) <> ''
+        GROUP BY sourceCode
+    ) automapped_arrays
+    LEFT JOIN UNNEST(automapped_arrays.conceptId_arrays) AS conceptId
     LEFT JOIN `{{project_id}}.{{dataset_id_omop}}.concept_relationship` cr
-    ON c.concept_id = cr.concept_id_1
+    ON conceptId = cr.concept_id_1
         AND cr.relationship_id = 'Maps to'
     LEFT JOIN `{{project_id}}.{{dataset_id_omop}}.concept` c_std
     ON cr.concept_id_2 = c_std.concept_id
-        AND c_std.standard_concept = 'S'
         AND c_std.domain_id IN ("Condition", "Observation")
-    WHERE e.CODE IS NOT NULL AND TRIM(e.CODE) <> '' AND cc.Omschrijving IS NOT NULL AND TRIM(cc.Omschrijving) <> ''
-    GROUP BY sourceCode
-    ORDER BY sourceFrequency DESC
 )
-SELECT 
+SELECT DISTINCT
     a.sourceCode
     ,a.sourceName
     ,a.sourceFrequency
     ,CAST(NULL AS STRING) AS sourceAutoAssignedConceptIds
-    ,IF(a.conceptId IS NULL, COALESCE(e.matchScore, 0), 1) AS matchScore
-    ,IF(a.conceptId IS NULL, COALESCE(e.mappingStatus, 'UNCHECKED'), 'APPROVED') AS mappingStatus
-    ,IF(a.conceptId IS NULL, COALESCE(e.equivalence, 'UNREVIEWED'), 'EQUAL') AS equivalence
+    ,IF(a.concept_id IS NULL, COALESCE(e.matchScore, 0), 1) AS matchScore
+    ,IF(a.concept_id IS NULL, COALESCE(e.mappingStatus, 'UNCHECKED'), 'APPROVED') AS mappingStatus
+    ,IF(a.concept_id IS NULL, COALESCE(e.equivalence, 'UNREVIEWED'), 'EQUAL') AS equivalence
     ,'etl' AS statusSetBy
     ,UNIX_MILLIS(CURRENT_TIMESTAMP()) as statusSetOn
-    ,COALESCE(a.conceptId, e.conceptId,0) conceptId
-    ,IF(a.conceptid IS NULL, e.conceptName, c.concept_NAME) AS conceptName
-    ,IF(a.conceptid IS NULL, e.domainId, c.domain_id) AS domainId
+    ,COALESCE(a.concept_id, e.conceptId,0) conceptId
+    ,IF(a.concept_id IS NULL, e.conceptName, c.concept_NAME) AS conceptName
+    ,IF(a.concept_id IS NULL, e.domainId, c.domain_id) AS domainId
     ,'MAPS_TO' AS mappingType
-    ,'AUTO MAPPED' AS comment
-    ,'etl' AS createdBy
+    ,IF(a.concept_id IS NULL AND e.conceptId IS NOT NULL, "", "AUTO MAPPED") AS comment
+    ,IF(a.concept_id IS NULL AND e.conceptId IS NOT NULL, "stijn", "etl") AS createdBy
     ,UNIX_MILLIS(CURRENT_TIMESTAMP()) as createdOn
     ,cast(null AS string) AS assignedReviewer
 FROM automapped a
 LEFT JOIN `{{project_id}}.{{dataset_id_omop}}.concept` c
-ON a.conceptId = c.concept_id
+ON a.concept_id = c.concept_id
     AND c.standard_concept = 'S'
     AND c.domain_id IN ("Condition", "Observation")
 LEFT JOIN `{{project_id}}.{{dataset_id_usagi}}.epd_usagi` e

@@ -17,7 +17,7 @@ WITH cte AS (
         ,'ADMINISTRATION_RECORD' AS observation_type_concept_id
         ,cast(NULL AS FLOAT64) AS value_as_number
         ,cast(NULL AS STRING) AS value_as_string
-        ,CAST(NULL AS STRING) AS value_as_concept_id
+        ,scm.source_code AS value_as_concept_id
         ,cast(NULL AS STRING) AS qualifier_concept_id
         ,cast(NULL AS STRING) AS unit_concept_id
         ,e.ARTSCODE AS provider_id

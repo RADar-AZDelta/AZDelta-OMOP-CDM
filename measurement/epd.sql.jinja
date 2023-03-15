@@ -14,7 +14,7 @@ WITH cte AS (
         ,'ADMINISTRATION_RECORD' as measurement_type_concept_id
         ,cast(null as string) as operator_concept_id
         ,cast(null as float64) as value_as_number
-        ,cast(null as string) as value_as_concept_id
+        ,stc.source_code as value_as_concept_id
         ,cast(null as string) as unit_concept_id
         ,cast(null as float64) as range_low
         ,cast(null as float64) as range_high

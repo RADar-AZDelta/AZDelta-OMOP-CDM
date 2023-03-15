@@ -28,7 +28,7 @@ def main() -> None:
     usagi.drop_in_place("conceptId")
     usagi = usagi.rename({"ADD_INFO_SOURCE_CONCEPT_ID":"conceptId"})
 
-    usagi.to_csv(Path(__file__).parent / args.target)
+    usagi.write_csv(Path(__file__).parent / args.target)
 
 
 if __name__ == "__main__":

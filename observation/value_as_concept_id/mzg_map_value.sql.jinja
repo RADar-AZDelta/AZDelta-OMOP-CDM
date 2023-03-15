@@ -148,7 +148,7 @@ SELECT DISTINCT
     ,0 AS sourceFrequency
     ,CAST(NULL AS STRING) AS sourceAutoAssignedConceptIds
     ,o.source_CONCEPT_ID AS ADD_INFO_SOURCE_CONCEPT_ID
-    ,1 AS matchScore
+    ,1.0 AS matchScore
     ,IF(o.CONCEPT_ID is not NULL,'APPROVED', 'UNCHECKED') AS mappingStatus
     ,IF(o.CONCEPT_ID is not NULL,'EQUAL','UNREVIEWED') AS equivalence
 	,'etl' AS statusSetBy

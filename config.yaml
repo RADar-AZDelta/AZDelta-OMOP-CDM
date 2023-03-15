@@ -7,3 +7,9 @@
 # dataset_id_omop : omop_dataset
 
 project_id : iconic-guard-317109
+dataset_id_raw : hix
+dataset_id_raw_2 : oazis
+dataset_id_raw_3: ecg
+dataset_id_work: omop_work
+dataset_id_usagi: master_usagi
+dataset_id_omop: omop

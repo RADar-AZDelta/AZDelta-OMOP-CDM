@@ -17,7 +17,9 @@ concept_id,concept_name,domain_id,vocabulary_id,concept_class_id,standard_concep
 0,small positive T wave (inferior,Condition,AZDELTA,Clinical Finding,S,HASH_-3881399513750057844,2022-09-22,2099-12-31,
 0,ST-segment depression (lateral,Condition,AZDELTA,Clinical Finding,S,HASH_1419611398263238031,2022-09-22,2099-12-31,
 0,Q wave (inferior),Condition,AZDELTA,Clinical Finding,S,HASH_-2948175995508720284,2022-09-22,2099-12-31,
+0,Q wave (lateral),Condition,AZDELTA,Clinical Finding,S,HASH_-7271604741111542,2022-09-22,2099-12-31,
 0,repolarisatiestoornis,Condition,AZDELTA,Clinical Finding,S,ECG_REPOLARISATIESTOORNIS,2022-09-22,2099-12-31,
 0,Slow R-progression,Condition,AZDELTA,Clinical Finding,S,HASH_7740593630208354570,2022-09-22,2099-12-31,
-0,Deep Q wave in V6,Condition,AZDELTA,Clinical Finding,S,HASH_-HASH_1665648098703443099,2022-09-22,2099-12-31,
+0,Deep Q wave in V6,Condition,AZDELTA,Clinical Finding,S,HASH_HASH_1665648098703443099,2022-09-22,2099-12-31,
+0,Intermittend Right Bundle Branch Block,Condition,AZDELTA,Clinical Finding,S,HASH_4312528093461791206,2022-09-22,2099-12-31,
 
