@@ -1,18 +1,43 @@
-{# Copyright 2022 RADar-AZDelta #}
-{# SPDX-License-Identifier: gpl3+ #}
-select concat('RAD_', rrvcode.CODE)  as source_code 
-	,STRING_AGG(DISTINCT rrvcode.OMSCHR) as source_term
-	,STRING_AGG(DISTINCT rrmoda.CODE) as ADD_INFO_mod_abbr
-	,STRING_AGG(DISTINCT rrmoda.OMSCHRIJV) as ADD_INFO_modality
-	,count(*) as source_frequency
-from hix.RONTGEN_RONTGEN rr
-inner join hix.ORDERCOM_ORDSTAT ostat on ostat.STATUSCODE = rr.WORKFSTATUS
-inner join hix.RONTGEN_RONTVERR rrv on rrv.ONDERZNR = rr.ONDERZNR
-inner join hix.RONTGEN_VERRCODE rrvcode on rrvcode.CODE = rrv.CODE
-inner join hix.RONTGEN_MODINST rrmodinst on rrv.MODINST = rrmodinst.MODINSTID
-inner join hix.RONTGEN_RONTMODA rrmoda on rrmodinst.MODTYPECODE = rrmoda.CODE
-where rr.AANVRAAGOK = true
-	and rr.ONDERZDAT < CAST(DATE_ADD(CURRENT_DATE(), INTERVAL 1 DAY) AS TIMESTAMP)
-	and ostat.OMSCHR not in ('Geannuleerd', 'Opgeroepen', 'Afgesproken', 'Verzocht', 'Gemeld', 'Ingevoerd')
-group by rrvcode.CODE
+with hix_rad as (
+  select
+    rrvcode.CODE as code,
+    rrvcode.ZOEKCODE as code_search,
+    rrvcode.AFSPRCODE as code_apt,
+    regexp_replace(rrvcode.OMSCHR, r"[\r\n\f]","") as term,
+    rrmoda.OMSCHRIJV as modal,
+    rrmoda.CODE as modalcode,
+    count(distinct rr.ONDERZNR) as n,
+    date(max(rr.ONDERZDAT)) as last_date,
+  from hix.RONTGEN_RONTGEN rr
+  inner join hix.ORDERCOM_ORDSTAT ostat on ostat.STATUSCODE = rr.WORKFSTATUS
+  inner join hix.RONTGEN_RONTVERR rrv on rrv.ONDERZNR = rr.ONDERZNR
+  inner join hix.RONTGEN_VERRCODE rrvcode on rrvcode.CODE = rrv.CODE
+  inner join hix.RONTGEN_MODINST rrmodinst on rrv.MODINST = rrmodinst.MODINSTID
+  inner join hix.RONTGEN_RONTMODA rrmoda on rrmodinst.MODTYPECODE = rrmoda.CODE
+  where rr.AANVRAAGOK = true
+    and rr.ONDERZDAT < cast(date_add(current_date(), interval 1 DAY) as timestamp)
+    and ostat.OMSCHR not in ('Geannuleerd', 'Opgeroepen', 'Afgesproken', 'Verzocht', 'Gemeld', 'Ingevoerd')
+  group by rrvcode.CODE, rrvcode.ZOEKCODE, rrvcode.AFSPRCODE, rrvcode.OMSCHR, rrmoda.OMSCHRIJV, rrmoda.CODE
+  order by n desc
+), wise_rad as (
+  select 
+    WEXAM_CODE as code, 
+    regexp_replace(WEXAM_DESCRIPTION, r"[\r\n\f]","") as term, 
+    WEXAM_MODALITY as modal,
+    count(distinct WEXAM_ID) as n,
+  from wise.W_EXAM
+  group by WEXAM_CODE, WEXAM_DESCRIPTION, WEXAM_MODALITY
+  order by n desc
+)
+select
+  concat('RAD_', h.code,'_',h.modalcode) as source_code,
+  h.term as source_term,
+  h.modal as modality,
+  ifnull(string_agg(concat(w.term,' - ',w.modal,': ', w.n), "; " order by w.n desc),'not in wise') as wise,
+  h.last_date as last_date,
+  h.n as source_frequency,
+from hix_rad h
+left join wise_rad w
+on w.code = h.code or w.code = h.code_search or w.code = h.code_search
+group by source_code, source_term, modality, source_frequency, last_date
 order by source_frequency desc

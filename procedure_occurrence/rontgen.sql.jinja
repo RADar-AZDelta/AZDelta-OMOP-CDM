@@ -4,7 +4,7 @@ with cte as (
 	select 
 		concat('RAD_', rr.ONDERZNR, '_', rrv.RONTVERRID) as procedure_occurrence_id
 		,rr.PATIENTNR as person_id
-		,concat('RAD_', rrv.CODE) as procedure_concept_id -- exam code
+		,concat('RAD_', rrv.CODE,'_',rrmodinst.MODTYPECODE) as procedure_concept_id -- exam code
 		,rr.ONDERZDAT as procedure_date
 		,DATETIME(
 			DATE(rr.ONDERZDAT),
@@ -36,6 +36,7 @@ with cte as (
 	inner join {{project_id}}.{{dataset_id_raw}}.ORDERCOM_ORDSTAT ostat on ostat.STATUSCODE = rr.WORKFSTATUS
 	inner join {{project_id}}.{{dataset_id_raw}}.RONTGEN_RONTVERR rrv on rrv.ONDERZNR = rr.ONDERZNR
 	--inner join {{project_id}}.{{dataset_id_raw}}.RONTGEN_VERRCODE rrvcode on rrvcode.CODE = rrv.CODE
+	inner join hix.RONTGEN_MODINST rrmodinst on rrv.MODINST = rrmodinst.MODINSTID
 	where rr.AANVRAAGOK = true
 		and rr.ONDERZDAT < CAST(DATE_ADD(CURRENT_DATE(), INTERVAL 1 DAY) AS TIMESTAMP)
 		and ostat.OMSCHR not in ('Geannuleerd', 'Opgeroepen', 'Afgesproken', 'Verzocht', 'Gemeld', 'Ingevoerd')
