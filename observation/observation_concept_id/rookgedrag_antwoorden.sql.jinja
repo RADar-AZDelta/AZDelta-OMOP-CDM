@@ -1,0 +1,13 @@
+with hixvragenlijsten as (SELECT distinct vragenlijst.opslagid, vraagid, korteoms, antwoorden.patientnr, vragenlijst.datum, lijstnaam.lijstnaam, antwoorden.opslagid, stelling, keuzelijst.omschr, antwoord
+from {{project_id}}.hix.VRLIJST_VROPSLG antwoorden
+    join {{project_id}}.hix.VRLIJST_LSTOPSLG  as vragenlijst on vragenlijst.OPSLAGID = antwoorden.BEANTWID
+  join {{project_id}}.hix.VRLIJST_LIJSTDEF  as lijstnaam on lijstnaam.LIJSTID = vragenlijst.LIJSTID
+  join {{project_id}}.hix.VRLIJST_VRAGEN as vragen on vragen.VRAAGID = REALVRID
+    left outer join {{project_id}}.hix.VRLIJST_KEUZELST as keuzelijst on  keuzelijst.CODE = antwoorden.Antwoord
+    where lijstnaam.lijstnaam in ("Roken") 
+)
+select  concat('HIXVRAGENLIJSTEN_', antwoord, '_', vraagid) as sourceCode, omschr as sourceName, count(omschr) as sourceFrequency
+
+ from hixvragenlijsten where stelling in ('Roken')
+ group by 1,2
+ order by 3 desc

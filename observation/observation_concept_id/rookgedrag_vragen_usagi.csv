@@ -1,0 +1,11 @@
+sourceCode,sourceName,sourceFrequency,sourceAutoAssignedConceptIds,matchScore,mappingStatus,equivalence,statusSetBy,statusSetOn,conceptId,conceptName,domainId,mappingType,comment,createdBy,createdOn,assignedReviewer
+VRAGENLIJST_CS00000188,Roken,267824,,0.73,APPROVED,EQUAL,Stijn Dupulthys,1679319880850,35811013,Smoking status,Observation,MAPS_TO,,Stijn Dupulthys,1679319879396,
+VRAGENLIJST_CS00000190,Soort tabak,55655,,0.42,APPROVED,EQUAL,Stijn Dupulthys,1679321100884,35810372,Type of tobacco currently smoked,Observation,MAPS_TO,,Stijn Dupulthys,1679321099734,
+VRAGENLIJST_CS00014981,Opmerkingen roken,7437,,0.42,UNCHECKED,UNREVIEWED,,0,4046816,Perkinsus,Observation,MAPS_TO,CUSTOM CONCEPT,<auto>,1679319708349,
+VRAGENLIJST_CS00029257,Aantal sigaretten per dag,37729,,0.33,UNCHECKED,UNREVIEWED,,0,4143329,Cigarette lighter,Observation,MAPS_TO,CUSTOM CONCEPT,<auto>,1679319708490,
+VRAGENLIJST_CS00009474,Aantal packyears,16156,,0.46,APPROVED,EQUAL,Stijn Dupulthys,1679320869589,4269183,Cigarette pack-years,Observation,MAPS_TO,,Stijn Dupulthys,1679320868998,
+VRAGENLIJST_CS00029293,Aantal stuks pijp per dag,101,,0.26,UNCHECKED,UNREVIEWED,,0,4216813,Bence Jones protein,Observation,MAPS_TO,CUSTOM CONCEPT,<auto>,1679319709339,
+VRAGENLIJST_CS00000004,Aantal sigaren per dag,1956,,0.36,UNCHECKED,UNREVIEWED,,0,4203930,Hantaan virus,Observation,MAPS_TO,CUSTOM CONCEPT,<auto>,1679319709355,
+VRAGENLIJST_CS00029292,Aantal stuks shag per dag,119,,0.26,UNCHECKED,UNREVIEWED,,0,4203930,Hantaan virus,Observation,MAPS_TO,CUSTOM CONCEPT,<auto>,1679319709488,
+VRAGENLIJST_CS00000104,Gestopt met roken sinds,17693,,0.41,APPROVED,EQUAL,Stijn Dupulthys,1679320745850,4052466,Date ceased smoking,Observation,MAPS_TO,,Stijn Dupulthys,1679320744570,
+VRAGENLIJST_CS00000189,Rookt(e) sinds,17782,,0.36,APPROVED,EQUAL,Stijn Dupulthys,1679320760034,4036555,Age at starting smoking,Observation,MAPS_TO,,Stijn Dupulthys,1679320759333,
