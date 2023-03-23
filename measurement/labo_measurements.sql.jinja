@@ -77,7 +77,7 @@ SELECT cte.*
     , ARRAY_AGG(vd.visit_detail_id ORDER BY vd.visit_detail_start_datetime DESC LIMIT 1)[OFFSET(0)] as visit_detail_id
 FROM cte
 LEFT OUTER JOIN {{project_id}}.{{dataset_id_work}}.visit_occurrence_upload v ON v.person_id = cte.person_id AND cte.measurement_datetime >= v.visit_start_datetime and cte.measurement_datetime <= v.visit_end_datetime 
-LEFT OUTER JOIN {{project_id}}.{{dataset_id_work}}.visit_detail_upload vd ON v.visit_occurrence_id = vd.visit_occurrence_id AND cte.measurement_datetime >= vd.visit_detail_start_datetime and cte.measurement_datetime <= vd.visit_detail_start_datetime
+LEFT OUTER JOIN {{project_id}}.{{dataset_id_work}}.visit_detail_upload vd ON v.visit_occurrence_id = vd.visit_occurrence_id AND cte.measurement_datetime >= vd.visit_detail_start_datetime and cte.measurement_datetime <= vd.visit_detail_end_datetime
 inner join {{project_id}}.{{dataset_id_work}}.person_upload p
 on cte.person_id = p.person_id
 GROUP BY 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21
