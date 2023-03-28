@@ -69,7 +69,7 @@ with cte as (
     left join `{{project_id}}.{{dataset_id_work}}.visit_occurrence_id_swap` vs
     on v.visit_occurrence_ID = vs.y
     where c.domain_id = 'Measurement'
-        and not trim(lower(uitslag.uitslag)) in ('#volgt', '#ini','volgt', 'ini', '<memo>', '-volgt-', '', '.', 'zie opm.', '/', '//')
+        and not trim(lower(uitslag.uitslag)) in ('#volgt', '#ini','volgt', 'ini', '<memo>', '-volgt-', '', '.', '!', '!!!', 'zie opm.', '/', '//')
         and date(aanvraag.afdatum) is not null
 )
 SELECT cte.*
