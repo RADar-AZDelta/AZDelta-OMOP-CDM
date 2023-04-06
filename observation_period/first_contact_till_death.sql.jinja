@@ -77,13 +77,14 @@ with first_obs as (
   group by person_id
 )
 select
-  0 as observation_period_id,
-  s.person_id,
+  concat("OBS_PER_", s.person_id, '_', s.start_date, '_', coalesce(d.death_date, CURRENT_DATE())) as observation_period_id,
+  p.person_source_value person_id,
   s.start_date as observation_period_start_date,
   coalesce(d.death_date, CURRENT_DATE()) as observation_period_end_date,
   'FIRST_ENCOUNTER_RECORD' as period_type_concept_id,
 from start_date s
 left join {{project_id}}.{{dataset_id_work}}.death d on s.person_id = d.person_id
+left join {{project_id}}.{{dataset_id_work}}.person p on s.person_id = p.person_id
 where start_date <> DATE(1753,1,1) and start_date <> DATE(1900,1,1)
 order by observation_period_start_date asc
 
