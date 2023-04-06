@@ -1,2 +1,2 @@
 sourceCode,sourceName,sourceFrequency,sourceAutoAssignedConceptIds,matchScore,mappingStatus,equivalence,statusSetBy,statusSetOn,conceptId,conceptName,domainId,mappingType,comment,createdBy,createdOn,assignedReviewer
-UNKNOWN_HOSPITAL_VISIT,UNKNOWN_HOSPITAL_VISIT,0,,,APPROVED,EQUAL,sdupulthys,1634807098503,38004515',Hospital,Type Concept,MAPS_TO,,sdupulthys,1634807089839,
+UNKNOWN_HOSPITAL_VISIT,UNKNOWN_HOSPITAL_VISIT,0,,,APPROVED,EQUAL,sdupulthys,1634807098503,38004515,Hospital,Type Concept,MAPS_TO,,sdupulthys,1634807089839,
