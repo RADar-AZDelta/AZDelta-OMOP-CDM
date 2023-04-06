@@ -1,2 +1,2 @@
 concept_id,concept_name,domain_id,vocabulary_id,concept_class_id,standard_concept,concept_code,valid_start_date,valid_end_date,invalid_reason
-MZG_9_D_M98503,Lymphosarcoma cell leukemia,Condition,AZDELTA,Clinical Finding,S,MZG_9_D_M98503,2022-07-28,2099-12-31,
+MZG_9_D_M98503,Lymphosarcoma cell leukemia,Condition,AZDELTA,Clinical Finding,,MZG_9_D_M98503,2022-07-28,2099-12-31,

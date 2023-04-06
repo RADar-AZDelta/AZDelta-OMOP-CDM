@@ -1,4 +1,4 @@
 concept_id,concept_name,domain_id,vocabulary_id,concept_class_id,standard_concept,concept_code,valid_start_date,valid_end_date,invalid_reason
-0,MR Prostaat Active Surveillance,Procedure,AZDELTA,Procedure,S,RAD_0000008752_MR,2023-03-17,2099-12-31,
-0,MR Prostaat Screening,Procedure,AZDELTA,Procedure,S,RAD_ZH00000411_MR,2023-03-17,2099-12-31,
-0,MR Prostaat Staging,Procedure,AZDELTA,Procedure,S,RAD_ZH00000412_MR,2023-03-17,2099-12-31,
+0,MR Prostaat Active Surveillance,Procedure,AZDELTA,Procedure,,RAD_0000008752_MR,2023-03-17,2099-12-31,
+0,MR Prostaat Screening,Procedure,AZDELTA,Procedure,,RAD_ZH00000411_MR,2023-03-17,2099-12-31,
+0,MR Prostaat Staging,Procedure,AZDELTA,Procedure,,RAD_ZH00000412_MR,2023-03-17,2099-12-31,
