@@ -71,6 +71,7 @@ with cte as (
     where c.domain_id = 'Measurement'
         and not trim(lower(uitslag.uitslag)) in ('#volgt', '#ini','volgt', 'ini', '<memo>', '-volgt-', '', '.', '!', '!!!', 'zie opm.', '/', '//')
         and date(aanvraag.afdatum) is not null
+        and trim(lower(uitslag.STATUS)) in ('f', 'c')
 )
 SELECT cte.*
     , ARRAY_AGG(v.visit_occurrence_id ORDER BY v.visit_start_datetime DESC LIMIT 1)[OFFSET(0)] as visit_occurrence_id
