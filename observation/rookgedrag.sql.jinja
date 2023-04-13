@@ -21,7 +21,7 @@ with hixvragenlijsten as (
 select distinct
     concat('roken_', antwoord_opslagid, '_', patientnr, '_', datum) as observation_id
     ,patientnr as person_id
-    ,concat('HIXVRAGENLIJSTEN_', vraagid) as observation_concept_id
+    ,case when stelling = "Roken" then concat('HIXVRAGENLIJSTEN_', antwoord, '_', vraagid) else concat('HIXVRAGENLIJSTEN_', vraagid) as observation_concept_id
     ,date(datum) as observation_date
     ,datetime(datum) as observation_datetime
     ,'ADMINISTRATION_RECORD' as observation_type_concept_id 
@@ -30,7 +30,7 @@ select distinct
       when stelling in ('Gestopt met roken sinds (jaartal)', 'Rookt(e) sinds (jaartal)') then antwoord
       else cast(null as string)
     end as value_as_string
-    ,case when stelling = "Roken" then concat('HIXVRAGENLIJSTEN_', antwoord, '_', vraagid) else cast(null as string) end as value_as_concept_id
+    ,cast(null as string) end as value_as_concept_id
     ,cast(null as string) as qualifier_concept_id
     ,cast(null as string) as unit_concept_id
     ,concat('HIXVRAGENLIJSTEN_', vraagid) as observation_source_value
