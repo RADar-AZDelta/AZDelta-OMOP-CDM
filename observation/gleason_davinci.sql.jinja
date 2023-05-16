@@ -42,7 +42,15 @@ WITH cte AS (
                   INNER JOIN {{project_id}}.davinci.Site AS SIT4 ON doa2.sitID = sit4.SIT_SYSID
                   INNER JOIN {{project_id}}.davinci.Language lan2 ON doc2.lanID = lan2.LAN_SYSID) ON patsit.refGPID = doa2.DOA_SYSID) ON REQ.patsitID = patsit.PATSIT_SYSID) ON req.REQ_SYSID = pro.reqID
                       INNER JOIN {{project_id}}.davinci.CodapOrgan org ON cod.orgID = org.ORG_SYSID
-                      INNER JOIN {{project_id}}.davinci.CodapDiagnostic dgn ON cod.dgnID = dgn.DGN_SYSID)
+                      INNER JOIN {{project_id}}.davinci.CodapDiagnostic dgn ON cod.dgnID = dgn.DGN_SYSID
+        WHERE 1=1
+        AND COD_SYSID <> '99999999-9999-9999-9999-999999999999'   -- waarschijnlijk testpatiënt/testrecord
+        AND PROVALIDATED = true
+        AND REQSYSRD >= 20220101000000 -- datum
+        and veldnaam.tefName in ('dominante graad', 'secundaire graad', 'totale gleasonscore')
+        and ptvDynValue not in ('<[totale gleasonscore]>')
+        order by patsitinternalnumber
+                      )
     INNER JOIN `omop.source_to_concept_map` scm ON concat('DaVinci_', veldnaam.tefName) = scm.source_code
     INNER JOIN `omop.concept` c ON scm.target_concept_id = c.concept_id
     WHERE veldnaam.tefName IS NOT NULL AND TRIM(veldnaam.tefName) <> '' 
