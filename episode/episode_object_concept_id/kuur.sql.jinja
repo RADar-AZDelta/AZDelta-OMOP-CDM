@@ -1,10 +1,15 @@
-select distinct
-CONCAT("KUUR_", VCMOCD) as sourceCode,
-OMSCHRIJV as sourceTerm,
-NULLIF(REPLACE(REPLACE(OPMERK, '\r', ' '), '\n', ''),"") as additionalinfo,
-count(KUUR_CODE) as sourceFrequency
-
-from `hix.MEDICAT_KUUR` kuur
-inner join `hix.MEDICAT_KUURDEEL` deel
-on kuur.code = deel.kuurcd
-group by sourceCode, sourceterm, additionalinfo  
+with cte as (
+  select
+    CONCAT("KUUR_", k.VCMOCD) as sourceCode,
+    k.OMSCHRIJV as sourceName,
+    --NULLIF(REPLACE(REPLACE(k.OPMERK, '\r', ' '), '\n', ''),"") as additionalinfo,
+  from `hix.MEDICAT_KUUR` k
+  inner join `hix.MEDICAT_KUURDEEL` d on k.code = d.kuurcd
+)
+select 
+  sourceCode,
+  STRING_AGG(sourceName, ",") as sourceName,
+  --ARRAY_AGG(sourceName)[offset(0)] as sourceName,
+  count(sourceCode) as sourceFrequency
+from cte
+group by sourceCode
