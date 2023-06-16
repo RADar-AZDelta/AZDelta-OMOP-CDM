@@ -1,0 +1,4 @@
+sourceCode,sourceName,sourceFrequency,sourceAutoAssignedConceptIds,matchScore,mappingStatus,equivalence,statusSetBy,statusSetOn,conceptId,conceptName,domainId,mappingType,comment,createdBy,createdOn,assignedReviewer
+cm,centimeter,646,,0.22,APPROVED,EQUAL,Louise,1639400245047,8582,centimeter,Unit,MAPS_TO,,Louise,1639400243932,
+kg,kilogram,638,,0.35,APPROVED,EQUAL,Louise,1639400250516,9529,kilogram,Unit,MAPS_TO,,Louise,1639400249501,
+kg/m2,kilogram per square meter,638,,0.24,APPROVED,EQUAL,Stijn Dupulthys,1662994248696,9531,kilogram per square meter,Unit,MAPS_TO,,Stijn Dupulthys,1662994248696,

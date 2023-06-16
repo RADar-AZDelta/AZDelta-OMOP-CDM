@@ -1,0 +1,12 @@
+concept_id,concept_name,domain_id,vocabulary_id,concept_class_id,standard_concept,concept_code,valid_start_date,valid_end_date,invalid_reason
+0,Hoeveel sigaretten rookte u gemiddeld per dag over deze periode? (vul enkel een cijfer in),Observation,vragen_baseline_patient_reported,Staging / Scales,,AWELL_AZDELTA_SMOKING_ADDITIONAL_CURRENT_SMOKER_COUNT,2021-11-25,2099-12-31,
+0,Hoeveel jaar rookt u al? (vul enkel een cijfer in),Observation,vragen_baseline_patient_reported,Staging / Scales,,AWELL_AZDELTA_SMOKING_ADDITIONAL_CURRENT_SMOKER_PERIOD,2021-11-25,2099-12-31,
+0,Hoeveel sigaretten rookte u gemiddeld per dag over deze periode? (vul enkel een cijfer in),Observation,vragen_baseline_patient_reported,Staging / Scales,,AWELL_AZDELTA_SMOKING_ADDITIONAL_EX_SMOKER_COUNT,2021-11-25,2099-12-31,
+0,Hoeveel jaar hebt u gerookt? (vul enkel een cijfer in),Observation,vragen_baseline_patient_reported,Staging / Scales,,AWELL_AZDELTA_SMOKING_ADDITIONAL_EX_SMOKER_PERIOD,2021-11-25,2099-12-31,
+0,Wat is uw huidige gewicht in kg? (vul enkel een cijfer in),Observation,vragen_baseline_patient_reported,Staging / Scales,,AWELL_AZDELTA_START_WEIGHT,2021-11-25,2099-12-31,
+0,Hoeveel kg bent u ongeveer verloren? (vul enkel een cijfer in),Observation,vragen_baseline_patient_reported,Staging / Scales,,AWELL_AZDELTA_WEIGHTL_ADDITIONAL_KG,2021-11-25,2099-12-31,
+0,In welke periode heeft dit gewichtsverlies plaatsgehad?,Observation,vragen_baseline_patient_reported,Staging / Scales,,AWELL_AZDELTA_WEIGHTL_ADDITIONAL_PERIOD,2021-11-25,2099-12-31,
+0,Heeft een dokter u ooit gemeld dat u lijdt aan één van onderstaande aandoeningen?,Observation,vragen_baseline_patient_reported,Staging / Scales,,AWELL_ICHOM_COMORB,2021-11-25,2099-12-31,
+0,Wat is het hoogste onderwijsniveau dat u met succes heeft afgerond?,Observation,vragen_baseline_patient_reported,Staging / Scales,,AWELL_ICHOM_EDUCATION,2021-11-25,2099-12-31,
+0,Wat was uw rookgedrag op het moment van uw longkanker diagnose?,Observation,vragen_baseline_patient_reported,Staging / Scales,,AWELL_ICHOM_SMOKING,2021-11-25,2099-12-31,
+0,Hebt u de laatste tijd ongewenst gewicht verloren?,Observation,vragen_baseline_patient_reported,Staging / Scales,,AWELL_ICHOM_WEIGHTL,2021-11-25,2099-12-31,

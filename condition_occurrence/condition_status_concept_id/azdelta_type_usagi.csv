@@ -3,4 +3,4 @@ MZG_TYPE_H,Hoofd diagnose,0,,0.00,APPROVED,EQUAL,pjlammertyn,1637939645670,32902
 MZG_TYPE_N,Neven diagnose,0,,0.00,APPROVED,EQUAL,pjlammertyn,1637939658311,32908,Secondary diagnosis,Condition Status,MAPS_TO,,pjlammertyn,1637939656603,
 MZG_TYPE_I,Ingreep,0,,0.00,UNCHECKED,UNREVIEWED,,0,0,Unmapped,,MAPS_TO,,,0,
 EPD_TYPE,Diagnose,0,,0.00,APPROVED,EQUAL,Stijn Dupulthys,1637939645670,32902,Primary diagnosis,Condition Status,MAPS_TO,,Stijn Dupulthys,1637939643764,
-
+ECG_PROTOCOL_DIAGNOSIS,Diagnosis,0,,0.00,APPROVED,EQUAL,Stijn Dupulthys,1637939645670,32899,Preliminary diagnosis,Condition Status,MAPS_TO,,Stijn Dupulthys,1637939643764,

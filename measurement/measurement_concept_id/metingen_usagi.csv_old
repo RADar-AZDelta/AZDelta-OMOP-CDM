@@ -1,4 +1,0 @@
-sourceCode,sourceName,sourceFrequency,sourceAutoAssignedConceptIds,ADD_INFO:additionalInfo,matchScore,mappingStatus,equivalence,statusSetBy,statusSetOn,conceptId,conceptName,domainId,mappingType,comment,createdBy,createdOn,assignedReviewer
-BMI,BMI,909,123,,1,APPROVED,EQUAL,Louise,1641461033917,4245997,Body mass index,Measurement,MAPS_TO,,Louise,1641461032264,
-LENGTH,LENGTH,909,123,,1,APPROVED,EQUAL,Louise,1641461033917,4087492,Length of body,Measurement,MAPS_TO,,Louise,1641461032264,
-WEIGHT,WEIGHT,909,123,,1,APPROVED,EQUAL,Louise,1641461033917,4099154,Body weight,Measurement,MAPS_TO,,Louise,1641461032264,

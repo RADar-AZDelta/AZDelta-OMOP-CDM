@@ -1,0 +1,8 @@
+concept_id,concept_name,domain_id,vocabulary_id,concept_class_id,standard_concept,concept_code,valid_start_date,valid_end_date,invalid_reason
+0,Niet voor zover ik weet,Meas Value,antwoorden_baseline_patient_reported,Answer,,AWELL_ICHOM_WEIGHTL_Niet_voor_zover_ik_weet,2021-11-25,2099-12-31,
+0,Afgelopen jaar,Meas Value,antwoorden_baseline_patient_reported,Answer,,AWELL_AZDELTA_WEIGHTL_ADDITIONAL_PERIOD_Afgelopen_jaar,2021-11-25,2099-12-31,
+0,Afgelopen maand,Meas Value,antwoorden_baseline_patient_reported,Answer,,AWELL_AZDELTA_WEIGHTL_ADDITIONAL_PERIOD_Afgelopen_maand,2021-11-25,2099-12-31,
+0,Afgelopen 3 maand,Meas Value,antwoorden_baseline_patient_reported,Answer,,AWELL_AZDELTA_WEIGHTL_ADDITIONAL_PERIOD_Afgelopen_3_maand,2021-11-25,2099-12-31,
+0,Afgelopen 6 maand,Meas Value,antwoorden_baseline_patient_reported,Answer,,AWELL_AZDELTA_WEIGHTL_ADDITIONAL_PERIOD_Afgelopen_6_maand,2021-11-25,2099-12-31,
+0,Ex smoker (stopped at least a year ago),Meas Value,antwoorden_baseline_patient_reported,Answer,,AWELL_ICHOM_SMOKING_Ex-roker_(ten_minste_één_jaar_gestopt_voor_diagnose),2021-11-25,2099-12-31,
+0,Current smoker (quit less than a year ago),Meas Value,antwoorden_baseline_patient_reported,Answer,,AWELL_ICHOM_SMOKING_Huidig_roker_(ook_indien_u_minder_dan_één_jaar_geleden_gestopt_bent),2021-11-25,2099-12-31,

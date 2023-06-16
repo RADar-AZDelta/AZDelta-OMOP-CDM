@@ -1,0 +1,4 @@
+sourceCode,sourceName,sourceFrequency,sourceAutoAssignedConceptIds,ADD_INFO:additionalInfo,matchScore,mappingStatus,equivalence,statusSetBy,statusSetOn,conceptId,conceptName,domainId,mappingType,comment,createdBy,createdOn,assignedReviewer
+BMI,BMI,909,123,,1,APPROVED,EQUAL,Stijn Dupulthys,1662994248696,3038553,Body mass index (BMI) [Ratio],Measurement,MAPS_TO,,Stijn Dupulthys,1662994248696,
+Gewicht,WEIGHT,909,123,,1,APPROVED,EQUAL,Stijn Dupulthys,1662994248696,3025315,Body weight,Measurement,MAPS_TO,,Stijn Dupulthys,1662994248696,
+Lengte,LENGTH,909,123,,1,APPROVED,EQUAL,Stijn Dupulthys,1662994248696,3036277,Body height,Measurement,MAPS_TO,,Stijn Dupulthys,1662994248696,

@@ -1,23 +1,32 @@
-select concat('OK_', oi.operatienr) as procedure_occurrence_id
-	,patientnr as person_id
-    ,concat("OK_", VER_CODE) as procedure_concept_id
-    ,cast(operatie_d as date) as procedure_date
-    ,cast(operatie_d as datetime) as procedure_datetime
-    ,cast(operatie_d as date) as procedure_end_date
-    ,cast(operatie_d as datetime) as procedure_end_datetime
-    ,'ADMINISTRATION_RECORD' as procedure_type_concept_id
-    ,cast(null as string) as modifier_concept_id
-    ,1 as quantity
-    ,specialist as provider_id
-    ,o.inschrnr as visit_occurrence_id
-    ,cast(null as string) as visit_detail_id
-    ,concat("OK_", VER_CODE) as procedure_source_value
-    ,cast(null as string) as procedure_source_concept_id
-    ,cast(null as string) as modifier_source_value
-
-
-from hix.OK_OKINFO oi
-inner join hix.OPNAME_OPNAME o on o.PLANNR = oi.OPNAMENR
-inner join hix.OK_OKVER ver on ver.OPERATIENR = oi.OPERATIENR
-inner join hix.OK_VERCODES codes on codes.code = ver.ver_code
-where ver_code in ("0100000265", "0100000255", "0100000257", "0100000258", "0100000259", "30125", "1700000216", "1700000215") and not operatie_d is null
+{# Copyright 2022 RADar-AZDelta #}
+{# SPDX-License-Identifier: gpl3+ #}
+WITH cte as (
+    select distinct concat('OK_', oi.operatienr, '_', ver.OKID) as procedure_occurrence_id
+        ,patientnr as person_id
+        ,concat("OK_", VER_CODE) as procedure_concept_id
+        ,cast(operatie_d as date) as procedure_date
+        ,cast(operatie_d as datetime) as procedure_datetime
+        ,cast(operatie_d as date) as procedure_end_date
+        ,cast(operatie_d as datetime) as procedure_end_datetime
+        ,'ADMINISTRATION_RECORD' as procedure_type_concept_id
+        ,cast(null as string) as modifier_concept_id
+        ,1 as quantity
+        ,specialist as provider_id
+        ,o.inschrnr as visit_occurrence_id
+        --,cast(null as string) as visit_detail_id
+        ,concat("OK_", VER_CODE) as procedure_source_value
+        ,cast(null as string) as procedure_source_concept_id
+        ,cast(null as string) as modifier_source_value
+    from {{project_id}}.hix.OK_OKINFO oi
+    inner join {{project_id}}.hix.OPNAME_OPNAME o on o.PLANNR = oi.OPNAMENR
+    inner join {{project_id}}.hix.OK_OKVER ver on ver.OPERATIENR = oi.OPERATIENR
+    inner join {{project_id}}.hix.OK_VERCODES codes on codes.code = ver.ver_code
+    where ver_code in ("0100000265", "0100000255", "0100000257", "0100000258", "0100000259", "30125", "1700000216", "1700000215") and not operatie_d is null
+)
+SELECT cte.*
+    , ARRAY_AGG(vd.visit_detail_id ORDER BY vd.visit_detail_start_datetime DESC LIMIT 1)[OFFSET(0)] as visit_detail_id
+FROM cte
+LEFT OUTER JOIN {{project_id}}.{{dataset_id_work}}.visit_detail_upload vd ON cte.visit_occurrence_id = vd.visit_occurrence_id AND cte.procedure_datetime >= vd.visit_detail_start_datetime and cte.procedure_datetime <= vd.visit_detail_end_datetime
+inner join {{project_id}}.{{dataset_id_work}}.person_upload p
+on cte.person_id = p.person_id
+GROUP BY 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15

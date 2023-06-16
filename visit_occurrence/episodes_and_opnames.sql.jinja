@@ -1,8 +1,10 @@
+{# Copyright 2022 RADar-AZDelta #}
+{# SPDX-License-Identifier: gpl3+ #}
 with cte_visit as (
     SELECT 
         ei.DBCNUMMER as visit_occurrence_id
         ,ei.PATIENTNR as person_id
-        ,ei.SOORTINSCH as visit_concept_id
+        ,coalesce(ei.SOORTINSCH, "UNKNOWN_HOSPITAL_VISIT") as visit_concept_id
         ,CAST(ei.BEGINDAT as DATE) as visit_start_date
         ,DATETIME(CAST(ei.BEGINDAT as DATE), PARSE_TIME('%H:%M', ei.BEGINTIJD)) as visit_start_datetime
         ,coalesce(CAST(ei.EINDDAT AS DATE), DATE(2099,12,31)) as visit_end_date
@@ -22,16 +24,17 @@ with cte_visit as (
     FROM {{project_id}}.{{dataset_id_raw}}.EPISODE_EPISODE ee
     inner join {{project_id}}.{{dataset_id_raw}}.EPISODE_INSCHRIJVING ei on ei.EPISODE = ee.EPISODE
     left outer join {{project_id}}.{{dataset_id_raw}}.OPNAME_OPNAME oo on ei.DBCNUMMER = oo.INSCHRNR
-    where oo.INSCHRNR is null
+    where oo.WORKFLOWSTATUS <> 'DT000125' -- GEANNULEERD
+        and oo.INSCHRNR is null
         and ei.BEGINDAT is not null
         and CAST(ei.BEGINDAT as DATE) < CURRENT_DATE()
 
     union all 
 
-    SELECT 
+    SELECT --PRE HIX TIJDPERK
         oo.INSCHRNR as visit_occurrence_id
         ,oo.PATIENTNR as person_id
-        ,ei.SOORTINSCH as visit_concept_id
+        ,coalesce(ei.SOORTINSCH, "UNKNOWN_HOSPITAL_VISIT") as visit_concept_id
         ,CAST(oo.OPNDAT as DATE) as visit_start_date
         ,DATETIME(
             CAST(oo.OPNDAT as DATE), 

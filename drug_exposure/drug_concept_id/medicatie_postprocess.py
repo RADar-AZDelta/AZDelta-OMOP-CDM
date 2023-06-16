@@ -31,7 +31,7 @@ def main() -> None:
     usagi_with_prescr = usagi.filter(pl.col("ADD_INFO:prescriptionID").is_not_null())
     usagi_with_prescr = usagi_with_prescr.with_column(pl.col("sourceCode") + "_" + pl.col("ADD_INFO:prescriptionID"))
     usagi = pl.concat([usagi_without_prescr, usagi_with_prescr])
-    usagi.to_csv(file_path.parent / args.target)
+    usagi.write_csv(file_path.parent / args.target)
 
 
 if __name__ == "__main__":

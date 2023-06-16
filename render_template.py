@@ -14,12 +14,21 @@ def main() -> None:
         type=str,
         help="name of the template file to render (with extensions)",
     )
+    parser.add_argument(
+        "--path",
+        nargs="?",
+        type=str,
+        default=None,
+        help="relative path to file",
+    )
     args = parser.parse_args()
 
     with open("config.yaml", mode='r', encoding="utf-8") as config_file:
         config = yaml.load(config_file, Loader=yaml.FullLoader)
 
-    template_dir = [path for path in Path(__file__).resolve().parent.glob("**/*") if path.is_dir()]
+    template_dir = Path(__file__).resolve().parent / (args.path if args.path else "")
+    print(template_dir)
+    template_dir = [path for path in template_dir.glob("**") if path.is_dir()]
 
     template_loader = jj.FileSystemLoader(searchpath=template_dir)
     _template_env = jj.Environment(

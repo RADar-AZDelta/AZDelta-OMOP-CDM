@@ -1,0 +1,4 @@
+concept_id,concept_name,domain_id,vocabulary_id,concept_class_id,standard_concept,concept_code,valid_start_date,valid_end_date,invalid_reason
+0,Targeted therapy,Episode,AWELL,Treatment,,TARGETED,2022-02-04,2099-12-31,
+0,Chemotherapy,Episode,AWELL,Treatment,,CHEMO,2022-02-04,2099-12-31,
+0,Immunotherapy,Episode,AWELL,Treatment,,IMMUNO,2022-02-04,2099-12-31, 
