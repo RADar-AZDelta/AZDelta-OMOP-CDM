@@ -1,0 +1,39 @@
+with gleason_davinci as (
+    SELECT
+    patsitinternalnumber as patientnr
+    ,cast(parse_date("%Y%m%d",ReqDate) as date) as reqdate
+    ,veldnaam.tefName
+    ,ptvDynValue as gleason
+    FROM ({{project_id}}.davinci.CodapCodes AS COD
+    INNER JOIN {{project_id}}.davinci.Protocol AS PRO  ON cod.proID = pro.PRO_SYSID
+    join {{project_id}}.davinci.ProtocolTemplateValue as templ on templ.proID = pro.pro_SysID
+    join {{project_id}}.davinci.TemplateField as veldnaam on tef_SysID = templ.ptvDynGuid
+    INNER JOIN ({{project_id}}.davinci.Request AS REQ INNER JOIN ({{project_id}}.davinci.RequestOrigin AS REO1
+    INNER JOIN {{project_id}}.davinci.RequestOriginType ret1 ON reo1.retID = ret1.RET_SYSID) ON REQ.reoID = reo1.REO_SYSID
+    INNER JOIN {{project_id}}.davinci.Site AS SIT1 ON REQ.sitID = sit1.SIT_SYSID
+    INNER JOIN {{project_id}}.davinci.Location LOC ON req.locID = LOC.LOC_SYSID
+    INNER JOIN ({{project_id}}.davinci.DoctorAddress AS DOA1
+        INNER JOIN {{project_id}}.davinci.TypeAddress tad1 ON doa1.tadID = tad1.TAD_SYSID
+        INNER JOIN {{project_id}}.davinci.Doctor doc1 ON doa1.docID = doc1.DOC_SYSID
+        INNER JOIN {{project_id}}.davinci.Site AS SIT2 ON doa1.sitID = sit2.SIT_SYSID
+        INNER JOIN {{project_id}}.davinci.Language lan1 ON doc1.lanID = lan1.LAN_SYSID) ON REQ.doaID = doa1.DOA_SYSID
+    INNER JOIN ({{project_id}}.davinci.PatientSite AS PATSIT
+        INNER JOIN {{project_id}}.davinci.Patient AS PAT ON patsit.patID = pat.PAT_SYSID
+        INNER JOIN {{project_id}}.davinci.Site AS SIT3 ON patsit.sitID = sit3.SIT_SYSID
+        LEFT JOIN ({{project_id}}.davinci.DoctorAddress AS DOA2
+            INNER JOIN {{project_id}}.davinci.Doctor doc2 ON doa2.docID = doc2.DOC_SYSID
+            INNER JOIN {{project_id}}.davinci.Site AS SIT4 ON doa2.sitID = sit4.SIT_SYSID
+            INNER JOIN {{project_id}}.davinci.Language lan2 ON doc2.lanID = lan2.LAN_SYSID) ON patsit.refGPID = doa2.DOA_SYSID) ON REQ.patsitID = patsit.PATSIT_SYSID) ON req.REQ_SYSID = pro.reqID
+                INNER JOIN {{project_id}}.davinci.CodapOrgan org ON cod.orgID = org.ORG_SYSID
+                INNER JOIN {{project_id}}.davinci.CodapDiagnostic dgn ON cod.dgnID = dgn.DGN_SYSID)
+    WHERE 1=1
+    AND COD_SYSID <> '99999999-9999-9999-9999-999999999999'   -- waarschijnlijk testpatiënt/testrecord
+    AND PROVALIDATED = true
+    AND REQSYSRD >= 20220101000000 -- datum
+    and veldnaam.tefName in ('dominante graad', 'secundaire graad', 'totale gleasonscore')
+    and ptvDynValue not in ('<[totale gleasonscore]>')
+    order by patsitinternalnumber)
+
+select concat('DaVinci_', tefName) as sourceCode, tefName as SourceTerm, count(*) as sourceFrequency
+from gleason_davinci
+group by sourceCode, sourceTerm
