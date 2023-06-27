@@ -1,0 +1,30 @@
+{# Copyright 2022 RADar-AZDelta #}
+{# SPDX-License-Identifier: gpl3+ #}
+{# Slechts 5 vragen zijn nuttig te mappen #}
+
+with radiotherapie_vragenlijst as (
+  select distinct 
+    antwoorden.patientnr, 
+    vragen.vraagid, 
+    vragen.stelling, 
+    keuzelijst.omschr, 
+    antwoorden.antwoord
+  from `{{project_id}}.hix.VRLIJST_VROPSLG` antwoorden
+  join `{{project_id}}.hix.VRLIJST_LSTOPSLG`  as vragenlijst 
+  on vragenlijst.OPSLAGID = antwoorden.BEANTWID
+  join `{{project_id}}.hix.VRLIJST_LIJSTDEF`  as lijstnaam 
+  on lijstnaam.LIJSTID = vragenlijst.LIJSTID
+  join  `{{project_id}}.hix.VRLIJST_VRAGEN` as vragen 
+  on vragen.VRAAGID = REALVRID
+  left outer join   `{{project_id}}.hix.VRLIJST_KEUZELST` as keuzelijst 
+  on  keuzelijst.CODE = antwoorden.Antwoord
+  where lijstnaam.lijstnaam = 'Bestraling specifiek'
+)
+select distinct 
+  concat('Radiotherapie_sessies_', vraagid) as source_code 
+  ,stelling as source_term
+  ,count(vraagid) as source_frequency
+from radiotherapie_vragenlijst
+where stelling in ('Nummer', 'Totale dosis (Gy)', 'Fractie dosis (Gy)', 'Pijnscore', 'Gewicht')
+group by source_code, source_term
+order by source_frequency desc

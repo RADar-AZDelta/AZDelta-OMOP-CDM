@@ -1,0 +1,33 @@
+{# Copyright 2022 RADar-AZDelta #}
+{# SPDX-License-Identifier: gpl3+ #}
+
+with radiotherapie_vragenlijst as (
+  select distinct 
+    antwoorden.patientnr, 
+    vragen.vraagid,
+    vragen.stelling, 
+    --replace(coalesce(keuzelijst.omschr, antwoorden.antwoord),',',';') as omschr,
+    regexp_replace(replace(coalesce(keuzelijst.omschr, antwoorden.antwoord),',',';'),'\n|\r|\t',' ') as omschr,
+    regexp_replace(replace(antwoorden.antwoord,',',';'),'\n|\r|\t',' ') as antwoord,
+  from `iconic-guard-317109.hix.VRLIJST_VROPSLG` antwoorden
+  join `iconic-guard-317109.hix.VRLIJST_LSTOPSLG`  as vragenlijst 
+  on vragenlijst.OPSLAGID = antwoorden.BEANTWID
+  join `iconic-guard-317109.hix.VRLIJST_LIJSTDEF`  as lijstnaam 
+  on lijstnaam.LIJSTID = vragenlijst.LIJSTID
+  join  `iconic-guard-317109.hix.VRLIJST_VRAGEN` as vragen 
+  on vragen.VRAAGID = REALVRID
+  left outer join   `iconic-guard-317109.hix.VRLIJST_KEUZELST` as keuzelijst 
+  on  keuzelijst.CODE = antwoorden.Antwoord
+  where lijstnaam.lijstnaam = 'Bestraling starten'
+)
+select distinct
+  concat('Radiotherapie_plan_', antwoord, '_', vraagid) as source_code
+  , omschr as source_term
+  , stelling as ADD_INFO_question
+  , count(antwoord) as source_frequency
+from radiotherapie_vragenlijst
+where stelling not in ('Aantal fracties per week', 'Dosis per fractie (Gy)', 'Aantal fracties', 'Totale dosis (Gy)', 'Course')  -- answers are/should be numeric
+  and stelling not in ('Startdatum bestraling', 'Start bestraling', 'Einddatum bestraling') -- answers are dates
+  and stelling not in ('Behandelend arts', 'Vervoer', 'Toestel', 'Dosis spec punt', 'Type CT', 'CT met contrast', 'Accordering door', 'Marges doelvolume', 'Bestraling aandachtspunten', 'Match protocol', 'Indicatie/vraagstelling', 'Patient QA', 'Akkoord Radiotherapeut', 'Wanneer', 'Waar', 'Dossiernummer', 'Opmerking', 'Simulatie', 'Akkoord fysicus/MPE', 'Doelgebied', 'Akkoord paraaf', 'Akkoord Radiotherapeut 2')  -- irrelevant questions or very few responses
+group by source_code, source_term, ADD_INFO_question
+order by source_frequency desc

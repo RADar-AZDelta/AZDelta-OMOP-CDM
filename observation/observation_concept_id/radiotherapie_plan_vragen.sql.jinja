@@ -1,0 +1,31 @@
+{# Copyright 2022 RADar-AZDelta #}
+{# SPDX-License-Identifier: gpl3+ #}
+{# 'Concomitante behandeling' is interessant, maar moeilijk te mappen/linken aan de andere #}x
+
+with radiotherapie_vragenlijst as (
+  select distinct 
+    antwoorden.patientnr, 
+    vragen.vraagid, 
+    vragen.stelling, 
+    keuzelijst.omschr, 
+    antwoorden.antwoord
+  from `iconic-guard-317109.hix.VRLIJST_VROPSLG` antwoorden
+  join `iconic-guard-317109.hix.VRLIJST_LSTOPSLG`  as vragenlijst 
+  on vragenlijst.OPSLAGID = antwoorden.BEANTWID
+  join `iconic-guard-317109.hix.VRLIJST_LIJSTDEF`  as lijstnaam 
+  on lijstnaam.LIJSTID = vragenlijst.LIJSTID
+  join  `iconic-guard-317109.hix.VRLIJST_VRAGEN` as vragen 
+  on vragen.VRAAGID = REALVRID
+  left outer join   `iconic-guard-317109.hix.VRLIJST_KEUZELST` as keuzelijst 
+  on  keuzelijst.CODE = antwoorden.Antwoord
+  where lijstnaam.lijstnaam = 'Bestraling starten'
+)
+select distinct 
+  concat('Radiotherapie_plan_', vraagid) as source_code 
+  ,stelling as source_term
+  ,count(vraagid) as source_frequency
+from radiotherapie_vragenlijst
+where stelling in ('Soort straling', 'Concomitante behandeling', 'Doelvolume', 'Diagnose /Stagering')
+  or stelling in ('Aantal fracties per week', 'Dosis per fractie (Gy)', 'Aantal fracties', 'Totale dosis (Gy)', 'Course')  -- answers are/should be numeric
+group by source_code, source_term
+order by source_frequency desc

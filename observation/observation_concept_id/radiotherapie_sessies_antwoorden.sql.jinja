@@ -1,0 +1,39 @@
+{# Copyright 2022 RADar-AZDelta #}
+{# SPDX-License-Identifier: gpl3+ #}
+{# Query geeft geen resultaten, want ofwel zijn de antwoorden numeriek/datums, ofwel zijn er te weinig (nuttige) antwoorden #}
+
+with radiotherapie_vragenlijst as (
+  select distinct 
+    antwoorden.patientnr, 
+    vragen.vraagid,
+    vragen.stelling, 
+    if(
+      starts_with(coalesce(keuzelijst.omschr, antwoorden.antwoord), 'OBJECTID')
+      ,regexp_extract(coalesce(keuzelijst.omschr, antwoorden.antwoord),r'VALUE1=(.*)')
+      ,coalesce(keuzelijst.omschr, antwoorden.antwoord)) as omschr,
+    if(
+      starts_with(antwoorden.antwoord, 'OBJECTID')
+      ,regexp_extract(antwoorden.antwoord,r'VALUE1=(.*)')
+      ,antwoorden.antwoord) as antwoord,
+  from `{{project_id}}.hix.VRLIJST_VROPSLG` antwoorden
+  join `{{project_id}}.hix.VRLIJST_LSTOPSLG`  as vragenlijst 
+  on vragenlijst.OPSLAGID = antwoorden.BEANTWID
+  join `{{project_id}}.hix.VRLIJST_LIJSTDEF`  as lijstnaam 
+  on lijstnaam.LIJSTID = vragenlijst.LIJSTID
+  join  `{{project_id}}.hix.VRLIJST_VRAGEN` as vragen 
+  on vragen.VRAAGID = REALVRID
+  left outer join   `{{project_id}}.hix.VRLIJST_KEUZELST` as keuzelijst 
+  on  keuzelijst.CODE = antwoorden.Antwoord
+  where lijstnaam.lijstnaam = 'Bestraling specifiek'
+)
+select distinct
+  concat('Radiotherapie_sessies_', antwoord, '_', vraagid) as source_code
+  , omschr as source_term
+  , stelling as ADD_INFO_question
+  , count(antwoord) as source_frequency
+from radiotherapie_vragenlijst
+where stelling not in ('Nummer', 'Dagen (vanaf start RT)', 'Dag', 'Totale dosis (Gy)', 'Fractie dosis (Gy)', 'Pijnscore', 'Gewicht')  -- answers are/should be numeric, add limits to Pijnscore en gewicht
+  and stelling not in ('Datum', 'Start datum 1ste fractie') -- answers are dates
+  and stelling not in ('Paraaf', 'EPI', 'Educatie', 'VGD bereikt', 'Vervoer', 'VRT', 'LAT', 'LNG', 'Match protocol', 'Let op', 'IV', 'Actie pijn', 'Bestraling aandachtspunten', 'Opmerkingen/Afspraken', 'Locatie pijn', 'Temp', 'Bijwerkingen', 'Andere', r'Glucose\Glycemie', 'Lengte', 'PITCH', 'ROLL', 'BMI', 'RTN')  -- irrelevant questions or very few responses
+group by source_code, source_term, ADD_INFO_question
+order by source_frequency desc
