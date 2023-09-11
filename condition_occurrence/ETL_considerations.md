@@ -1,4 +1,4 @@
-# Important considerations for the ETL-process of the condition_occurrence table
+# Important considerations for the condition_occurrence table
 
 - mzg:
   - condition_concept_id:
@@ -8,6 +8,7 @@
     - **mzg_map_new.sql**: query die bovenstaande regels toepast op mzg data uit oazis
     - **mzg_map_from_master.sql**: query die zelfde doet als bovenstaande + join met iconic-guard-317109.master_usagi.mzg_usagi. Deze tabel bevatte het resultaat van bovenstaande query, vervolledigd met manuele mappings, zodat deze niet moeten herdaan worden.
     - **ADD_INFO_SOURCE_CONCEPT_ID bevat ICD concept_id's**. Van de gevonden, meestal niet-standaard ICD-concepten wordt de concept_id opgeslagen in de kolom ADD_INFO_SOURCE_CONCEPT_ID.
+    - **Dummy codes en mzg status**: zie query voor details om rommel te vermijden vb m.hoofddiagnose not in ('MMMMMM', 'UUUUUU', 'ZZZZZZ'), m.mzg_status >= '66'
   - condition_source_concept_id:
     - **mzg_source_postprocess.py**: script die de mzg_usagi voor condition_concept_id omzet naar die mzg_source_usagi voor condition_source_concept_id. Hier wordt de ADD_INFO_SOURCE_CONCEPT_ID kolom hernoemt naar conceptId.
   - ETL
@@ -15,7 +16,23 @@
 Malignant tumor of prostate)
 - epd:
   - condition_concept_id:
+    - **String match sourceName met concept en concept_synonym**. Hix bevat synoniemen voor hun diagnoses, dit bevat vaak onder andere een Engelstalige versie, die exact matcht met de naam (of een synoniem) uit SNOMED, dus via string matching kan een groot deel geautomapt worden. In epd_usagi.sql wordt met nog enkele andere vocabularia gejoind om nog meer string matches te automappen, maar grotendeels irrelevant. Hiervan is geen query die een "master"-tabel gebruikt, omdat de Hix codes statischer zijn (maar niet perfect statisch, dus kan nuttig zijn). 
   - condition_source_concept_id:
+    - **Herbruik zelfde usagi**. Gezien dit over SNOMED-concepten gaat, gewoon dezelfde usagi file als voor condition_concept_id (of om heel strikt te zijn, de automatisch gemapte usagi, zonder manuele correcties).
 - ecg:
-
-- 
+  - **iconic-guard-317109.ecg.muse_codes_usagi** bevat mapping van MUSE-codes naar OMOP-concepten. Een deel van de ECG's gebruikt als diagnoses in hun HL7-bestand een MUSE-code, die heb ik hier manueel gemapt.
+  - **iconic-guard-317109.ecg.ecg_diagnosis** bevat ECG diagnoses geëxtraheerd uit HL7-bestanden, er is geen goeie ID voor de diagnoses, dus de beschrijving (string) wordt gehasht m.b.v. FARM_FINGERPRINT-functie in BQ.
+  - condition_concept_id:
+    - **iconic-guard-317109.master_usagi.ecg_usagi** bevat ecg_usagi gemaakt met onderstaande query + manuele correcties
+    - **ecg_usagi.sql** past muse_codes_usagi toe op ecg_diagnosis + past gekende manuele correcties toe uit master_usagi.ecg_usagi
+    - **ecg_usagi.csv** bevate ecg diagnoses gemapt naar standaard concepten
+    - **/custom/ecg_concept.csv**: bevat custom concepten
+    - **ecg_concept_to_usagi.csv**: bevat ecg diagnoses die gemapt worden naar andere/meerdere custom concepten, vb.:
+      - HASH_3565263794845171444 | significant ST-segment depression (lateral
+        -> HASH_1419611398263238031 | ST-segment depression (lateral
+      - HASH_2796102913418044575 | T-wave near baseline (lateral, anterior
+        -> HASH_-5175950444294193549 | T-wave near baseline (lateral
+        -> HASH_-8917483024683267206 | T-wave near baseline (anterior
+    - Query bevat nog enkele filters om rommel te vermijden, i.e. WHERE lower(sourceName) not like 'confirmed%'
+- **awell_baselineclinicalform.sql + conditions_in_moc.sql** zijn queries van, voor en door Louise. Deze werken, maar een meer gestandandaardiseerde/gestructureerde manier om data uit vragenlijsten te verwerken lijkt nodig.
+- "dataset-id-raw-X", naast hix als dataset-id-raw heb ik nog enkele andere gebruikt. dataset-id-raw-2 = (iconic-guard-317109.)oazis, dataset-id-raw-3 = (iconic-guard-317109.)ecg
