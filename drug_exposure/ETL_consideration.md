@@ -1,0 +1,18 @@
+# Belangrijke aandachtspunten bij drug_exposure tabel
+
+- medicatie:
+  - drug_concept_id:
+    - **CNK codes worden gerecycleerd**. De CNK codes van de APB zijn product-specifiek (dus stof+merk+dosis+vorm+verpakking); wanneer een product uit de handel verdwijnt, wordt de code herbruikt. Deze codes zitten ook in OMOP (de GGR vocabulary), maar bevatten enkel de huidige actieve codes, niet de geschiedenis van de codes.
+    - **ATC codes zijn onprecies**. Meestal bevatten deze het ingrediënt, maar bij combinatiepreparaten soms niet allemaal (vb paracetamol+codeïne krijgt ATC code voor "codeine; combinations"). Verder zijn er producten zonder ATC code (vb de "vage" MEDICATIE ONBEKEND 1 en dergelijke) of 
+    - **Voor "geschreven" (of oude?) voorschriften, is het ID van het voorschrift nodig**. De "normale" ID voor het medicament staat dan voor een vaag concept zoals "MEDICATIE ONBEKEND 1" (veeeeeeel verschillende medicijnen hebben deze naam). Toch zijn er soms veel voorschriften met exact dezelfde beschrijving op het voorschrift; de frequentste zijn gemapt maar om ze te identificeren is niet enkel de code voor het "medicament" (vb MEDICATIE ONBEKEND 1) nodig, maar ook de specifieke ID van het voorschrift.
+    - **medicatie_map_new.sql**: query om automatisch query te mappen vanuit ruwe hix data
+      - **conceptId** wordt geautomapt in een waterval:
+        - CNK -> RxNorm (Extension), als CNK een actieve code is, automatisch APPROVED
+        - ATC -> RxNorm (Extension) product, als ATC code slechts bij 1 product voorkomt (kan bij producten die nog onder patent vallen), NIET automatisch APPROVED
+        - ATC -> RxNorm (Extension) ingrediënt(en), als meerdere producten dezelfde ATC code hebben, wordt enkel gemapt naar de ingrediënten die erbij horen, NIET automatisch APPROVED
+        - Overige blijft leeg om te automappen
+      - **ADD_INFO_prescriptionID** bevat lijst met alle gebruikte voorschift ID's (als dash-separated string) voor de "vage" concepten, zoals "MEDICATIE ONBEKEND 1", waar het specifieke voorschrift nodig is om ze te kunnen identificeren
+      - **ADD_INFO_ATC** concept_id van (niet-standaard) concept horende bij ATC-code (indien hij bestaat), gezien ATC-codes "Classification"-concepten zijn in OMOP, met soms nuttige hiërarchische relaties    
+  - drug_source_concept_id:
+  - ETL:
+  - 
