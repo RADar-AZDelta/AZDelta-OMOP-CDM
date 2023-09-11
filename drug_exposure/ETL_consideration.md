@@ -17,5 +17,10 @@
     - **medicatie_usagi_pre.csv** is output na mappen, maar voor fixen van prescription ID's
     - **medicatie_postprocess.py**: "explodeert" de ADD_INFO:prescriptionID-kolom naar records per voorschrift met dezelfde mapping (voor alle "vage" concepten, zoals MEDICATIE ONBEKEND 1)
     - **medicatie_usagi.csv** is usagi-file met ontplooide prescription ID's
-  - drug_source_concept_id:
-  - ETL:
+    - **sourceCode** heeft drie opties:
+      1. MEDICATIE_(med.code), wanneer ATC code volledig is ( = 7 tekens lang), of omschrijving nuttig is
+      2. MEDICATIE_(med.code)_(identif), wanneer code vaag is, vb MEDICATIE ONBEKEND 1
+      3. MEDICATIE_(med.code)_(identif)_(deel.code), wanneer code vaag is EN in het ziekenhuis is gegeven (deel.code is de code van de specifieke toediening)
+  - drug_source_concept_id: bevat de concept_id van de bijhorende ATC-code
+    - **medicatie_source_postprocess.py**: functie om medicatie_usagi_pre.csv van drug_concept_id om te zetten naar medicatie_source_usagi voor drug_source_concept_id. Hier wordt ADD_INFO:ATC kolom hernoemt naar conceptId kolom
+  - ETL: Op zich geen bijzonderheden, wat details te zien in de query vb. toegediend of thuisvoorschrift, geaccordeerd of niet... ook wat foefelarie nodig om te filteren op Drug domain en om visit_occurrence/detail_id te vinden
