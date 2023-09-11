@@ -12,7 +12,10 @@
         - ATC -> RxNorm (Extension) ingrediënt(en), als meerdere producten dezelfde ATC code hebben, wordt enkel gemapt naar de ingrediënten die erbij horen, NIET automatisch APPROVED
         - Overige blijft leeg om te automappen
       - **ADD_INFO_prescriptionID** bevat lijst met alle gebruikte voorschift ID's (als dash-separated string) voor de "vage" concepten, zoals "MEDICATIE ONBEKEND 1", waar het specifieke voorschrift nodig is om ze te kunnen identificeren
-      - **ADD_INFO_ATC** concept_id van (niet-standaard) concept horende bij ATC-code (indien hij bestaat), gezien ATC-codes "Classification"-concepten zijn in OMOP, met soms nuttige hiërarchische relaties    
+      - **ADD_INFO_ATC** concept_id van (niet-standaard) concept horende bij ATC-code (indien hij bestaat), gezien ATC-codes "Classification"-concepten zijn in OMOP, met soms nuttige hiërarchische relaties
+    - **medicatie_map_from_master.sql**: idem als bovenstaande, maar met bijkomende join op iconic-guard-317109.master_usagi.medicatie_usagi om reeds gekende mappings toe te passen
+    - **medicatie_usagi_pre.csv** is output na mappen, maar voor fixen van prescription ID's
+    - **medicatie_postprocess.py**: "explodeert" de ADD_INFO:prescriptionID-kolom naar records per voorschrift met dezelfde mapping (voor alle "vage" concepten, zoals MEDICATIE ONBEKEND 1)
+    - **medicatie_usagi.csv** is usagi-file met ontplooide prescription ID's
   - drug_source_concept_id:
   - ETL:
-  - 
