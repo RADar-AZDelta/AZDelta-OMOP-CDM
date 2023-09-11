@@ -1,4 +1,4 @@
-# Important considerations for the condition_occurrence table
+# Belangrijke aandachtspunten bij condition_occurrence tabel
 
 - mzg:
   - condition_concept_id:
