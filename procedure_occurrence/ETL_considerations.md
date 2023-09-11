@@ -1,4 +1,4 @@
-# Important considerations for the procedure_occurrence table
+# Belangrijke aandachtspunten bij procedure_occurrence tabel
 
 - mzg:
   - Concept mapping: Idem usagi-files als bij condition_occurrence
