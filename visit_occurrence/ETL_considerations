@@ -1,0 +1,7 @@
+Hier wordt afgeweken van de OMOP-standaard:
+- **in OMOP** moet alles binnen een visit_occurrence vallen
+- **bij ons**
+  - enkel opnames zijn toegevoegd
+  - consultaties ontbreken, maar agenda is te weinig betrouwbaar
+  - vele procedures/drug_exposures vallen buiten een gekende opname, vb als voorschriften zijn gemaakt buiten de opname, alles wat op spoed gebeurt voor middernacht als de opname pas na middernacht is...
+  - enige makkelijke oplossing om OMOP-compliant te zijn is voor alles zonder visit een dummy visit aanmaken (maar natuurlijk nutteloos werk)
