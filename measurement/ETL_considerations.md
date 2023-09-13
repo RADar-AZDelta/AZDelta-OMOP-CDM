@@ -11,7 +11,8 @@
         measurement_concept_id: 4216098 | Eosinophil count | Measurement | SNOMED  
         value_as_concept_id: 4084765 | Above reference range | Meas Value | SNOMED  
     -> Beter voorstel:  
-        condition_occurrence: 4304002 | Eosinophil count raised | Condition | SNOMED  
+        condition_occurrence: 4304002 | Eosinophil count raised | Condition | SNOMED
+  - De automapping naar values gebeurt in de observation/value_as_concept_id/mzg_map_value.sql; de usagi file is dezelfde voor beide
 - **labo_measurements.sql**:
   - ETL: labo resultaten mappen naar measurements, relatief eenvoudig, wat string parsing voor de waarden en wat wegfilteren van irrelevante rommel (volgt, ini, memo...). Bevat ook link naar specimen via event kolommen voor bloedsoort bij bloedgassen.
   - measurement_concept_id:
