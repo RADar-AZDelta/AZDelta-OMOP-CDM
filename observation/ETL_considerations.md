@@ -1,0 +1,21 @@
+- **epd.sql**:
+  - ETL: idem condition_occurrence, maar filter voor observation_concept_id met domain niet in ("Condition","Procedure","Drug","Measurement","Device") (die heb eigen tabellen)
+  - observation_concept_id: zelfde usagi als in condition_occurrence
+  - observation_source_concept_id: zelfde usagi als in condition_occurrence
+  - value_as_concept_id:
+    - automap met value_as_concept_id/**epd_map_value.sql**, gebruikt Maps to value relatie, resultaat is epd_value_usagi.csv
+    - **epd_split_history.py** filtert epd_value_usagi.csv om enkel values te houden volgend op "History of event". Kan robuster gemaakt worden door enkel value concepten te behouden volgend op concepten die geen condition, procedure, drug, measurement of device zijn of uitsluitend na observations. Maar voor epd was dit momenteel niet nodig, dus werd enkel History of event gekozen. 
+- **mzg.sql**:
+  - ETL: idem condition_occurrence,  maar filter voor observation_concept_id met domain niet in ("Condition","Procedure","Drug","Measurement","Device")
+  - value_as_concept_id:
+    - automapping met mzg_map_usagi.sql, gebruikt Maps to value relatie
+    - zelfde file wordt gebruikt voor value_as_concept_id binnen measurement
+  - observation_concept_id: zelfde file als voor condition_occurrence
+- **awell**: Verschillende vragenlijsten met observation_concept_id's en value_as_concept_id's, allen vrij gelijkaardig/eenvoudig, eventueel kan hier een uniforme aanpak in 1 query voor gebruikt worden
+- **azdelta_lab_PCa**: Twee MRI metingen die waarschijnlijk beter naar Measurement verhuizen, enkel custom concepten
+- **moc_stelling**: vraag naar observation_concept_id + antwoord naar value_as_concept_id
+- **moc_antwoord**: enkel antwoord gebruikt, naar observation_concept_id
+- **rontgen**: specifieke procedures zitten in procedure_occurrence, hier enkel RADIOLOGICAL ACCESSION NUMBER om bronbestand terug te vinden, via event kolommen gelinkt aan juiste procedure
+- **rookgedrag**: rook vragenlijst uit Hix, mapping is verouderd, conventie binnen OHDSI is veranderd, best met Siel af te stemmen wat gebruikt moet worden
+- **studiekuur/studiemedicatie**: of patient deelnam aan studie behandeling of studie medicament nam, zelf weinig mee vertrouwd, niet gecontroleerd
+- **gleason_davinci.sql**: gleason score uit Davinci, ook niet gecontroleerd
